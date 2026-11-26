@@ -1,0 +1,133 @@
+# sha256  chemin relatif sous rejeu_entrees/  taille en octets : entrees recoupees (fenetres de 768 px autour des 27 tuiles, reste a 0), astrometrie, modele d'etoile et etalonnage, extrait Gaia profond des 12 images de Nicolas dont des paires sont publiees
+7840b7f096705049687789b17fe500049f71549b4a9dc064de6d43506346b7b3  entrees/dentelles_asi1600/input.npz  33232224
+4e186c50d23bb8f89b624e1752743ada368ad7e2c2f5fe8d0692e21700faabef  entrees/dentelles_asi1600/meta.json  310
+4734c957967b23a405dc3d28f933bb0454d182c1e9186fee434f6d0efd5fc1eb  entrees/dentelles_asi1600/type.json  41
+4561a0b5e424fd9b0c1d6b4c39f37ef7d986f464a85d80f453f62e3cafe215e9  entrees/heart_a7s/input.npz  16813812
+17a0132188545ec31d125d3cf3cac6b31f2c4b7fb63f0fe8fc6ea806b1680f76  entrees/heart_a7s/meta.json  286
+85e6e1338a5ce91e794343635757551ef979f5a46d331431c30e1e02ff58e585  entrees/heart_a7s/type.json  40
+2607935af9d3a486d742b53db008881cc196fa988ab68e12da081dfac9b36277  entrees/horsehead/input.npz  14337015
+c0e43844f7816b65fdd6de95fbef2aaf532b7cd5de7d2fc611567122e004a2bb  entrees/horsehead/meta.json  332
+c0cf1c76fb50febc02cc1b2615b07765aa8e2feca37d3e478f04e43dae3312c9  entrees/horsehead/type.json  39
+a61ac782c76b8bbfb783deab5528fc45e2c48d3f9f586a0aa57b1131bb80f819  entrees/iris_a7s/input.npz  22871804
+c06bd4102be82f90fcd4750bee45b148987753122fa4d8912bbdcaecf4a71d53  entrees/iris_a7s/meta.json  279
+7fd8bd231fe333d0746be1aaa1dec71f5029050a8a950ff26bee083a16cc1366  entrees/iris_a7s/type.json  41
+bb1c417a507d9c5fe295d183e35286bb4bc2cc4f4817ec5a40b945cccc09447f  entrees/m101_a7s/input.npz  6635325
+eae121f11ed52f830b4498626d4ba157e775d2b17c336aeacefd1946aa23b0e9  entrees/m101_a7s/meta.json  437
+fbe272786cba9eb86e5febb2f4ff7d5cb09bc1341d5ff1e0527596f823e4f1fe  entrees/m101_a7s/type.json  37
+ff50f607f91926604997f8991e04a8dbdebeef587ad02a7cf669510a7eae2c0c  entrees/m51_canon6d/input.npz  13041079
+a9b0e3764ef15d3c36bd43e72aa74f313020289f96b014fa22227359eefd5ec9  entrees/m51_canon6d/meta.json  277
+40ad0bb6eeedf03b9559353eb2779d28e9a34812e6408fdfee8a37201d2f0124  entrees/m51_canon6d/type.json  36
+9a931faa166024d51ea322b6710959a3673f09b0e2f4563181e99f2990f60e07  entrees/ngc7000_tiers1/input.npz  24654649
+88ffda5f6a150c501d99750f83f9e3486fb21f774c83f1e04dd751cb88395efc  entrees/ngc7000_tiers1/meta.json  442
+195cbacd6401868b86c89feb3a714c7c902397f234c70c8be35a95416f8ee9f6  entrees/ngc7000_tiers1/type.json  41
+fc1bcea60819196f2b69252e10504b18b8c64821f76e98c682d24bbf878e8f68  entrees/pleiades_a7s/input.npz  6562223
+645180daa07457d537f48bbb9f2216b10c8ed28e306d3aa383f44b88d598ca4c  entrees/pleiades_a7s/meta.json  416
+d30d363b41d243b6d9239327092218db1884ec6238616118f7e8d3628025f23f  entrees/pleiades_a7s/type.json  36
+ade0456bee504972486e62504474b2a32c26367f5645efc21ecf836a1f30886d  entrees/pleiades_g2014/input.npz  12926171
+cda130c4a536a7f63a2b9c642dc38c09046cda9608c7763fb251579900e077fb  entrees/pleiades_g2014/meta.json  439
+d30d363b41d243b6d9239327092218db1884ec6238616118f7e8d3628025f23f  entrees/pleiades_g2014/type.json  36
+cc2630c12e53e89fa5571deb5da325f2fa107d8cb2172f0deda067af99d12258  entrees/rosette/input.npz  25849480
+ec1019ca2c29ddaa8ac7b5cbc696aa60c76fda5c7d9be944c9e31d1d460b1376  entrees/rosette/meta.json  282
+4b53e4faaa5c2be9985606fd9076aae98dbf9ba18edb403d5ef4f2877a738a36  entrees/rosette/type.json  41
+b290a6525f32aa9b9d69f8dd48b0e5487701c89f7be0869d3cf713ed252f2068  entrees/sorciere_a7s/input.npz  18484034
+6ada925497f9f8749a286c9af70b5e5708d0c86f68add4321adaea165929dbbb  entrees/sorciere_a7s/meta.json  438
+fa559d72d2694abb3a2e14ca407bcf0dbcf9ae6727abe8285bf355ad3ee31c9e  entrees/sorciere_a7s/type.json  41
+8a4d89e2372332bff03eef13a96d208eea7531d399d8898879c007fda372f9d1  entrees/wizard_a7s/input.npz  11483088
+dfc632ebf1de3b49bda8154bfc8bce3b6c17e2e2ceffcc49f0d015f3cc96e9f2  entrees/wizard_a7s/meta.json  334
+fa559d72d2694abb3a2e14ca407bcf0dbcf9ae6727abe8285bf355ad3ee31c9e  entrees/wizard_a7s/type.json  41
+e51d72ceda8cd1fe2bfeb507c1cd4a1075128b2788b97621350ddce4d1d4c7b9  origine/Methode v33b – 23 nov/Catalogue Gaia profond – 20 nov/gaia_dr3_profond_dentelles_asi1600.npz  2656724
+c268040a39f71d0c543588bd55fe46c312463d05d10510a28420e8a4c9f06c52  origine/Methode v33b – 23 nov/Catalogue Gaia profond – 20 nov/gaia_dr3_profond_heart_a7s.npz  53031874
+987f3a967bc1378df91858681f395d3298d6966f735905ab7e47d48bc47ba068  origine/Methode v33b – 23 nov/Catalogue Gaia profond – 20 nov/gaia_dr3_profond_horsehead.npz  2079158
+fdf7773a85015e6958830506b87480d7d6ffeafd7d35e2db1d54c0742ceb67bd  origine/Methode v33b – 23 nov/Catalogue Gaia profond – 20 nov/gaia_dr3_profond_iris_a7s.npz  5353311
+d52c47a78aaccb9e22f1fc80d6a787329ceebdb100e6cd6756ab45f7e6d072e8  origine/Methode v33b – 23 nov/Catalogue Gaia profond – 20 nov/gaia_dr3_profond_m101_a7s.npz  800707
+89c86a25c6fe5dd2461747937dacba271e84bb1a333a8b729c72e5a083718ff7  origine/Methode v33b – 23 nov/Catalogue Gaia profond – 20 nov/gaia_dr3_profond_m51_canon6d.npz  565627
+4e6781524f5049439c022557e2084b76d824a938e85407899a79a8b80dd63715  origine/Methode v33b – 23 nov/Catalogue Gaia profond – 20 nov/gaia_dr3_profond_ngc7000_tiers1.npz  36175560
+1a601b7bccddc185daa12ab5b7bf8f6f01981087fe7165d9c64101a94a3e8d20  origine/Methode v33b – 23 nov/Catalogue Gaia profond – 20 nov/gaia_dr3_profond_pleiades_a7s.npz  2251268
+d5c83517e1a90e16823bf8298d07045ccd3d1474fee804a57c655d978063e8bd  origine/Methode v33b – 23 nov/Catalogue Gaia profond – 20 nov/gaia_dr3_profond_pleiades_g2014.npz  2232024
+5ce8b2eda7abab91f5dfe50c8d41e0ab6e1ba46092fd19ddc25b5d9269cc0d29  origine/Methode v33b – 23 nov/Catalogue Gaia profond – 20 nov/gaia_dr3_profond_rosette.npz  7810133
+063c055774c2be54d82c121004b743f02b6b96a7dd9975f5e7289a2dc815fa88  origine/Methode v33b – 23 nov/Catalogue Gaia profond – 20 nov/gaia_dr3_profond_sorciere_a7s.npz  25802599
+df89f21d5e8d979cdf02fc74019ab8bf4842d81579e243b6eccb8e07b6db718c  origine/Methode v33b – 23 nov/Catalogue Gaia profond – 20 nov/gaia_dr3_profond_wizard_a7s.npz  25907538
+ce184c8fcdd7b5f7278840c84dc60584bb30a7355e83da21a8e9d196d00450ec  origine/Methode v33b – 23 nov/Piste1/sorties/dentelles_asi1600/astrometrie.npz  107694
+5eb0ae3a14ed2ded205dc91f6bd24bef7a8de4dbefe2ce968abd0dd881acbf5e  origine/Methode v33b – 23 nov/Piste1/sorties/dentelles_asi1600/etalonnage_image.json  1761
+3d5dbd6796537c5562193fb58f5733cb96a773c67aa8469171b07f4a006270ce  origine/Methode v33b – 23 nov/Piste1/sorties/dentelles_asi1600/etalonnage_image.npz  643896
+22e850924dcbb2b3c2f59efe70fbcc2eded710d995f36e7548643b9806f5d637  origine/Methode v33b – 23 nov/Piste1/sorties/dentelles_asi1600/modele_psf_image.json  51471
+3f0cbb5d3b8afd25c79510d884a98f7f8e62f829517acb4ea036d262f3bdc0b5  origine/Methode v33b – 23 nov/Piste1/sorties/dentelles_asi1600/modele_psf_image.npz  9114090
+26a68f3d2982150c55f35705fa3a48ded122a2f949e5dc1eabbcf6fae3e046cf  origine/Methode v33b – 23 nov/Piste1/sorties/dentelles_asi1600/psf_etendue.json  5909
+9024db0cca74940f341c67b5e74a7f533ce9de9461fa157a51bbf1b80b5db7c0  origine/Methode v33b – 23 nov/Piste1/sorties/dentelles_asi1600/psf_etendue.npz  36494
+c9de743cec7adc908e0aaf5ea4db25ab93f6e8709a0c2fcb946f1db79aeff408  origine/Methode v33b – 23 nov/Piste1/sorties/heart_a7s/astrometrie.npz  2416509
+1d7391fa878e525f181315c42fb0b0730269b4bf850ccde3f8379d7881781887  origine/Methode v33b – 23 nov/Piste1/sorties/heart_a7s/etalonnage_image.json  1728
+03683af812606668c0bdd314c8d24bb52dcad3113c751695f060e3630ab27df7  origine/Methode v33b – 23 nov/Piste1/sorties/heart_a7s/etalonnage_image.npz  613968
+023d70adaa50b2f5f800cc52654ce34650a246f6b2d84f6a97cff663ff53114b  origine/Methode v33b – 23 nov/Piste1/sorties/heart_a7s/modele_psf_image.json  26708
+fb7acaeb7af5adf514d6fca5ca35f14990b88ebf1a362b8be8270e0fc93e02f5  origine/Methode v33b – 23 nov/Piste1/sorties/heart_a7s/modele_psf_image.npz  9114090
+3b045e56583f965bd4ec2a6789678577465e0050e2f8e534f51e9682dc65f29d  origine/Methode v33b – 23 nov/Piste1/sorties/heart_a7s/psf_etendue.json  7390
+4a49e684d0de3b365dce170a5110d5f6dd18b21b5bef5cccd42888bf4257bf67  origine/Methode v33b – 23 nov/Piste1/sorties/heart_a7s/psf_etendue.npz  36494
+e6e943c288db3857fbcf2b4d9a74ee3b23802bce42b0b899e090e9809ada3547  origine/Methode v33b – 23 nov/Piste1/sorties/horsehead/astrometrie.npz  617589
+b81d14c0372418d5a1c6325c68fb44a6aa6fd08a14369bee2fc291f229d46c91  origine/Methode v33b – 23 nov/Piste1/sorties/horsehead/etalonnage_image.json  1714
+06fa03e1fb855a0de32e2499aca19d3764c4e17d4628f2db290ebdf4fa0c8cc0  origine/Methode v33b – 23 nov/Piste1/sorties/horsehead/etalonnage_image.npz  167712
+03547037ab30cda3da903a771435c11aa189b497107496051d6c08b536b1b29d  origine/Methode v33b – 23 nov/Piste1/sorties/horsehead/modele_psf_image.json  52166
+5d0165f7de29b3b962fe6169060230e62c6f46de0e1834f4d5335579780b9fbf  origine/Methode v33b – 23 nov/Piste1/sorties/horsehead/modele_psf_image.npz  2300010
+719dc66ea878420177c124bfee1283b3cc2bf84fcb430d44a9b8f3899a5f7ce2  origine/Methode v33b – 23 nov/Piste1/sorties/horsehead/psf_etendue.json  10857
+bf0d9189e4ca55a16436c0a6a0de31be1d8d50683bee23ab90e43b320d2d9538  origine/Methode v33b – 23 nov/Piste1/sorties/horsehead/psf_etendue.npz  36494
+8a6d51a3463dba1a4514616645afe6095495e54a7f3b05e0ab436f53ee62d4d5  origine/Methode v33b – 23 nov/Piste1/sorties/iris_a7s/astrometrie.npz  672453
+61645df6e2ebb845ff5062ec78cc1caf48f4897f4132451c875ed89c7dbcc334  origine/Methode v33b – 23 nov/Piste1/sorties/iris_a7s/etalonnage_image.json  1723
+ec908f5470d2dab4b2cd093f51727f5d7997f1304d92600cd715d5ca4efd5823  origine/Methode v33b – 23 nov/Piste1/sorties/iris_a7s/etalonnage_image.npz  646464
+5c30a8fda87060445f314bb96873863270fedf62807674cfd6c76308e4145fcc  origine/Methode v33b – 23 nov/Piste1/sorties/iris_a7s/modele_psf_image.json  51361
+c49d861b011abaa696b6276315fc365d3e877b14ba78999aba80512277e45cd9  origine/Methode v33b – 23 nov/Piste1/sorties/iris_a7s/modele_psf_image.npz  9114090
+2098de5831f5ce117e62ea7486972a99c86a1e373fef26f398a6a653f1b63c2f  origine/Methode v33b – 23 nov/Piste1/sorties/iris_a7s/psf_etendue.json  8695
+1c2c018b731cf78ed89bb835e4e5820c32d6a1785a1ae79ae7b6a27483ce5baa  origine/Methode v33b – 23 nov/Piste1/sorties/iris_a7s/psf_etendue.npz  36494
+dd6ebaba38e003742a1c33a6795d7a22903ce8c4e7f2fc4f23dc9a302d3dc5c2  origine/Methode v33b – 23 nov/Piste1/sorties/m101_a7s/astrometrie.npz  529074
+058ffb24aac0b145a1aab160638d31dad016042f1f0657a58e4350ac109cda6f  origine/Methode v33b – 23 nov/Piste1/sorties/m101_a7s/etalonnage_image.json  1720
+0550c8423f573d93331221e875232c9c2b3ad985880e234ce4f20fde2c6d669b  origine/Methode v33b – 23 nov/Piste1/sorties/m101_a7s/etalonnage_image.npz  611760
+5be1fe73c408fa919fdfd52c836fbccbf5b958de042cc9a2fa6d8f87b1fc9607  origine/Methode v33b – 23 nov/Piste1/sorties/m101_a7s/modele_psf_image.json  52154
+ebb9511f94e6736e2e5ff211a1d2422f515509435e287050d4d2eecf78c2e065  origine/Methode v33b – 23 nov/Piste1/sorties/m101_a7s/modele_psf_image.npz  9114090
+5d8c4b128a72df13033c06f20c897fc55f1c1bf5f543f01d657d32930132e4b5  origine/Methode v33b – 23 nov/Piste1/sorties/m101_a7s/psf_etendue.json  8036
+6fcf1294078b71b95d14f7705b4fafd7672432492c95410395de90e1248af831  origine/Methode v33b – 23 nov/Piste1/sorties/m101_a7s/psf_etendue.npz  36494
+9de82efc9469707865b10fa945bc57ffb2cb9afbbaddd6ad2c5041a2adb8f5a3  origine/Methode v33b – 23 nov/Piste1/sorties/m51_canon6d/astrometrie.npz  377658
+cc0d0d37c35305934790364faae50ebca26d630c5448f011571f61a4a71d3247  origine/Methode v33b – 23 nov/Piste1/sorties/m51_canon6d/etalonnage_image.json  1727
+867f4fbc414302304504cfbf9323a05a6a37220ea5ed23497b82ff05226d29f3  origine/Methode v33b – 23 nov/Piste1/sorties/m51_canon6d/etalonnage_image.npz  164640
+3d71ce2b418e58c31c7f56c2a819413b364c519c9680d672cae3e8d85a913549  origine/Methode v33b – 23 nov/Piste1/sorties/m51_canon6d/modele_psf_image.json  51700
+20f1654ee434562a9764e2bb284c080749d7cac5bdc5241685e4fc4580ac045e  origine/Methode v33b – 23 nov/Piste1/sorties/m51_canon6d/modele_psf_image.npz  2300010
+c9de0deab8b1aaa665599110e9919e88248769bb45afdbf3237451047d0fb65d  origine/Methode v33b – 23 nov/Piste1/sorties/m51_canon6d/psf_etendue.json  6293
+282ad4aebc72351fa2a2c3a1eb17b4e0735a4f6fda8f3bcb463c60baea3acdeb  origine/Methode v33b – 23 nov/Piste1/sorties/m51_canon6d/psf_etendue.npz  36494
+1a90b8862d4bb219edb77834f7758b5f6c99255d61a89e652c2155cd1c2f91b4  origine/Methode v33b – 23 nov/Piste1/sorties/ngc7000_tiers1/astrometrie.npz  941877
+d4a3db51c73cddec71bab26350becdfdb1a8df593539c66aa09fd8a0a5c1822b  origine/Methode v33b – 23 nov/Piste1/sorties/ngc7000_tiers1/etalonnage_image.json  1736
+26ffdca72df075b37e38c22e6be590ba5c4ee0f25f9ca3c90a8ee03a3d849af0  origine/Methode v33b – 23 nov/Piste1/sorties/ngc7000_tiers1/etalonnage_image.npz  163416
+041b3ae13469eafa6cf8c069d708091f0d06e6dbd1c660d2135410bbf140986e  origine/Methode v33b – 23 nov/Piste1/sorties/ngc7000_tiers1/modele_psf_image.json  51569
+c7a0369c78b3da5c18fb6a26a42def53977b4c9434b67b7fe8dc27ee071479fe  origine/Methode v33b – 23 nov/Piste1/sorties/ngc7000_tiers1/modele_psf_image.npz  2300010
+02140c671b1356ddfc457cc75dbf481ff0ae04270e6e69c19970fe8a0cc1bdb1  origine/Methode v33b – 23 nov/Piste1/sorties/ngc7000_tiers1/psf_etendue.json  11573
+8aa829259b7f427cab585ac15aa0fa13bcbf10ed60771c336c6b8d83966660b0  origine/Methode v33b – 23 nov/Piste1/sorties/ngc7000_tiers1/psf_etendue.npz  36494
+6c78dc535cf38ac6cc9896baf783b4a4ce0da8b66aba8c0a12b5fcecc53ebe56  origine/Methode v33b – 23 nov/Piste1/sorties/pleiades_a7s/astrometrie.npz  670869
+3d3d0dc5a4bb5a806290e413880565cfbbbc9243b1b1b98d1bc5ce8a9669f2ee  origine/Methode v33b – 23 nov/Piste1/sorties/pleiades_a7s/etalonnage_image.json  1733
+dece5f9e8a33be4b27fb98f85f422673671101dc76903116df2ca74396e043ce  origine/Methode v33b – 23 nov/Piste1/sorties/pleiades_a7s/etalonnage_image.npz  629760
+d7b90e4eb6767bed0e03fd34ec31ff9d66147fa6b67b7941f801109b6d19e5d9  origine/Methode v33b – 23 nov/Piste1/sorties/pleiades_a7s/modele_psf_image.json  51945
+43159121aaa66b4bec6998484eaee9306bc803f423b246f01e02eab965182be7  origine/Methode v33b – 23 nov/Piste1/sorties/pleiades_a7s/modele_psf_image.npz  9114090
+694a0c5bca4d683416a8583ac963d7516b8c6b24df961ae5859d0e018b7a9832  origine/Methode v33b – 23 nov/Piste1/sorties/pleiades_a7s/psf_etendue.json  11216
+3b35b7a993317361edf91e38e1ae7fdb3b979b59ddd7b2c9b7042c21273aee81  origine/Methode v33b – 23 nov/Piste1/sorties/pleiades_a7s/psf_etendue.npz  36494
+ddb6937452a34a33fc3e8f07ce0ee120612e7671a2cdcb5148c8eb620a36ee44  origine/Methode v33b – 23 nov/Piste1/sorties/pleiades_g2014/astrometrie.npz  675477
+291b32c4261155e1463301ef11b5c5501461c06a620178ab7562b5c14a13ec9d  origine/Methode v33b – 23 nov/Piste1/sorties/pleiades_g2014/etalonnage_image.json  1745
+9878ec30317638b7dd88737d2fd079bf3f58f0498f52892d4ec81f76bb1f2059  origine/Methode v33b – 23 nov/Piste1/sorties/pleiades_g2014/etalonnage_image.npz  621144
+64a995121337f81b3a4050dc59ea288037c9417ae2a0226da8ecb5a2edac9956  origine/Methode v33b – 23 nov/Piste1/sorties/pleiades_g2014/modele_psf_image.json  51992
+3fea05fd0cc9b493b05f74cc7d85259c50fb9510525665cfcf8ae7ec8789fde9  origine/Methode v33b – 23 nov/Piste1/sorties/pleiades_g2014/modele_psf_image.npz  9114090
+bd926ab9ac503a2e4325b3a0211eddd7417c5e9a6ff72aec741c3bcb83499bbe  origine/Methode v33b – 23 nov/Piste1/sorties/pleiades_g2014/psf_etendue.json  10654
+2faa782b8a4eeecaebe7242f037608b02609aa9f635192d367af1ad9d9099e67  origine/Methode v33b – 23 nov/Piste1/sorties/pleiades_g2014/psf_etendue.npz  36494
+1a82c5c5293010848c02920b2071a051ca65ee47a1c34eb7649680f255084d42  origine/Methode v33b – 23 nov/Piste1/sorties/rosette/astrometrie.npz  671301
+cb7f4aaf9b934ad4debc03119b689929a0204f555b0a58506e3fcdf81975551b  origine/Methode v33b – 23 nov/Piste1/sorties/rosette/etalonnage_image.json  1731
+102350b1e5455146a291365fad4ae86352d6bf187d803e689be3880f7579de4b  origine/Methode v33b – 23 nov/Piste1/sorties/rosette/etalonnage_image.npz  640584
+eb8ffd00d162a16aa25b677543ed4541c2151b5578b4976dfb1590600638a0ad  origine/Methode v33b – 23 nov/Piste1/sorties/rosette/modele_psf_image.json  51538
+105bf08035773aa69be4488a7253695c9c0cf5a75352a1b9ac371703bf4b5677  origine/Methode v33b – 23 nov/Piste1/sorties/rosette/modele_psf_image.npz  9114090
+28bc825396c3d4c6370ddca91f8a0da0e99a43d9b4b1b1c29429a7fd4fb92718  origine/Methode v33b – 23 nov/Piste1/sorties/rosette/psf_etendue.json  13800
+39e885de170852c5bf233159f4ec835fb974f1861743c304dc0f445c9e73460f  origine/Methode v33b – 23 nov/Piste1/sorties/rosette/psf_etendue.npz  36494
+a4c48d6e90fbb89ae485c8b58d02b794c582e8f6445c23a732b5781049cdcd5b  origine/Methode v33b – 23 nov/Piste1/sorties/sorciere_a7s/astrometrie.npz  679437
+0bc460f1fddea77cbd84e0ae45de869b4fd90c27291e52c3e717b98114b490f2  origine/Methode v33b – 23 nov/Piste1/sorties/sorciere_a7s/etalonnage_image.json  1716
+3170bccd8d14d4f1339dfdb27ab8c31bb0c1340f543843d5f238fcdc3c4d3a53  origine/Methode v33b – 23 nov/Piste1/sorties/sorciere_a7s/etalonnage_image.npz  637368
+8a7fd67bb1ce3c082af0fd2cf0d3f4cdf61da1e9fb32e91642ab3ef524ba893f  origine/Methode v33b – 23 nov/Piste1/sorties/sorciere_a7s/modele_psf_image.json  51159
+b53cdb5dc80e855eed05ddcd4991985171030f92dcd1ed1672bfdf5be876cb6c  origine/Methode v33b – 23 nov/Piste1/sorties/sorciere_a7s/modele_psf_image.npz  9114090
+8057306de7123cb9391f37490eee3b5976344ad50a50ed42a79b3ff26ee42af0  origine/Methode v33b – 23 nov/Piste1/sorties/sorciere_a7s/psf_etendue.json  15093
+8f3f144bef86013bd19bff96d77dff59674031bb9d598ea9b34adaea0c8db1ab  origine/Methode v33b – 23 nov/Piste1/sorties/sorciere_a7s/psf_etendue.npz  36494
+2fc8855c67c47e853ba2b8954c6734a80dcaabe7716dd54cf1766d0eddd7f469  origine/Methode v33b – 23 nov/Piste1/sorties/wizard_a7s/astrometrie.npz  660213
+58588dfd41dc47a7a272b7f44883ba90851fd96129d6331728e0a6c440c7fbf2  origine/Methode v33b – 23 nov/Piste1/sorties/wizard_a7s/etalonnage_image.json  1738
+35cf39b165ee4aecefd90cd272b2a85c4fa4d7032dfb451b0734408ca3fca600  origine/Methode v33b – 23 nov/Piste1/sorties/wizard_a7s/etalonnage_image.npz  196368
+5f81d0e170cef4badb4822425f1ddc396880a73215db42f0acdb62cc4ad55a8d  origine/Methode v33b – 23 nov/Piste1/sorties/wizard_a7s/modele_psf_image.json  51467
+b823e38a9c35c1a578ffd2b281799bc51603b68b03143ebe31bba1a9c44ef856  origine/Methode v33b – 23 nov/Piste1/sorties/wizard_a7s/modele_psf_image.npz  2300010
+bc2156bca8df5d079e3d8ab31fd33bf096a049af913878144b79a25bca67b839  origine/Methode v33b – 23 nov/Piste1/sorties/wizard_a7s/psf_etendue.json  19553
+f36c47a7d344a03a96b5fcafc19d69479e1f6141cc2b482e6097b98190602354  origine/Methode v33b – 23 nov/Piste1/sorties/wizard_a7s/psf_etendue.npz  36494
