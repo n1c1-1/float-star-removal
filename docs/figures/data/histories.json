@@ -1,0 +1,1276 @@
+{
+ "N2": [
+  {
+   "pas": 1000,
+   "minutes": 9.4,
+   "train": 0.00415,
+   "val": 0.00402,
+   "val_etoiles": 0.0158
+  },
+  {
+   "pas": 2000,
+   "minutes": 18.4,
+   "train": 0.00385,
+   "val": 0.00366,
+   "val_etoiles": 0.01708
+  },
+  {
+   "pas": 3000,
+   "minutes": 27.2,
+   "train": 0.00382,
+   "val": 0.00359,
+   "val_etoiles": 0.01585
+  },
+  {
+   "pas": 4000,
+   "minutes": 36.0,
+   "train": 0.00339,
+   "val": 0.00348,
+   "val_etoiles": 0.01584
+  },
+  {
+   "pas": 5000,
+   "minutes": 44.8,
+   "train": 0.00328,
+   "val": 0.00359,
+   "val_etoiles": 0.01522
+  },
+  {
+   "pas": 6000,
+   "minutes": 53.5,
+   "train": 0.0032,
+   "val": 0.00345,
+   "val_etoiles": 0.01536
+  },
+  {
+   "pas": 7000,
+   "minutes": 62.2,
+   "train": 0.00321,
+   "val": 0.00329,
+   "val_etoiles": 0.01582
+  },
+  {
+   "pas": 8000,
+   "minutes": 70.9,
+   "train": 0.00295,
+   "val": 0.00338,
+   "val_etoiles": 0.01635
+  },
+  {
+   "pas": 9000,
+   "minutes": 79.5,
+   "train": 0.00318,
+   "val": 0.00332,
+   "val_etoiles": 0.01649
+  },
+  {
+   "pas": 10000,
+   "minutes": 88.4,
+   "train": 0.00325,
+   "val": 0.00326,
+   "val_etoiles": 0.01468
+  },
+  {
+   "pas": 11000,
+   "minutes": 97.1,
+   "train": 0.00311,
+   "val": 0.00366,
+   "val_etoiles": 0.0159
+  },
+  {
+   "pas": 12000,
+   "minutes": 105.9,
+   "train": 0.00303,
+   "val": 0.00314,
+   "val_etoiles": 0.01494
+  },
+  {
+   "pas": 13000,
+   "minutes": 114.6,
+   "train": 0.00264,
+   "val": 0.00324,
+   "val_etoiles": 0.01719
+  },
+  {
+   "pas": 14000,
+   "minutes": 123.6,
+   "train": 0.00296,
+   "val": 0.00314,
+   "val_etoiles": 0.01467
+  },
+  {
+   "pas": 15000,
+   "minutes": 132.4,
+   "train": 0.00261,
+   "val": 0.00314,
+   "val_etoiles": 0.01575
+  },
+  {
+   "pas": 16000,
+   "minutes": 141.2,
+   "train": 0.00237,
+   "val": 0.00307,
+   "val_etoiles": 0.01462
+  },
+  {
+   "pas": 17000,
+   "minutes": 150.0,
+   "train": 0.00253,
+   "val": 0.00305,
+   "val_etoiles": 0.01442
+  },
+  {
+   "pas": 18000,
+   "minutes": 158.7,
+   "train": 0.00248,
+   "val": 0.00321,
+   "val_etoiles": 0.01655
+  },
+  {
+   "pas": 19000,
+   "minutes": 167.5,
+   "train": 0.00238,
+   "val": 0.00308,
+   "val_etoiles": 0.01436
+  },
+  {
+   "pas": 20000,
+   "minutes": 176.2,
+   "train": 0.00247,
+   "val": 0.00296,
+   "val_etoiles": 0.01383
+  },
+  {
+   "pas": 21000,
+   "minutes": 185.3,
+   "train": 0.00241,
+   "val": 0.00304,
+   "val_etoiles": 0.01391
+  },
+  {
+   "pas": 22000,
+   "minutes": 194.1,
+   "train": 0.00236,
+   "val": 0.00296,
+   "val_etoiles": 0.01364
+  },
+  {
+   "pas": 23000,
+   "minutes": 202.9,
+   "train": 0.00215,
+   "val": 0.00294,
+   "val_etoiles": 0.01418
+  },
+  {
+   "pas": 24000,
+   "minutes": 211.7,
+   "train": 0.0023,
+   "val": 0.0029,
+   "val_etoiles": 0.01375
+  },
+  {
+   "pas": 25000,
+   "minutes": 220.5,
+   "train": 0.00213,
+   "val": 0.00291,
+   "val_etoiles": 0.01382
+  },
+  {
+   "pas": 26000,
+   "minutes": 229.1,
+   "train": 0.00203,
+   "val": 0.00289,
+   "val_etoiles": 0.01347
+  },
+  {
+   "pas": 27000,
+   "minutes": 237.8,
+   "train": 0.00209,
+   "val": 0.00288,
+   "val_etoiles": 0.01351
+  },
+  {
+   "pas": 28000,
+   "minutes": 246.5,
+   "train": 0.00211,
+   "val": 0.00287,
+   "val_etoiles": 0.01348
+  },
+  {
+   "pas": 29000,
+   "minutes": 255.2,
+   "train": 0.00212,
+   "val": 0.00287,
+   "val_etoiles": 0.01359
+  },
+  {
+   "pas": 30000,
+   "minutes": 263.8,
+   "train": 0.00214,
+   "val": 0.00286,
+   "val_etoiles": 0.01374
+  },
+  {
+   "pas": 31000,
+   "minutes": 272.5,
+   "train": 0.00197,
+   "val": 0.00286,
+   "val_etoiles": 0.01349
+  },
+  {
+   "pas": 32000,
+   "minutes": 281.1,
+   "train": 0.002,
+   "val": 0.00286,
+   "val_etoiles": 0.01357
+  },
+  {
+   "pas": 33000,
+   "minutes": 289.9,
+   "train": 0.00204,
+   "val": 0.00285,
+   "val_etoiles": 0.0135
+  },
+  {
+   "pas": 34000,
+   "minutes": 298.7,
+   "train": 0.00191,
+   "val": 0.00286,
+   "val_etoiles": 0.01352
+  }
+ ],
+ "N5": [
+  {
+   "pas": 1000,
+   "minutes": 9.6,
+   "train": 0.00366,
+   "val": 0.00365,
+   "val_etoiles": 0.01702
+  },
+  {
+   "pas": 2000,
+   "minutes": 18.1,
+   "train": 0.00356,
+   "val": 0.00373,
+   "val_etoiles": 0.01877
+  },
+  {
+   "pas": 3000,
+   "minutes": 26.7,
+   "train": 0.0035,
+   "val": 0.00352,
+   "val_etoiles": 0.01842
+  },
+  {
+   "pas": 4000,
+   "minutes": 35.4,
+   "train": 0.00348,
+   "val": 0.00338,
+   "val_etoiles": 0.01787
+  },
+  {
+   "pas": 5000,
+   "minutes": 44.0,
+   "train": 0.00307,
+   "val": 0.00335,
+   "val_etoiles": 0.01707
+  },
+  {
+   "pas": 6000,
+   "minutes": 52.7,
+   "train": 0.00296,
+   "val": 0.00343,
+   "val_etoiles": 0.01638
+  },
+  {
+   "pas": 7000,
+   "minutes": 63.6,
+   "train": 0.00304,
+   "val": 0.00353,
+   "val_etoiles": 0.01542
+  },
+  {
+   "pas": 8000,
+   "minutes": 72.3,
+   "train": 0.00283,
+   "val": 0.00325,
+   "val_etoiles": 0.01538
+  },
+  {
+   "pas": 9000,
+   "minutes": 81.2,
+   "train": 0.00301,
+   "val": 0.00304,
+   "val_etoiles": 0.01481
+  },
+  {
+   "pas": 10000,
+   "minutes": 90.3,
+   "train": 0.00309,
+   "val": 0.00322,
+   "val_etoiles": 0.01673
+  },
+  {
+   "pas": 11000,
+   "minutes": 99.1,
+   "train": 0.00302,
+   "val": 0.00323,
+   "val_etoiles": 0.01494
+  },
+  {
+   "pas": 12000,
+   "minutes": 108.0,
+   "train": 0.00301,
+   "val": 0.00306,
+   "val_etoiles": 0.0157
+  },
+  {
+   "pas": 13000,
+   "minutes": 117.1,
+   "train": 0.00275,
+   "val": 0.0032,
+   "val_etoiles": 0.01539
+  },
+  {
+   "pas": 14000,
+   "minutes": 125.9,
+   "train": 0.00275,
+   "val": 0.00313,
+   "val_etoiles": 0.01537
+  },
+  {
+   "pas": 15000,
+   "minutes": 134.7,
+   "train": 0.00271,
+   "val": 0.00309,
+   "val_etoiles": 0.01496
+  },
+  {
+   "pas": 16000,
+   "minutes": 143.5,
+   "train": 0.00248,
+   "val": 0.00301,
+   "val_etoiles": 0.01479
+  },
+  {
+   "pas": 17000,
+   "minutes": 152.3,
+   "train": 0.00242,
+   "val": 0.00303,
+   "val_etoiles": 0.01476
+  },
+  {
+   "pas": 18000,
+   "minutes": 161.1,
+   "train": 0.00239,
+   "val": 0.00295,
+   "val_etoiles": 0.01484
+  },
+  {
+   "pas": 19000,
+   "minutes": 169.8,
+   "train": 0.00231,
+   "val": 0.00348,
+   "val_etoiles": 0.01892
+  },
+  {
+   "pas": 20000,
+   "minutes": 178.7,
+   "train": 0.00235,
+   "val": 0.00302,
+   "val_etoiles": 0.01472
+  },
+  {
+   "pas": 21000,
+   "minutes": 187.7,
+   "train": 0.00227,
+   "val": 0.00298,
+   "val_etoiles": 0.01423
+  },
+  {
+   "pas": 22000,
+   "minutes": 196.3,
+   "train": 0.00221,
+   "val": 0.00287,
+   "val_etoiles": 0.01431
+  },
+  {
+   "pas": 23000,
+   "minutes": 205.0,
+   "train": 0.00206,
+   "val": 0.00286,
+   "val_etoiles": 0.01403
+  },
+  {
+   "pas": 24000,
+   "minutes": 214.0,
+   "train": 0.0022,
+   "val": 0.0029,
+   "val_etoiles": 0.0145
+  },
+  {
+   "pas": 25000,
+   "minutes": 222.7,
+   "train": 0.00206,
+   "val": 0.003,
+   "val_etoiles": 0.01529
+  },
+  {
+   "pas": 26000,
+   "minutes": 231.5,
+   "train": 0.00202,
+   "val": 0.0028,
+   "val_etoiles": 0.01406
+  },
+  {
+   "pas": 27000,
+   "minutes": 240.1,
+   "train": 0.00201,
+   "val": 0.00287,
+   "val_etoiles": 0.01446
+  },
+  {
+   "pas": 28000,
+   "minutes": 249.1,
+   "train": 0.00208,
+   "val": 0.0029,
+   "val_etoiles": 0.01445
+  },
+  {
+   "pas": 29000,
+   "minutes": 257.8,
+   "train": 0.00198,
+   "val": 0.00289,
+   "val_etoiles": 0.01448
+  },
+  {
+   "pas": 30000,
+   "minutes": 266.4,
+   "train": 0.00205,
+   "val": 0.0029,
+   "val_etoiles": 0.01467
+  },
+  {
+   "pas": 31000,
+   "minutes": 275.2,
+   "train": 0.00187,
+   "val": 0.00288,
+   "val_etoiles": 0.01445
+  },
+  {
+   "pas": 32000,
+   "minutes": 284.0,
+   "train": 0.00195,
+   "val": 0.00288,
+   "val_etoiles": 0.01443
+  },
+  {
+   "pas": 33000,
+   "minutes": 292.7,
+   "train": 0.00191,
+   "val": 0.00286,
+   "val_etoiles": 0.01437
+  },
+  {
+   "pas": 34000,
+   "minutes": 301.4,
+   "train": 0.00182,
+   "val": 0.00288,
+   "val_etoiles": 0.01443
+  }
+ ],
+ "N6": [
+  {
+   "pas": 1000,
+   "minutes": 9.4,
+   "train": 0.00397,
+   "val": 0.00449,
+   "val_etoiles": 0.01916
+  },
+  {
+   "pas": 2000,
+   "minutes": 18.1,
+   "train": 0.00398,
+   "val": 0.00446,
+   "val_etoiles": 0.0196
+  },
+  {
+   "pas": 3000,
+   "minutes": 26.7,
+   "train": 0.00372,
+   "val": 0.004,
+   "val_etoiles": 0.01771
+  },
+  {
+   "pas": 4000,
+   "minutes": 35.2,
+   "train": 0.00336,
+   "val": 0.00448,
+   "val_etoiles": 0.01811
+  },
+  {
+   "pas": 5000,
+   "minutes": 43.8,
+   "train": 0.00316,
+   "val": 0.00416,
+   "val_etoiles": 0.02007
+  },
+  {
+   "pas": 6000,
+   "minutes": 52.5,
+   "train": 0.00301,
+   "val": 0.00422,
+   "val_etoiles": 0.02039
+  },
+  {
+   "pas": 7000,
+   "minutes": 61.1,
+   "train": 0.003,
+   "val": 0.0038,
+   "val_etoiles": 0.01719
+  },
+  {
+   "pas": 8000,
+   "minutes": 69.8,
+   "train": 0.00302,
+   "val": 0.00377,
+   "val_etoiles": 0.0171
+  },
+  {
+   "pas": 9000,
+   "minutes": 78.4,
+   "train": 0.00304,
+   "val": 0.00387,
+   "val_etoiles": 0.01793
+  },
+  {
+   "pas": 10000,
+   "minutes": 87.0,
+   "train": 0.00319,
+   "val": 0.00394,
+   "val_etoiles": 0.01834
+  },
+  {
+   "pas": 11000,
+   "minutes": 95.5,
+   "train": 0.00284,
+   "val": 0.00377,
+   "val_etoiles": 0.01676
+  },
+  {
+   "pas": 12000,
+   "minutes": 104.2,
+   "train": 0.00294,
+   "val": 0.0038,
+   "val_etoiles": 0.01755
+  },
+  {
+   "pas": 13000,
+   "minutes": 112.8,
+   "train": 0.00282,
+   "val": 0.0039,
+   "val_etoiles": 0.01677
+  },
+  {
+   "pas": 14000,
+   "minutes": 121.4,
+   "train": 0.0028,
+   "val": 0.00374,
+   "val_etoiles": 0.01644
+  },
+  {
+   "pas": 15000,
+   "minutes": 130.1,
+   "train": 0.00275,
+   "val": 0.00363,
+   "val_etoiles": 0.01657
+  },
+  {
+   "pas": 16000,
+   "minutes": 138.7,
+   "train": 0.0025,
+   "val": 0.0037,
+   "val_etoiles": 0.01629
+  },
+  {
+   "pas": 17000,
+   "minutes": 147.3,
+   "train": 0.00257,
+   "val": 0.00362,
+   "val_etoiles": 0.01601
+  },
+  {
+   "pas": 18000,
+   "minutes": 156.0,
+   "train": 0.00253,
+   "val": 0.00376,
+   "val_etoiles": 0.01756
+  },
+  {
+   "pas": 19000,
+   "minutes": 164.6,
+   "train": 0.00237,
+   "val": 0.00374,
+   "val_etoiles": 0.01736
+  },
+  {
+   "pas": 20000,
+   "minutes": 173.2,
+   "train": 0.00252,
+   "val": 0.00351,
+   "val_etoiles": 0.01551
+  },
+  {
+   "pas": 21000,
+   "minutes": 181.8,
+   "train": 0.00228,
+   "val": 0.00361,
+   "val_etoiles": 0.01718
+  },
+  {
+   "pas": 22000,
+   "minutes": 190.3,
+   "train": 0.00234,
+   "val": 0.00348,
+   "val_etoiles": 0.01599
+  },
+  {
+   "pas": 23000,
+   "minutes": 198.7,
+   "train": 0.0022,
+   "val": 0.00354,
+   "val_etoiles": 0.01558
+  },
+  {
+   "pas": 24000,
+   "minutes": 207.2,
+   "train": 0.00227,
+   "val": 0.00348,
+   "val_etoiles": 0.016
+  },
+  {
+   "pas": 25000,
+   "minutes": 216.3,
+   "train": 0.00216,
+   "val": 0.00351,
+   "val_etoiles": 0.01652
+  },
+  {
+   "pas": 26000,
+   "minutes": 225.7,
+   "train": 0.00211,
+   "val": 0.00352,
+   "val_etoiles": 0.01626
+  },
+  {
+   "pas": 27000,
+   "minutes": 235.1,
+   "train": 0.00209,
+   "val": 0.00348,
+   "val_etoiles": 0.01591
+  },
+  {
+   "pas": 28000,
+   "minutes": 244.7,
+   "train": 0.00218,
+   "val": 0.00346,
+   "val_etoiles": 0.0161
+  },
+  {
+   "pas": 29000,
+   "minutes": 254.2,
+   "train": 0.00202,
+   "val": 0.00346,
+   "val_etoiles": 0.01584
+  },
+  {
+   "pas": 30000,
+   "minutes": 263.6,
+   "train": 0.00211,
+   "val": 0.00349,
+   "val_etoiles": 0.01616
+  },
+  {
+   "pas": 31000,
+   "minutes": 273.2,
+   "train": 0.00205,
+   "val": 0.00349,
+   "val_etoiles": 0.01604
+  },
+  {
+   "pas": 32000,
+   "minutes": 282.5,
+   "train": 0.00207,
+   "val": 0.00345,
+   "val_etoiles": 0.01597
+  },
+  {
+   "pas": 33000,
+   "minutes": 291.0,
+   "train": 0.00194,
+   "val": 0.00349,
+   "val_etoiles": 0.01624
+  },
+  {
+   "pas": 34000,
+   "minutes": 299.6,
+   "train": 0.00196,
+   "val": 0.00348,
+   "val_etoiles": 0.01607
+  }
+ ],
+ "N7": [
+  {
+   "pas": 1000,
+   "minutes": 9.2,
+   "train": 0.00386,
+   "val": 0.00413,
+   "val_etoiles": 0.0189
+  },
+  {
+   "pas": 2000,
+   "minutes": 17.8,
+   "train": 0.00391,
+   "val": 0.00356,
+   "val_etoiles": 0.0172
+  },
+  {
+   "pas": 3000,
+   "minutes": 26.6,
+   "train": 0.00378,
+   "val": 0.0036,
+   "val_etoiles": 0.0166
+  },
+  {
+   "pas": 4000,
+   "minutes": 35.4,
+   "train": 0.00351,
+   "val": 0.00353,
+   "val_etoiles": 0.01589
+  },
+  {
+   "pas": 5000,
+   "minutes": 44.1,
+   "train": 0.00317,
+   "val": 0.0032,
+   "val_etoiles": 0.01525
+  },
+  {
+   "pas": 6000,
+   "minutes": 52.7,
+   "train": 0.0032,
+   "val": 0.00323,
+   "val_etoiles": 0.01532
+  },
+  {
+   "pas": 7000,
+   "minutes": 61.3,
+   "train": 0.00319,
+   "val": 0.00349,
+   "val_etoiles": 0.01465
+  },
+  {
+   "pas": 8000,
+   "minutes": 70.0,
+   "train": 0.00317,
+   "val": 0.0033,
+   "val_etoiles": 0.01628
+  },
+  {
+   "pas": 9000,
+   "minutes": 78.7,
+   "train": 0.00334,
+   "val": 0.00321,
+   "val_etoiles": 0.01478
+  },
+  {
+   "pas": 10000,
+   "minutes": 87.3,
+   "train": 0.00325,
+   "val": 0.00317,
+   "val_etoiles": 0.01591
+  },
+  {
+   "pas": 11000,
+   "minutes": 96.1,
+   "train": 0.00334,
+   "val": 0.00317,
+   "val_etoiles": 0.0148
+  },
+  {
+   "pas": 12000,
+   "minutes": 104.7,
+   "train": 0.00314,
+   "val": 0.00321,
+   "val_etoiles": 0.01606
+  },
+  {
+   "pas": 13000,
+   "minutes": 113.3,
+   "train": 0.00295,
+   "val": 0.00319,
+   "val_etoiles": 0.0158
+  },
+  {
+   "pas": 14000,
+   "minutes": 122.1,
+   "train": 0.00304,
+   "val": 0.00314,
+   "val_etoiles": 0.01432
+  },
+  {
+   "pas": 15000,
+   "minutes": 131.1,
+   "train": 0.00293,
+   "val": 0.00303,
+   "val_etoiles": 0.01521
+  },
+  {
+   "pas": 16000,
+   "minutes": 140.0,
+   "train": 0.00271,
+   "val": 0.00309,
+   "val_etoiles": 0.01507
+  },
+  {
+   "pas": 17000,
+   "minutes": 148.8,
+   "train": 0.00277,
+   "val": 0.00307,
+   "val_etoiles": 0.01465
+  },
+  {
+   "pas": 18000,
+   "minutes": 157.6,
+   "train": 0.00249,
+   "val": 0.00299,
+   "val_etoiles": 0.01477
+  },
+  {
+   "pas": 19000,
+   "minutes": 166.4,
+   "train": 0.00249,
+   "val": 0.00309,
+   "val_etoiles": 0.01576
+  },
+  {
+   "pas": 20000,
+   "minutes": 175.3,
+   "train": 0.00253,
+   "val": 0.00321,
+   "val_etoiles": 0.0149
+  },
+  {
+   "pas": 21000,
+   "minutes": 184.2,
+   "train": 0.00251,
+   "val": 0.00302,
+   "val_etoiles": 0.01492
+  },
+  {
+   "pas": 22000,
+   "minutes": 193.1,
+   "train": 0.0024,
+   "val": 0.00297,
+   "val_etoiles": 0.01393
+  },
+  {
+   "pas": 23000,
+   "minutes": 201.8,
+   "train": 0.00222,
+   "val": 0.00289,
+   "val_etoiles": 0.01424
+  },
+  {
+   "pas": 24000,
+   "minutes": 210.6,
+   "train": 0.00239,
+   "val": 0.00292,
+   "val_etoiles": 0.01427
+  },
+  {
+   "pas": 25000,
+   "minutes": 219.3,
+   "train": 0.00229,
+   "val": 0.003,
+   "val_etoiles": 0.01518
+  },
+  {
+   "pas": 26000,
+   "minutes": 228.2,
+   "train": 0.00219,
+   "val": 0.00285,
+   "val_etoiles": 0.01394
+  },
+  {
+   "pas": 27000,
+   "minutes": 237.0,
+   "train": 0.00215,
+   "val": 0.00292,
+   "val_etoiles": 0.01428
+  },
+  {
+   "pas": 28000,
+   "minutes": 245.8,
+   "train": 0.0022,
+   "val": 0.00295,
+   "val_etoiles": 0.01418
+  },
+  {
+   "pas": 29000,
+   "minutes": 254.7,
+   "train": 0.00212,
+   "val": 0.00293,
+   "val_etoiles": 0.01427
+  },
+  {
+   "pas": 30000,
+   "minutes": 263.6,
+   "train": 0.00218,
+   "val": 0.0029,
+   "val_etoiles": 0.01428
+  },
+  {
+   "pas": 31000,
+   "minutes": 272.4,
+   "train": 0.00199,
+   "val": 0.00291,
+   "val_etoiles": 0.01409
+  },
+  {
+   "pas": 32000,
+   "minutes": 281.2,
+   "train": 0.00207,
+   "val": 0.00291,
+   "val_etoiles": 0.01412
+  },
+  {
+   "pas": 33000,
+   "minutes": 290.0,
+   "train": 0.00209,
+   "val": 0.0029,
+   "val_etoiles": 0.01406
+  },
+  {
+   "pas": 34000,
+   "minutes": 298.9,
+   "train": 0.00197,
+   "val": 0.00292,
+   "val_etoiles": 0.01412
+  }
+ ],
+ "N8L": [
+  {
+   "pas": 1000,
+   "minutes": 9.2,
+   "train": 0.00393,
+   "val": 0.00366,
+   "val_etoiles": 0.01756
+  },
+  {
+   "pas": 2000,
+   "minutes": 17.8,
+   "train": 0.00392,
+   "val": 0.00377,
+   "val_etoiles": 0.02163
+  },
+  {
+   "pas": 3000,
+   "minutes": 26.2,
+   "train": 0.00347,
+   "val": 0.00335,
+   "val_etoiles": 0.01719
+  },
+  {
+   "pas": 4000,
+   "minutes": 34.9,
+   "train": 0.00327,
+   "val": 0.00326,
+   "val_etoiles": 0.01663
+  },
+  {
+   "pas": 5000,
+   "minutes": 43.6,
+   "train": 0.00349,
+   "val": 0.00329,
+   "val_etoiles": 0.01548
+  },
+  {
+   "pas": 6000,
+   "minutes": 52.3,
+   "train": 0.00336,
+   "val": 0.00321,
+   "val_etoiles": 0.01667
+  },
+  {
+   "pas": 7000,
+   "minutes": 60.8,
+   "train": 0.00333,
+   "val": 0.00328,
+   "val_etoiles": 0.01531
+  },
+  {
+   "pas": 8000,
+   "minutes": 69.4,
+   "train": 0.00296,
+   "val": 0.00321,
+   "val_etoiles": 0.0162
+  },
+  {
+   "pas": 9000,
+   "minutes": 77.9,
+   "train": 0.00309,
+   "val": 0.00313,
+   "val_etoiles": 0.01556
+  },
+  {
+   "pas": 10000,
+   "minutes": 86.5,
+   "train": 0.00312,
+   "val": 0.0034,
+   "val_etoiles": 0.01749
+  },
+  {
+   "pas": 11000,
+   "minutes": 95.2,
+   "train": 0.00285,
+   "val": 0.00316,
+   "val_etoiles": 0.01476
+  },
+  {
+   "pas": 12000,
+   "minutes": 103.8,
+   "train": 0.00282,
+   "val": 0.00326,
+   "val_etoiles": 0.0154
+  },
+  {
+   "pas": 13000,
+   "minutes": 112.3,
+   "train": 0.00268,
+   "val": 0.00323,
+   "val_etoiles": 0.01418
+  },
+  {
+   "pas": 14000,
+   "minutes": 121.1,
+   "train": 0.00264,
+   "val": 0.00304,
+   "val_etoiles": 0.01473
+  },
+  {
+   "pas": 15000,
+   "minutes": 129.5,
+   "train": 0.00255,
+   "val": 0.003,
+   "val_etoiles": 0.01529
+  },
+  {
+   "pas": 16000,
+   "minutes": 138.2,
+   "train": 0.00239,
+   "val": 0.00312,
+   "val_etoiles": 0.01664
+  },
+  {
+   "pas": 17000,
+   "minutes": 146.9,
+   "train": 0.00232,
+   "val": 0.00292,
+   "val_etoiles": 0.01456
+  },
+  {
+   "pas": 18000,
+   "minutes": 155.4,
+   "train": 0.00223,
+   "val": 0.003,
+   "val_etoiles": 0.01475
+  },
+  {
+   "pas": 19000,
+   "minutes": 164.2,
+   "train": 0.00229,
+   "val": 0.00305,
+   "val_etoiles": 0.01516
+  },
+  {
+   "pas": 20000,
+   "minutes": 172.7,
+   "train": 0.00232,
+   "val": 0.00306,
+   "val_etoiles": 0.01509
+  },
+  {
+   "pas": 21000,
+   "minutes": 181.5,
+   "train": 0.00211,
+   "val": 0.00301,
+   "val_etoiles": 0.01468
+  },
+  {
+   "pas": 22000,
+   "minutes": 190.1,
+   "train": 0.00212,
+   "val": 0.003,
+   "val_etoiles": 0.01471
+  },
+  {
+   "pas": 23000,
+   "minutes": 198.7,
+   "train": 0.00227,
+   "val": 0.00302,
+   "val_etoiles": 0.01485
+  },
+  {
+   "pas": 24000,
+   "minutes": 207.1,
+   "train": 0.00212,
+   "val": 0.00303,
+   "val_etoiles": 0.01484
+  }
+ ],
+ "N9": [
+  {
+   "pas": 1000,
+   "minutes": 9.4,
+   "train": 0.00401,
+   "val": 0.00375,
+   "val_etoiles": 0.0166
+  },
+  {
+   "pas": 2000,
+   "minutes": 18.1,
+   "train": 0.00394,
+   "val": 0.00375,
+   "val_etoiles": 0.01672
+  },
+  {
+   "pas": 3000,
+   "minutes": 26.7,
+   "train": 0.00372,
+   "val": 0.00353,
+   "val_etoiles": 0.01661
+  },
+  {
+   "pas": 4000,
+   "minutes": 35.5,
+   "train": 0.00337,
+   "val": 0.00335,
+   "val_etoiles": 0.01637
+  },
+  {
+   "pas": 5000,
+   "minutes": 44.2,
+   "train": 0.00293,
+   "val": 0.00324,
+   "val_etoiles": 0.01641
+  },
+  {
+   "pas": 6000,
+   "minutes": 53.0,
+   "train": 0.00278,
+   "val": 0.00316,
+   "val_etoiles": 0.01479
+  },
+  {
+   "pas": 7000,
+   "minutes": 62.0,
+   "train": 0.00276,
+   "val": 0.00324,
+   "val_etoiles": 0.01545
+  },
+  {
+   "pas": 8000,
+   "minutes": 70.8,
+   "train": 0.00263,
+   "val": 0.00321,
+   "val_etoiles": 0.016
+  },
+  {
+   "pas": 9000,
+   "minutes": 80.1,
+   "train": 0.00268,
+   "val": 0.00313,
+   "val_etoiles": 0.01454
+  },
+  {
+   "pas": 10000,
+   "minutes": 88.9,
+   "train": 0.00275,
+   "val": 0.00315,
+   "val_etoiles": 0.01467
+  }
+ ],
+ "N10": [
+  {
+   "pas": 1000,
+   "minutes": 9.6,
+   "train": 0.00427,
+   "val": 0.00374,
+   "val_etoiles": 0.0171
+  },
+  {
+   "pas": 2000,
+   "minutes": 18.3,
+   "train": 0.00411,
+   "val": 0.00363,
+   "val_etoiles": 0.01692
+  },
+  {
+   "pas": 3000,
+   "minutes": 27.1,
+   "train": 0.0037,
+   "val": 0.00352,
+   "val_etoiles": 0.01597
+  },
+  {
+   "pas": 4000,
+   "minutes": 35.9,
+   "train": 0.00346,
+   "val": 0.00338,
+   "val_etoiles": 0.01529
+  },
+  {
+   "pas": 5000,
+   "minutes": 44.7,
+   "train": 0.00308,
+   "val": 0.00323,
+   "val_etoiles": 0.0165
+  },
+  {
+   "pas": 6000,
+   "minutes": 53.5,
+   "train": 0.00285,
+   "val": 0.00312,
+   "val_etoiles": 0.01503
+  },
+  {
+   "pas": 7000,
+   "minutes": 62.2,
+   "train": 0.00282,
+   "val": 0.00321,
+   "val_etoiles": 0.01518
+  },
+  {
+   "pas": 8000,
+   "minutes": 71.0,
+   "train": 0.00276,
+   "val": 0.00323,
+   "val_etoiles": 0.01603
+  },
+  {
+   "pas": 9000,
+   "minutes": 79.7,
+   "train": 0.0029,
+   "val": 0.00315,
+   "val_etoiles": 0.01491
+  },
+  {
+   "pas": 10000,
+   "minutes": 88.4,
+   "train": 0.00289,
+   "val": 0.00318,
+   "val_etoiles": 0.015
+  }
+ ]
+}

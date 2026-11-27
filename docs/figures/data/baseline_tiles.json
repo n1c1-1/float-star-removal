@@ -1,0 +1,2883 @@
+{
+ "meta": {
+  "regle": "choisir_tuiles.py",
+  "tuiles": {
+   "m31_a7s_newton": {
+    "x0": 1408,
+    "y0": 384,
+    "n_gaia_8_17": 109,
+    "part_valide": 1.0,
+    "forme": [
+     3,
+     4272,
+     6384
+    ]
+   },
+   "ic405_a7s_newton": {
+    "x0": 3456,
+    "y0": 2176,
+    "n_gaia_8_17": 257,
+    "part_valide": 1.0,
+    "forme": [
+     3,
+     4272,
+     6384
+    ]
+   },
+   "m33_osc_lunette": {
+    "x0": 2944,
+    "y0": 1920,
+    "n_gaia_8_17": 144,
+    "part_valide": 1.0,
+    "forme": [
+     3,
+     4233,
+     6216
+    ]
+   },
+   "m27_mono_nb": {
+    "x0": 1664,
+    "y0": 1024,
+    "n_gaia_8_17": 155,
+    "part_valide": 1.0,
+    "forme": [
+     3,
+     3520,
+     4656
+    ]
+   },
+   "ngc3372_mono_nb": {
+    "x0": 1536,
+    "y0": 256,
+    "n_gaia_8_17": 423,
+    "part_valide": 1.0,
+    "forme": [
+     3,
+     2400,
+     2400
+    ]
+   },
+   "m16_seestar_s50": {
+    "x0": 640,
+    "y0": 1280,
+    "n_gaia_8_17": 594,
+    "part_valide": 1.0,
+    "forme": [
+     3,
+     2880,
+     1620
+    ]
+   },
+   "ngc6934_stellina": {
+    "x0": 1152,
+    "y0": 768,
+    "n_gaia_8_17": 562,
+    "part_valide": 1.0,
+    "forme": [
+     3,
+     2080,
+     3072
+    ]
+   },
+   "leotriplet_canon6d_newton": {
+    "x0": 128,
+    "y0": 256,
+    "n_gaia_8_17": 31,
+    "part_valide": 1.0,
+    "forme": [
+     3,
+     3670,
+     5496
+    ]
+   },
+   "m31_canon60d_objectif_filee": {
+    "x0": 128,
+    "y0": 128,
+    "n_gaia_8_17": 1224,
+    "part_valide": 1.0,
+    "forme": [
+     3,
+     3464,
+     5202
+    ]
+   }
+  },
+  "modeles": {
+   "E3": "<path>",
+   "N2": "<path>",
+   "N5": "<path>",
+   "N7": "<path>",
+   "N7N5": "<path>"
+  }
+ },
+ "images": {
+  "m31_a7s_newton": {
+   "classique": {
+    "image": "m31_a7s_newton",
+    "tuile": [
+     1408,
+     384
+    ],
+    "n_gaia_coeur_tous_G": 932,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 2
+     },
+     "11-14": {
+      "n": 14,
+      "mediane": -0.0006,
+      "p90": 0.0071,
+      "part_gt_0.1": 0.0714
+     },
+     "14-17": {
+      "n": 94,
+      "mediane": 0.0,
+      "p90": 0.0377,
+      "part_gt_0.1": 0.0426
+     },
+     ">17": {
+      "n": 584,
+      "mediane": 0.0229,
+      "p90": 0.6116,
+      "part_gt_0.1": 0.351
+     }
+    },
+    "fond": {
+     "part_loin": 0.2989,
+     "fond": {
+      "pixels": 78367,
+      "mediane": 0.0014,
+      "p99": 0.0966
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "E3": {
+    "image": "m31_a7s_newton",
+    "tuile": [
+     1408,
+     384
+    ],
+    "n_gaia_coeur_tous_G": 932,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 2
+     },
+     "11-14": {
+      "n": 14,
+      "mediane": -0.0005,
+      "p90": 0.0039,
+      "part_gt_0.1": 0.0714
+     },
+     "14-17": {
+      "n": 94,
+      "mediane": 0.022,
+      "p90": 0.069,
+      "part_gt_0.1": 0.0532
+     },
+     ">17": {
+      "n": 584,
+      "mediane": 0.0741,
+      "p90": 0.9189,
+      "part_gt_0.1": 0.4555
+     }
+    },
+    "fond": {
+     "part_loin": 0.2989,
+     "fond": {
+      "pixels": 78367,
+      "mediane": 0.0258,
+      "p99": 0.0754
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N2": {
+    "image": "m31_a7s_newton",
+    "tuile": [
+     1408,
+     384
+    ],
+    "n_gaia_coeur_tous_G": 932,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 2
+     },
+     "11-14": {
+      "n": 14,
+      "mediane": 0.0029,
+      "p90": 0.0064,
+      "part_gt_0.1": 0.0714
+     },
+     "14-17": {
+      "n": 94,
+      "mediane": 0.0094,
+      "p90": 0.0541,
+      "part_gt_0.1": 0.0532
+     },
+     ">17": {
+      "n": 584,
+      "mediane": 0.0712,
+      "p90": 0.9485,
+      "part_gt_0.1": 0.4606
+     }
+    },
+    "fond": {
+     "part_loin": 0.2989,
+     "fond": {
+      "pixels": 78367,
+      "mediane": 0.0042,
+      "p99": 0.0598
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N5": {
+    "image": "m31_a7s_newton",
+    "tuile": [
+     1408,
+     384
+    ],
+    "n_gaia_coeur_tous_G": 932,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 2
+     },
+     "11-14": {
+      "n": 14,
+      "mediane": -0.0008,
+      "p90": 0.0008,
+      "part_gt_0.1": 0.0714
+     },
+     "14-17": {
+      "n": 94,
+      "mediane": -0.0026,
+      "p90": 0.0323,
+      "part_gt_0.1": 0.0426
+     },
+     ">17": {
+      "n": 584,
+      "mediane": 0.0499,
+      "p90": 1.0079,
+      "part_gt_0.1": 0.4229
+     }
+    },
+    "fond": {
+     "part_loin": 0.2989,
+     "fond": {
+      "pixels": 78367,
+      "mediane": 0.0044,
+      "p99": 0.0587
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N7": {
+    "image": "m31_a7s_newton",
+    "tuile": [
+     1408,
+     384
+    ],
+    "n_gaia_coeur_tous_G": 932,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 2
+     },
+     "11-14": {
+      "n": 14,
+      "mediane": -0.0046,
+      "p90": 0.0007,
+      "part_gt_0.1": 0.0714
+     },
+     "14-17": {
+      "n": 94,
+      "mediane": -0.0144,
+      "p90": 0.0129,
+      "part_gt_0.1": 0.0426
+     },
+     ">17": {
+      "n": 584,
+      "mediane": 0.0304,
+      "p90": 1.0318,
+      "part_gt_0.1": 0.4161
+     }
+    },
+    "fond": {
+     "part_loin": 0.2989,
+     "fond": {
+      "pixels": 78367,
+      "mediane": 0.0032,
+      "p99": 0.0632
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N7N5": {
+    "image": "m31_a7s_newton",
+    "tuile": [
+     1408,
+     384
+    ],
+    "n_gaia_coeur_tous_G": 932,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 2
+     },
+     "11-14": {
+      "n": 14,
+      "mediane": -0.0012,
+      "p90": 0.0009,
+      "part_gt_0.1": 0.0714
+     },
+     "14-17": {
+      "n": 94,
+      "mediane": -0.0035,
+      "p90": 0.0293,
+      "part_gt_0.1": 0.0426
+     },
+     ">17": {
+      "n": 584,
+      "mediane": 0.0435,
+      "p90": 0.9356,
+      "part_gt_0.1": 0.4144
+     }
+    },
+    "fond": {
+     "part_loin": 0.2989,
+     "fond": {
+      "pixels": 78367,
+      "mediane": 0.0035,
+      "p99": 0.0669
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   }
+  },
+  "ic405_a7s_newton": {
+   "classique": {
+    "image": "ic405_a7s_newton",
+    "tuile": [
+     3456,
+     2176
+    ],
+    "n_gaia_coeur_tous_G": 1498,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 3,
+      "mediane": 0.0001,
+      "p90": 0.0002,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 26,
+      "mediane": -0.0015,
+      "p90": 0.0008,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 228,
+      "mediane": -0.0055,
+      "p90": 0.0369,
+      "part_gt_0.1": 0.0351
+     },
+     ">17": {
+      "n": 1018,
+      "mediane": 0.0109,
+      "p90": 0.4042,
+      "part_gt_0.1": 0.2495
+     }
+    },
+    "fond": {
+     "part_loin": 0.063,
+     "fond": {
+      "pixels": 16528,
+      "mediane": 0.0099,
+      "p99": 0.1603
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "E3": {
+    "image": "ic405_a7s_newton",
+    "tuile": [
+     3456,
+     2176
+    ],
+    "n_gaia_coeur_tous_G": 1498,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 3,
+      "mediane": -0.0001,
+      "p90": -0.0001,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 26,
+      "mediane": -0.0008,
+      "p90": 0.0018,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 228,
+      "mediane": 0.0061,
+      "p90": 0.0535,
+      "part_gt_0.1": 0.0395
+     },
+     ">17": {
+      "n": 1018,
+      "mediane": 0.0139,
+      "p90": 0.3358,
+      "part_gt_0.1": 0.2426
+     }
+    },
+    "fond": {
+     "part_loin": 0.063,
+     "fond": {
+      "pixels": 16528,
+      "mediane": 0.0683,
+      "p99": 0.191
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N2": {
+    "image": "ic405_a7s_newton",
+    "tuile": [
+     3456,
+     2176
+    ],
+    "n_gaia_coeur_tous_G": 1498,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 3,
+      "mediane": 0.0,
+      "p90": 0.0001,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 26,
+      "mediane": 0.0023,
+      "p90": 0.0063,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 228,
+      "mediane": 0.01,
+      "p90": 0.0482,
+      "part_gt_0.1": 0.0395
+     },
+     ">17": {
+      "n": 1018,
+      "mediane": 0.0196,
+      "p90": 0.2632,
+      "part_gt_0.1": 0.2053
+     }
+    },
+    "fond": {
+     "part_loin": 0.063,
+     "fond": {
+      "pixels": 16528,
+      "mediane": 0.0293,
+      "p99": 0.1612
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N5": {
+    "image": "ic405_a7s_newton",
+    "tuile": [
+     3456,
+     2176
+    ],
+    "n_gaia_coeur_tous_G": 1498,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 3,
+      "mediane": -0.0001,
+      "p90": -0.0,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 26,
+      "mediane": 0.0,
+      "p90": 0.0015,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 228,
+      "mediane": 0.0025,
+      "p90": 0.0361,
+      "part_gt_0.1": 0.0395
+     },
+     ">17": {
+      "n": 1018,
+      "mediane": 0.0114,
+      "p90": 0.2859,
+      "part_gt_0.1": 0.2151
+     }
+    },
+    "fond": {
+     "part_loin": 0.063,
+     "fond": {
+      "pixels": 16528,
+      "mediane": 0.0175,
+      "p99": 0.1773
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N7": {
+    "image": "ic405_a7s_newton",
+    "tuile": [
+     3456,
+     2176
+    ],
+    "n_gaia_coeur_tous_G": 1498,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 3,
+      "mediane": -0.0,
+      "p90": 0.0001,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 26,
+      "mediane": -0.0011,
+      "p90": 0.0,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 228,
+      "mediane": -0.0005,
+      "p90": 0.0259,
+      "part_gt_0.1": 0.0307
+     },
+     ">17": {
+      "n": 1018,
+      "mediane": 0.007,
+      "p90": 0.3098,
+      "part_gt_0.1": 0.2181
+     }
+    },
+    "fond": {
+     "part_loin": 0.063,
+     "fond": {
+      "pixels": 16528,
+      "mediane": 0.0148,
+      "p99": 0.1722
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N7N5": {
+    "image": "ic405_a7s_newton",
+    "tuile": [
+     3456,
+     2176
+    ],
+    "n_gaia_coeur_tous_G": 1498,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 3,
+      "mediane": -0.0,
+      "p90": -0.0,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 26,
+      "mediane": -0.0002,
+      "p90": 0.0009,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 228,
+      "mediane": 0.0027,
+      "p90": 0.0336,
+      "part_gt_0.1": 0.0351
+     },
+     ">17": {
+      "n": 1018,
+      "mediane": 0.0108,
+      "p90": 0.2734,
+      "part_gt_0.1": 0.2161
+     }
+    },
+    "fond": {
+     "part_loin": 0.063,
+     "fond": {
+      "pixels": 16528,
+      "mediane": 0.0163,
+      "p99": 0.1641
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   }
+  },
+  "m33_osc_lunette": {
+   "classique": {
+    "image": "m33_osc_lunette",
+    "tuile": [
+     2944,
+     1920
+    ],
+    "n_gaia_coeur_tous_G": 10730,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 0
+     },
+     "11-14": {
+      "n": 11,
+      "mediane": -0.0038,
+      "p90": 0.002,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 132,
+      "mediane": 0.0175,
+      "p90": 0.1888,
+      "part_gt_0.1": 0.197
+     },
+     ">17": {
+      "n": 1108,
+      "mediane": 0.1521,
+      "p90": 0.9015,
+      "part_gt_0.1": 0.593
+     }
+    },
+    "fond": {
+     "part_loin": 0.0839,
+     "fond": {
+      "pixels": 22000,
+      "mediane": 0.0014,
+      "p99": 0.0717
+     },
+     "structure_brillante": {
+      "pixels": 3156,
+      "mediane": 0.0038,
+      "p99": 0.2608
+     }
+    }
+   },
+   "E3": {
+    "image": "m33_osc_lunette",
+    "tuile": [
+     2944,
+     1920
+    ],
+    "n_gaia_coeur_tous_G": 10730,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 0
+     },
+     "11-14": {
+      "n": 11,
+      "mediane": -0.0022,
+      "p90": 0.0224,
+      "part_gt_0.1": 0.0909
+     },
+     "14-17": {
+      "n": 132,
+      "mediane": 0.1114,
+      "p90": 0.5126,
+      "part_gt_0.1": 0.5076
+     },
+     ">17": {
+      "n": 1108,
+      "mediane": 0.7322,
+      "p90": 1.331,
+      "part_gt_0.1": 0.8691
+     }
+    },
+    "fond": {
+     "part_loin": 0.0839,
+     "fond": {
+      "pixels": 22000,
+      "mediane": 0.0043,
+      "p99": 0.0202
+     },
+     "structure_brillante": {
+      "pixels": 3156,
+      "mediane": 0.0094,
+      "p99": 0.1169
+     }
+    }
+   },
+   "N2": {
+    "image": "m33_osc_lunette",
+    "tuile": [
+     2944,
+     1920
+    ],
+    "n_gaia_coeur_tous_G": 10730,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 0
+     },
+     "11-14": {
+      "n": 11,
+      "mediane": -0.0031,
+      "p90": 0.0259,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 132,
+      "mediane": 0.0863,
+      "p90": 0.4013,
+      "part_gt_0.1": 0.4773
+     },
+     ">17": {
+      "n": 1108,
+      "mediane": 0.455,
+      "p90": 1.3124,
+      "part_gt_0.1": 0.8168
+     }
+    },
+    "fond": {
+     "part_loin": 0.0839,
+     "fond": {
+      "pixels": 22000,
+      "mediane": 0.0012,
+      "p99": 0.0171
+     },
+     "structure_brillante": {
+      "pixels": 3156,
+      "mediane": 0.0017,
+      "p99": 0.1791
+     }
+    }
+   },
+   "N5": {
+    "image": "m33_osc_lunette",
+    "tuile": [
+     2944,
+     1920
+    ],
+    "n_gaia_coeur_tous_G": 10730,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 0
+     },
+     "11-14": {
+      "n": 11,
+      "mediane": -0.0116,
+      "p90": -0.003,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 132,
+      "mediane": -0.0068,
+      "p90": 0.2754,
+      "part_gt_0.1": 0.2424
+     },
+     ">17": {
+      "n": 1108,
+      "mediane": 0.3425,
+      "p90": 1.4143,
+      "part_gt_0.1": 0.6949
+     }
+    },
+    "fond": {
+     "part_loin": 0.0839,
+     "fond": {
+      "pixels": 22000,
+      "mediane": 0.0033,
+      "p99": 0.0205
+     },
+     "structure_brillante": {
+      "pixels": 3156,
+      "mediane": 0.0085,
+      "p99": 0.1873
+     }
+    }
+   },
+   "N7": {
+    "image": "m33_osc_lunette",
+    "tuile": [
+     2944,
+     1920
+    ],
+    "n_gaia_coeur_tous_G": 10730,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 0
+     },
+     "11-14": {
+      "n": 11,
+      "mediane": -0.0088,
+      "p90": -0.0047,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 132,
+      "mediane": 0.0265,
+      "p90": 0.3862,
+      "part_gt_0.1": 0.3409
+     },
+     ">17": {
+      "n": 1108,
+      "mediane": 0.5087,
+      "p90": 1.4029,
+      "part_gt_0.1": 0.796
+     }
+    },
+    "fond": {
+     "part_loin": 0.0839,
+     "fond": {
+      "pixels": 22000,
+      "mediane": 0.0034,
+      "p99": 0.0129
+     },
+     "structure_brillante": {
+      "pixels": 3156,
+      "mediane": 0.0059,
+      "p99": 0.1859
+     }
+    }
+   },
+   "N7N5": {
+    "image": "m33_osc_lunette",
+    "tuile": [
+     2944,
+     1920
+    ],
+    "n_gaia_coeur_tous_G": 10730,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 0
+     },
+     "11-14": {
+      "n": 11,
+      "mediane": -0.0073,
+      "p90": 0.0018,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 132,
+      "mediane": 0.0393,
+      "p90": 0.3726,
+      "part_gt_0.1": 0.4091
+     },
+     ">17": {
+      "n": 1108,
+      "mediane": 0.5039,
+      "p90": 1.4029,
+      "part_gt_0.1": 0.8069
+     }
+    },
+    "fond": {
+     "part_loin": 0.0839,
+     "fond": {
+      "pixels": 22000,
+      "mediane": 0.0033,
+      "p99": 0.0116
+     },
+     "structure_brillante": {
+      "pixels": 3156,
+      "mediane": 0.005,
+      "p99": 0.1573
+     }
+    }
+   }
+  },
+  "m27_mono_nb": {
+   "classique": {
+    "image": "m27_mono_nb",
+    "tuile": [
+     1664,
+     1024
+    ],
+    "n_gaia_coeur_tous_G": 1940,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 1
+     },
+     "11-14": {
+      "n": 14,
+      "mediane": -0.0296,
+      "p90": 0.0558,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 141,
+      "mediane": 0.0046,
+      "p90": 0.0511,
+      "part_gt_0.1": 0.0567
+     },
+     ">17": {
+      "n": 1180,
+      "mediane": 0.059,
+      "p90": 0.3728,
+      "part_gt_0.1": 0.3856
+     }
+    },
+    "fond": {
+     "part_loin": 0.0977,
+     "fond": {
+      "pixels": 25616,
+      "mediane": 0.0429,
+      "p99": 1.8517
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "E3": {
+    "image": "m27_mono_nb",
+    "tuile": [
+     1664,
+     1024
+    ],
+    "n_gaia_coeur_tous_G": 1940,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 1
+     },
+     "11-14": {
+      "n": 14,
+      "mediane": 0.0,
+      "p90": 0.0006,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 141,
+      "mediane": 0.0013,
+      "p90": 0.0107,
+      "part_gt_0.1": 0.0284
+     },
+     ">17": {
+      "n": 1180,
+      "mediane": 0.0048,
+      "p90": 0.1028,
+      "part_gt_0.1": 0.1042
+     }
+    },
+    "fond": {
+     "part_loin": 0.0977,
+     "fond": {
+      "pixels": 25616,
+      "mediane": 0.5138,
+      "p99": 2.3827
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N2": {
+    "image": "m27_mono_nb",
+    "tuile": [
+     1664,
+     1024
+    ],
+    "n_gaia_coeur_tous_G": 1940,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 1
+     },
+     "11-14": {
+      "n": 14,
+      "mediane": -0.0009,
+      "p90": -0.0002,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 141,
+      "mediane": -0.0085,
+      "p90": 0.0155,
+      "part_gt_0.1": 0.0284
+     },
+     ">17": {
+      "n": 1180,
+      "mediane": 0.0518,
+      "p90": 0.5311,
+      "part_gt_0.1": 0.4034
+     }
+    },
+    "fond": {
+     "part_loin": 0.0977,
+     "fond": {
+      "pixels": 25616,
+      "mediane": 0.0222,
+      "p99": 1.5383
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N5": {
+    "image": "m27_mono_nb",
+    "tuile": [
+     1664,
+     1024
+    ],
+    "n_gaia_coeur_tous_G": 1940,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 1
+     },
+     "11-14": {
+      "n": 14,
+      "mediane": -0.0001,
+      "p90": 0.0006,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 141,
+      "mediane": -0.0044,
+      "p90": 0.0182,
+      "part_gt_0.1": 0.0284
+     },
+     ">17": {
+      "n": 1180,
+      "mediane": 0.0489,
+      "p90": 0.4517,
+      "part_gt_0.1": 0.3881
+     }
+    },
+    "fond": {
+     "part_loin": 0.0977,
+     "fond": {
+      "pixels": 25616,
+      "mediane": 0.1306,
+      "p99": 1.4829
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N7": {
+    "image": "m27_mono_nb",
+    "tuile": [
+     1664,
+     1024
+    ],
+    "n_gaia_coeur_tous_G": 1940,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 1
+     },
+     "11-14": {
+      "n": 14,
+      "mediane": -0.0009,
+      "p90": 0.0003,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 141,
+      "mediane": -0.0076,
+      "p90": 0.011,
+      "part_gt_0.1": 0.0284
+     },
+     ">17": {
+      "n": 1180,
+      "mediane": 0.0331,
+      "p90": 0.4415,
+      "part_gt_0.1": 0.3492
+     }
+    },
+    "fond": {
+     "part_loin": 0.0977,
+     "fond": {
+      "pixels": 25616,
+      "mediane": 0.1896,
+      "p99": 1.5452
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N7N5": {
+    "image": "m27_mono_nb",
+    "tuile": [
+     1664,
+     1024
+    ],
+    "n_gaia_coeur_tous_G": 1940,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 1
+     },
+     "11-14": {
+      "n": 14,
+      "mediane": -0.0001,
+      "p90": 0.0006,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 141,
+      "mediane": -0.0046,
+      "p90": 0.0138,
+      "part_gt_0.1": 0.0284
+     },
+     ">17": {
+      "n": 1180,
+      "mediane": 0.0378,
+      "p90": 0.4189,
+      "part_gt_0.1": 0.35
+     }
+    },
+    "fond": {
+     "part_loin": 0.0977,
+     "fond": {
+      "pixels": 25616,
+      "mediane": 0.1548,
+      "p99": 1.538
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   }
+  },
+  "ngc3372_mono_nb": {
+   "classique": {
+    "image": "ngc3372_mono_nb",
+    "tuile": [
+     1536,
+     256
+    ],
+    "n_gaia_coeur_tous_G": 3039,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 2
+     },
+     "8-11": {
+      "n": 17,
+      "mediane": 0.0456,
+      "p90": 0.1656,
+      "part_gt_0.1": 0.4118
+     },
+     "11-14": {
+      "n": 97,
+      "mediane": 0.1251,
+      "p90": 0.5733,
+      "part_gt_0.1": 0.5258
+     },
+     "14-17": {
+      "n": 186,
+      "mediane": 0.5168,
+      "p90": 1.0385,
+      "part_gt_0.1": 0.6882
+     },
+     ">17": {
+      "n": 865,
+      "mediane": 0.6211,
+      "p90": 1.2571,
+      "part_gt_0.1": 0.7318
+     }
+    },
+    "fond": {
+     "part_loin": 0.0625,
+     "fond": {
+      "pixels": 16384,
+      "mediane": 0.0014,
+      "p99": 0.1192
+     },
+     "structure_brillante": {
+      "pixels": 3242,
+      "mediane": 0.0022,
+      "p99": 0.1142
+     }
+    }
+   },
+   "E3": {
+    "image": "ngc3372_mono_nb",
+    "tuile": [
+     1536,
+     256
+    ],
+    "n_gaia_coeur_tous_G": 3039,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 2
+     },
+     "8-11": {
+      "n": 17,
+      "mediane": 0.0141,
+      "p90": 0.1365,
+      "part_gt_0.1": 0.1765
+     },
+     "11-14": {
+      "n": 97,
+      "mediane": 0.1464,
+      "p90": 0.6748,
+      "part_gt_0.1": 0.5258
+     },
+     "14-17": {
+      "n": 186,
+      "mediane": 0.9153,
+      "p90": 1.1654,
+      "part_gt_0.1": 0.7204
+     },
+     ">17": {
+      "n": 865,
+      "mediane": 0.8781,
+      "p90": 1.1746,
+      "part_gt_0.1": 0.7457
+     }
+    },
+    "fond": {
+     "part_loin": 0.0625,
+     "fond": {
+      "pixels": 16384,
+      "mediane": 0.0062,
+      "p99": 0.0265
+     },
+     "structure_brillante": {
+      "pixels": 3242,
+      "mediane": 0.0072,
+      "p99": 0.0359
+     }
+    }
+   },
+   "N2": {
+    "image": "ngc3372_mono_nb",
+    "tuile": [
+     1536,
+     256
+    ],
+    "n_gaia_coeur_tous_G": 3039,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 2
+     },
+     "8-11": {
+      "n": 17,
+      "mediane": -0.0088,
+      "p90": 0.0103,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 97,
+      "mediane": 0.0534,
+      "p90": 0.6047,
+      "part_gt_0.1": 0.4742
+     },
+     "14-17": {
+      "n": 186,
+      "mediane": 0.8819,
+      "p90": 1.3989,
+      "part_gt_0.1": 0.6828
+     },
+     ">17": {
+      "n": 865,
+      "mediane": 0.871,
+      "p90": 1.3104,
+      "part_gt_0.1": 0.7376
+     }
+    },
+    "fond": {
+     "part_loin": 0.0625,
+     "fond": {
+      "pixels": 16384,
+      "mediane": 0.0022,
+      "p99": 0.0239
+     },
+     "structure_brillante": {
+      "pixels": 3242,
+      "mediane": 0.0051,
+      "p99": 0.0614
+     }
+    }
+   },
+   "N5": {
+    "image": "ngc3372_mono_nb",
+    "tuile": [
+     1536,
+     256
+    ],
+    "n_gaia_coeur_tous_G": 3039,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 2
+     },
+     "8-11": {
+      "n": 17,
+      "mediane": -0.0022,
+      "p90": 0.0229,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 97,
+      "mediane": 0.0538,
+      "p90": 0.6364,
+      "part_gt_0.1": 0.4433
+     },
+     "14-17": {
+      "n": 186,
+      "mediane": 0.8596,
+      "p90": 1.3988,
+      "part_gt_0.1": 0.6935
+     },
+     ">17": {
+      "n": 865,
+      "mediane": 0.8353,
+      "p90": 1.2341,
+      "part_gt_0.1": 0.7353
+     }
+    },
+    "fond": {
+     "part_loin": 0.0625,
+     "fond": {
+      "pixels": 16384,
+      "mediane": 0.0073,
+      "p99": 0.0153
+     },
+     "structure_brillante": {
+      "pixels": 3242,
+      "mediane": 0.0079,
+      "p99": 0.0177
+     }
+    }
+   },
+   "N7": {
+    "image": "ngc3372_mono_nb",
+    "tuile": [
+     1536,
+     256
+    ],
+    "n_gaia_coeur_tous_G": 3039,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 2
+     },
+     "8-11": {
+      "n": 17,
+      "mediane": -0.0073,
+      "p90": 0.0173,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 97,
+      "mediane": 0.0341,
+      "p90": 0.6021,
+      "part_gt_0.1": 0.4536
+     },
+     "14-17": {
+      "n": 186,
+      "mediane": 0.8829,
+      "p90": 1.1981,
+      "part_gt_0.1": 0.6882
+     },
+     ">17": {
+      "n": 865,
+      "mediane": 0.8626,
+      "p90": 1.2629,
+      "part_gt_0.1": 0.7329
+     }
+    },
+    "fond": {
+     "part_loin": 0.0625,
+     "fond": {
+      "pixels": 16384,
+      "mediane": 0.0055,
+      "p99": 0.0113
+     },
+     "structure_brillante": {
+      "pixels": 3242,
+      "mediane": 0.007,
+      "p99": 0.014
+     }
+    }
+   },
+   "N7N5": {
+    "image": "ngc3372_mono_nb",
+    "tuile": [
+     1536,
+     256
+    ],
+    "n_gaia_coeur_tous_G": 3039,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 2
+     },
+     "8-11": {
+      "n": 17,
+      "mediane": -0.0029,
+      "p90": 0.0441,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 97,
+      "mediane": 0.0767,
+      "p90": 0.6174,
+      "part_gt_0.1": 0.4948
+     },
+     "14-17": {
+      "n": 186,
+      "mediane": 0.9133,
+      "p90": 1.1932,
+      "part_gt_0.1": 0.6935
+     },
+     ">17": {
+      "n": 865,
+      "mediane": 0.8557,
+      "p90": 1.2178,
+      "part_gt_0.1": 0.741
+     }
+    },
+    "fond": {
+     "part_loin": 0.0625,
+     "fond": {
+      "pixels": 16384,
+      "mediane": 0.0041,
+      "p99": 0.0081
+     },
+     "structure_brillante": {
+      "pixels": 3242,
+      "mediane": 0.005,
+      "p99": 0.0098
+     }
+    }
+   }
+  },
+  "m16_seestar_s50": {
+   "classique": {
+    "image": "m16_seestar_s50",
+    "tuile": [
+     640,
+     1280
+    ],
+    "n_gaia_coeur_tous_G": 3556,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 20,
+      "mediane": -0.0001,
+      "p90": 0.0011,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 109,
+      "mediane": 0.0077,
+      "p90": 0.1447,
+      "part_gt_0.1": 0.1651
+     },
+     "14-17": {
+      "n": 341,
+      "mediane": 0.1176,
+      "p90": 0.9086,
+      "part_gt_0.1": 0.5015
+     },
+     ">17": {
+      "n": 840,
+      "mediane": 0.3957,
+      "p90": 1.5236,
+      "part_gt_0.1": 0.6286
+     }
+    },
+    "fond": {
+     "part_loin": 0.0646,
+     "fond": {
+      "pixels": 16928,
+      "mediane": 0.0067,
+      "p99": 0.0514
+     },
+     "structure_brillante": {
+      "pixels": 11781,
+      "mediane": 0.0079,
+      "p99": 0.0673
+     }
+    }
+   },
+   "E3": {
+    "image": "m16_seestar_s50",
+    "tuile": [
+     640,
+     1280
+    ],
+    "n_gaia_coeur_tous_G": 3556,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 20,
+      "mediane": -0.0025,
+      "p90": 0.0067,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 109,
+      "mediane": 0.0194,
+      "p90": 0.2151,
+      "part_gt_0.1": 0.1927
+     },
+     "14-17": {
+      "n": 341,
+      "mediane": 0.2405,
+      "p90": 1.1112,
+      "part_gt_0.1": 0.5718
+     },
+     ">17": {
+      "n": 840,
+      "mediane": 0.4645,
+      "p90": 1.5519,
+      "part_gt_0.1": 0.6643
+     }
+    },
+    "fond": {
+     "part_loin": 0.0646,
+     "fond": {
+      "pixels": 16928,
+      "mediane": 0.0281,
+      "p99": 0.4168
+     },
+     "structure_brillante": {
+      "pixels": 11781,
+      "mediane": 0.0301,
+      "p99": 0.5459
+     }
+    }
+   },
+   "N2": {
+    "image": "m16_seestar_s50",
+    "tuile": [
+     640,
+     1280
+    ],
+    "n_gaia_coeur_tous_G": 3556,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 20,
+      "mediane": 0.0016,
+      "p90": 0.0125,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 109,
+      "mediane": 0.0297,
+      "p90": 0.2172,
+      "part_gt_0.1": 0.2385
+     },
+     "14-17": {
+      "n": 341,
+      "mediane": 0.2603,
+      "p90": 1.0595,
+      "part_gt_0.1": 0.6158
+     },
+     ">17": {
+      "n": 840,
+      "mediane": 0.4398,
+      "p90": 1.3812,
+      "part_gt_0.1": 0.6702
+     }
+    },
+    "fond": {
+     "part_loin": 0.0646,
+     "fond": {
+      "pixels": 16928,
+      "mediane": 0.0074,
+      "p99": 0.1989
+     },
+     "structure_brillante": {
+      "pixels": 11781,
+      "mediane": 0.0108,
+      "p99": 0.2723
+     }
+    }
+   },
+   "N5": {
+    "image": "m16_seestar_s50",
+    "tuile": [
+     640,
+     1280
+    ],
+    "n_gaia_coeur_tous_G": 3556,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 20,
+      "mediane": -0.0014,
+      "p90": 0.0025,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 109,
+      "mediane": 0.01,
+      "p90": 0.1906,
+      "part_gt_0.1": 0.2202
+     },
+     "14-17": {
+      "n": 341,
+      "mediane": 0.261,
+      "p90": 1.0496,
+      "part_gt_0.1": 0.6276
+     },
+     ">17": {
+      "n": 840,
+      "mediane": 0.4692,
+      "p90": 1.4485,
+      "part_gt_0.1": 0.6655
+     }
+    },
+    "fond": {
+     "part_loin": 0.0646,
+     "fond": {
+      "pixels": 16928,
+      "mediane": 0.0045,
+      "p99": 0.1168
+     },
+     "structure_brillante": {
+      "pixels": 11781,
+      "mediane": 0.0062,
+      "p99": 0.1314
+     }
+    }
+   },
+   "N7": {
+    "image": "m16_seestar_s50",
+    "tuile": [
+     640,
+     1280
+    ],
+    "n_gaia_coeur_tous_G": 3556,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 20,
+      "mediane": -0.0029,
+      "p90": 0.0016,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 109,
+      "mediane": 0.0033,
+      "p90": 0.1735,
+      "part_gt_0.1": 0.2018
+     },
+     "14-17": {
+      "n": 341,
+      "mediane": 0.2422,
+      "p90": 1.0359,
+      "part_gt_0.1": 0.5982
+     },
+     ">17": {
+      "n": 840,
+      "mediane": 0.455,
+      "p90": 1.5302,
+      "part_gt_0.1": 0.6571
+     }
+    },
+    "fond": {
+     "part_loin": 0.0646,
+     "fond": {
+      "pixels": 16928,
+      "mediane": 0.0044,
+      "p99": 0.1679
+     },
+     "structure_brillante": {
+      "pixels": 11781,
+      "mediane": 0.0062,
+      "p99": 0.2179
+     }
+    }
+   },
+   "N7N5": {
+    "image": "m16_seestar_s50",
+    "tuile": [
+     640,
+     1280
+    ],
+    "n_gaia_coeur_tous_G": 3556,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 20,
+      "mediane": -0.0036,
+      "p90": 0.001,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 109,
+      "mediane": 0.0102,
+      "p90": 0.2086,
+      "part_gt_0.1": 0.2294
+     },
+     "14-17": {
+      "n": 341,
+      "mediane": 0.2361,
+      "p90": 1.0857,
+      "part_gt_0.1": 0.6158
+     },
+     ">17": {
+      "n": 840,
+      "mediane": 0.4785,
+      "p90": 1.465,
+      "part_gt_0.1": 0.6679
+     }
+    },
+    "fond": {
+     "part_loin": 0.0646,
+     "fond": {
+      "pixels": 16928,
+      "mediane": 0.0041,
+      "p99": 0.0991
+     },
+     "structure_brillante": {
+      "pixels": 11781,
+      "mediane": 0.0055,
+      "p99": 0.1195
+     }
+    }
+   }
+  },
+  "ngc6934_stellina": {
+   "classique": {
+    "image": "ngc6934_stellina",
+    "tuile": [
+     1152,
+     768
+    ],
+    "n_gaia_coeur_tous_G": 6803,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 2
+     },
+     "11-14": {
+      "n": 38,
+      "mediane": 0.0005,
+      "p90": 0.0086,
+      "part_gt_0.1": 0.0263
+     },
+     "14-17": {
+      "n": 502,
+      "mediane": 0.0027,
+      "p90": 0.0644,
+      "part_gt_0.1": 0.0677
+     },
+     ">17": {
+      "n": 1054,
+      "mediane": 0.0153,
+      "p90": 0.2499,
+      "part_gt_0.1": 0.2192
+     }
+    },
+    "fond": {
+     "part_loin": 0.0945,
+     "fond": {
+      "pixels": 24784,
+      "mediane": 0.0003,
+      "p99": 0.0254
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "E3": {
+    "image": "ngc6934_stellina",
+    "tuile": [
+     1152,
+     768
+    ],
+    "n_gaia_coeur_tous_G": 6803,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 2
+     },
+     "11-14": {
+      "n": 38,
+      "mediane": 0.0237,
+      "p90": 0.5036,
+      "part_gt_0.1": 0.1842
+     },
+     "14-17": {
+      "n": 502,
+      "mediane": 0.4643,
+      "p90": 1.131,
+      "part_gt_0.1": 0.6733
+     },
+     ">17": {
+      "n": 1054,
+      "mediane": 0.3623,
+      "p90": 1.311,
+      "part_gt_0.1": 0.704
+     }
+    },
+    "fond": {
+     "part_loin": 0.0945,
+     "fond": {
+      "pixels": 24784,
+      "mediane": 0.0172,
+      "p99": 0.0466
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N2": {
+    "image": "ngc6934_stellina",
+    "tuile": [
+     1152,
+     768
+    ],
+    "n_gaia_coeur_tous_G": 6803,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 2
+     },
+     "11-14": {
+      "n": 38,
+      "mediane": 0.0091,
+      "p90": 0.018,
+      "part_gt_0.1": 0.0263
+     },
+     "14-17": {
+      "n": 502,
+      "mediane": 0.0029,
+      "p90": 0.0715,
+      "part_gt_0.1": 0.0598
+     },
+     ">17": {
+      "n": 1054,
+      "mediane": 0.0098,
+      "p90": 0.23,
+      "part_gt_0.1": 0.1898
+     }
+    },
+    "fond": {
+     "part_loin": 0.0945,
+     "fond": {
+      "pixels": 24784,
+      "mediane": 0.0029,
+      "p99": 0.0598
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N5": {
+    "image": "ngc6934_stellina",
+    "tuile": [
+     1152,
+     768
+    ],
+    "n_gaia_coeur_tous_G": 6803,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 2
+     },
+     "11-14": {
+      "n": 38,
+      "mediane": 0.0061,
+      "p90": 0.019,
+      "part_gt_0.1": 0.0263
+     },
+     "14-17": {
+      "n": 502,
+      "mediane": 0.0087,
+      "p90": 0.0783,
+      "part_gt_0.1": 0.0637
+     },
+     ">17": {
+      "n": 1054,
+      "mediane": 0.0174,
+      "p90": 0.2882,
+      "part_gt_0.1": 0.1935
+     }
+    },
+    "fond": {
+     "part_loin": 0.0945,
+     "fond": {
+      "pixels": 24784,
+      "mediane": 0.0014,
+      "p99": 0.0593
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N7": {
+    "image": "ngc6934_stellina",
+    "tuile": [
+     1152,
+     768
+    ],
+    "n_gaia_coeur_tous_G": 6803,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 2
+     },
+     "11-14": {
+      "n": 38,
+      "mediane": -0.0026,
+      "p90": 0.058,
+      "part_gt_0.1": 0.0526
+     },
+     "14-17": {
+      "n": 502,
+      "mediane": 0.0337,
+      "p90": 0.3628,
+      "part_gt_0.1": 0.3526
+     },
+     ">17": {
+      "n": 1054,
+      "mediane": 0.0564,
+      "p90": 0.6492,
+      "part_gt_0.1": 0.4222
+     }
+    },
+    "fond": {
+     "part_loin": 0.0945,
+     "fond": {
+      "pixels": 24784,
+      "mediane": 0.0021,
+      "p99": 0.0196
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N7N5": {
+    "image": "ngc6934_stellina",
+    "tuile": [
+     1152,
+     768
+    ],
+    "n_gaia_coeur_tous_G": 6803,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 2
+     },
+     "11-14": {
+      "n": 38,
+      "mediane": 0.0085,
+      "p90": 0.4786,
+      "part_gt_0.1": 0.1579
+     },
+     "14-17": {
+      "n": 502,
+      "mediane": 0.2929,
+      "p90": 1.2126,
+      "part_gt_0.1": 0.6116
+     },
+     ">17": {
+      "n": 1054,
+      "mediane": 0.2499,
+      "p90": 1.3026,
+      "part_gt_0.1": 0.6442
+     }
+    },
+    "fond": {
+     "part_loin": 0.0945,
+     "fond": {
+      "pixels": 24784,
+      "mediane": 0.0022,
+      "p99": 0.0198
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   }
+  },
+  "leotriplet_canon6d_newton": {
+   "classique": {
+    "image": "leotriplet_canon6d_newton",
+    "tuile": [
+     128,
+     256
+    ],
+    "n_gaia_coeur_tous_G": 129,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 0
+     },
+     "11-14": {
+      "n": 6,
+      "mediane": -0.0035,
+      "p90": 0.0098,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 25,
+      "mediane": 0.0443,
+      "p90": 0.2021,
+      "part_gt_0.1": 0.32
+     },
+     ">17": {
+      "n": 52,
+      "mediane": 0.3457,
+      "p90": 0.9861,
+      "part_gt_0.1": 0.7692
+     }
+    },
+    "fond": {
+     "part_loin": 0.4267,
+     "fond": {
+      "pixels": 111850,
+      "mediane": 0.0,
+      "p99": 0.01
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "E3": {
+    "image": "leotriplet_canon6d_newton",
+    "tuile": [
+     128,
+     256
+    ],
+    "n_gaia_coeur_tous_G": 129,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 0
+     },
+     "11-14": {
+      "n": 6,
+      "mediane": -0.0001,
+      "p90": 0.0324,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 25,
+      "mediane": 0.1225,
+      "p90": 0.3262,
+      "part_gt_0.1": 0.64
+     },
+     ">17": {
+      "n": 52,
+      "mediane": 0.9679,
+      "p90": 1.1113,
+      "part_gt_0.1": 0.8654
+     }
+    },
+    "fond": {
+     "part_loin": 0.4267,
+     "fond": {
+      "pixels": 111850,
+      "mediane": 0.0016,
+      "p99": 0.0043
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N2": {
+    "image": "leotriplet_canon6d_newton",
+    "tuile": [
+     128,
+     256
+    ],
+    "n_gaia_coeur_tous_G": 129,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 0
+     },
+     "11-14": {
+      "n": 6,
+      "mediane": -0.002,
+      "p90": 0.2456,
+      "part_gt_0.1": 0.3333
+     },
+     "14-17": {
+      "n": 25,
+      "mediane": 0.03,
+      "p90": 0.2305,
+      "part_gt_0.1": 0.32
+     },
+     ">17": {
+      "n": 52,
+      "mediane": 0.9746,
+      "p90": 1.2501,
+      "part_gt_0.1": 0.8462
+     }
+    },
+    "fond": {
+     "part_loin": 0.4267,
+     "fond": {
+      "pixels": 111850,
+      "mediane": 0.0011,
+      "p99": 0.0031
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N5": {
+    "image": "leotriplet_canon6d_newton",
+    "tuile": [
+     128,
+     256
+    ],
+    "n_gaia_coeur_tous_G": 129,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 0
+     },
+     "11-14": {
+      "n": 6,
+      "mediane": -0.0093,
+      "p90": 0.0565,
+      "part_gt_0.1": 0.0
+     },
+     "14-17": {
+      "n": 25,
+      "mediane": -0.0516,
+      "p90": 0.0495,
+      "part_gt_0.1": 0.08
+     },
+     ">17": {
+      "n": 52,
+      "mediane": 0.9934,
+      "p90": 1.2635,
+      "part_gt_0.1": 0.7692
+     }
+    },
+    "fond": {
+     "part_loin": 0.4267,
+     "fond": {
+      "pixels": 111850,
+      "mediane": 0.0004,
+      "p99": 0.003
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N7": {
+    "image": "leotriplet_canon6d_newton",
+    "tuile": [
+     128,
+     256
+    ],
+    "n_gaia_coeur_tous_G": 129,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 0
+     },
+     "11-14": {
+      "n": 6,
+      "mediane": 0.4655,
+      "p90": 0.9402,
+      "part_gt_0.1": 1.0
+     },
+     "14-17": {
+      "n": 25,
+      "mediane": 0.4886,
+      "p90": 0.972,
+      "part_gt_0.1": 0.76
+     },
+     ">17": {
+      "n": 52,
+      "mediane": 1.0026,
+      "p90": 1.162,
+      "part_gt_0.1": 0.9615
+     }
+    },
+    "fond": {
+     "part_loin": 0.4267,
+     "fond": {
+      "pixels": 111850,
+      "mediane": 0.0019,
+      "p99": 0.0025
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N7N5": {
+    "image": "leotriplet_canon6d_newton",
+    "tuile": [
+     128,
+     256
+    ],
+    "n_gaia_coeur_tous_G": 129,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 0
+     },
+     "8-11": {
+      "n": 0
+     },
+     "11-14": {
+      "n": 6,
+      "mediane": 0.2259,
+      "p90": 0.9097,
+      "part_gt_0.1": 0.5
+     },
+     "14-17": {
+      "n": 25,
+      "mediane": 0.1151,
+      "p90": 0.475,
+      "part_gt_0.1": 0.6
+     },
+     ">17": {
+      "n": 52,
+      "mediane": 1.0006,
+      "p90": 1.2584,
+      "part_gt_0.1": 0.9038
+     }
+    },
+    "fond": {
+     "part_loin": 0.4267,
+     "fond": {
+      "pixels": 111850,
+      "mediane": 0.0015,
+      "p99": 0.0019
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   }
+  },
+  "m31_canon60d_objectif_filee": {
+   "classique": {
+    "image": "m31_canon60d_objectif_filee",
+    "tuile": [
+     128,
+     128
+    ],
+    "n_gaia_coeur_tous_G": 6557,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 1
+     },
+     "8-11": {
+      "n": 13,
+      "mediane": 0.0214,
+      "p90": 0.0816,
+      "part_gt_0.1": 0.0769
+     },
+     "11-14": {
+      "n": 136,
+      "mediane": 0.001,
+      "p90": 0.0509,
+      "part_gt_0.1": 0.0809
+     },
+     "14-17": {
+      "n": 797,
+      "mediane": -0.0004,
+      "p90": 0.5291,
+      "part_gt_0.1": 0.2535
+     },
+     ">17": {
+      "n": 720,
+      "mediane": 0.0067,
+      "p90": 0.965,
+      "part_gt_0.1": 0.3139
+     }
+    },
+    "fond": {
+     "part_loin": 0.0642,
+     "fond": {
+      "pixels": 16832,
+      "mediane": 0.0244,
+      "p99": 0.1488
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "E3": {
+    "image": "m31_canon60d_objectif_filee",
+    "tuile": [
+     128,
+     128
+    ],
+    "n_gaia_coeur_tous_G": 6557,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 1
+     },
+     "8-11": {
+      "n": 13,
+      "mediane": 0.0,
+      "p90": 0.0033,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 136,
+      "mediane": 0.0454,
+      "p90": 0.0988,
+      "part_gt_0.1": 0.1029
+     },
+     "14-17": {
+      "n": 797,
+      "mediane": 0.1458,
+      "p90": 0.996,
+      "part_gt_0.1": 0.5834
+     },
+     ">17": {
+      "n": 720,
+      "mediane": 0.1187,
+      "p90": 1.0194,
+      "part_gt_0.1": 0.5333
+     }
+    },
+    "fond": {
+     "part_loin": 0.0642,
+     "fond": {
+      "pixels": 16832,
+      "mediane": 0.0211,
+      "p99": 0.0395
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N2": {
+    "image": "m31_canon60d_objectif_filee",
+    "tuile": [
+     128,
+     128
+    ],
+    "n_gaia_coeur_tous_G": 6557,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 1
+     },
+     "8-11": {
+      "n": 13,
+      "mediane": 0.0065,
+      "p90": 0.0128,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 136,
+      "mediane": 0.0038,
+      "p90": 0.0415,
+      "part_gt_0.1": 0.0294
+     },
+     "14-17": {
+      "n": 797,
+      "mediane": 0.074,
+      "p90": 0.9088,
+      "part_gt_0.1": 0.4555
+     },
+     ">17": {
+      "n": 720,
+      "mediane": 0.0644,
+      "p90": 0.9297,
+      "part_gt_0.1": 0.4514
+     }
+    },
+    "fond": {
+     "part_loin": 0.0642,
+     "fond": {
+      "pixels": 16832,
+      "mediane": 0.0013,
+      "p99": 0.0107
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N5": {
+    "image": "m31_canon60d_objectif_filee",
+    "tuile": [
+     128,
+     128
+    ],
+    "n_gaia_coeur_tous_G": 6557,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 1
+     },
+     "8-11": {
+      "n": 13,
+      "mediane": 0.0024,
+      "p90": 0.0066,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 136,
+      "mediane": -0.0288,
+      "p90": 0.0053,
+      "part_gt_0.1": 0.0221
+     },
+     "14-17": {
+      "n": 797,
+      "mediane": 0.0333,
+      "p90": 0.8248,
+      "part_gt_0.1": 0.4028
+     },
+     ">17": {
+      "n": 720,
+      "mediane": 0.0255,
+      "p90": 0.83,
+      "part_gt_0.1": 0.4097
+     }
+    },
+    "fond": {
+     "part_loin": 0.0642,
+     "fond": {
+      "pixels": 16832,
+      "mediane": 0.0007,
+      "p99": 0.0166
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N7": {
+    "image": "m31_canon60d_objectif_filee",
+    "tuile": [
+     128,
+     128
+    ],
+    "n_gaia_coeur_tous_G": 6557,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 1
+     },
+     "8-11": {
+      "n": 13,
+      "mediane": -0.0034,
+      "p90": -0.0014,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 136,
+      "mediane": -0.0489,
+      "p90": -0.0119,
+      "part_gt_0.1": 0.0221
+     },
+     "14-17": {
+      "n": 797,
+      "mediane": 0.0071,
+      "p90": 0.9199,
+      "part_gt_0.1": 0.3789
+     },
+     ">17": {
+      "n": 720,
+      "mediane": -0.0014,
+      "p90": 0.9571,
+      "part_gt_0.1": 0.3875
+     }
+    },
+    "fond": {
+     "part_loin": 0.0642,
+     "fond": {
+      "pixels": 16832,
+      "mediane": 0.0019,
+      "p99": 0.0131
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   },
+   "N7N5": {
+    "image": "m31_canon60d_objectif_filee",
+    "tuile": [
+     128,
+     128
+    ],
+    "n_gaia_coeur_tous_G": 6557,
+    "etoiles_restantes": {
+     "<8": {
+      "n": 1
+     },
+     "8-11": {
+      "n": 13,
+      "mediane": 0.0002,
+      "p90": 0.0041,
+      "part_gt_0.1": 0.0
+     },
+     "11-14": {
+      "n": 136,
+      "mediane": -0.024,
+      "p90": 0.0024,
+      "part_gt_0.1": 0.0221
+     },
+     "14-17": {
+      "n": 797,
+      "mediane": 0.0232,
+      "p90": 0.8751,
+      "part_gt_0.1": 0.3902
+     },
+     ">17": {
+      "n": 720,
+      "mediane": 0.0177,
+      "p90": 0.9119,
+      "part_gt_0.1": 0.3986
+     }
+    },
+    "fond": {
+     "part_loin": 0.0642,
+     "fond": {
+      "pixels": 16832,
+      "mediane": 0.0015,
+      "p99": 0.0122
+     },
+     "structure_brillante": {
+      "pixels": 0
+     }
+    }
+   }
+  }
+ },
+ "agregat": {
+  "classique": {
+   "images": 9,
+   "bandes": {
+    "<8": {
+     "mediane_des_images": null,
+     "images": 0
+    },
+    "8-11": {
+     "mediane_des_images": 0.0107,
+     "images": 4
+    },
+    "11-14": {
+     "mediane_des_images": -0.0006,
+     "images": 9
+    },
+    "14-17": {
+     "mediane_des_images": 0.0046,
+     "images": 9
+    },
+    ">17": {
+     "mediane_des_images": 0.059,
+     "images": 9
+    }
+   },
+   "fond": {
+    "mediane_des_medianes": 0.0014,
+    "p99_median_des_images": 0.0966,
+    "images": 9
+   },
+   "structure_brillante": {
+    "mediane_des_medianes": 0.0038,
+    "p99_median_des_images": 0.1142,
+    "images": 3
+   }
+  },
+  "E3": {
+   "images": 9,
+   "bandes": {
+    "<8": {
+     "mediane_des_images": null,
+     "images": 0
+    },
+    "8-11": {
+     "mediane_des_images": -0.0001,
+     "images": 4
+    },
+    "11-14": {
+     "mediane_des_images": 0.0,
+     "images": 9
+    },
+    "14-17": {
+     "mediane_des_images": 0.1225,
+     "images": 9
+    },
+    ">17": {
+     "mediane_des_images": 0.3623,
+     "images": 9
+    }
+   },
+   "fond": {
+    "mediane_des_medianes": 0.0211,
+    "p99_median_des_images": 0.0466,
+    "images": 9
+   },
+   "structure_brillante": {
+    "mediane_des_medianes": 0.0094,
+    "p99_median_des_images": 0.1169,
+    "images": 3
+   }
+  },
+  "N2": {
+   "images": 9,
+   "bandes": {
+    "<8": {
+     "mediane_des_images": null,
+     "images": 0
+    },
+    "8-11": {
+     "mediane_des_images": 0.0008,
+     "images": 4
+    },
+    "11-14": {
+     "mediane_des_images": 0.0029,
+     "images": 9
+    },
+    "14-17": {
+     "mediane_des_images": 0.03,
+     "images": 9
+    },
+    ">17": {
+     "mediane_des_images": 0.0712,
+     "images": 9
+    }
+   },
+   "fond": {
+    "mediane_des_medianes": 0.0029,
+    "p99_median_des_images": 0.0598,
+    "images": 9
+   },
+   "structure_brillante": {
+    "mediane_des_medianes": 0.0051,
+    "p99_median_des_images": 0.1791,
+    "images": 3
+   }
+  },
+  "N5": {
+   "images": 9,
+   "bandes": {
+    "<8": {
+     "mediane_des_images": null,
+     "images": 0
+    },
+    "8-11": {
+     "mediane_des_images": -0.0008,
+     "images": 4
+    },
+    "11-14": {
+     "mediane_des_images": -0.0001,
+     "images": 9
+    },
+    "14-17": {
+     "mediane_des_images": 0.0025,
+     "images": 9
+    },
+    ">17": {
+     "mediane_des_images": 0.0499,
+     "images": 9
+    }
+   },
+   "fond": {
+    "mediane_des_medianes": 0.0044,
+    "p99_median_des_images": 0.0587,
+    "images": 9
+   },
+   "structure_brillante": {
+    "mediane_des_medianes": 0.0079,
+    "p99_median_des_images": 0.1314,
+    "images": 3
+   }
+  },
+  "N7": {
+   "images": 9,
+   "bandes": {
+    "<8": {
+     "mediane_des_images": null,
+     "images": 0
+    },
+    "8-11": {
+     "mediane_des_images": -0.0032,
+     "images": 4
+    },
+    "11-14": {
+     "mediane_des_images": -0.0011,
+     "images": 9
+    },
+    "14-17": {
+     "mediane_des_images": 0.0265,
+     "images": 9
+    },
+    ">17": {
+     "mediane_des_images": 0.0564,
+     "images": 9
+    }
+   },
+   "fond": {
+    "mediane_des_medianes": 0.0034,
+    "p99_median_des_images": 0.0196,
+    "images": 9
+   },
+   "structure_brillante": {
+    "mediane_des_medianes": 0.0062,
+    "p99_median_des_images": 0.1859,
+    "images": 3
+   }
+  },
+  "N7N5": {
+   "images": 9,
+   "bandes": {
+    "<8": {
+     "mediane_des_images": null,
+     "images": 0
+    },
+    "8-11": {
+     "mediane_des_images": -0.0014,
+     "images": 4
+    },
+    "11-14": {
+     "mediane_des_images": -0.0001,
+     "images": 9
+    },
+    "14-17": {
+     "mediane_des_images": 0.0393,
+     "images": 9
+    },
+    ">17": {
+     "mediane_des_images": 0.2499,
+     "images": 9
+    }
+   },
+   "fond": {
+    "mediane_des_medianes": 0.0035,
+    "p99_median_des_images": 0.0198,
+    "images": 9
+   },
+   "structure_brillante": {
+    "mediane_des_medianes": 0.005,
+    "p99_median_des_images": 0.1195,
+    "images": 3
+   }
+  }
+ }
+}

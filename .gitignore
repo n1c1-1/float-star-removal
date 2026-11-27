@@ -7,3 +7,4 @@ sortie*/
 donnees/
 essais/
 .venv/
+!docs/figures/data/*.npz

@@ -1,0 +1,562 @@
+{
+ "N5": {
+  "mean": 0.192,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.0163,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.0025,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.1043,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0342,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.8999,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.0948,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "N6": {
+  "mean": 0.1036,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.2838,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.0025,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0598,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0425,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.1974,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.0354,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "N7": {
+  "mean": 0.8129,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.9561,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.8891,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.9983,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0355,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 1.0002,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9983,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "N7/N5 0.75": {
+  "mean": 0.7976,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.9312,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.8174,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.9995,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0441,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9986,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9947,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "N8L step 24000": {
+  "mean": 0.807,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.9463,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.8425,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 1.0006,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0657,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9939,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.993,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "N9 step 10000": {
+  "mean": 0.8687,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.9518,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 1.0026,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.9987,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.2634,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9987,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9967,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "N10 step 10000": {
+  "mean": 0.8161,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.9302,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.8995,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.9996,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0766,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.995,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9954,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "N7/N5 0.5": {
+  "mean": 0.6532,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.9128,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.002,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.9959,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0494,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.977,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9823,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "N7/N6 0.5": {
+  "mean": 0.6511,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.9332,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.003,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 1.0052,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0521,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9333,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.98,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "N5/N6 0.5": {
+  "mean": 0.1327,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.0448,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.0027,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0407,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.048,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.6081,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.052,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "N5/N6 0.75": {
+  "mean": 0.1578,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.025,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.0027,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0643,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0438,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.7459,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.0649,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "N8 step 5000": {
+  "mean": 0.8368,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.9665,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 1.014,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 1.01,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.024,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 1.0037,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 1.0024,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "N8 step 10000": {
+  "mean": 0.7849,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.9243,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.763,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.9919,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0577,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9823,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9903,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "N8L step 13000": {
+  "mean": 0.7923,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.9223,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.7691,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.9995,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.064,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9999,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9987,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "N7 step 10000": {
+  "mean": 0.8121,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.9289,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.9208,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.9801,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0497,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9962,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9966,
+    "flux_in": 27.9
+   }
+  ]
+ },
+ "E3": {
+  "mean": 0.6804,
+  "cores": [
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.996,
+    "flux_in": 366.5
+   },
+   {
+    "image": "m31_a7s_newton",
+    "ratio": 0.0368,
+    "flux_in": 183.2
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 1.0159,
+    "flux_in": 58.5
+   },
+   {
+    "image": "m31_canon60d_objectif_filee",
+    "ratio": 0.0314,
+    "flux_in": 11.1
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 1.0022,
+    "flux_in": 36.0
+   },
+   {
+    "image": "leotriplet_canon6d_newton",
+    "ratio": 0.9999,
+    "flux_in": 27.9
+   }
+  ]
+ }
+}

@@ -1,0 +1,145 @@
+{
+ "m31_a7s_newton": {
+  "x0": 1408,
+  "y0": 384,
+  "n_gaia_8_17": 109,
+  "part_valide": 1.0,
+  "forme": [
+   3,
+   4272,
+   6384
+  ]
+ },
+ "ic405_a7s_newton": {
+  "x0": 3456,
+  "y0": 2176,
+  "n_gaia_8_17": 257,
+  "part_valide": 1.0,
+  "forme": [
+   3,
+   4272,
+   6384
+  ]
+ },
+ "m33_osc_lunette": {
+  "x0": 2944,
+  "y0": 1920,
+  "n_gaia_8_17": 144,
+  "part_valide": 1.0,
+  "forme": [
+   3,
+   4233,
+   6216
+  ]
+ },
+ "m27_mono_nb": {
+  "x0": 1664,
+  "y0": 1024,
+  "n_gaia_8_17": 155,
+  "part_valide": 1.0,
+  "forme": [
+   3,
+   3520,
+   4656
+  ]
+ },
+ "ngc3372_mono_nb": {
+  "x0": 1536,
+  "y0": 256,
+  "n_gaia_8_17": 423,
+  "part_valide": 1.0,
+  "forme": [
+   3,
+   2400,
+   2400
+  ]
+ },
+ "m16_seestar_s50": {
+  "x0": 640,
+  "y0": 1280,
+  "n_gaia_8_17": 594,
+  "part_valide": 1.0,
+  "forme": [
+   3,
+   2880,
+   1620
+  ]
+ },
+ "ngc6934_stellina": {
+  "x0": 1152,
+  "y0": 768,
+  "n_gaia_8_17": 562,
+  "part_valide": 1.0,
+  "forme": [
+   3,
+   2080,
+   3072
+  ]
+ },
+ "leotriplet_canon6d_newton": {
+  "x0": 128,
+  "y0": 256,
+  "n_gaia_8_17": 31,
+  "part_valide": 1.0,
+  "forme": [
+   3,
+   3670,
+   5496
+  ]
+ },
+ "m31_canon60d_objectif_filee": {
+  "x0": 128,
+  "y0": 128,
+  "n_gaia_8_17": 1224,
+  "part_valide": 1.0,
+  "forme": [
+   3,
+   3464,
+   5202
+  ]
+ },
+ "m42_canon40da_lunette": {
+  "x0": 1536,
+  "y0": 1408,
+  "n_gaia_8_17": 748,
+  "part_valide": 1.0,
+  "forme": [
+   3,
+   2602,
+   3908
+  ]
+ },
+ "ic5146_canon60da_lunette": {
+  "x0": 4096,
+  "y0": 2816,
+  "n_gaia_8_17": 1223,
+  "part_valide": 1.0,
+  "forme": [
+   3,
+   3464,
+   5202
+  ]
+ },
+ "m42_dobson_grande_fwhm": {
+  "x0": 1152,
+  "y0": 1152,
+  "n_gaia_8_17": 195,
+  "part_valide": 1.0,
+  "forme": [
+   3,
+   3008,
+   3008
+  ]
+ },
+ "ic1848_stellina": {
+  "x0": 1024,
+  "y0": 640,
+  "n_gaia_8_17": 379,
+  "part_valide": 1.0,
+  "forme": [
+   3,
+   2080,
+   3072
+  ]
+ }
+}
