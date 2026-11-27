@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Removing stars from linear astronomical images with a network trained without any third-party star remover"
+type: software
+authors:
+  - given-names: "Nicolas"
+date-released: 2026-11-27
+version: "1.0"
+license: AGPL-3.0-or-later
+repository-code: "https://github.com/n1c1-1/float-star-removal"
+abstract: "A NAFNet that splits a linear astronomical image into a starless image and a stars layer, trained on synthetic pairs and on real pairs whose targets come from a published, Gaia-guided classical chain, with a checkable provenance of every training target."
+keywords:
+  - astronomy
+  - star removal
+  - image restoration
+  - NAFNet
+  - Gaia

@@ -1,0 +1,14 @@
+Copyright (C) 2026 Nicolas
+
+This repository (code, documents, figures, scripts and trained model weights) is
+licensed under the GNU Affero General Public License, version 3 (AGPL-3.0). The
+full text is in the file LICENSE.
+
+The model weights (.pt files) are part of the Program covered by this licence.
+Any software that loads, embeds or serves these weights, locally or over a
+network, is a work based on the Program and must be released under the AGPL-3.0.
+
+The intent is that every application using these models is free software.
+
+Third-party images cited in docs/WEB_SOURCES.md belong to their authors and are
+not redistributed here.
