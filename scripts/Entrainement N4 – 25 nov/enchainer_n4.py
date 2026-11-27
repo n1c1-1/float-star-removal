@@ -1,17 +1,17 @@
 # ======================================================================
 # enchainer_n4.py
-# Rôle     : Chaine du 25 nov (N4) : N4 (3 h) + mesure, puis AUTOMATIQUEMENT N4bis (3 h, depart = meilleur pas de N4, lr plus bas) + mesure.
-# Étape    : 10. Essai écarté N4 (juge par magnitude Gaia, 25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33f
-# Sorties  : instantanés, tableau
-# Exemple  : python enchainer_n4.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain of 25 Nov (N4): N4 (3 h) + measurement, then AUTOMATICALLY N4bis (3 h, start = best step of N4, lower lr) + measurement.
+# Step     : 10. Discarded trial N4 (judge by Gaia magnitude, 25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33f pairs
+# Outputs  : snapshots, table
+# Example  : python enchainer_n4.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Chaine du 25 nov (N4) : N4 (3 h) + mesure, puis AUTOMATIQUEMENT N4bis (3 h, depart = meilleur pas de N4, lr plus bas) + mesure.
-Une seule commande, reprenable (reperes etapes\\*.fini). Un seul processus GPU a la fois.
+"""Chain of 25 Nov (N4): N4 (3 h) + measurement, then AUTOMATICALLY N4bis (3 h, start = best step of N4, lower lr) + measurement.
+A single command, resumable (markers etapes\\*.fini). Only one GPU process at a time.
 
-N4 : paires v33f (juge v33f : rayon du halo par la magnitude Gaia) + grands halos synthetiques sur 50 % des tuiles synthetiques
-     (--part-grands 0,30 : 30 % des lots en 2 tuiles de 512 px = 50 % des 60 % de pixels synthetiques), depart N3a meilleur pas (12000), lr 1e-4.
-N4bis : meme recette, depart du meilleur pas de N4 (plus petite erreur « sous les etoiles »), lr 5e-5 (moitie), 3 h de plus.
+N4: v33f pairs (v33f judge: halo radius from the Gaia magnitude) + large synthetic halos on 50 % of the synthetic tiles
+     (--part-grands 0.30: 30 % of the batches in 2 tiles of 512 px = 50 % of the 60 % synthetic pixels), start from N3a best step (12000), lr 1e-4.
+N4bis: same recipe, start from the best step of N4 (smallest “under the stars” error), lr 5e-5 (half), 3 h more.
 """
 import json
 import subprocess

@@ -1,43 +1,45 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
-"""refaire_paires_web.py - refait une paire d'entrainement APOD depuis l'image publiee, avec la chaine publiee.
+"""refaire_paires_web.py - rebuilds an APOD training pair from the published image, with the published chain.
 
 ROLE
-  Les pixels des paires APOD ne sont pas publies (images d'auteurs). Ce script permet de les refaire : pour une ou toutes
-  les paires APOD du manifeste (MANIFESTE_PAIRES.csv, colonnes url_image, fichier_telecharge, sha256_image_telechargee,
-  delinearisation_params, decoupe) il
-    1. obtient l'image web telle que publiee : fichier local si present (defaut, option --local), ou telechargement depuis
-       url_image (option --telecharger, un acces reseau par image, une pause de 3 s entre deux) ;
-    2. verifie son sha256 (colonne sha256_image_telechargee) ;
-    3. refait la delinearisation (methode etoiles_auto du dossier "Delinearisation - 23 nov" des scripts publies : courbe des
-       etoiles estimee sur l'image, parametres enregistres dans delinearisation_params) ;
-    4. refait l'entree (fond et bruit par couleur sur une image reduite au quart, unite = bruit moyen, comme preparer_apod.py) ;
-    5. refait la paire avec la chaine publiee (verifier_provenance.py --mode rejeu : piste 1, etapes A et B, passes, juge v33) ;
-    6. compare au manifeste : sha256 de l'image telechargee, ecart de l'entree refaite avec l'entree conservee, ecart de la cible
-       avec la paire de base, et sha256 du fichier de paire refait contre la colonne sha256_base_v33.
-  Si ce n'est pas identique au bit, l'ecart est chiffre (maximum, moyenne, part de pixels identiques) et la raison probable est
-  donnee (version de bibliotheque, ordre des operations flottantes, image telechargee differente).
+  The pixels of the APOD pairs are not published (authors' images). This script lets you rebuild them: for one or all
+  the APOD pairs of the manifest (MANIFESTE_PAIRES.csv, columns url_image, fichier_telecharge, sha256_image_telechargee,
+  delinearisation_params, decoupe) it
+    1. gets the web image as published: local file if present (default, option --local), or download from
+       url_image (option --telecharger, one network access per image, a 3 s pause between two);
+    2. checks its sha256 (column sha256_image_telechargee);
+    3. redoes the delinearisation (method etoiles_auto of the folder "Delinearisation - 23 nov" of the published scripts:
+       stars' curve estimated on the image, parameters recorded in delinearisation_params);
+    4. rebuilds the input (background and noise per colour on an image reduced to a quarter, unit = mean noise, as
+       preparer_apod.py does);
+    5. rebuilds the pair with the published chain (verifier_provenance.py --mode rejeu: track 1, steps A and B, passes,
+       judge v33);
+    6. compares with the manifest: sha256 of the downloaded image, gap between the rebuilt input and the kept input, gap
+       of the target with the base pair, and sha256 of the rebuilt pair file against the column sha256_base_v33.
+  If it is not bit-identical, the gap is quantified (maximum, mean, share of identical pixels) and the probable reason
+  is given (library version, order of the floating-point operations, different downloaded image).
 
-ENTREES
-  --paire NOM       nom (ou debut de nom) d'une paire du manifeste, ex. apod_070_g1536_1408 ; --toutes pour toutes (38 paires).
-  --manifeste CSV   defaut : MANIFESTE_PAIRES.csv a cote du script.
-  --local / --telecharger   source de l'image web (defaut --local ; --telecharger n'est PAS execute par defaut).
-  RACINE_SCRIPTS    scripts publies (defaut : dossier scripts du depot).
-  RACINE_ORIGINE    fichiers non publies de la chaine (astrometrie, modele d'etoile, catalogue Gaia profond de chaque image apod_*).
-  DONNEES           donnees : "Images web APOD - 24 nov/brut" (images web), "Paires etoiles APOD - 24 nov" (entrees et paires de
-                    comparaison), "Delinearisation APOD - 24 nov/lineaire" (delinearisations conservees, comparaison facultative).
-  ESSAIS, RACINE_FLOAT, CACHE_FLOAT : voir verifier_provenance.py.
-CE QUI EXIGE FLOAT (moteur) : l'astrometrie hors ligne et les extraits Gaia (deja calcules et fournis dans RACINE_ORIGINE pour les
-  38 images : astrometrie.npz, catalogue profond), le reseau de debruitage n'est PAS utilise (images deja publiees, aucun debruitage).
-  Fourni par les scripts publies : delinearisation, normalisation de l'entree, piste 1, etapes A et B, passes, juge.
+INPUTS
+  --paire NAME      name (or start of a name) of a pair of the manifest, e.g. apod_070_g1536_1408; --toutes for all (38 pairs).
+  --manifeste CSV   default: MANIFESTE_PAIRES.csv next to the script.
+  --local / --telecharger   source of the web image (default --local; --telecharger is NOT run by default).
+  RACINE_SCRIPTS    published scripts (default: the repository's scripts folder).
+  RACINE_ORIGINE    unpublished files of the chain (astrometry, star model, deep Gaia catalogue of each apod_* image).
+  DONNEES           data: "Images web APOD - 24 nov/brut" (web images), "Paires etoiles APOD - 24 nov" (inputs and
+                    comparison pairs), "Delinearisation APOD - 24 nov/lineaire" (kept delinearisations, optional comparison).
+  ESSAIS, RACINE_FLOAT, CACHE_FLOAT : see verifier_provenance.py.
+WHAT REQUIRES FLOAT (engine): offline astrometry and the Gaia extracts (already computed and supplied in RACINE_ORIGINE for the
+  38 images: astrometrie.npz, deep catalogue); the denoising network is NOT used (images already published, no denoising).
+  Supplied by the published scripts: delinearisation, input normalisation, track 1, steps A and B, passes, judge.
 
-SORTIES
-  Rapport sur la sortie standard, et --rapport JSON. Dossier de travail (--travail) : image telechargee, entree refaite, journaux.
-  Code de retour 0 si tout est identique au bit, 1 sinon, 2 en cas d'erreur.
+OUTPUTS
+  Report on the standard output, and --rapport JSON. Work folder (--travail): downloaded image, rebuilt input, logs.
+  Exit code 0 if everything is bit-identical, 1 otherwise, 2 on error.
 
-EXEMPLE
+EXAMPLE
   DONNEES=/donnees RACINE_ORIGINE=/origine python refaire_paires_web.py --paire apod_070_g1536_1408 --local --travail /tmp/web
-  (mettre --telecharger pour retelecharger l'image depuis url_image)
+  (add --telecharger to download the image again from url_image)
 """
 import argparse
 import csv

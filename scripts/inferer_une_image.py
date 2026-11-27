@@ -1,28 +1,28 @@
 # ======================================================================
 # inferer_une_image.py
-# Rôle     : applique un réseau publié (E3, N5, N7 ou le mélange N7/N5) à UNE image à soi, sans l'application FLOAT.
-# Étape    : 14. Utiliser un réseau (voir scripts/LISEZMOI.md)
-# Entrées  : une image linéaire couleur (3, H, W) en .npy, ou en .fits / .tif / .tiff (empilement calibré, ciel non étiré),
-#            et un fichier de poids .pt (voir modeles/LISEZMOI.md pour le téléchargement).
-# Sorties  : <sortie>/starless.npy et stars.npy (unités de bruit), starless.tif et stars.tif (linéaires, 32 bits),
-#            apercu.jpg (entrée | sans étoiles | étoiles, même étirement asinh).
-# Exemple  : python scripts/inferer_une_image.py mon_empilement.fits --poids modeles/N7N5_075.pt --sortie sortie/
+# Role     : applies a published network (E3, N5, N7 or the N7/N5 blend) to ONE image of your own, without the FLOAT application.
+# Step     : 14. Using a network (see scripts/README.md)
+# Inputs   : a linear colour image (3, H, W) as .npy, or as .fits / .tif / .tiff (calibrated stack, unstretched sky),
+#            and a weights file .pt (see modeles/README.md for the download).
+# Outputs  : <output>/starless.npy and stars.npy (noise units), starless.tif and stars.tif (linear, 32 bits),
+#            apercu.jpg (input | without stars | stars, same asinh stretch).
+# Example  : python scripts/inferer_une_image.py mon_empilement.fits --poids modeles/N7N5_075.pt --sortie sortie/
 # ======================================================================
-"""Applique un réseau de retrait d'étoiles à une image linéaire.
+"""Applies a star removal network to a linear image.
 
-Ce que fait le script, dans l'ordre :
-1. lit l'image, la met en (3, H, W) float32 ;
-2. retire le ciel de chaque couleur (médiane robuste) et divise par une estimation du bruit du ciel : ce sont les
-   « unités de bruit » dans lesquelles le réseau a été entraîné (le réseau voit asinh(v / 3) / 10) ;
-3. applique le réseau par tuiles de 1024 px recouvertes (256 px), fondues par une fenêtre en cosinus ;
-4. remet les unités d'origine : image sans étoiles = (résultat * bruit) + ciel ; étoiles = image - image sans étoiles.
+What the script does, in order:
+1. reads the image, puts it in (3, H, W) float32;
+2. removes the sky of each colour (robust median) and divides by an estimate of the sky's noise: these are the
+   "noise units" the network was trained in (the network sees asinh(v / 3) / 10);
+3. applies the network by overlapping tiles of 1024 px (256 px overlap), blended by a cosine window;
+4. puts back the original units: image without stars = (result * noise) + sky; stars = image - image without stars.
 
-Limites de cette version simple (voir docs/AMELIORER.md) :
-- une seule échelle : les très grosses étoiles à large halo (G < 6,5) demandent l'inférence à deux échelles
-  (scripts/Portée M27 – 25 nov/deux_echelles_v1v2.py), qui a besoin d'un extrait du catalogue Gaia de l'image ;
-- l'estimation du bruit est celle d'une image sans demi-piles (écart robuste des différences de pixels voisins) : un
-  empilement qui a un bruit très corrélé (drizzle) sera sous-estimé, et le résultat moins bon. Mieux : fournir
-  --bruit avec la valeur mesurée sur le ciel, en unités de l'image.
+Limits of this simple version (see docs/IMPROVING.md):
+- a single scale: very large stars with a wide halo (G < 6.5) need the two-scale inference
+  (scripts/Portée M27 – 25 nov/deux_echelles_v1v2.py), which needs an extract of the image's Gaia catalogue;
+- the noise estimate is that of an image without half-stacks (robust spread of neighbouring pixel differences): a
+  stack whose noise is strongly correlated (drizzle) will be underestimated, and the result worse. Better: give
+  --bruit with the value measured on the sky, in the image's units.
 """
 import argparse
 import os

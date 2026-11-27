@@ -1,25 +1,25 @@
 # ======================================================================
 # banque_detection.py
-# Rôle     : Banque d'étoiles individuelles SANS catalogue (tour 5) : les brillantes sont trouvées par DÉTECTION sur l'image.
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : python banque_detection.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Individual-star bank WITHOUT catalogue (round 5): the bright stars are found by DETECTION on the image.
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : star-free backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : python banque_detection.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Banque d'étoiles individuelles SANS catalogue (tour 5) : les brillantes sont trouvées par DÉTECTION sur l'image.
+"""Individual-star bank WITHOUT catalogue (round 5): the bright stars are found by DETECTION on the image.
 
-- fond : médiane par blocs de 32 px (luminance), lissée ; bruit : MAD robuste du reste ;
-- étoiles : maxima locaux (9 px) de la luminance lissée (sigma 1,5) au-dessus de 30 bruits ;
-- largeur : moment d'ordre 2 des étoiles isolées non écrêtées (pic 100 bruits à 20 % du max), médiane ;
-- flux : boîte de 3 FWHM (non écrêtées) ; écrêtées : l'aile (boîte 8 FWHM moins boîte 3 FWHM) divisée par la part
-  d'aile médiane des non écrêtées ;
-- brillantes : les plus fortes en flux, isolées (aucune détection de plus du dixième de son flux à 150 px, ni du quart
-  à 40 px), loin du bord ; toutes les détections voisines masquées (3 FWHM + 10 px par magnitude au-dessus de la
-  médiane des étoiles de largeur) ; puis le même nettoyage que banque_individuelle (profil rond décroissant lissé +
-  structures reliées au cœur) et les mêmes contrôles.
-Un « G » de repère est donné : -2,5 log10(flux) + constante, la médiane des étoiles de largeur à 12,5 (affichage seulement).
+- background: median over 32 px blocks (luminance), smoothed; noise: robust MAD of the remainder;
+- stars: local maxima (9 px) of the smoothed luminance (sigma 1.5) above 30 noises;
+- width: 2nd-order moment of the isolated unclipped stars (peak 100 noises at 20 % of the max), median;
+- flux: 3 FWHM box (unclipped); clipped ones: the wing (8 FWHM box minus 3 FWHM box) divided by the median wing
+  share of the unclipped ones;
+- bright ones: the strongest in flux, isolated (no detection of more than a tenth of its flux within 150 px, nor a quarter
+  within 40 px), far from the edge; all neighbouring detections masked (3 FWHM + 10 px per magnitude above the
+  median of the width stars); then the same cleaning as banque_individuelle (smoothed decreasing round profile +
+  structures linked to the core) and the same checks.
+A reference "G" is given: -2.5 log10(flux) + constant, the median of the width stars at 12.5 (display only).
 
-    construire(nom, a, verbose) -> dict (même forme que banque_individuelle.construire)
+    construire(nom, a, verbose) -> dict (same shape as banque_individuelle.construire)
 """
 from __future__ import annotations
 

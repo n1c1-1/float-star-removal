@@ -1,10 +1,10 @@
 # ======================================================================
 # voir_coeurs.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 9. N7 : cœurs de galaxie synthétiques (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33g + cœurs synthétiques
-# Sorties  : instantanés N7, tableau_n7.md
-# Exemple  : python voir_coeurs.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Stage    : 9. N7: synthetic galaxy cores (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33g pairs + synthetic cores
+# Outputs  : N7 snapshots, tableau_n7.md
+# Example  : python voir_coeurs.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
 import sys, numpy as np, cv2, json
 from pathlib import Path

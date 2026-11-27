@@ -1,13 +1,13 @@
 # ======================================================================
 # prep.py
-# Rôle     : Étape 1 du banc : recadrer les 6 piles linéaires, fond neutre, balance des blancs sur les étoiles (piles couleur), piédestal, blanc = 1.
-# Étape    : 3. Délinéarisation des images web (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image étirée
-# Sorties  : image rendue linéaire
-# Exemple  : python prep.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Step 1 of the bench: crop the 6 linear stacks, neutral background, white balance on the stars (colour stacks), pedestal, white = 1.
+# Step     : 3. De-linearisation of web images (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : stretched image
+# Outputs  : image made linear
+# Example  : python prep.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Étape 1 du banc : recadrer les 6 piles linéaires, fond neutre, balance des blancs sur les étoiles (piles couleur),
-piédestal, blanc = 1. Écrit banc/<nom>_lin.npy (3, H, W) float32 et banc/<nom>_lin.json."""
+"""Step 1 of the bench: crop the 6 linear stacks, neutral background, white balance on the stars (colour stacks),
+pedestal, white = 1. Writes banc/<name>_lin.npy (3, H, W) float32 and banc/<name>_lin.json."""
 from __future__ import annotations
 
 import sys

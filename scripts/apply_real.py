@@ -1,10 +1,10 @@
 # ======================================================================
 # apply_real.py
-# Rôle     : Applique un réseau choisi à des images réelles (images finales de comparaison).
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python apply_real.py --model <ESSAIS>/starRemoval/train/<tag>/best.pt [--device cuda:0]
+# Role     : Applies a chosen network to real images (final comparison images).
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python apply_real.py --model <ESSAIS>/starRemoval/train/<tag>/best.pt [--device cuda:0]
 # ======================================================================
 """The final pictures: the chosen network on our real images (the 6 test images, and our 23 training images, used
 only for the measures), next to the network the chain ships now; stretched sheets to look at.

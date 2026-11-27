@@ -1,14 +1,14 @@
 # ======================================================================
 # grandes_echelles.py
-# Rôle     : Mesure des grandes échelles : flou gaussien (16 et 48 px) de l'image sans étoiles contre celui de la référence (entrée moins modèles d'étoiles, avant remplissage, d'un tour 4), hors coeurs (zones dures dilatées) ; écart en bruits 
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python grandes_echelles.py <dossier_reference> <dossier_resultat> [<dossier_resultat> ...]
+# Role     : Measurement of the large scales: gaussian blur (16 and 48 px) of the star-free image against that of the reference (input minus star models, before filling, of a round 4), outside the cores (dilated hard zones); deviation in noises (median, max, 99th percentile) and map. Compares several results to the same reference.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python grandes_echelles.py <dossier_reference> <dossier_resultat> [<dossier_resultat> ...]
 # ======================================================================
-"""Mesure des grandes échelles : flou gaussien (16 et 48 px) de l'image sans étoiles contre celui de la référence
-(entrée moins modèles d'étoiles, avant remplissage, d'un tour 4), hors coeurs (zones dures dilatées) ; écart en bruits
-(médiane, max, 99e centile) et carte. Compare plusieurs résultats à la même référence.
+"""Measurement of the large scales: gaussian blur (16 and 48 px) of the star-free image against that of the reference
+(input minus star models, before filling, of a round 4), outside the cores (dilated hard zones); deviation in noises
+(median, max, 99th percentile) and map. Compares several results to the same reference.
 
     python grandes_echelles.py <dossier_reference> <dossier_resultat> [<dossier_resultat> ...]
 """

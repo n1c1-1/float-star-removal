@@ -1,10 +1,10 @@
 # ======================================================================
 # evaluate.py
-# Rôle     : Banc de mesure des réseaux : mêmes mesures pour chacun, sur ce qu'aucun n'a vu à l'entraînement.
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python evaluate.py A=<ESSAIS>/starRemoval/train/A/best.pt B=... C=... current [--device cuda:0]
+# Role     : Measurement bench for the networks: the same measures for each, on what none saw in training.
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python evaluate.py A=<ESSAIS>/starRemoval/train/A/best.pt B=... C=... current [--device cuda:0]
 # ======================================================================
 """The bench of the star removal networks: the same measures for each, on what none of them was trained on.
 

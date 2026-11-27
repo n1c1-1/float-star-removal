@@ -1,12 +1,12 @@
 # ======================================================================
 # resume_paires.py
-# Rôle     : Résumé de paires.jsonl (diag_paires.py) par sorte : débruitées / brutes / web, tenues écartées.
-# Étape    : diagnostic (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires et sorties de validation
-# Sorties  : tables de diagnostic
-# Exemple  : python resume_paires.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Summary of paires.jsonl (diag_paires.py) by kind: denoised / raw / web, held-out ones excluded. -> paires_resume.txt
+# Step     : diagnostic (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : pairs and validation outputs
+# Outputs  : diagnostic tables
+# Example  : python resume_paires.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Résumé de paires.jsonl (diag_paires.py) par sorte : débruitées / brutes / web, tenues écartées. -> paires_resume.txt"""
+"""Summary of paires.jsonl (diag_paires.py) by kind: denoised / raw / web, held-out ones excluded. -> paires_resume.txt"""
 import json, sys
 from pathlib import Path
 import numpy as np

@@ -1,10 +1,10 @@
 # ======================================================================
 # instruments.py
-# Rôle     : Instruments réels (télescopes, objectifs, caméras) tirés de catalogue.json (fiches publiques).
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python instruments.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Real instruments (telescopes, lenses, cameras) drawn from catalogue.json (public sheets).
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python instruments.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
 """Real instruments: a telescope or lens and a camera, from their published specifications (catalogue.json, each row
 with its source), turned into what psf.py computes.

@@ -1,24 +1,24 @@
 # ======================================================================
 # preparer_g_h.py
-# Rôle     : Cibles v33g (piédestal rendu) et poids v33h (étoiles faibles réparées), pairs une par une, processeur.
-# Étape    : 7-8. N5 (cibles v33g) et N6 (poids v33h) (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33d -> v33g -> v33h, départ E3 pas 20000
-# Sorties  : instantanés N5/N6, tableau_n56.md
-# Exemple  : preparer_g_h.py g   : *_v33d.npz -> *_v33g.npz (cible + L partout ; poids et classes inchangés) + contrôles + planche
+# Role     : v33g targets (pedestal restored) and v33h weights (faint stars repaired), pairs one by one, CPU.
+# Stage    : 7-8. N5 (v33g targets) and N6 (v33h weights) (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33d -> v33g -> v33h pairs, start E3 step 20000
+# Outputs  : N5/N6 snapshots, tableau_n56.md
+# Example  : preparer_g_h.py g   : *_v33d.npz -> *_v33g.npz (target + L everywhere; weights and classes unchanged) + checks + contact sheet
 # ======================================================================
-r"""Cibles v33g (piédestal rendu) et poids v33h (étoiles faibles réparées), pairs une par une, processeur.
+r"""v33g targets (pedestal restored) and v33h weights (faint stars repaired), pairs one by one, CPU.
 
-    preparer_g_h.py g   : *_v33d.npz -> *_v33g.npz (cible + L partout ; poids et classes inchangés) + contrôles + planche
-    preparer_g_h.py h   : *_v33g.npz -> *_v33h.npz (poids G 14-17) + parts de surface au poids > 0
+    preparer_g_h.py g   : *_v33d.npz -> *_v33g.npz (target + L everywhere; weights and classes unchanged) + checks + contact sheet
+    preparer_g_h.py h   : *_v33g.npz -> *_v33h.npz (G 14-17 weights) + surface shares at weight > 0
 
-v33g : D = entrée - cible ; M = classe 0 (non touché) moins les disques des étoiles Gaia G < 8 (rayon = halo mesuré dans l'entrée,
-variante V2 de deux_echelles_v1v2.py : premier rayon où le profil radial médian - fond local < 2 bruits, fond = médiane de la couronne
-400-500 px (sinon 300-400), plafond 300 px ; sans couronne mesurable : 300 px) ; L = G*(D.M) / G*M, gaussienne sigma 40 px, par canal, avec élagage itératif des pixels de M qui s'écartent du lissage de plus de 2,5 écarts robustes (voir lissage_elague) ;
-cible_g = cible + L. Là où G*M est trop faible (< 1e-3), L vient d'une gaussienne plus large (120, puis 400 px), sinon 0.
-v33h : pour chaque étoile G 14-17 retenue au critère de la validation (entrée > 10 bruits x racine de la surface), disque de 2 FWHM :
-poids 1 si flux restant dans la cible entre -5 % et +5 % du flux d'entrée ; poids 0 s'il dépasse +10 % ; sinon inchangé (les 1 d'abord,
-les 0 ensuite : le 0 l'emporte).
-Aucun fichier existant n'est modifié ; les *_v33g / _v33h sont écrits à côté des paires.
+v33g: D = input - target; M = class 0 (untouched) minus the disks of Gaia stars G < 8 (radius = halo measured in the input,
+V2 variant of deux_echelles_v1v2.py: first radius where the median radial profile - local background < 2 noises, background = median of the ring
+400-500 px (otherwise 300-400), cap 300 px; with no measurable ring: 300 px); L = G*(D.M) / G*M, Gaussian sigma 40 px, per channel, with iterative pruning of the M pixels that deviate from the smoothing by more than 2.5 robust deviations (see lissage_elague);
+target_g = target + L. Where G*M is too low (< 1e-3), L comes from a wider Gaussian (120, then 400 px), otherwise 0.
+v33h: for each G 14-17 star kept by the validation criterion (input > 10 noises x square root of the area), 2 FWHM disk:
+weight 1 if the flux remaining in the target is between -5 % and +5 % of the input flux; weight 0 if it exceeds +10 %; otherwise unchanged (the 1s first,
+then the 0s: the 0 wins).
+No existing file is modified; the *_v33g / _v33h are written next to the pairs.
 """
 import os
 for k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "NUMBA_NUM_THREADS", "OPENBLAS_NUM_THREADS"):

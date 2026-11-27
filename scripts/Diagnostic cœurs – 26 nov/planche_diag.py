@@ -1,10 +1,10 @@
 # ======================================================================
 # planche_diag.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : diagnostic (26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : sorties de validation
-# Sorties  : profils radiaux, planche
-# Exemple  : python planche_diag.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Step     : diagnostic (26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : validation outputs
+# Outputs  : radial profiles, sheet
+# Example  : python planche_diag.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
 import sys, json, numpy as np
 sys.stdout.reconfigure(encoding="utf-8")

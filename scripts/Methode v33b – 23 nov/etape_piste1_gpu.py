@@ -1,17 +1,17 @@
 # ======================================================================
 # etape_piste1_gpu.py
-# Rôle     : Etape 1 (piste 1) sur la carte graphique : meme appel que etape_piste1.py, meme algorithme (methode v26), code rapide.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : Usage : python etape_piste1_gpu.py <tag> x0,y0,x1,y1 [image] [cuda|cpu|ref] [--verif]
+# Role     : Step 1 (track 1) on the graphics card: same call as etape_piste1.py, same algorithm (method v26), fast code.
+# Stage    : 2. Classical Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : starless image, class maps
+# Example  : Usage : python etape_piste1_gpu.py <tag> x0,y0,x1,y1 [image] [cuda|cpu|ref] [--verif]
 # ======================================================================
-"""Etape 1 (piste 1) sur la carte graphique : meme appel que etape_piste1.py, meme algorithme (methode v26), code rapide.
+"""Step 1 (track 1) on the graphics card: same call as etape_piste1.py, same algorithm (method v26), fast code.
 Usage : python etape_piste1_gpu.py <tag> x0,y0,x1,y1 [image] [cuda|cpu|ref] [--verif]
-  <tag>   nom de la sortie (Piste1/sorties/<image>/<tag>/) ; <image> : rosette (defaut), m8_sho, m57
-  cuda    lots torch sur la RTX 4060 Ti (carte 0 seulement, jamais la 3070) ; defaut
-  cpu     memes lots torch sur le processeur ; ref : retrait_rapide sans lots (code de la piste 1, coefficients groupes)
-  Une seule execution GPU a la fois. Compatible methode_validee.py --piste1-gpu (memes arguments positionnels)."""
+  <tag>   name of the output (Piste1/sorties/<image>/<tag>/) ; <image> : rosette (default), m8_sho, m57
+  cuda    torch batches on the RTX 4060 Ti (card 0 only, never the 3070) ; default
+  cpu     same torch batches on the CPU ; ref : retrait_rapide without batches (track 1 code, grouped coefficients)
+  Only one GPU run at a time. Compatible with methode_validee.py --piste1-gpu (same positional arguments)."""
 import os, sys
 args = [a for a in sys.argv[1:] if not a.startswith("--")]
 tag, crop_s = args[0], args[1]

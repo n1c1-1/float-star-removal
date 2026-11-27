@@ -1,13 +1,13 @@
 # ======================================================================
 # chaine_melanges.py
-# Rôle     : Mélanges de poids N5 / N6 / N7 (moyenne pondérée a*A + (1-a)*B des paramètres flottants, tampons entiers pris de A), puis mesure identique à celle de la chaîne N7 (inférence deux échelles V2, cœurs, validation).
-# Étape    : 11. Mélanges de poids (26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : instantanés N5, N6, N7
-# Sorties  : poids mélangés .pt, tableau_melanges.md
-# Exemple  : lancer_borne.ps1 -Fils 4 -Log ...\chaine.out -Exe python -Args "-I chaine_melanges.py"
+# Role     : Weight blends N5 / N6 / N7 (weighted average a*A + (1-a)*B of the float parameters, integer buffers taken from A), then measurement identical to that of the N7 chain (two-scale V2 inference, cores, validation).
+# Step     : 11. Weight blends (26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : snapshots N5, N6, N7
+# Outputs  : blended weights .pt, tableau_melanges.md
+# Example  : lancer_borne.ps1 -Fils 4 -Log ...\chaine.out -Exe python -Args "-I chaine_melanges.py"
 # ======================================================================
-r"""Mélanges de poids N5 / N6 / N7 (moyenne pondérée a*A + (1-a)*B des paramètres flottants, tampons entiers pris de A), puis mesure identique à
-celle de la chaîne N7 (inférence deux échelles V2, cœurs, validation). Aucun entraînement. Reprenable : repère poids\<nom>.pt et etapes\<nom>.fini.
+r"""Weight blends N5 / N6 / N7 (weighted average a*A + (1-a)*B of the float parameters, integer buffers taken from A), then measurement identical to
+that of the N7 chain (two-scale V2 inference, cores, validation). No training. Resumable: marker poids\<nom>.pt and etapes\<nom>.fini.
 
     lancer_borne.ps1 -Fils 4 -Log ...\chaine.out -Exe python -Args "-I chaine_melanges.py"
 """

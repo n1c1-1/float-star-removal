@@ -1,10 +1,10 @@
 # ======================================================================
 # float_unstretch_copie.py
-# Rôle     : An image already stretched, brought back to linear (issue #174).
-# Étape    : 3. Délinéarisation des images web (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image étirée
-# Sorties  : image rendue linéaire
-# Exemple  : python float_unstretch_copie.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : An image already stretched, brought back to linear (issue #174).
+# Step     : 3. De-linearisation of web images (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : stretched image
+# Outputs  : image made linear
+# Example  : python float_unstretch_copie.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
 """An image already stretched, brought back to linear (issue #174).
 

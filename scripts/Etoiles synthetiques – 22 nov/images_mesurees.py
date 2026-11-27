@@ -1,21 +1,21 @@
 # ======================================================================
 # images_mesurees.py
-# Rôle     : Paramètres d'image MESURÉS sur nos 4 images, pour conditionner le générateur v2 dans les planches et le test à l'aveugle (les tirages libres de la galerie ne s'en servent pas).
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : mesure_formes.py (ellipticité et asymétrie des étoiles G 12-13,5 de chaque image) ; rayons fins et perles
+# Role     : Image parameters MEASURED on our 4 images, to condition the v2 generator in the sheets and the blind test (the gallery's free draws do not use them).
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : star-free backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : mesure_formes.py (ellipticity and asymmetry of the G 12-13.5 stars of each image) ; fine rays and beads
 # ======================================================================
-"""Paramètres d'image MESURÉS sur nos 4 images, pour conditionner le générateur v2 dans les planches et le test à l'aveugle
-(les tirages libres de la galerie ne s'en servent pas). Sources : audit_mesures.json (largeur des moyennes, auréole des
-brillantes, décalages et largeurs par couleur, plateaux), mesure_aigrettes.json (aigrettes, médianes par image ; largeur à mi-hauteur et niveau à 8-14 px mesurés à part, 22 nov),
-fiches des méthodes v21-v23 (angles) ; formes des moyennes (ellip_sigma, irreg_*, grumeaux) calées sur
-mesure_formes.py (ellipticité et asymétrie des étoiles G 12-13,5 de chaque image) ; rayons fins et perles
-colorées des aigrettes lus sur les vignettes du premier test à l'aveugle (Tête de Cheval, M57 : oui ; M8 : non) ;
-perles irisées de Rosette, M57 et Tête de Cheval relevées au tour 2 (raisons du juge 2 : « aigrettes fines à perles »,
-« aigrettes irisées ») ; s30 lu directement à 22-40 px (tour 2 : l'ajustement sur 0-330 px le sous-estimait 2-3 fois) ;
-grain des halos (grain_halo) faible : mesure_halos.py donnait 0,5-0,6, mais la planche Synth_10 montre des halos
-cotonneux qu'aucune vraie étoile n'a (la mesure prenait la nébuleuse et les faibles hors catalogue) : jugé à l'oeil."""
+"""Image parameters MEASURED on our 4 images, to condition the v2 generator in the sheets and the blind test
+(the gallery's free draws do not use them). Sources: audit_mesures.json (width of the medium stars, aureole of the
+bright ones, shifts and widths per colour, plateaus), mesure_aigrettes.json (spikes, medians per image; half-height width and level at 8-14 px measured separately, 22 Nov),
+sheets of methods v21-v23 (angles); shapes of the medium stars (ellip_sigma, irreg_*, grumeaux) calibrated on
+mesure_formes.py (ellipticity and asymmetry of the G 12-13.5 stars of each image); fine rays and coloured beads
+of the spikes read on the thumbnails of the first blind test (Horsehead, M57: yes; M8: no);
+iridescent beads of Rosette, M57 and Horsehead noted in round 2 (judge 2's reasons: "fine spikes with beads",
+"iridescent spikes"); s30 read directly at 22-40 px (round 2: the fit over 0-330 px underestimated it 2-3 times);
+halo grain (grain_halo) low: mesure_halos.py gave 0.5-0.6, but the Synth_10 sheet shows cottony halos
+that no real star has (the measurement picked up the nebula and the faint off-catalogue stars): judged by eye."""
 IMP = {
     "rosette": dict(grain_halo=0.1, rayons_actif=True, rayons_contraste=0.05, ellip_sigma=0.12, irreg_p=0.9, irreg_q=0.5, irreg_d=1.0, grumeaux=0.55, plateau_couleur_p=0.2, fwhm_image=3.74, fwhm_moment=3.94, angles=[3.0, 93.5, 183.0, 273.5], plateau=(0.51, 0.86), a50=8e-7, gamma=2.4,
                     s30=2.0e-6, pente=1.9, L=None, larg_sigma=1.9, s11=3.5e-5, mode="rgb", pointilles=0.3, pas=11.0,

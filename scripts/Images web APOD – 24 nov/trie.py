@@ -1,12 +1,12 @@
 # ======================================================================
 # trie.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 3. Collecte des images web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : archive APOD (API publique)
-# Sorties  : images téléchargées (non publiées), index
-# Exemple  : python trie.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Step     : 3. Collection of the APOD web images (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : APOD archive (public API)
+# Outputs  : downloaded images (not published), index
+# Example  : python trie.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-# Tri des metadonnees APOD : candidats ciel profond, auteur, amateur/pro, URL de l'image grand format.
+# Sorting of the APOD metadata: deep-sky candidates, author, amateur/pro, URL of the large-format image.
 import json,glob,re,os,html,csv
 M=r"<DONNEES>\Images web APOD – 24 nov\meta"
 PRO=re.compile(r"hubble|jwst|webb|stsci|\besa\b|eso\b|nasa|chandra|spitzer|gaia|euclid|noirlab|noao|ctio|kpno|gemini|vlt|alma|subaru|keck|cfht|sdss|wise|galex|nrao|vista|des collab|rubin|lsst|panstarrs|pan-starrs|digitized sky|dss|jpl|caltech|nustar|xmm|fermi|planck|hst|sofia|magellan|skymapper|decam|vera",re.I)

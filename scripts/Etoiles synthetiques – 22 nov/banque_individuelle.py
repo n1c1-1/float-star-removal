@@ -1,24 +1,24 @@
 # ======================================================================
 # banque_individuelle.py
-# Rôle     : Banque de formes RÉELLES, tour 4 : étoiles brillantes INDIVIDUELLES nettoyées (au lieu de quelques médianes).
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : python banque_individuelle.py [image ...]   (images de la méthode, catalogue de leur astrométrie)
+# Role     : Bank of REAL shapes, round 4: cleaned INDIVIDUAL bright stars (instead of a few medians).
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : star-free backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : python banque_individuelle.py [image ...]   (the method's images, catalogue from their astrometry)
 # ======================================================================
-"""Banque de formes RÉELLES, tour 4 : étoiles brillantes INDIVIDUELLES nettoyées (au lieu de quelques médianes).
+"""Bank of REAL shapes, round 4: cleaned INDIVIDUAL bright stars (instead of a few medians).
 
-Pour chaque brillante G 4,5-9,5 isolée (sans plus brillante à 150 px, sans étoile de moins de 1,5 mag d'écart à 40 px,
-à plus de 210 px du bord) : vignette 401 px, fond = médiane de l'anneau 185-200 px, recentrée au sous-pixel, chaque
-couleur divisée par SON flux (catalogue x part lue sur l'aile 3-8 FWHM) ; voisines du catalogue masquées ; NETTOYAGE :
-profil rond (médiane par anneau, voisines exclues) + seulement les structures non rondes > 4 bruits RELIÉES AU CŒUR
-(aigrettes, rayons, cœur irrégulier) ; tout le reste (nébuleuse, voisines, taches) remplacé par le profil rond.
-Mesures de l'image, sur la médiane des étoiles nettoyées : loi du halo lointain (niveau à 50 px, pente 30-80 px) et
-angles des aigrettes (pics du reste angulaire à 3 FWHM-60 px), pour prolonger halo et aigrettes au rendu.
+For each isolated bright G 4.5-9.5 star (no brighter star within 150 px, no star less than 1.5 mag apart within 40 px,
+more than 210 px from the edge): 401 px thumbnail, background = median of the 185-200 px ring, recentred to the
+sub-pixel, each colour divided by ITS flux (catalogue x share read on the 3-8 FWHM wing); catalogue neighbours masked;
+CLEANING: round profile (median per ring, neighbours excluded) + only the non-round structures > 4 noises LINKED TO
+THE CORE (spikes, rays, irregular core); everything else (nebula, neighbours, blobs) replaced by the round profile.
+Image measurements, on the median of the cleaned stars: law of the far halo (level at 50 px, slope 30-80 px) and
+spike angles (peaks of the angular remainder at 3 FWHM-60 px), to extend halo and spikes at render time.
 
     construire(nom ou None, a=image (C,H,W), cat=(x, y, g), exclure=[(x, y)]) -> dict
-    sauver(b), charger(nom)   banque\\banque2_<nom>.npz (formes float16 (n, 3, 401, 401) + méta json)
-    python banque_individuelle.py [image ...]   (images de la méthode, catalogue de leur astrométrie)
+    sauver(b), charger(nom)   banque\\banque2_<nom>.npz (formes float16 (n, 3, 401, 401) + json meta)
+    python banque_individuelle.py [image ...]   (the method's images, catalogue from their astrometry)
 """
 from __future__ import annotations
 

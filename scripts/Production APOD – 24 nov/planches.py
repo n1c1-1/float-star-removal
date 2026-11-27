@@ -1,13 +1,13 @@
 # ======================================================================
 # planches.py
-# Rôle     : Planches de controle : une par image, <DONNEES>/Paires étoiles APOD – 24 nov/controle/<image>.jpg ; une ligne par tuile : entree debruitee | cible | poids (blanc 1, gris 0,5, noir 0), arcsinh 60, 3 x 400 px.
-# Étape    : 3. Production des paires web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images APOD délinéarisées
-# Sorties  : paires _debruitee .npz
-# Exemple  : python planches.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Control sheets: one per image, <DONNEES>/Paires étoiles APOD – 24 nov/controle/<image>.jpg ; one row per tile: denoised input | target | weight (white 1, grey 0.5, black 0), arcsinh 60, 3 x 400 px.
+# Stage    : 3. Production of the APOD web pairs (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : de-linearised APOD images
+# Outputs  : _debruitee .npz pairs
+# Example  : python planches.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Planches de controle : une par image, <DONNEES>/Paires étoiles APOD – 24 nov/controle/<image>.jpg ; une ligne par tuile :
-entree debruitee | cible | poids (blanc 1, gris 0,5, noir 0), arcsinh 60, 3 x 400 px. usage : planches.py [image ...]"""
+"""Control sheets: one per image, <DONNEES>/Paires étoiles APOD – 24 nov/controle/<image>.jpg ; one row per tile:
+denoised input | target | weight (white 1, grey 0.5, black 0), arcsinh 60, 3 x 400 px. usage : planches.py [image ...]"""
 import sys
 from pathlib import Path
 import cv2, numpy as np

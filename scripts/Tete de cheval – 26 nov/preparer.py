@@ -1,15 +1,15 @@
 # ======================================================================
 # preparer.py
-# Rôle     : Prepare la Tete de cheval (empilement lineaire de Nicolas, lu en place) comme l'etage Etoiles de FLOAT : gradient retire (polynome degre 2, reglages par defaut du bloc Gradient), fond = mediane par canal, unite = ecart du ciel (sk
-# Étape    : 13. Essai sur la Tête de Cheval (26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : pile linéaire de la Tête de Cheval (non publiée)
-# Sorties  : images sans étoiles (non publiées)
-# Exemple  : python preparer.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Prepares the Horsehead Nebula (Nicolas's linear stack, read in place) like the Stars stage of FLOAT: gradient removed (degree-2 polynomial, default settings of the Gradient block), background = median per channel, unit = sky spread (sk
+# Stage    : 13. Trial on the Horsehead Nebula (26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : linear stack of the Horsehead Nebula (not published)
+# Outputs  : starless images (not published)
+# Example  : python preparer.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Prepare la Tete de cheval (empilement lineaire de Nicolas, lu en place) comme l'etage Etoiles de FLOAT : gradient retire
-(polynome degre 2, reglages par defaut du bloc Gradient), fond = mediane par canal, unite = ecart du ciel (sky_spread), image en
-unites de bruit. Pas de debruitage (pas de demi-empilements). Etoiles Gaia G<6,5 depuis l'extrait hors ligne, placees par le
-WCS de l'en-tete. L'image est retournee (le FITS de [logiciel tiers] est bas-haut) pour etre vue normalement."""
+r"""Prepares the Horsehead Nebula (Nicolas's linear stack, read in place) like the Stars stage of FLOAT: gradient removed
+(degree-2 polynomial, default settings of the Gradient block), background = median per channel, unit = sky spread (sky_spread), image in
+noise units. No denoising (no half-stacks). Gaia stars G<6.5 from the offline extract, placed by the header's
+WCS. The image is flipped (the FITS of [third-party software] is bottom-up) so that it is seen normally."""
 import os, sys, time
 os.environ["ASTRO_GPU_GAIA_EXTRACTS"] = r"<CACHE_FLOAT>\cache\gaia_extracts"; os.environ["ASTRO_GPU_OFFLINE"] = "1"
 sys.stdout.reconfigure(encoding="utf-8")

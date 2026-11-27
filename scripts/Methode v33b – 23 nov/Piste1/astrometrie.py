@@ -1,19 +1,19 @@
 # ======================================================================
 # astrometrie.py
-# Rôle     : Astrométrie de l'image et étoiles Gaia du champ, hors ligne seulement.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python astrometrie.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Astrometry of the image and Gaia stars of the field, offline only.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python astrometrie.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Astrométrie de l'image et étoiles Gaia du champ, hors ligne seulement.
+"""Astrometry of the image and Gaia stars of the field, offline only.
 
-Solution de départ : le solveur local de FLOAT (core/asterion, index Tycho-2 installé), centre approché par le nom de
-l'objet (catalogues livrés avec FLOAT, sans réseau). Affinage : ajustement TAN-SIP (ordre 3) sur les étoiles détectées
-appariées aux étoiles Gaia de l'extrait astrométrique hors ligne, comme le bloc Astrométrie de FLOAT.
-Catalogue d'étoiles à retirer : l'extrait astrométrique (127 plus brillantes par pixel HEALPix de 14') réuni à l'extrait
-spectrophotométrique (toutes les étoiles G < 17.65 avec spectre XP), lus en place par astro_gpu.core.catalogue_local ; jamais de
-téléchargement (on vérifie que les fichiers lus sont ceux de ASTRO_GPU_GAIA_EXTRACTS).
+Starting solution: FLOAT's local solver (core/asterion, Tycho-2 index installed), approximate centre from the name of the
+object (catalogues shipped with FLOAT, no network). Refinement: TAN-SIP fit (order 3) on the detected stars
+matched to the Gaia stars of the offline astrometric extract, like FLOAT's Astrometry block.
+Catalogue of stars to remove: the astrometric extract (127 brightest per 14' HEALPix pixel) joined to the
+spectrophotometric extract (all the G < 17.65 stars with an XP spectrum), read in place by astro_gpu.core.catalogue_local; never any
+download (we check that the files read are those of ASTRO_GPU_GAIA_EXTRACTS).
 """
 from __future__ import annotations
 

@@ -1,12 +1,12 @@
 # ======================================================================
 # images.py
-# Rôle     : Les 6 images du travail : chargement en linéaire, unités de bruit, fond 0 (C, H, W) float32.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python images.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : The 6 working images: linear loading, noise units, background 0 (C, H, W) float32.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python images.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Les 6 images du travail : chargement en linéaire, unités de bruit, fond 0 (C, H, W) float32."""
+"""The 6 working images: linear loading, noise units, background 0 (C, H, W) float32."""
 from __future__ import annotations
 
 import json

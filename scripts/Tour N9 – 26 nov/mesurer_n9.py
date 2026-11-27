@@ -1,16 +1,16 @@
 # ======================================================================
 # mesurer_n9.py
-# Rôle     : Mesure N9 pas 10000 ET N7 pas 10000 (V2, 13 images + IC 1848, cœurs, validation) ; tableau_n9.md (lignes de tableau_n8l.md + colonne M32 60D) ; planches cœur M31 et M32 Canon 60D.
-# Étape    : 10. Essai écarté N9 (cœurs compacts, 26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33g
-# Sorties  : instantanés, tableau_n9.md
-# Exemple  : python mesurer_n9.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Measurement N9 step 10000 AND N7 step 10000 (V2, 13 images + IC 1848, cores, validation); tableau_n9.md (rows of tableau_n8l.md + M32 60D column); M31 and M32 Canon 60D core sheets.
+# Stage    : 10. Discarded trial N9 (compact cores, 26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33g pairs
+# Outputs  : snapshots, tableau_n9.md
+# Example  : python mesurer_n9.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Mesure N9 pas 10000 ET N7 pas 10000 (V2, 13 images + IC 1848, cœurs, validation) ; tableau_n9.md (lignes de tableau_n8l.md + colonne M32 60D) ; planches cœur M31 et M32 Canon 60D.
-Copie de mesurer_n8l.py (chemins r"..." et compilation vérifiés). Ancien : Mesure N8L (tour long).
-Copie de mesurer_n8_10000.py. Ancien : Mesure N8 au pas 10000 (copie de mesurer_n8_5000.py ; N8 pas 5000 et N7 pas 5000 déjà mesurés, lus dans Resultats et coeurs). Ancien :
-Mesure N8 et N7 au pas 5000, UN seul processus, memoire surveillee (copie de mesurer_n8.py ; originaux inchanges).
-Lance seulement si > 8 Go libres ; avant chaque image (inferer_v2_mem.py) et chaque coeur : arret propre sous 4 Go.
+r"""Measurement N9 step 10000 AND N7 step 10000 (V2, 13 images + IC 1848, cores, validation); tableau_n9.md (rows of tableau_n8l.md + M32 60D column); M31 and M32 Canon 60D core sheets.
+Copy of mesurer_n8l.py (r"..." paths and compilation checked). Former: N8L measurement (long round).
+Copy of mesurer_n8_10000.py. Former: N8 measurement at step 10000 (copy of mesurer_n8_5000.py; N8 step 5000 and N7 step 5000 already measured, read from Resultats and coeurs). Former:
+N8 and N7 measurement at step 5000, ONE single process, memory monitored (copy of mesurer_n8.py; originals unchanged).
+Starts only if > 8 GB free; before each image (inferer_v2_mem.py) and each core: clean stop under 4 GB.
 """
 import sys, runpy, shutil, json, importlib.util, os
 import psutil

@@ -1,13 +1,13 @@
 # ======================================================================
 # tranches_fines.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python tranches_fines.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Stage    : 2. Classical Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : starless image, class maps
+# Example  : python tranches_fines.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-# Passe Piste1/modele_psf_image.py à des profils radiaux par demi-magnitude, interpolés en G pour chaque étoile (la forme
-# change aussi à l'intérieur d'une tranche de 1-1,5 mag) ; le contrôle reste sur les 4 tranches de RECUL. Lancé une fois.
+# Passes Piste1/modele_psf_image.py to radial profiles per half-magnitude, interpolated in G for each star (the shape
+# also changes inside a 1-1.5 mag slice); the control stays on the 4 RECUL slices. Run once.
 from pathlib import Path
 p = Path(__file__).resolve().parents[1] / "Piste1" / "modele_psf_image.py"
 t = p.read_text(encoding="utf-8-sig")

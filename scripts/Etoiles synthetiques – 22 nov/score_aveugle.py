@@ -1,15 +1,15 @@
 # ======================================================================
 # score_aveugle.py
-# Rôle     : Note du test à l'aveugle : réponses du juge (JSON {planche: {numero: {"verdict": "vraie"|"synthetique", "raison": ...}}}) contre la clé (cle_aveugle.json).
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : Usage : python score_aveugle.py <cle_aveugle.json> <reponses.json>  -> score_aveugle.json (ici)
+# Role     : Blind test score: the judge's answers (JSON {planche: {numero: {"verdict": "vraie"|"synthetique", "raison": ...}}}) against the key (cle_aveugle.json).
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : star-free backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : Usage: python score_aveugle.py <cle_aveugle.json> <reponses.json>  -> score_aveugle.json (here)
 # ======================================================================
-"""Note du test à l'aveugle : réponses du juge (JSON {planche: {numero: {"verdict": "vraie"|"synthetique", "raison": ...}}})
-contre la clé (cle_aveugle.json). Taux d'erreur par image et par classe (objectif ~50 %), fausses prises pour vraies,
-vraies prises pour fausses ; raisons données pour les fausses repérées.
-Usage : python score_aveugle.py <cle_aveugle.json> <reponses.json>  -> score_aveugle.json (ici)"""
+"""Blind test score: the judge's answers (JSON {planche: {numero: {"verdict": "vraie"|"synthetique", "raison": ...}}})
+against the key (cle_aveugle.json). Error rate per image and per class (target ~50 %), fakes taken for real,
+real taken for fake; reasons given for the fakes spotted.
+Usage: python score_aveugle.py <cle_aveugle.json> <reponses.json>  -> score_aveugle.json (here)"""
 import json
 import sys
 from collections import defaultdict

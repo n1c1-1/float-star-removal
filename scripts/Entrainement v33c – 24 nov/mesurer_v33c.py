@@ -1,17 +1,17 @@
 # ======================================================================
 # mesurer_v33c.py
-# Rôle     : Mesure de fin d'essai : choisit le meilleur pas (plus petite erreur « sous les étoiles » des tenues, history.json), le passe à valider_reseau.py (mêmes 13 images + IC 1848 que pour A, GPU 4060 Ti, 4 fils), puis écrit le tableau A 
-# Étape    : 6. Entraînement d'essai 2 h (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33c
-# Sorties  : instantanés, tableau de mesure
-# Exemple  : valider_reseau.py (mêmes 13 images + IC 1848 que pour A, GPU 4060 Ti, 4 fils), puis écrit le tableau
+# Role     : End-of-trial measurement: picks the best step (smallest “under the stars” error of the held-out ones, history.json), passes it to valider_reseau.py (same 13 images + IC 1848 as for A, GPU 4060 Ti, 4 threads), then writes the table A step 8000 / best step v33c / FLOAT model (livre), same columns as <DONNEES>\\agreger.py.
+# Step     : 6. 2 h trial training (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33c pairs
+# Outputs  : snapshots, measurement table
+# Example  : valider_reseau.py (same 13 images + IC 1848 as for A, GPU 4060 Ti, 4 threads), then writes the table
 # ======================================================================
-"""Mesure de fin d'essai : choisit le meilleur pas (plus petite erreur « sous les étoiles » des tenues, history.json), le passe à
-valider_reseau.py (mêmes 13 images + IC 1848 que pour A, GPU 4060 Ti, 4 fils), puis écrit le tableau
-A pas 8000 / meilleur pas v33c / modèle FLOAT (livre) / outil de référence, mêmes colonnes que <DONNEES>\\agreger.py.
+"""End-of-trial measurement: picks the best step (smallest “under the stars” error of the held-out ones, history.json), passes it to
+valider_reseau.py (same 13 images + IC 1848 as for A, GPU 4060 Ti, 4 threads), then writes the table
+A step 8000 / best step v33c / FLOAT model (livre), same columns as <DONNEES>\\agreger.py.
 
-    lancer_borne.ps1 ... -Args "-I <ce script>"           (un seul calcul GPU à la fois ; jamais pendant l'entraînement)
-    option --pas N pour imposer un pas ; --tableau-seul pour refaire le tableau sans remesurer.
+    lancer_borne.ps1 ... -Args "-I <this script>"           (only one GPU computation at a time; never during training)
+    option --pas N to force a step; --tableau-seul to redo the table without remeasuring.
 """
 import argparse
 import glob

@@ -1,14 +1,14 @@
 # ======================================================================
 # creux_pires.py
-# Rôle     : Les pires creux d'un tour : étoiles Gaia G < 13 de la tuile, mesure de juger.py (médiane 0-4 px contre anneau 8-15 px, en % de l'anneau), pour la piste 1, la référence avant remplissage (après soustractions) et le résultat ; class
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python creux_pires.py <tour> <tuile> [n]
+# Role     : The worst hollows of a round: Gaia G < 13 stars of the tile, measurement of juger.py (median 0-4 px against 8-15 px ring, in % of the ring), for track 1, the reference before filling (after subtractions) and the result; class of the map at the centre, bright star whose halo covers the point, distance to the nearest spike axis.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python creux_pires.py <tour> <tuile> [n]
 # ======================================================================
-"""Les pires creux d'un tour : étoiles Gaia G < 13 de la tuile, mesure de juger.py (médiane 0-4 px contre anneau 8-15 px,
-en % de l'anneau), pour la piste 1, la référence avant remplissage (après soustractions) et le résultat ; classe de la
-carte au centre, étoile brillante dont le halo couvre le point, distance à l'axe d'aigrette le plus proche.
+"""The worst hollows of a round: Gaia G < 13 stars of the tile, measurement of juger.py (median 0-4 px against 8-15 px ring,
+in % of the ring), for track 1, the reference before filling (after subtractions) and the result; class of the
+map at the centre, bright star whose halo covers the point, distance to the nearest spike axis.
 
     python creux_pires.py <tour> <tuile> [n]
 """

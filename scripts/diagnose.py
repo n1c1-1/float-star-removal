@@ -1,10 +1,10 @@
 # ======================================================================
 # diagnose.py
-# Rôle     : Diagnostic de l'écart entre un réseau et le réseau de la chaîne, avant tout changement.
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python diagnose.py units|gap|valset [--models C_long=...best.pt current] [--device cuda:0]
+# Role     : Diagnosis of the gap between a network and the chain's network, before any change.
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python diagnose.py units|gap|valset [--models C_long=...best.pt current] [--device cuda:0]
 # ======================================================================
 """Where the gap to the chain's current network comes from, before changing anything.
 

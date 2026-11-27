@@ -1,22 +1,22 @@
 # ======================================================================
 # aigrettes_banque.py
-# Rôle     : Tour 6 (1) : angles des aigrettes d'une banque, nouvelle détection, et diagnostic sur les Newton.
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : python aigrettes_banque.py diag      -> tableau avant / après sur les banques Newton, planche Synth_19
+# Role     : Round 6 (1): spike angles of a bank, new detection, and diagnostic on the Newtons.
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : starless backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : python aigrettes_banque.py diag      -> before / after table on the Newton banks, sheet Synth_19
 # ======================================================================
-"""Tour 6 (1) : angles des aigrettes d'une banque, nouvelle détection, et diagnostic sur les Newton.
+"""Round 6 (1): spike angles of a bank, new detection, and diagnostic on the Newtons.
 
-angles_v2(formes, fw) : pour CHAQUE brillante de la banque, luminance divisée par son profil rond (par anneau) dans
-l'anneau [max(3 FWHM, 2 x rayon du plateau, 8 px), 140 px] ; profil angulaire (1°) MOYEN sur toutes les brillantes ;
-lissé (1,5°) ; pics à plus de 4 bruits au-dessus de la médiane, et une jumelle à 180° (±5°) à plus de 2 bruits.
-L'ancienne détection (banque_individuelle.angles_aigrettes) : médiane des formes, 3 FWHM-60 px, 6 bruits, jumelle
-au même seuil.
+angles_v2(formes, fw): for EACH bright star of the bank, luminance divided by its round profile (per ring) in
+the ring [max(3 FWHM, 2 x plateau radius, 8 px), 140 px]; MEAN angular profile (1°) over all the bright stars;
+smoothed (1.5°); peaks more than 4 noise units above the median, and a twin at 180° (±5°) more than 2 noise units.
+The old detection (banque_individuelle.angles_aigrettes): median of the shapes, 3 FWHM-60 px, 6 noise units, twin
+at the same threshold.
 
-    python aigrettes_banque.py diag      -> tableau avant / après sur les banques Newton, planche Synth_19
-    python aigrettes_banque.py ecrire    -> réécrit les angles (clé « angles ») de toutes les banques banque2_*.npz,
-                                            ancien jeu gardé sous « angles_v1 »
+    python aigrettes_banque.py diag      -> before / after table on the Newton banks, sheet Synth_19
+    python aigrettes_banque.py ecrire    -> rewrites the angles (key “angles”) of all the banque2_*.npz banks,
+                                            old set kept under “angles_v1”
 """
 from __future__ import annotations
 

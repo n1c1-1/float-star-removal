@@ -1,16 +1,16 @@
 # ======================================================================
 # passe_finale_t2_p.py
-# Rôle     : Tour 2 de la passe finale (21 nov) : base = passe_finale_c9\sans_etoiles_tuile.npy.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python passe_finale_t2_p.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Round 2 of the final pass (21 Nov): base = passe_finale_c9\sans_etoiles_tuile.npy.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python passe_finale_t2_p.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Tour 2 de la passe finale (21 nov) : base = passe_finale_c9\\sans_etoiles_tuile.npy.
- 1. pixels noirs isolés (1-2 px) : très en dessous de la médiane 5x5 sans le centre, seuil sur le bruit local, guéris par médiane des voisins sains ;
- 2. restes de 3-8 px (arcs, taches rouges, reste d'étoile) : différence de gaussiennes, deux signes, couleurs et chroma, près des étoiles, remplis comme au tour 1 ;
- 3. couleur du ciel bas, mesurée seulement (entrée / résultat, hors zones d'étoiles).
-Écrit seulement dans sorties/passe_finale_c9_t2. CPU seulement."""
+"""Round 2 of the final pass (21 Nov): base = passe_finale_c9\\sans_etoiles_tuile.npy.
+ 1. isolated black pixels (1-2 px): far below the 5x5 median without the centre, threshold on the local noise, healed by the median of the sound neighbours;
+ 2. remnants of 3-8 px (arcs, red blobs, star remnant): difference of gaussians, both signs, colours and chroma, near the stars, filled as in round 1;
+ 3. colour of the low sky, only measured (input / result, outside star zones).
+Writes only to sorties/passe_finale_c9_t2. CPU only."""
 import os, sys, json, time
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"; os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
 sys.dont_write_bytecode = True

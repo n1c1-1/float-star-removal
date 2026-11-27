@@ -1,18 +1,18 @@
 # ======================================================================
 # rejuger.py
-# Rôle     : Réapplique aux paires déjà faites les deux tests ajoutés au juge le 22 nov soir (anneaux, niveau ; construire_paire.py).
-# Étape    : 2. Juge des zones : poids 0 où la chaîne échoue (v33) (voir scripts/LISEZMOI.md)
-# Entrées  : entrée, cible de la chaîne, zones
-# Sorties  : carte de poids
-# Exemple  : usage : rejuger.py [noms...]   (sans nom : toutes les paires)
+# Role     : Re-applies to the pairs already made the two tests added to the judge on the evening of 22 Nov (rings, level; construire_paire.py).
+# Step     : 2. Zone judge: weight 0 where the chain fails (v33) (see scripts/LISEZMOI.md)
+# Inputs   : input, chain target, zones
+# Outputs  : weight map
+# Example  : usage: rejuger.py [noms...]   (without a name: all the pairs)
 # ======================================================================
-"""Réapplique aux paires déjà faites les deux tests ajoutés au juge le 22 nov soir (anneaux, niveau ; construire_paire.py).
+"""Re-applies to the pairs already made the two tests added to the judge on the evening of 22 Nov (rings, level; construire_paire.py).
 
-Ils ne font qu'ajouter des conditions : une grande zone refaite (classe 2 ou 4-8, >= 200 px) de poids > 0 qui échoue
-passe à 0. Le reste du poids ne change pas, la chaîne n'est pas refaite. Réécrit le .npz, le panneau poids du .jpg et
-ajoute une ligne « rejuge » à paires.jsonl. Sans effet sur une paire faite avec le nouveau juge (idempotent).
+They only add conditions: a large redone zone (class 2 or 4-8, >= 200 px) of weight > 0 that fails
+goes to 0. The rest of the weight does not change, the chain is not redone. Rewrites the .npz, the weight panel of the .jpg and
+adds a « rejuge » line to paires.jsonl. Without effect on a pair made with the new judge (idempotent).
 
-usage : rejuger.py [noms...]   (sans nom : toutes les paires)
+usage: rejuger.py [noms...]   (without a name: all the pairs)
 """
 import json
 import sys

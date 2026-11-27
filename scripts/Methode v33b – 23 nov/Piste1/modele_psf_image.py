@@ -1,37 +1,37 @@
 # ======================================================================
 # modele_psf_image.py
-# Rôle     : Méthode v7 (21 nov) : le modèle d'étoile de la piste 1 bâti sur l'IMAGE ENTIÈRE, une fois par image, gardé sur disque.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python modele_psf_image.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Method v7 (21 Nov): the track 1 star model built on the WHOLE IMAGE, once per image, kept on disk.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python modele_psf_image.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Méthode v7 (21 nov) : le modèle d'étoile de la piste 1 bâti sur l'IMAGE ENTIÈRE, une fois par image, gardé sur disque.
+"""Method v7 (21 Nov): the track 1 star model built on the WHOLE IMAGE, once per image, kept on disk.
 
-Pourquoi (Recul – 21 nov soir\\RECUL.md) : en v5 le modèle était bâti sur ~9 étoiles de la découpe, bord forcé à zéro à
-r 13-15, halo 0 ; le reste empilé autour des étoiles isolées est négatif à r 2-4 et positif à r 6-12 (et encore à r 16-22),
-en proportion de l'éclat, de signe inverse pour G > 16.5.
+Why (Recul – 21 nov soir\\RECUL.md): in v5 the model was built on ~9 stars of the crop, edge forced to zero at
+r 13-15, halo 0; the remainder stacked around the isolated stars is negative at r 2-4 and positive at r 6-12 (and still at r 16-22),
+in proportion to brightness, of opposite sign for G > 16.5.
 
-Méthode (sources) :
-  - PSF effective itérée (Anderson & King 2000 ; EPSFBuilder de photutils) : modèle -> ajustement des étoiles -> moyenne
-    des restes normés par le flux -> ajoutée au modèle -> recommencer ;
-  - modèle = fonction + table des écarts (DAOPHOT, Stetson 1987) : ici la table est la somme des restes empilés ;
-  - PSF étendue (Infante-Sainz, Trujillo & Román 2020) : l'aile au-delà de ~12 px est prise sur les étoiles plus
-    brillantes et raccordée au coeur de chaque tranche ; rayon 28 px ; le bord n'est pas ramené à zéro (seulement un
-    fondu des 2 derniers px pour éviter une marche).
-Forme :  modèle(étoile) = S (forme 2D de départ, empilée sur les étoiles G < 14,5 de l'image entière)
-                          + rho(r ; G) (correction radiale par demi-magnitude G, interpolée en G pour chaque étoile ; image
-                            débruitée : la forme change avec l'éclat, même à l'intérieur d'une tranche de 1-1,5 mag),
-  rho corrige l'AILE seulement (r >= 5 px, plein à 7 px) ; au-delà de 12 px tirée des étoiles de la tranche ET des tranches
-  plus brillantes (aile étendue). Le COEUR (r < 5 px) ne converge pas dans cette itération (essais du 21 nov : dépassement
-  puis blocage à -10 / +6 bruits, voir JOURNAL) : il est laissé à la correction du coeur de la piste 1 sur chaque découpe.
-Étoiles : catalogue Gaia profond sur toute l'image, non saturées, sans voisine plus brillante que G+1 à 24 px ni voisine
-de moins de 3 mag d'écart dans le coeur, voisines visibles masquées (disque selon l'éclat), fond local plan (anneau 29-35 px).
-Positions : l'ajustement de la piste 1 (fit_star, position par couleur v4) ; flux de chaque couleur réajusté contre le ciel
-loin de l'étoile (plan sur l'anneau 29-35 px, comme EPSFBuilder) ; un fond pris dans l'aile faisait dériver le modèle.
-Arrêt : profils empilés plats à +-0.1 bruit de ciel dans chaque tranche G 12-13.5 / 13.5-14.5 / 14.5-15.5 / 15.5-16.5 et
-chaque couleur (r 5-24 px), ou 4 mises à jour.
-Cache : Piste1/sorties/<image>/modele_psf_image.npz (+ .json : réglages, nombres d'étoiles, profils à chaque tour).
+Method (sources):
+  - iterated effective PSF (Anderson & King 2000; photutils' EPSFBuilder): model -> star fit -> mean
+    of the flux-normalised remainders -> added to the model -> start again;
+  - model = function + table of deviations (DAOPHOT, Stetson 1987): here the table is the sum of the stacked remainders;
+  - extended PSF (Infante-Sainz, Trujillo & Román 2020): the wing beyond ~12 px is taken from brighter
+    stars and joined to the core of each slice; radius 28 px; the edge is not brought back to zero (only a
+    fade of the last 2 px to avoid a step).
+Form:  model(star) = S (starting 2D shape, stacked on the G < 14.5 stars of the whole image)
+                          + rho(r ; G) (radial correction per half-magnitude of G, interpolated in G for each star; denoised
+                            image: the shape changes with brightness, even inside a 1-1.5 mag slice),
+  rho corrects the WING only (r >= 5 px, full at 7 px); beyond 12 px drawn from the stars of the slice AND of the
+  brighter slices (extended wing). The CORE (r < 5 px) does not converge in this iteration (tests of 21 Nov: overshoot
+  then blocking at -10 / +6 noises, see JOURNAL): it is left to the core correction of track 1 on each crop.
+Stars: deep Gaia catalogue over the whole image, unsaturated, with no neighbour brighter than G+1 within 24 px nor neighbour
+less than 3 mag apart in the core, visible neighbours masked (disc according to brightness), flat local background (ring 29-35 px).
+Positions: the track 1 fit (fit_star, position per colour v4); flux of each colour refitted against the sky
+far from the star (plane on the 29-35 px ring, like EPSFBuilder); a background taken in the wing made the model drift.
+Stop: stacked profiles flat to +-0.1 sky noise in each slice G 12-13.5 / 13.5-14.5 / 14.5-15.5 / 15.5-16.5 and
+each colour (r 5-24 px), or 4 updates.
+Cache: Piste1/sorties/<image>/modele_psf_image.npz (+ .json: settings, star counts, profiles at each round).
 """
 from __future__ import annotations
 

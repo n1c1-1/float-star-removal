@@ -1,16 +1,16 @@
 # ======================================================================
 # enchainer_n56.py
-# Rôle     : Chaîne N5 -> mesure -> N6 -> mesure -> crops N2 -> tableau, un seul processus, reprenable (copie de enchainer_nuit.py du 24 nov).
-# Étape    : 7-8. N5 (cibles v33g) et N6 (poids v33h) (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33d -> v33g -> v33h, départ E3 pas 20000
-# Sorties  : instantanés N5/N6, tableau_n56.md
-# Exemple  : lancer_borne.ps1 -Fils 4 -Log ...\chaine.out -Exe python -Args "-I enchainer_n56.py"
+# Role     : Chain N5 -> measurement -> N6 -> measurement -> N2 crops -> table, a single process, resumable (copy of enchainer_nuit.py of 24 Nov).
+# Stage    : 7-8. N5 (v33g targets) and N6 (v33h weights) (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33d -> v33g -> v33h pairs, start E3 step 20000
+# Outputs  : N5/N6 snapshots, tableau_n56.md
+# Example  : lancer_borne.ps1 -Fils 4 -Log ...\chaine.out -Exe python -Args "-I enchainer_n56.py"
 # ======================================================================
-r"""Chaîne N5 -> mesure -> N6 -> mesure -> crops N2 -> tableau, un seul processus, reprenable (copie de enchainer_nuit.py du 24 nov).
+r"""Chain N5 -> measurement -> N6 -> measurement -> N2 crops -> table, a single process, resumable (copy of enchainer_nuit.py of 24 Nov).
 
-N5 = recette exacte de N2 (train_nuit.py --n2 : même départ E3 pas 20000, 34500 pas, mêmes proportions) avec les paires v33g (cibles
-piédestal rendu) ; N6 = N5 avec les paires v33h (poids des étoiles G 14-17 réparés). Repère <DONNEES>\Entrainement étoiles N5 N6 – 25 nov\etapes\<étape>.fini ;
-relancer la même commande saute ce qui est fini ; un entraînement interrompu repart de last.pt (--reprendre), 3 essais par étape.
+N5 = exact N2 recipe (train_nuit.py --n2: same start E3 step 20000, 34500 steps, same proportions) with the v33g pairs (targets
+with the pedestal restored); N6 = N5 with the v33h pairs (weights of the G 14-17 stars repaired). Marker <DONNEES>\Entrainement étoiles N5 N6 – 25 nov\etapes\<étape>.fini;
+rerunning the same command skips what is finished; an interrupted training restarts from last.pt (--reprendre), 3 attempts per step.
 
     lancer_borne.ps1 -Fils 4 -Log ...\chaine.out -Exe python -Args "-I enchainer_n56.py"
 """

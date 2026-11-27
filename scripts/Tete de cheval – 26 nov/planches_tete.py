@@ -1,13 +1,13 @@
 # ======================================================================
 # planches_tete.py
-# Rôle     : Planches de la Tete de cheval : meme etirement fort pour toutes (asinh((x-fond)/unite/2)/asinh(1000), x = lineaire sans gradient).
-# Étape    : 13. Essai sur la Tête de Cheval (26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : pile linéaire de la Tête de Cheval (non publiée)
-# Sorties  : images sans étoiles (non publiées)
-# Exemple  : python planches_tete.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Horsehead Nebula contact sheets: same strong stretch for all (asinh((x-background)/unit/2)/asinh(1000), x = linear without gradient).
+# Stage    : 13. Trial on the Horsehead Nebula (26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : linear stack of the Horsehead Nebula (not published)
+# Outputs  : starless images (not published)
+# Example  : python planches_tete.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Planches de la Tete de cheval : meme etirement fort pour toutes (asinh((x-fond)/unite/2)/asinh(1000), x = lineaire sans gradient).
-Ecrit entiere_<version>.jpg (pleine resolution, q92), planche_entiere.jpg, planche_tete.jpg, TIFF 16 bits de notre reseau."""
+r"""Horsehead Nebula contact sheets: same strong stretch for all (asinh((x-background)/unit/2)/asinh(1000), x = linear without gradient).
+Writes entiere_<version>.jpg (full resolution, q92), planche_entiere.jpg, planche_tete.jpg, 16-bit TIFF of our network."""
 import sys
 sys.stdout.reconfigure(encoding="utf-8")
 from pathlib import Path

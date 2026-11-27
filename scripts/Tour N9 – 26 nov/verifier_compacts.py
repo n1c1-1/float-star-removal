@@ -1,12 +1,12 @@
 # ======================================================================
 # verifier_compacts.py
-# Rôle     : N9 : 200 cœurs synthétiques tirés comme à l'entraînement (40 % compacts) ; part du flux dans 3 px (disque 3 px / disque 15 px, autour du maximum, cœur seul).
-# Étape    : 10. Essai écarté N9 (cœurs compacts, 26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33g
-# Sorties  : instantanés, tableau_n9.md
-# Exemple  : verifier_compacts.py [--part 0.4]  -> compacts.json
+# Role     : N9: 200 synthetic cores drawn as in training (40 % compact); share of the flux within 3 px (3 px disk / 15 px disk, around the maximum, core alone).
+# Stage    : 10. Discarded trial N9 (compact cores, 26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33g pairs
+# Outputs  : snapshots, tableau_n9.md
+# Example  : verifier_compacts.py [--part 0.4]  -> compacts.json
 # ======================================================================
-r"""N9 : 200 cœurs synthétiques tirés comme à l'entraînement (40 % compacts) ; part du flux dans 3 px (disque 3 px / disque 15 px, autour du maximum, cœur seul).
+r"""N9: 200 synthetic cores drawn as in training (40 % compact); share of the flux within 3 px (3 px disk / 15 px disk, around the maximum, core alone).
     verifier_compacts.py [--part 0.4]  -> compacts.json"""
 import sys, json
 from pathlib import Path

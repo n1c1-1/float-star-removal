@@ -1,31 +1,31 @@
 # ======================================================================
 # courbe_etoiles.py
-# Rôle     : Courbe de transfert estimée depuis les étoiles de l'image étirée (amélioration 1).
-# Étape    : 3. Délinéarisation des images web (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image étirée
-# Sorties  : image rendue linéaire
-# Exemple  : python courbe_etoiles.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Transfer curve estimated from the stars of the stretched image (improvement 1).
+# Step     : 3. De-linearisation of web images (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : stretched image
+# Outputs  : image made linear
+# Example  : python courbe_etoiles.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Courbe de transfert estimée depuis les étoiles de l'image étirée (amélioration 1).
+"""Transfer curve estimated from the stars of the stretched image (improvement 1).
 
-Idée (étalonnage radiométrique par plusieurs « poses » d'une même scène : Debevec et Malik, SIGGRAPH 1997, « Recovering
-High Dynamic Range Radiance Maps from Photographs » ; Mitsunaga et Nayar, CVPR 1999, « Radiometric Self Calibration ») :
-dans une image linéaire, toutes les étoiles ont le même profil (la fonction d'étalement du point, ici une Moffat, Moffat
-1969, A&A 3, 455), à leur flux près, posé sur leur fond local. Les étoiles d'éclats différents jouent le rôle des poses.
-L'inverse g de l'étirement est donc la courbe monotone qui rend, pour chaque étoile i et chaque rayon r,
+Idea (radiometric calibration from several “exposures” of the same scene: Debevec and Malik, SIGGRAPH 1997, “Recovering
+High Dynamic Range Radiance Maps from Photographs”; Mitsunaga and Nayar, CVPR 1999, “Radiometric Self Calibration”):
+in a linear image, all stars share the same profile (the point spread function, here a Moffat, Moffat
+1969, A&A 3, 455), up to their flux, sitting on their local background. Stars of different brightness play the role of the exposures.
+The inverse g of the stretch is thus the monotonic curve that yields, for each star i and each radius r,
     g(y_i(r)) = B_i + F_i * P(r ; alpha, beta)
-avec un même P pour toutes. Le fond B_i (différent d'une étoile à l'autre, nébuleuse) lève l'ambiguïté de puissance
-connue de ce problème (Grossberg et Nayar, PAMI 2003, « What can be known about the radiometric response from images »),
-et les étoiles faibles, presque dans la partie linéaire de la courbe autour de leur fond, fixent la forme de P.
+with the same P for all of them. The background B_i (different from one star to the next, nebula) removes the known power
+ambiguity of this problem (Grossberg and Nayar, PAMI 2003, “What can be known about the radiometric response from images”),
+and the faint stars, almost in the linear part of the curve around their background, fix the shape of P.
 
-Profil de chaque étoile : médiane des pixels par anneau. Une médiane commute avec toute courbe monotone, donc la médiane
-d'un anneau de l'image étirée est exactement l'image par l'étirement de la médiane linéaire de l'anneau (au bruit près),
-et les aigrettes ou une voisine ne la déplacent pas.
+Profile of each star: median of the pixels per ring. A median commutes with any monotonic curve, so the median
+of a ring of the stretched image is exactly the image under the stretch of the linear median of the ring (up to noise),
+and neither spikes nor a neighbouring star move it.
 
-Courbe : g(t) = intégrale de exp(s(t)), s = log g' = celle de la fonction FLOAT (point de départ) + une correction
-linéaire par morceaux sur des nœuds placés aux quantiles des données ; donc g est monotone par construction. Pour B_i,
-F_i : moindres carrés pondérés exacts à chaque évaluation (projection des variables, Golub et Pereyra 1973) ; pour la
-correction, alpha et beta : scipy least_squares (perte soft-L1), lissage par différences secondes."""
+Curve: g(t) = integral of exp(s(t)), s = log g' = that of the FLOAT function (starting point) + a piecewise-linear
+correction on knots placed at the quantiles of the data; so g is monotonic by construction. For B_i,
+F_i: exact weighted least squares at each evaluation (variable projection, Golub and Pereyra 1973); for the
+correction, alpha and beta: scipy least_squares (soft-L1 loss), smoothing by second differences."""
 from __future__ import annotations
 
 import numpy as np

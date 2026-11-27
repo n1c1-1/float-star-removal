@@ -1,31 +1,31 @@
 # ======================================================================
 # retrait_modele.py
-# Rôle     : Retrait des étoiles par modèle (sans réseau), 2026-11-20.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python retrait_modele.py <image> [--tag v1]
+# Role     : Star removal by model (no network), 2026-11-20.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python retrait_modele.py <image> [--tag v1]
 # ======================================================================
-"""Retrait des étoiles par modèle (sans réseau), 2026-11-20.
+"""Star removal by model (no network), 2026-11-20.
 
     python retrait_modele.py <image> [--tag v1]
 
-Méthode (sources) :
-1. Positions des étoiles : astrométrie de l'image puis étoiles Gaia DR3 (extraits hors ligne) à leur position, avec leur
-   éclat attendu (astrometrie.py). Un noeud de nébuleuse n'est pas dans Gaia : il n'est pas pris pour une étoile.
-   Les étoiles plus faibles que la complétude du catalogue sont cherchées ensuite dans le résidu, gardées seulement si
-   elles ont la forme ponctuelle de la PSF (netteté et rondeur, Stetson 1987 DAOFIND) : un noeud étendu ne passe pas.
-2. Soustraire, ne pas effacer : PSF empirique effective (Anderson & King 2000) mesurée sur l'image, par couleur et par
-   région du champ (interpolée entre régions), prolongée par un halo radial en loi de puissance (Racine 1996), ajustée
-   avec un plan de fond local (Stetson 1987, DAOPHOT) ; les voisines sont ajustées ensemble par passes successives sur le
-   résidu commun (Gauss-Seidel : à convergence, c'est l'ajustement simultané du groupe).
-3. Boucle fermée par étoile : résidu en anneaux (coeur -> halo) contre le fond juste au-delà ; correction par la forme
-   du résidu (flux, position, largeur, halo) jusqu'à un résidu plat au niveau du bruit ; score de qualité final par étoile.
-   Garde-fous : forme partagée par région (par étoile : flux, position, largeur à +-8 %), flux contrôlé contre l'éclat
-   Gaia prédit (une étoile qui veut être bien plus brillante que prévu mange la nébuleuse : bloquée et signalée).
-4. Ce que le modèle ne sait pas faire (coeurs saturés, aigrettes, boucle non convergée) : remplissage par le fond lisse
-   local plus un bruit au grain de l'image (même spectre de puissance que le ciel).
-Sorties : sorties/<image>/<tag>/starless.npy (C, H, W float32, mêmes unités que l'entrée), etoiles.csv, journal.txt.
+Method (sources):
+1. Star positions: astrometry of the image then Gaia DR3 stars (offline extracts) at their position, with their expected
+   brightness (astrometrie.py). A nebula knot is not in Gaia: it is not taken for a star.
+   Stars fainter than the catalogue's completeness are then searched in the residual, kept only if
+   they have the point-like shape of the PSF (sharpness and roundness, Stetson 1987 DAOFIND): an extended knot does not pass.
+2. Subtract, do not erase: effective empirical PSF (Anderson & King 2000) measured on the image, per colour and per
+   region of the field (interpolated between regions), extended by a radial power-law halo (Racine 1996), fitted
+   with a local background plane (Stetson 1987, DAOPHOT); neighbours are fitted together by successive passes on the
+   common residual (Gauss-Seidel: at convergence, it is the simultaneous fit of the group).
+3. Closed loop per star: residual in rings (core -> halo) against the background just beyond; correction by the shape
+   of the residual (flux, position, width, halo) until a flat residual at noise level; final quality score per star.
+   Safeguards: shape shared per region (per star: flux, position, width within +-8 %), flux checked against the predicted
+   Gaia brightness (a star that wants to be much brighter than predicted eats the nebula: blocked and flagged).
+4. What the model cannot do (saturated cores, spikes, non-converged loop): filling by the smooth local
+   background plus noise at the image's grain (same power spectrum as the sky).
+Outputs: sorties/<image>/<tag>/starless.npy (C, H, W float32, same units as the input), etoiles.csv, journal.txt.
 """
 from __future__ import annotations
 

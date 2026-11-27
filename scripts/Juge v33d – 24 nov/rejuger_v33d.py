@@ -1,19 +1,19 @@
 # ======================================================================
 # rejuger_v33d.py
-# Rôle     : Rejuge v33d : recalcule les poids des paires (v33c + regles H halo et F faibles), ne fait que mettre des poids a 0.
-# Étape    : 2. Juge v33c/v33d : halos et étoiles faibles restées (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33
-# Sorties  : poids mis à 0 (fichiers _v33d)
-# Exemple  : usage : rejuger_v33d.py [--dossier D] [--ecrire] [--complet] [--deep D] [--sorties D] [--planches nom,nom,...] [noms...]
+# Role     : Re-judge v33d: recomputes the weights of the pairs (v33c + rules H halo and F faint), only sets weights to 0.
+# Step     : 2. Judge v33c/v33d: halos and faint stars left (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33 pairs
+# Outputs  : weights set to 0 (_v33d files)
+# Example  : usage: rejuger_v33d.py [--dossier D] [--ecrire] [--complet] [--deep D] [--sorties D] [--planches nom,nom,...] [noms...]
 # ======================================================================
-"""Rejuge v33d : recalcule les poids des paires (v33c + regles H halo et F faibles), ne fait que mettre des poids a 0.
-usage : rejuger_v33d.py [--dossier D] [--ecrire] [--complet] [--deep D] [--sorties D] [--planches nom,nom,...] [noms...]
-  --dossier  : dossier des paires (defaut : paires v33 du 23 nov). Pour chaque tuile on part du fichier _v33c s'il existe, sinon de l'ancien.
-  --complet  : pour des paires neuves (jamais jugees v33c) : applique d'abord les regles v33 (a, b) et v33c, puis v33d.
-  --deep/--sorties : dossiers du catalogue profond et des sorties de la chaine (FWHM, astrometrie) si ce sont d'autres images.
-  --ecrire   : ecrit TOUTES les paires gardees en <nom>_debruitee_v33d.npz et <nom>_brute_v33d.npz (meme sans changement),
-               controle_v33d/poids0_v33d.txt, details json et planches.
-Les paires « lachee » de revue_orchestrateur.csv (si present dans le dossier) sont ecartees."""
+"""Re-judge v33d: recomputes the weights of the pairs (v33c + rules H halo and F faint), only sets weights to 0.
+usage: rejuger_v33d.py [--dossier D] [--ecrire] [--complet] [--deep D] [--sorties D] [--planches nom,nom,...] [noms...]
+  --dossier  : folder of the pairs (default: v33 pairs of 23 Nov). For each tile we start from the _v33c file if it exists, otherwise from the old one.
+  --complet  : for new pairs (never judged v33c): first applies rules v33 (a, b) and v33c, then v33d.
+  --deep/--sorties : folders of the deep catalogue and of the chain's outputs (FWHM, astrometry) if they are other images.
+  --ecrire   : writes ALL the kept pairs to <nom>_debruitee_v33d.npz and <nom>_brute_v33d.npz (even without change),
+               controle_v33d/poids0_v33d.txt, json details and sheets.
+The « lachee » pairs of revue_orchestrateur.csv (if present in the folder) are discarded."""
 import json, re, sys
 from pathlib import Path
 import numpy as np

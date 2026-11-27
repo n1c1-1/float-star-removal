@@ -1,14 +1,14 @@
 # ======================================================================
 # choisir_tuiles.py
-# Rôle     : Candidates de tuiles de 512 px pour les images web APOD gardées (comme Choix des tuiles – 23 nov : candidats.csv, mosaïques numérotées, choix_vierge.csv), 2 à 4 par image sur du contenu (nébuleuse, galaxie, champ d'étoiles), jamai
-# Étape    : 3. Délinéarisation et astrométrie des images web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images web APOD téléchargées
-# Sorties  : images linéaires, astrométrie, tuiles
-# Exemple  : python choisir_tuiles.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : 512 px tile candidates for the kept APOD web images (as in Choix des tuiles – 23 nov: candidats.csv, numbered mosaics, choix_vierge.csv), 2 to 4 per image on content (nebula, galaxy, star field), never empty sky.
+# Step     : 3. De-linearisation and astrometry of the APOD web images (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : downloaded APOD web images
+# Outputs  : linear images, astrometry, tiles
+# Example  : python choisir_tuiles.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Candidates de tuiles de 512 px pour les images web APOD gardées (comme Choix des tuiles – 23 nov : candidats.csv, mosaïques
-numérotées, choix_vierge.csv), 2 à 4 par image sur du contenu (nébuleuse, galaxie, champ d'étoiles), jamais du ciel vide.
-Une image à la fois, sans GPU. Sortie : <DONNEES>\Choix des tuiles APOD – 24 nov\. Usage : choisir_tuiles.py [numéros...]"""
+r"""512 px tile candidates for the kept APOD web images (as in Choix des tuiles – 23 nov: candidats.csv, numbered
+mosaics, choix_vierge.csv), 2 to 4 per image on content (nebula, galaxy, star field), never empty sky.
+One image at a time, no GPU. Output: <DONNEES>\Choix des tuiles APOD – 24 nov\. Usage: choisir_tuiles.py [numbers...]"""
 from __future__ import annotations
 
 import csv

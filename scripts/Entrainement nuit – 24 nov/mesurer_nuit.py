@@ -1,18 +1,18 @@
 # ======================================================================
 # mesurer_nuit.py
-# Rôle     : Mesure de fin d'essai (N1 ou N2) : même mesure de validation que V33C (mesurer_v33c.py), même tableau.
-# Étape    : 6. Entraînement de nuit N1/N2 (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33d + web délinéarisées, départ E3 pas 20000
-# Sorties  : instantanés N1/N2, tableau
-# Exemple  : mesurer_nuit.py N1            meilleur pas (plus petite erreur « sous les étoiles » des tenues) -> valider_reseau.py
+# Role     : End-of-trial measurement (N1 or N2): same validation measurement as V33C (mesurer_v33c.py), same table.
+# Step     : 6. Night training N1/N2 (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33d pairs + de-linearised web pairs, start E3 step 20000
+# Outputs  : N1/N2 snapshots, table
+# Example  : mesurer_nuit.py N1            best step (smallest “under the stars” error of the held-out ones) -> valider_reseau.py
 # ======================================================================
-"""Mesure de fin d'essai (N1 ou N2) : même mesure de validation que V33C (mesurer_v33c.py), même tableau.
+"""End-of-trial measurement (N1 or N2): same validation measurement as V33C (mesurer_v33c.py), same table.
 
-    mesurer_nuit.py N1            meilleur pas (plus petite erreur « sous les étoiles » des tenues) -> valider_reseau.py
-                                  (13 images + IC 1848, GPU 4060 Ti) -> tableau + planche de M27
-    options : --pas N, --tableau-seul
-Tableau : A pas 8000 / V33C pas 13000 / N1 / N2 / modèle FLOAT / outil de référence (lignes absentes ignorées).
-Sorties : <DONNEES>\\Entrainement étoiles nuit – 24 nov\\tableau_nuit.md et planches\\M27_<essai>_pas_<n>.jpg (+ M27 des autres).
+    mesurer_nuit.py N1            best step (smallest “under the stars” error of the held-out ones) -> valider_reseau.py
+                                  (13 images + IC 1848, GPU 4060 Ti) -> table + M27 sheet
+    options: --pas N, --tableau-seul
+Table: A step 8000 / V33C step 13000 / N1 / N2 / FLOAT model (missing lines ignored).
+Outputs: <DONNEES>\\Entrainement étoiles nuit – 24 nov\\tableau_nuit.md and planches\\M27_<essai>_pas_<n>.jpg (+ M27 of the others).
 """
 import argparse
 import glob

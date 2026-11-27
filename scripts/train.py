@@ -1,10 +1,10 @@
 # ======================================================================
 # train.py
-# Rôle     : Entraîne un réseau depuis des poids aléatoires sur les paires générées seulement.
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python train.py --model nafnet --hours 1.5 --device cuda:0 --tag A
+# Role     : Trains a network from random weights on the generated pairs only.
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python train.py --model nafnet --hours 1.5 --device cuda:0 --tag A
 # ======================================================================
 """Train a star removal network of the bench (models.py) from random weights, on the generated pairs only
 (make_dataset.py), for a budget of time.

@@ -1,14 +1,14 @@
 # ======================================================================
 # arc.py
-# Rôle     : L'arc pâle vers (277,345) de la tuile Rosette : est-il dans les basses fréquences de l'entrée (nébuleuse) ou n'apparaît-il qu'après la soustraction de la piste 1 ?
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python arc.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : The pale arc near (277,345) of the Rosette tile: is it in the low frequencies of the input (nebula) or does it only appear after track 1's subtraction?
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python arc.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""L'arc pâle vers (277,345) de la tuile Rosette : est-il dans les basses fréquences de l'entrée (nébuleuse) ou n'apparaît-il
-qu'après la soustraction de la piste 1 ? Vignettes 100 % (et x3) : entrée | entrée sans étoiles par flou masqué (8 px, étoiles
-du catalogue et de la piste 1 exclues) | base piste 1 | résultat piste 3 ; et profil le long d'une coupe à travers l'arc."""
+"""The pale arc near (277,345) of the Rosette tile: is it in the low frequencies of the input (nebula) or does it only appear after track 1's subtraction?
+Thumbnails 100 % (and x3): input | input without stars by masked blur (8 px, catalogue and
+track 1 stars excluded) | track 1 base | track 3 result; and profile along a cut across the arc."""
 import sys, csv
 sys.dont_write_bytecode = True
 from pathlib import Path

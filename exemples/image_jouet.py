@@ -1,12 +1,12 @@
 # ======================================================================
 # image_jouet.py
-# Rôle     : fabrique une toute petite image linéaire de test (ciel + bruit + 4 étoiles de brillances différentes), pour
-#            essayer le réseau en quelques secondes avant de l'appliquer à une vraie image.
-# Entrées  : aucune (graine fixe).
-# Sorties  : le fichier .npy demandé : tableau (3, 512, 512) float32, en unités brutes d'image (ciel ≈ 1000, bruit ≈ 5).
-# Exemple  : python exemples/image_jouet.py image_jouet.npy
+# Role     : makes a very small linear test image (sky + noise + 4 stars of different brightnesses), to try the
+#            network in a few seconds before applying it to a real image.
+# Inputs   : none (fixed seed).
+# Outputs  : the requested .npy file: array (3, 512, 512) float32, in raw image units (sky ~ 1000, noise ~ 5).
+# Example  : python exemples/image_jouet.py image_jouet.npy
 # ======================================================================
-"""Image jouet : fond plat bruité et quatre étoiles gaussiennes (pics de 60, 200, 800 et 3000 fois le bruit)."""
+"""Toy image: a flat noisy background and four Gaussian stars (peaks of 60, 200, 800 and 3000 times the noise)."""
 import sys
 
 import numpy as np

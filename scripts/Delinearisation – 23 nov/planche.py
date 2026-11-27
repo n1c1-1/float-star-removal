@@ -1,15 +1,15 @@
 # ======================================================================
 # planche.py
-# Rôle     : Planche JPEG : pour 3 piles, original linéaire | étirée (telle quelle) | délinéarisée FLOAT | délinéarisée améliorée.
-# Étape    : 3. Délinéarisation des images web (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image étirée
-# Sorties  : image rendue linéaire
-# Exemple  : Usage : planche.py <recette> <méthode améliorée> <pile> <pile> <pile>
+# Role     : JPEG sheet: for 3 stacks, linear original | stretched (as is) | FLOAT de-linearised | improved de-linearised.
+# Step     : 3. De-linearisation of web images (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : stretched image
+# Outputs  : image made linear
+# Example  : Usage: planche.py <recipe> <improved method> <stack> <stack> <stack>
 # ======================================================================
-"""Planche JPEG : pour 3 piles, original linéaire | étirée (telle quelle) | délinéarisée FLOAT | délinéarisée améliorée.
-Les trois linéaires sont ramenées à l'échelle de l'original (même ajustement que les mesures) puis montrées avec le même
-étirement d'affichage arcsinh 60 ; gros plans x4 sur une étoile brillante et sur la zone de nébuleuse la plus forte.
-Usage : planche.py <recette> <méthode améliorée> <pile> <pile> <pile>"""
+"""JPEG sheet: for 3 stacks, linear original | stretched (as is) | FLOAT de-linearised | improved de-linearised.
+The three linear ones are brought to the scale of the original (same fit as the measurements) then shown with the same
+arcsinh 60 display stretch; x4 close-ups on a bright star and on the strongest nebula area.
+Usage: planche.py <recipe> <improved method> <stack> <stack> <stack>"""
 from __future__ import annotations
 
 import sys

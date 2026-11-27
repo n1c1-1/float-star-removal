@@ -1,12 +1,12 @@
 # ======================================================================
 # mesure.py
-# Rôle     : Piste 3 : mesures par étoile brillante (rayon du halo, angles et longueurs des aigrettes) et masque.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python mesure.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Track 3: per-bright-star measurements (halo radius, spike angles and lengths) and mask.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python mesure.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Piste 3 : mesures par étoile brillante (rayon du halo, angles et longueurs des aigrettes) et masque."""
+"""Track 3: per-bright-star measurements (halo radius, spike angles and lengths) and mask."""
 from __future__ import annotations
 
 import sys

@@ -1,13 +1,13 @@
 # ======================================================================
 # decider.py
-# Rôle     : Décision gardée / écartée par image, à partir de controle\mesures.jsonl ; écrit controle ableau.txt et décisions.json, efface les .npy des écartées.
-# Étape    : 3. Délinéarisation et astrométrie des images web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images web APOD téléchargées
-# Sorties  : images linéaires, astrométrie, tuiles
-# Exemple  : python decider.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Kept / discarded decision per image, from controle\mesures.jsonl; writes controle\tableau.txt and décisions.json, deletes the .npy files of the discarded ones.
+# Step     : 3. De-linearisation and astrometry of the APOD web images (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : downloaded APOD web images
+# Outputs  : linear images, astrometry, tiles
+# Example  : python decider.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Décision gardée / écartée par image, à partir de controle\mesures.jsonl ; écrit controle\tableau.txt et décisions.json,
-efface les .npy des écartées. Règles (seuils calibrés sur calibrer_taille.py : pile linéaire vraie, pente de taille 0,04-0,36)."""
+"""Kept / discarded decision per image, from controle\mesures.jsonl; writes controle\tableau.txt and décisions.json,
+deletes the .npy files of the discarded ones. Rules (thresholds calibrated on calibrer_taille.py: true linear stack, size slope 0.04-0.36)."""
 from __future__ import annotations
 
 import json

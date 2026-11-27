@@ -1,16 +1,16 @@
 # ======================================================================
 # piste3.py
-# Rôle     : Piste 3 : étoiles brillantes retirées par masque mesuré + remplissage d'après le contenu (PatchMatch multi-échelle, Wexler 2007 / Barnes 2009, copie du grain au dernier niveau, fondu de Poisson Pérez 2003).
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python piste3.py <tour> [cas,cas] [--sigma]      (--sigma : essaie aussi sigma Orionis, G < 4.5)
+# Role     : Track 3: bright stars removed by measured mask + content-aware filling (multi-scale PatchMatch, Wexler 2007 / Barnes 2009, grain copy at the last level, Poisson blending Pérez 2003).
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python piste3.py <tour> [cas,cas] [--sigma]      (--sigma: also tries sigma Orionis, G < 4.5)
 # ======================================================================
-"""Piste 3 : étoiles brillantes retirées par masque mesuré + remplissage d'après le contenu (PatchMatch multi-échelle,
-Wexler 2007 / Barnes 2009, copie du grain au dernier niveau, fondu de Poisson Pérez 2003). Étoiles faibles et moyennes :
-l'image sans étoiles de la piste 1 (dernier essai >= 10), lue, jamais modifiée.
+"""Track 3: bright stars removed by measured mask + content-aware filling (multi-scale PatchMatch,
+Wexler 2007 / Barnes 2009, grain copy at the last level, Poisson blending Pérez 2003). Faint and medium stars:
+the star-free image of track 1 (last test >= 10), read, never modified.
 
-    python piste3.py <tour> [cas,cas] [--sigma]      (--sigma : essaie aussi sigma Orionis, G < 4.5)
+    python piste3.py <tour> [cas,cas] [--sigma]      (--sigma: also tries sigma Orionis, G < 4.5)
 """
 from __future__ import annotations
 

@@ -1,13 +1,13 @@
 # ======================================================================
 # planche_coeurs.py
-# Rôle     : Planche de 8 paires synthétiques à CŒUR (entrée | cible), arcsinh 60, tuiles 256 sur les deux fonds réels du banc de vitesse.
-# Étape    : 9. N7 : cœurs de galaxie synthétiques (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33g + cœurs synthétiques
-# Sorties  : instantanés N7, tableau_n7.md
-# Exemple  : python planche_coeurs.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Contact sheet of 8 synthetic pairs with a CORE (input | target), arcsinh 60, 256 tiles on the two real backgrounds of the speed bench.
+# Stage    : 9. N7: synthetic galaxy cores (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33g pairs + synthetic cores
+# Outputs  : N7 snapshots, tableau_n7.md
+# Example  : python planche_coeurs.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Planche de 8 paires synthétiques à CŒUR (entrée | cible), arcsinh 60, tuiles 256 sur les deux fonds réels du banc de vitesse.
-Sortie : <DONNEES>\Entrainement étoiles N7 – 25 nov\planche_coeurs.jpg (+ coeurs_infos.json). Processeur seul, 2 fils."""
+r"""Contact sheet of 8 synthetic pairs with a CORE (input | target), arcsinh 60, 256 tiles on the two real backgrounds of the speed bench.
+Output: <DONNEES>\Entrainement étoiles N7 – 25 nov\planche_coeurs.jpg (+ coeurs_infos.json). CPU only, 2 threads."""
 import os, sys, json
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 for k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS", "NUMBA_NUM_THREADS"):

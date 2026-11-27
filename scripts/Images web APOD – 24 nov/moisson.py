@@ -1,12 +1,12 @@
 # ======================================================================
 # moisson.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 3. Collecte des images web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : archive APOD (API publique)
-# Sorties  : images téléchargées (non publiées), index
-# Exemple  : python moisson.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Step     : 3. Collection of the APOD web images (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : APOD archive (public API)
+# Outputs  : downloaded images (not published), index
+# Example  : python moisson.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-# Moisson des metadonnees APOD via l'API publique du site (une requete / 3 s, UA generique).
+# Harvest of the APOD metadata through the site's public API (one request / 3 s, generic UA).
 import urllib.request,urllib.parse,json,time,os,sys,re
 UA="star-removal-research/0.1"
 OUT=r"<DONNEES>\Images web APOD – 24 nov\meta"

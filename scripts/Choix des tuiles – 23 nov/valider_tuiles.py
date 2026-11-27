@@ -1,13 +1,13 @@
 # ======================================================================
 # valider_tuiles.py
-# Rôle     : Valide choix_orchestrateur.csv : convertit en coins (x,y) dans l'entree, mesure chaque tuile, ecrit mesures_tuiles.csv + vignettes (npz) dans le dossier de sortie.
-# Étape    : 2. Choix des tuiles (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images, mosaïques
-# Sorties  : liste de tuiles
-# Exemple  : python valider_tuiles.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Validates choix_orchestrateur.csv: converts to corners (x,y) in the input, measures each tile, writes mesures_tuiles.csv + thumbnails (npz) into the output folder.
+# Step     : 2. Tile selection (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : images, mosaics
+# Outputs  : list of tiles
+# Example  : python valider_tuiles.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Valide choix_orchestrateur.csv : convertit en coins (x,y) dans l'entree, mesure chaque tuile, ecrit mesures_tuiles.csv + vignettes (npz) dans le dossier de sortie.
-Une image a la fois, 2 fils, sans GPU. Le verdict final (a l'oeil) est dans verdict.py."""
+"""Validates choix_orchestrateur.csv: converts to corners (x,y) in the input, measures each tile, writes mesures_tuiles.csv + thumbnails (npz) into the output folder.
+One image at a time, 2 threads, no GPU. The final (by-eye) verdict is in verdict.py."""
 import os, sys, csv, re, json
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 sys.dont_write_bytecode = True

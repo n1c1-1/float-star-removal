@@ -1,12 +1,12 @@
 # ======================================================================
 # sources_etendues.py
-# Rôle     : Sources Gaia G<6,5 des images de validation, avec le rayon de halo V2 et l'exces de l'anneau 40-80 px (unites de bruit) : un objet etendu lumineux donne un exces fort et un rayon plafonne a 300.
-# Étape    : diagnostic (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image de validation M31
-# Sorties  : flux au cœur par réseau
-# Exemple  : python sources_etendues.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Gaia sources G<6.5 of the validation images, with the V2 halo radius and the excess of the 40-80 px ring (noise units): a bright extended object gives a strong excess and a radius capped at 300.
+# Step     : diagnostic (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : M31 validation image
+# Outputs  : core flux per network
+# Example  : python sources_etendues.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Sources Gaia G<6,5 des images de validation, avec le rayon de halo V2 et l'exces de l'anneau 40-80 px (unites de bruit) : un objet etendu lumineux donne un exces fort et un rayon plafonne a 300."""
+r"""Gaia sources G<6.5 of the validation images, with the V2 halo radius and the excess of the 40-80 px ring (noise units): a bright extended object gives a strong excess and a radius capped at 300."""
 import os, sys, json
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 sys.stdout.reconfigure(encoding="utf-8")

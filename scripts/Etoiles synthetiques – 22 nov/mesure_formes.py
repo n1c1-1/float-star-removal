@@ -1,15 +1,15 @@
 # ======================================================================
 # mesure_formes.py
-# Rôle     : Formes des étoiles moyennes (G 12-13,5, isolées) : vraies contre v2, pour calibrer l'étape « formes ».
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : Usage : python mesure_formes.py [ellip_sigma irreg_p irreg_q_max irreg_d_max]
+# Role     : Shapes of the medium stars (G 12-13.5, isolated): real versus v2, to calibrate the « shapes » step.
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : star-free backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : Usage: python mesure_formes.py [ellip_sigma irreg_p irreg_q_max irreg_d_max]
 # ======================================================================
-"""Formes des étoiles moyennes (G 12-13,5, isolées) : vraies contre v2, pour calibrer l'étape « formes ».
-Par étoile : ellipticité 1 - b/a (moments d'ordre 2, r <= 2 FWHM) et asymétrie = somme |s - s tournée de 180° autour du
-centroïde| / somme s (r <= 2 FWHM). Sortie : mesure_formes.json ; affiche les centiles 10/50/90.
-Usage : python mesure_formes.py [ellip_sigma irreg_p irreg_q_max irreg_d_max]"""
+"""Shapes of the medium stars (G 12-13.5, isolated): real versus v2, to calibrate the « shapes » step.
+Per star: ellipticity 1 - b/a (2nd-order moments, r <= 2 FWHM) and asymmetry = sum |s - s rotated by 180° around the
+centroid| / sum s (r <= 2 FWHM). Output: mesure_formes.json; prints the 10/50/90 percentiles.
+Usage: python mesure_formes.py [ellip_sigma irreg_p irreg_q_max irreg_d_max]"""
 from __future__ import annotations
 
 import os as _os

@@ -1,13 +1,13 @@
 # ======================================================================
 # liste.py
-# Rôle     : Liste des images de validation du reseau d'etoiles (22 nov 2026).
-# Étape    : 13. Mesure de validation (voir scripts/LISEZMOI.md)
-# Entrées  : réseau .pt (ou dossier de sorties) + liste d'images de validation
-# Sorties  : json par image, planches, resume.md
-# Exemple  : python liste.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : List of the validation images of the star network (22 Nov 2026).
+# Stage    : 13. Validation measurement (see scripts/LISEZMOI.md)
+# Inputs   : .pt network (or folder of outputs) + list of validation images
+# Outputs  : json per image, contact sheets, resume.md
+# Example  : python liste.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Liste des images de validation du reseau d'etoiles (22 nov 2026). Entrees lues en place (meme preparation que l'entrainement :
-gradient retire, unites de bruit fond 0, reseau de debruitage livre, balance des blancs)."""
+"""List of the validation images of the star network (22 Nov 2026). Inputs read in place (same preparation as training:
+gradient removed, noise units background 0, delivered denoising network, white balance)."""
 from pathlib import Path
 SD = (Path(__import__("os").environ.get("ESSAIS", "essais")) / "stars_dataset")
 DATA = (Path(__import__("os").environ.get("DONNEES", "donnees")) / "Validation étoiles – 22 nov")

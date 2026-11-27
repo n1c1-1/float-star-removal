@@ -1,12 +1,12 @@
 # ======================================================================
 # a0_choix.py
-# Rôle     : Etape 0 : reperer les etoiles qui restent (entree vs melange N7/N5 0,75 vs FLOAT) sur la Tete de cheval.
-# Étape    : 13. Contrôle des étoiles saturées à faible signal (Tête de Cheval, 26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : découpes de l'image réelle et des images de validation, réseaux .pt
-# Sorties  : tableau de flux restant par étoile
-# Exemple  : python a0_choix.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Step 0: spot the stars that remain (input vs N7/N5 0.75 blend vs FLOAT) on the Horsehead.
+# Step     : 13. Check of saturated low-signal stars (Horsehead, 26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : crops of the real image and of the validation images, .pt networks
+# Outputs  : table of remaining flux per star
+# Example  : python a0_choix.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Etape 0 : reperer les etoiles qui restent (entree vs melange N7/N5 0,75 vs FLOAT) sur la Tete de cheval."""
+r"""Step 0: spot the stars that remain (input vs N7/N5 0.75 blend vs FLOAT) on the Horsehead."""
 import sys; sys.stdout.reconfigure(encoding="utf-8")
 from pathlib import Path
 import numpy as np, scipy.ndimage as ndi

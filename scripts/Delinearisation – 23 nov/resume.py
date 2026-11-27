@@ -1,12 +1,12 @@
 # ======================================================================
 # resume.py
-# Rôle     : Tableau court du banc : resume.py <nom du csv dans resultats> -> tableau.txt à côté de la planche.
-# Étape    : 3. Délinéarisation des images web (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image étirée
-# Sorties  : image rendue linéaire
-# Exemple  : python resume.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Short table of the bench: resume.py <name of the csv in resultats> -> tableau.txt next to the sheet.
+# Step     : 3. De-linearisation of web images (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : stretched image
+# Outputs  : image made linear
+# Example  : python resume.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Tableau court du banc : resume.py <nom du csv dans resultats> -> tableau.txt à côté de la planche."""
+"""Short table of the bench: resume.py <name of the csv in resultats> -> tableau.txt next to the sheet."""
 from __future__ import annotations
 
 import csv

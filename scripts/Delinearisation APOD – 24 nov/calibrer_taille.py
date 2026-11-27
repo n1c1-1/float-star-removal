@@ -1,13 +1,13 @@
 # ======================================================================
 # calibrer_taille.py
-# Rôle     : Étalon de la mesure de taille des étoiles : sur les 6 piles linéaires du banc du 23 nov, le rapport r50 brillantes / faibles et la pente de la taille, pour la pile linéaire vraie, l'image étirée, et la version etoiles_auto.
-# Étape    : 3. Délinéarisation et astrométrie des images web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images web APOD téléchargées
-# Sorties  : images linéaires, astrométrie, tuiles
-# Exemple  : python calibrer_taille.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Reference for the star size measurement: on the 6 linear stacks of the 23 Nov bench, the r50 ratio of bright / faint stars and the slope of the size, for the true linear stack, the stretched image, and the etoiles_auto version.
+# Step     : 3. De-linearisation and astrometry of the APOD web images (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : downloaded APOD web images
+# Outputs  : linear images, astrometry, tiles
+# Example  : python calibrer_taille.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Étalon de la mesure de taille des étoiles : sur les 6 piles linéaires du banc du 23 nov, le rapport r50 brillantes /
-faibles et la pente de la taille, pour la pile linéaire vraie, l'image étirée, et la version etoiles_auto."""
+"""Reference for the star size measurement: on the 6 linear stacks of the 23 Nov bench, the r50 ratio of bright /
+faint stars and the slope of the size, for the true linear stack, the stretched image, and the etoiles_auto version."""
 from __future__ import annotations
 
 import sys

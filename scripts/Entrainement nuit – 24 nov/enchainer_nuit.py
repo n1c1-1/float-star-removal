@@ -1,18 +1,18 @@
 # ======================================================================
 # enchainer_nuit.py
-# Rôle     : Chaîne de la nuit du 24 nov : N1 (5 h), mesure N1, N2 (5 h), mesure N2.
-# Étape    : 6. Entraînement de nuit N1/N2 (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33d + web délinéarisées, départ E3 pas 20000
-# Sorties  : instantanés N1/N2, tableau
-# Exemple  : lancer_borne.ps1 -Fils 4 -Log ...\chaine.out -Exe python -Args "-I enchainer_nuit.py [--sans-apod]"
+# Role     : Chain of the night of 24 Nov: N1 (5 h), N1 measurement, N2 (5 h), N2 measurement.
+# Step     : 6. Night training N1/N2 (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33d pairs + de-linearised web pairs, start E3 step 20000
+# Outputs  : N1/N2 snapshots, table
+# Example  : lancer_borne.ps1 -Fils 4 -Log ...\chaine.out -Exe python -Args "-I enchainer_nuit.py [--sans-apod]"
 # ======================================================================
-"""Chaîne de la nuit du 24 nov : N1 (5 h), mesure N1, N2 (5 h), mesure N2. Une seule commande, reprenable.
+"""Chain of the night of 24 Nov: N1 (5 h), N1 measurement, N2 (5 h), N2 measurement. A single command, resumable.
 
-Chaque étape finie laisse un repère <DONNEES>\\Entrainement étoiles nuit – 24 nov\\etapes\\<étape>.fini ; relancer la même commande saute
-ce qui est fini. Une étape qui plante est refaite jusqu'à 3 fois après 2 min de pause (l'entraînement repart de last.pt avec
---reprendre : réseau, optimiseur, pas). Une étape qui échoue 3 fois est notée dans chaine.log et la chaîne passe à la suivante
-(N2 ne dépend pas de la mesure de N1). Les calculs sont des processus fils du lancement lancer_borne (4 fils, priorité basse,
-4060 Ti seulement).
+Each finished stage leaves a marker <DONNEES>\\Entrainement étoiles nuit – 24 nov\\etapes\\<stage>.fini; rerunning the same command skips
+what is finished. A stage that crashes is redone up to 3 times after a 2 min pause (training restarts from last.pt with
+--reprendre: network, optimiser, step). A stage that fails 3 times is noted in chaine.log and the chain moves on to the next one
+(N2 does not depend on the N1 measurement). The computations are child processes of the lancer_borne launch (4 threads, low priority,
+4060 Ti only).
 
     lancer_borne.ps1 -Fils 4 -Log ...\\chaine.out -Exe python -Args "-I enchainer_nuit.py [--sans-apod]"
 """

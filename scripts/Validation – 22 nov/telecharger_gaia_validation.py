@@ -1,12 +1,12 @@
 # ======================================================================
 # telecharger_gaia_validation.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 13. Mesure de validation (voir scripts/LISEZMOI.md)
-# Entrées  : réseau .pt (ou dossier de sorties) + liste d'images de validation
-# Sorties  : json par image, planches, resume.md
-# Exemple  : python telecharger_gaia_validation.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Stage    : 13. Validation measurement (see scripts/LISEZMOI.md)
+# Inputs   : .pt network (or folder of outputs) + list of validation images
+# Outputs  : json per image, contact sheets, resume.md
+# Example  : python telecharger_gaia_validation.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-# Copie pour la validation (22 nov) : SRC/OUT vers <DONNEES>/Validation étoiles – 22 nov/<nom>/. Original : # 22 nov soir (jeu 1, images de la bibliotheque) : copie de telecharger_gaia_profond_m8_sho.py, SRC et OUT vers Methode v32 production. Usage : python telecharger_gaia_profond.py <image> [<image> ...]
+# Copy for the validation (22 Nov): SRC/OUT to <DONNEES>/Validation étoiles – 22 nov/<nom>/. Original: # 22 Nov evening (set 1, library images): copy of telecharger_gaia_profond_m8_sho.py, SRC and OUT to Methode v32 production. Usage: python telecharger_gaia_profond.py <image> [<image> ...]
 import sys; sys.stdout.reconfigure(encoding="utf-8")
 import sys, time, json, numpy as np, pyvo, requests
 from astropy.io import fits

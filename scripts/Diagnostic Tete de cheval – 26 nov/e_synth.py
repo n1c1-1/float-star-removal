@@ -1,13 +1,13 @@
 # ======================================================================
 # e_synth.py
-# Rôle     : Test e : le generateur synthetique (paires_synthetiques_n7.paire_synthetique, celui de l'entrainement) fabrique-t-il des coeurs ecretes, a quel niveau (en bruits) et en quelle proportion ?
-# Étape    : 13. Contrôle des étoiles saturées à faible signal (Tête de Cheval, 26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : découpes de l'image réelle et des images de validation, réseaux .pt
-# Sorties  : tableau de flux restant par étoile
-# Exemple  : python e_synth.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Test e: does the synthetic generator (paires_synthetiques_n7.paire_synthetique, the training one) produce clipped cores, at what level (in noise units) and in what proportion? Read-only use of the generator.
+# Step     : 13. Check of saturated low-signal stars (Horsehead, 26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : crops of the real image and of the validation images, .pt networks
+# Outputs  : table of remaining flux per star
+# Example  : python e_synth.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Test e : le generateur synthetique (paires_synthetiques_n7.paire_synthetique, celui de l'entrainement) fabrique-t-il des coeurs ecretes,
-a quel niveau (en bruits) et en quelle proportion ? Lecture seule du generateur."""
+r"""Test e: does the synthetic generator (paires_synthetiques_n7.paire_synthetique, the training one) produce clipped cores,
+at what level (in noise units) and in what proportion? Read-only use of the generator."""
 import sys, json; sys.stdout.reconfigure(encoding="utf-8")
 sys.path.insert(0, r"<SCRIPTS>\Tour N7 – 25 nov"); sys.path.insert(0, r"<SCRIPTS>\Etoiles synthetiques – 22 nov"); sys.path.insert(0, r"<SCRIPTS>")
 import numpy as np, scipy.ndimage as ndi

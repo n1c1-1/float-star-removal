@@ -1,17 +1,17 @@
 # ======================================================================
 # produire_apod.py
-# Rôle     : Production des paires v33 (nuit du 23 nov) : tuiles de tuiles_finales.csv, 39 images, alternees.
-# Étape    : 3. Production des paires web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images APOD délinéarisées
-# Sorties  : paires _debruitee .npz
-# Exemple  : usage : produire_v33.py [--essai]
+# Role     : Production of the v33 pairs (night of 23 Nov): tiles of tuiles_finales.csv, 39 images, interleaved.
+# Stage    : 3. Production of the APOD web pairs (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : de-linearised APOD images
+# Outputs  : _debruitee .npz pairs
+# Example  : usage : produire_v33.py [--essai]
 # ======================================================================
-"""Production des paires v33 (nuit du 23 nov) : tuiles de tuiles_finales.csv, 39 images, alternees.
- - 1 travailleur CARTE (piste 1, 2 fils, coeurs 13-14) : une tuile a la fois, en avance d'au plus 6 tuiles sur le processeur ;
- - 3 travailleurs PROCESSEUR (3 fils, coeurs 4-6 / 7-9 / 10-12) : entrees brutes d'abord, puis etapes A, B, passes, juge, paires ;
- - tout processus passe par lancer_borne.ps1 (priorite basse, 4060 Ti seule), puis coeurs reduits par PID ; garde de charge : > 85 % du processeur
-   pendant 2 min ou memoire libre < 10 Go -> un travailleur processeur suspendu (repris quand la charge retombe) ;
- - reprise : une tuile dont la paire « debruitee » existe est sautee ; arret par PID de l'arbre seulement.
+"""Production of the v33 pairs (night of 23 Nov): tiles of tuiles_finales.csv, 39 images, interleaved.
+ - 1 CARD worker (track 1, 2 threads, cores 13-14): one tile at a time, at most 6 tiles ahead of the CPU;
+ - 3 CPU workers (3 threads, cores 4-6 / 7-9 / 10-12): raw inputs first, then steps A, B, passes, judge, pairs;
+ - every process goes through lancer_borne.ps1 (low priority, 4060 Ti only), then cores restricted by PID; load guard: > 85 % of the CPU
+   for 2 min or free memory < 10 GB -> one CPU worker suspended (resumed when the load drops);
+ - resume: a tile whose "debruitee" pair exists is skipped; stop by PID of the tree only.
 usage : produire_v33.py [--essai]"""
 import csv, json, os, subprocess, sys, threading, time, queue
 from pathlib import Path

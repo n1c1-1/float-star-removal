@@ -1,13 +1,13 @@
 # ======================================================================
 # mesurer_n56.py
-# Rôle     : Mesure d'un essai N5 / N6 : meilleur pas (plus petite erreur « sous les étoiles » des tenues) -> inférence deux échelles V2 (inferer_v2.py) -> validation habituelle (valider_n56.py = copie de valider_copie.py, mêmes images, mêmes 
-# Étape    : 7-8. N5 (cibles v33g) et N6 (poids v33h) (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33d -> v33g -> v33h, départ E3 pas 20000
-# Sorties  : instantanés N5/N6, tableau_n56.md
-# Exemple  : mesurer_n56.py N5 | N6 | N2crops | tableau
+# Role     : Measurement of an N5 / N6 trial: best step (smallest "under the stars" error of the held-out) -> two-scale V2 inference (inferer_v2.py) -> usual validation (valider_n56.py = copy of valider_copie.py, same images, same
+# Stage    : 7-8. N5 (v33g targets) and N6 (v33h weights) (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33d -> v33g -> v33h pairs, start E3 step 20000
+# Outputs  : N5/N6 snapshots, tableau_n56.md
+# Example  : mesurer_n56.py N5 | N6 | N2crops | tableau
 # ======================================================================
-r"""Mesure d'un essai N5 / N6 : meilleur pas (plus petite erreur « sous les étoiles » des tenues) -> inférence deux échelles V2 (inferer_v2.py)
--> validation habituelle (valider_n56.py = copie de valider_copie.py, mêmes images, mêmes colonnes) -> tableau.
+r"""Measurement of an N5 / N6 trial: best step (smallest "under the stars" error of the held-out) -> two-scale V2 inference (inferer_v2.py)
+-> usual validation (valider_n56.py = copy of valider_copie.py, same images, same columns) -> table.
 
     mesurer_n56.py N5 | N6 | N2crops | tableau
 """

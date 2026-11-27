@@ -1,10 +1,10 @@
 # ======================================================================
 # make_dataset.py
-# Rôle     : Fabrique tout le jeu synthétique à partir du code et des graines ; écrit le manifeste d'empreintes ; --verify refait et compare.
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python make_dataset.py --n 48 [--seed 1] [--sets clean,defects] [--workers 14] [--device cpu] [--out ...]
+# Role     : Builds the whole synthetic set from the code and the seeds; writes the manifest of fingerprints; --verify rebuilds and compares.
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python make_dataset.py --n 48 [--seed 1] [--sets clean,defects] [--workers 14] [--device cpu] [--out ...]
 # ======================================================================
 """The whole training set of the star removal, regenerated from the code and its seeds alone: the proof that it owes
 nothing to any outside image nor to any other tool.

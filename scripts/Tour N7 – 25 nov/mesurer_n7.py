@@ -1,16 +1,16 @@
 # ======================================================================
 # mesurer_n7.py
-# Rôle     : Mesure de N7 (copie de mesurer_n56.py) : meilleur pas -> inférence deux échelles V2 (inferer_v2.py) -> colonne cœurs (coeurs_mesure.py) -> validation habituelle (valider_n7.py = copie de valider_n56.py) -> tableau N5 / N6 / N7 / m
-# Étape    : 9. N7 : cœurs de galaxie synthétiques (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33g + cœurs synthétiques
-# Sorties  : instantanés N7, tableau_n7.md
-# Exemple  : mesurer_n7.py N7 | coeurs_ref | tableau
+# Role     : Measurement of N7 (copy of mesurer_n56.py): best step -> two-scale V2 inference (inferer_v2.py) -> cores column (coeurs_mesure.py) -> usual validation (valider_n7.py = copy of valider_n56.py) -> table N5 / N6 / N7 / m
+# Stage    : 9. N7: synthetic galaxy cores (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33g pairs + synthetic cores
+# Outputs  : N7 snapshots, tableau_n7.md
+# Example  : mesurer_n7.py N7 | coeurs_ref | tableau
 # ======================================================================
-r"""Mesure de N7 (copie de mesurer_n56.py) : meilleur pas -> inférence deux échelles V2 (inferer_v2.py) -> colonne cœurs (coeurs_mesure.py)
--> validation habituelle (valider_n7.py = copie de valider_n56.py) -> tableau N5 / N6 / N7 / modèle FLOAT / RefExt avec la colonne cœurs.
+r"""Measurement of N7 (copy of mesurer_n56.py): best step -> two-scale V2 inference (inferer_v2.py) -> cores column (coeurs_mesure.py)
+-> usual validation (valider_n7.py = copy of valider_n56.py) -> table N5 / N6 / N7 / FLOAT model / RefExt with the cores column.
 
     mesurer_n7.py N7 | coeurs_ref | tableau
-      coeurs_ref : colonne cœurs de N5, N6 (meilleur pas de leur history.json) et de RefExt (GPU, quelques secondes)
+      coeurs_ref : cores column of N5, N6 (best step of their history.json) and of RefExt (GPU, a few seconds)
 """
 import glob
 import json

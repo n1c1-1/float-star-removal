@@ -1,25 +1,25 @@
 # ======================================================================
 # construire_paire.py
-# Rôle     : Une paire d'entraînement (jeu 1) à partir d'une tuile traitée par la chaîne classique.
-# Étape    : 2. Juge des zones : poids 0 où la chaîne échoue (v33) (voir scripts/LISEZMOI.md)
-# Entrées  : entrée, cible de la chaîne, zones
-# Sorties  : carte de poids
-# Exemple  : usage : construire_paire.py <dossier méthode> <image> <carré> [<x0 découpe> <y0 découpe>]
+# Role     : A training pair (set 1) from a tile processed by the classic chain.
+# Step     : 2. Zone judge: weight 0 where the chain fails (v33) (see scripts/LISEZMOI.md)
+# Inputs   : input, chain target, zones
+# Outputs  : weight map
+# Example  : usage: construire_paire.py <dossier méthode> <image> <carré> [<x0 découpe> <y0 découpe>]
 # ======================================================================
-"""Une paire d'entraînement (jeu 1) à partir d'une tuile traitée par la chaîne classique.
+"""A training pair (set 1) from a tile processed by the classic chain.
 
-usage : construire_paire.py <dossier méthode> <image> <carré> [<x0 découpe> <y0 découpe>]
-  - entrée  : la tuile 512 de l'image débruitée (découpe 768, tuile = découpe + 128) ;
-  - cible   : sorties\\<carré>\\B\\t3\\sans_etoiles_tuile.npy ;
-  - classes : sorties\\<carré>\\B\\t3\\carte_remplissage_tuile.npy (0 intact, 1 halo soustrait, 3 moyenne corrigée sur place :
-              vrais pixels ; 2 recréé autour des brillantes ; 4-8 défauts et restes rebouchés par l'étape A et les passes) ;
-  - poids   : RECETTE_ET_LECONS.md section 8 : vrais pixels 1 ; « inévitable » (classe 2 sur le cœur écrêté d'une étoile,
-              dilaté de 6 px) 1 si la zone est bonne, 0 sinon ; « réparation » (le reste des classes 2 et 4-8) 0,5 si bonne, 0 sinon.
-  - zone bonne : grain (écart robuste du détail fin) entre 0,85 et 1,15 de celui de l'anneau 4-16 px autour (zones de plus de
-              30 px), marche au bord < 1,5 bruit local, moins de 2 % de pixels au-delà de 5 écarts du filtre à l'échelle de
-              l'étoile (anneaux, rayons, taches).
-Sortie : <DONNEES>\\Paires étoiles jeu 1 – 22 nov\\<image>_<carré>.npz (input, target, weight, classes ; float32 / uint8)
-         + <image>_<carré>.jpg (entrée | cible | poids, étirement arcsinh 60) + ligne dans paires.jsonl.
+usage: construire_paire.py <dossier méthode> <image> <carré> [<x0 découpe> <y0 découpe>]
+  - input   : the 512 tile of the denoised image (768 crop, tile = crop + 128);
+  - target  : sorties\\<carré>\\B\\t3\\sans_etoiles_tuile.npy;
+  - classes : sorties\\<carré>\\B\\t3\\carte_remplissage_tuile.npy (0 intact, 1 halo subtracted, 3 medium corrected in place:
+              real pixels; 2 recreated around the bright ones; 4-8 defects and remnants plugged by step A and the passes);
+  - weight  : RECETTE_ET_LECONS.md section 8: real pixels 1; « unavoidable » (class 2 on the clipped core of a star,
+              dilated by 6 px) 1 if the zone is good, 0 otherwise; « repair » (the rest of classes 2 and 4-8) 0.5 if good, 0 otherwise.
+  - good zone: grain (robust spread of the fine detail) between 0.85 and 1.15 of that of the 4-16 px ring around (zones of more than
+              30 px), edge step < 1.5 local noise, fewer than 2 % of pixels beyond 5 deviations of the filter at the
+              star's scale (rings, rays, blobs).
+Output: <DONNEES>\\Paires étoiles jeu 1 – 22 nov\\<image>_<carré>.npz (input, target, weight, classes ; float32 / uint8)
+         + <image>_<carré>.jpg (input | target | weight, arcsinh 60 stretch) + a line in paires.jsonl.
 """
 import json
 import sys

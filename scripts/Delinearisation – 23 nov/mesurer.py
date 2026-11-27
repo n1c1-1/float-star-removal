@@ -1,17 +1,17 @@
 # ======================================================================
 # mesurer.py
-# Rôle     : Comparaison d'une image délinéarisée D à la pile linéaire d'origine L (même cadrage).
-# Étape    : 3. Délinéarisation des images web (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image étirée
-# Sorties  : image rendue linéaire
-# Exemple  : python mesurer.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Comparison of a de-linearised image D with the original linear stack L (same framing).
+# Step     : 3. De-linearisation of web images (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : stretched image
+# Outputs  : image made linear
+# Example  : python mesurer.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Comparaison d'une image délinéarisée D à la pile linéaire d'origine L (même cadrage).
+"""Comparison of a de-linearised image D with the original linear stack L (same framing).
 
-Mise à la même échelle : D_c = a L_c + b_c (une échelle commune, un décalage par canal), ajustée sur les médianes de
-blocs 8x8 (le bruit et les étoiles n'y pèsent pas), blocs sous le 99e centile. Les mesures d'étoiles, de bruit et de
-couleur ci-dessous sont des rapports : elles ne dépendent ni de a ni de b, sauf les rapports de flux par tranche (qui
-dépendent de a, la mesure sans unité est « compression » = rapport brillantes / rapport faibles, 1 = linéaire)."""
+Matching to the same scale: D_c = a L_c + b_c (one common scale, one offset per channel), fitted on the medians of
+8x8 blocks (noise and stars hardly weigh there), blocks below the 99th percentile. The star, noise and
+colour measurements below are ratios: they depend on neither a nor b, except the flux ratios per slice (which
+depend on a; the unitless measure is “compression” = bright ratio / faint ratio, 1 = linear)."""
 from __future__ import annotations
 
 import numpy as np

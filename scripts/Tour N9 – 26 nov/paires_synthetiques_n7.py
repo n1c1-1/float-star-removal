@@ -1,41 +1,41 @@
 # ======================================================================
 # paires_synthetiques_n7.py
-# Rôle     : COPIE du 24 nov (essai N2) : seul ajout, le paramètre extras de paire_synthetique (étoiles très brillantes imposées).
-# Étape    : 10. Essai écarté N9 (cœurs compacts, 26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33g
-# Sorties  : instantanés, tableau_n9.md
-# Exemple  : python paires_synthetiques.py cache [n_styles=32]   -> cache_styles.npz (une fois, ~5 min sur 2 fils)
+# Role     : COPY of 24 Nov (trial N2): only addition, the extras parameter of paire_synthetique (imposed very bright stars).
+# Stage    : 10. Discarded trial N9 (compact cores, 26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33g pairs
+# Outputs  : snapshots, tableau_n9.md
+# Example  : python paires_synthetiques.py cache [n_styles=32]   -> cache_styles.npz (once, ~5 min on 2 threads)
 # ======================================================================
-"""COPIE du 24 nov (essai N2) : seul ajout, le paramètre extras de paire_synthetique (étoiles très brillantes imposées).
-Original inchangé : Etoiles synthetiques – 22 nov/paires_synthetiques.py.
+"""COPY of 24 Nov (trial N2): only addition, the extras parameter of paire_synthetique (imposed very bright stars).
+Original unchanged: Etoiles synthetiques – 22 nov/paires_synthetiques.py.
 
-COPIE du 25 nov (essai N7) : paire_synthetique inchangée ; ajout de coeur_synthetique et paire_synthetique_coeurs (CŒURS étendus
-compacts, présents à l'identique dans l'entrée et la cible : un réseau qui n'en voit jamais prend un cœur de galaxie pour une étoile).
+COPY of 25 Nov (trial N7): paire_synthetique unchanged; added coeur_synthetique and paire_synthetique_coeurs (extended compact CORES,
+present identically in the input and the target: a network that never sees them takes a galaxy core for a star).
 
-Branchement entraînement (tour 6) : paire synthétique RAPIDE sur un vrai fond sans étoiles.
+Training hook-up (round 6): FAST synthetic pair on a real starless background.
 
     from paires_synthetiques import paire_synthetique
     entree, cible = paire_synthetique(fond, graine)
-      fond   : (3, H, W) float32 linéaire, la cible sans étoiles d'une paire réelle (découpe 256 ou 512), en unités de
-               bruit du ciel (convention des images de la méthode : fond 0, bruit 1) ; « bruit= » sinon
-      cible  : le fond EXACT (copie)
-      entree : fond + étoiles tirées + leur bruit de photons, écrêtées chacune à son niveau autour d'elle seulement
-               (entree - cible n'est jamais non nul hors des étoiles)
-    Reproductible par graine.
+      fond   : (3, H, W) linear float32, the starless target of a real pair (256 or 512 crop), in sky noise units
+               (convention of the method images: background 0, noise 1) ; "bruit=" otherwise
+      cible  : the EXACT background (copy)
+      entree : background + drawn stars + their photon noise, each clipped at its own level around it only
+               (entree - cible is never non-zero outside the stars)
+    Reproducible by seed.
 
-Vitesse : le générateur complet (etoiles2.ajouter_etoiles, 7-40 s par tuile 512) est trop lent pour l'entraînement.
-Ici, des « styles d'image » sont précalculés une fois et mis en cache (cache_styles.npz, ~50 Mo) à partir de
-etoiles2.tirer_image (tirages libres : instrument réel, optique de Fourier, auréole, aigrettes, perles, plateau,
-couleurs, banque) :
-  - PSF du cœur (65 px, par couleur) ; gabarit « auréole + aigrettes » à flux unité (257 px, par couleur), avec la même
-    loi que etoiles2.vignette ; 3 formes de la banque (médiane de 5-8 étoiles réelles, tournées, à la largeur du style) ;
-Par tuile : comptes en loi de puissance (densité 50-6000 / Mpx au-dessus d'un bruit, comme stars.draw_field), couleurs
-BP-RP de nos champs, tous les cœurs en un seul dépôt bilinéaire + convolution, auréole et aigrettes des étoiles de plus
-de 20 bruits par gabarit coupé à leur portée, formes de la banque pour les écrêtées, plateau propre par étoile (bord
-doux), bruit de photons.
+Speed: the full generator (etoiles2.ajouter_etoiles, 7-40 s per 512 tile) is too slow for training.
+Here, "image styles" are precomputed once and cached (cache_styles.npz, ~50 MB) from
+etoiles2.tirer_image (free draws: real instrument, Fourier optics, halo, spikes, beads, plateau,
+colours, bank):
+  - core PSF (65 px, per colour); "halo + spikes" template at unit flux (257 px, per colour), with the same
+    law as etoiles2.vignette; 3 shapes from the bank (median of 5-8 real stars, rotated, at the width of the style);
+Per tile: power-law counts (density 50-6000 / Mpx above a noise, as stars.draw_field), BP-RP colours
+of our fields, all cores in a single bilinear deposit + convolution, halo and spikes of stars above
+20 noises by template cut at their reach, shapes from the bank for the clipped ones, own plateau per star (soft
+edge), photon noise.
 
-    python paires_synthetiques.py cache [n_styles=32]   -> cache_styles.npz (une fois, ~5 min sur 2 fils)
-    python paires_synthetiques.py vitesse               -> temps par tuile 256 et 512 (2 fils), planche Synth_20
+    python paires_synthetiques.py cache [n_styles=32]   -> cache_styles.npz (once, ~5 min on 2 threads)
+    python paires_synthetiques.py vitesse               -> time per 256 and 512 tile (2 threads), Synth_20 contact sheet
 """
 from __future__ import annotations
 

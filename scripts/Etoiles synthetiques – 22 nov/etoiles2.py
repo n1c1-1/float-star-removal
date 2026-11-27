@@ -1,43 +1,43 @@
 # ======================================================================
 # etoiles2.py
-# Rôle     : Générateur d'étoiles synthétiques v2 (22 nov) : un champ d'étoiles tiré, AJOUTÉ sur une tuile de vrai fond sans étoiles.
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : python etoiles2.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Synthetic star generator v2 (22 Nov): a drawn star field, ADDED onto a tile of real star-free background.
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : star-free backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : python etoiles2.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Générateur d'étoiles synthétiques v2 (22 nov) : un champ d'étoiles tiré, AJOUTÉ sur une tuile de vrai fond sans étoiles.
+"""Synthetic star generator v2 (22 Nov): a drawn star field, ADDED onto a tile of real star-free background.
 
-    out = ajouter_etoiles(fond, graine)          # fond (C, n, n) en bruits du ciel, fond 0 ; C = 3 (couleur ou filtres)
+    out = ajouter_etoiles(fond, graine)          # background (C, n, n) in sky noises, background 0; C = 3 (colour or filters)
     out["entree"], out["etoiles"], out["ecretes"], out["fiche"]
 
-Reproductible par graine (même graine, même fond -> mêmes tableaux au bit près sur la même machine).
+Reproducible by seed (same seed, same background -> same arrays to the bit on the same machine).
 
-Ce qui est repris du premier générateur (starRemoval, lu en place, non modifié) : l'optique de Fourier (psf.py : pupille,
-obstruction, Zernike variant dans le champ : coma, astigmatisme, défocalisation et donuts, turbulence, suivi), les
-instruments réels du commerce (instruments.py + catalogue.json) et le tirage du champ (stars.draw_field : comptes en loi
-de puissance, amas, étoiles de la classe d'Alnitak).
+What is taken over from the first generator (starRemoval, read in place, not modified): the Fourier optics (psf.py: pupil,
+obstruction, field-varying Zernike: coma, astigmatism, defocus and donuts, turbulence, tracking), the real commercial
+instruments (instruments.py + catalogue.json) and the field draw (stars.draw_field: power-law counts, clusters,
+Alnitak-class stars).
 
-Ce qui change (chaque étape a sa planche Synth_<k>_*.png ; ETAPES liste l'ordre) :
-  1 auréole   : par étoile, I/F = a50 ((r^2 + rc^2) / (50^2 + rc^2))^(-gamma/2), a50 3e-7 à 4e-6, gamma 1,6 à 2,6
-                (mesuré sur nos 4 images : PLAN.md, écart 1), dispersion 0,15 dex d'une étoile à l'autre ;
-  2 aigrettes : analytiques (l'optique de Fourier est calculée sans branches) : nombre et forme tirés (aucune, 2, 4,
-                4 dédoublées, 6, 8), indépendants du type d'instrument, angle libre ; I/F le long =
+What changes (each step has its sheet Synth_<k>_*.png; ETAPES lists the order):
+  1 aureole   : per star, I/F = a50 ((r^2 + rc^2) / (50^2 + rc^2))^(-gamma/2), a50 3e-7 to 4e-6, gamma 1.6 to 2.6
+                (measured on our 4 images: PLAN.md, gap 1), scatter 0.15 dex from one star to another;
+  2 spikes    : analytic (the Fourier optics is computed without branches): number and shape drawn (none, 2, 4,
+                4 doubled, 6, 8), independent of the instrument type, free angle; I/F along =
                 s30 ((1 + (r/fw)^2) / (1 + (30/fw)^2))^(-p/2) exp(-(r / L)^2) + s11 ((r^2 + fw^2) / (121 + fw^2))^-2 :
-                s30 4e-7 à 6e-6, p 1,5 à 3,2, coupure L 40 à 300 px dans 40 % des cas (mesure_aigrettes.json : nos 4
-                images, étoiles croisées écartées) ; partie proche raide s11 1,6e-5 à 1,2e-4 ; largeur en travers
-                sigma 0,45 à 0,9 FWHM (mesurée à mi-hauteur), qui croît avec l'éclat ; longueur à l'échelle de lambda
-                par couleur (arc-en-ciel) ; pointillés de pas propre à chaque couleur ou filtre ;
-  3 plateau   : chaque étoile écrête à SON niveau (0,35 à 1 du max de l'image, par couleur), bord doux ;
-  4 couleurs  : décalage R et B par étoile (commun à l'image + aléatoire) et largeur par couleur ;
-  5 halo      : allongement (terme en 2 theta croissant avec r), décentrement vers le centre optique, anneaux de
-                reflet doux, reflets fantômes décentrés, rayons fins autour des géantes et, pour un instrument qui en
-                fait, de toutes les étoiles écrêtées ; la lumière hors du cœur s'éteint sur le dernier quart de la
-                fenêtre (pas de bord carré) ;
-  6 formes    : ellipticité, deuxième composante et grumeaux (texture lisse du cœur) par étoile, calés sur
-                l'ellipticité et l'asymétrie mesurées des étoiles G 12-13,5 (mesure_formes.py), doubles serrées ;
-  7 couleur   : BP-RP tirée des distributions Gaia de nos 4 champs, convertie par la loi de Planck à la température
-                de Mucciarelli, Bellazzini & Massari 2021 (A&A 653, A90 : nains, BP-RP), balance des blancs ou filtres.
+                s30 4e-7 to 6e-6, p 1.5 to 3.2, cutoff L 40 to 300 px in 40 % of cases (mesure_aigrettes.json: our 4
+                images, crossed stars discarded); steep near part s11 1.6e-5 to 1.2e-4; cross-width
+                sigma 0.45 to 0.9 FWHM (measured at half height), growing with brightness; length scaled with lambda
+                per colour (rainbow); dotted pattern with a pitch specific to each colour or filter;
+  3 plateau   : each star clips at ITS level (0.35 to 1 of the image max, per colour), soft edge;
+  4 colours   : R and B shift per star (common to the image + random) and width per colour;
+  5 halo      : elongation (term in 2 theta growing with r), decentring towards the optical centre, soft reflection
+                rings, off-centre ghost reflections, fine rays around the giants and, for an instrument that has
+                them, around all clipped stars; the light outside the core fades out over the last quarter of the
+                window (no square edge);
+  6 shapes    : ellipticity, second component and lumps (smooth core texture) per star, calibrated on the measured
+                ellipticity and asymmetry of the G 12-13.5 stars (mesure_formes.py), tight doubles;
+  7 colour    : BP-RP drawn from the Gaia distributions of our 4 fields, converted by Planck's law at the temperature
+                of Mucciarelli, Bellazzini & Massari 2021 (A&A 653, A90: dwarfs, BP-RP), white balance or filters.
 """
 from __future__ import annotations
 

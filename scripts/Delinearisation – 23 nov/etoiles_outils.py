@@ -1,12 +1,12 @@
 # ======================================================================
 # etoiles_outils.py
-# Rôle     : Détection d'étoiles isolées, photométrie d'ouverture et rayon de demi-flux (banc de délinéarisation).
-# Étape    : 3. Délinéarisation des images web (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image étirée
-# Sorties  : image rendue linéaire
-# Exemple  : python etoiles_outils.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Detection of isolated stars, aperture photometry and half-flux radius (de-linearisation bench).
+# Step     : 3. De-linearisation of web images (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : stretched image
+# Outputs  : image made linear
+# Example  : python etoiles_outils.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Détection d'étoiles isolées, photométrie d'ouverture et rayon de demi-flux (banc de délinéarisation)."""
+"""Detection of isolated stars, aperture photometry and half-flux radius (de-linearisation bench)."""
 from __future__ import annotations
 
 import numpy as np

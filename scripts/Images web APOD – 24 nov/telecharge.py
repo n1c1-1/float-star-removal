@@ -1,13 +1,13 @@
 # ======================================================================
 # telecharge.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 3. Collecte des images web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : archive APOD (API publique)
-# Sorties  : images téléchargées (non publiées), index
-# Exemple  : python telecharge.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Step     : 3. Collection of the APOD web images (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : APOD archive (public API)
+# Outputs  : downloaded images (not published), index
+# Example  : python telecharge.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-# Telechargement des images APOD choisies (selection.txt : une ligne = slug|motif). 1 requete / 3 s, UA generique.
-# Ecarte (supprime) les images dont le grand cote < 2000 px. Reprise possible : les fichiers deja presents sont gardes.
+# Download of the chosen APOD images (selection.txt: one line = slug|reason). 1 request / 3 s, generic UA.
+# Discards (deletes) the images whose long side < 2000 px. Resumable: the files already present are kept.
 import json,os,sys,time,subprocess,csv
 from PIL import Image
 Image.MAX_IMAGE_PIXELS=None

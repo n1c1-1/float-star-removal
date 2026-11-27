@@ -1,10 +1,10 @@
 # ======================================================================
 # donut_measure.py
-# Rôle     : Mesure des étoiles défocalisées d'une pile réelle (anneaux).
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python donut_measure.py [--frames 6] [--out <ESSAIS>/starRemoval/measures/donuts_m31.json]
+# Role     : Measurement of the defocused stars (rings) of a real stack.
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python donut_measure.py [--frames 6] [--out <ESSAIS>/starRemoval/measures/donuts_m31.json]
 # ======================================================================
 """The defocused stars of a real stack: a real M31 (<DISQUE>/astro_gpu_m31, Newton 150/750, Canon 6000 x 4000, 3.72 um
 pixels, RGGB), 30 x 60 s out of focus: each star is the image of the pupil, a ring with the secondary mirror's shadow

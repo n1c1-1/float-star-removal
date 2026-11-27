@@ -1,14 +1,14 @@
 # ======================================================================
 # enchainer_n9.py
-# Rôle     : Chaîne N9 (tour court 10 000 pas) : entraînement train_n9.py --reprendre jusqu'au pas 10000, puis mesure complète (mesurer_n9.py) au meilleur pas de validation et au pas 10000.
-# Étape    : 10. Essai écarté N9 (cœurs compacts, 26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33g
-# Sorties  : instantanés, tableau_n9.md
-# Exemple  : lancer_borne.ps1 -Fils 4 -Log ...\chaine_b.out -Exe python -Args "-I enchainer_n9.py"
+# Role     : N9 chain (short round, 10,000 steps): training train_n9.py --reprendre up to step 10000, then full measurement (mesurer_n9.py) at the best validation step and at step 10000.
+# Stage    : 10. Discarded trial N9 (compact cores, 26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33g pairs
+# Outputs  : snapshots, tableau_n9.md
+# Example  : lancer_borne.ps1 -Fils 4 -Log ...\chaine_b.out -Exe python -Args "-I enchainer_n9.py"
 # ======================================================================
-r"""Chaîne N9 (tour court 10 000 pas) : entraînement train_n9.py --reprendre jusqu'au pas 10000, puis mesure complète (mesurer_n9.py) au meilleur pas de validation et au pas 10000.
-Si le tour s'arrête sur « cœurs trop bas » (arret_coeurs.txt), la chaîne ne mesure rien.
-Après un « arrêt mémoire » (code 4) ou un refus de la mesure (code 2, moins de 8 Go libres), la chaîne attend 8 Go libres (test toutes les 60 s) et relance.
+r"""N9 chain (short round, 10,000 steps): training train_n9.py --reprendre up to step 10000, then full measurement (mesurer_n9.py) at the best validation step and at step 10000.
+If the round stops on "cores too low" (arret_coeurs.txt), the chain measures nothing.
+After a "memory stop" (code 4) or a refusal of the measurement (code 2, less than 8 GB free), the chain waits for 8 GB free (checked every 60 s) and restarts.
     lancer_borne.ps1 -Fils 4 -Log ...\chaine_b.out -Exe python -Args "-I enchainer_n9.py"
 """
 import subprocess, sys, time

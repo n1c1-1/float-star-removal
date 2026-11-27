@@ -1,16 +1,16 @@
 # ======================================================================
 # mesure_halos.py
-# Rôle     : Texture des halos des brillantes (G < 9,5, sans plus brillante à 60 px) : vraies contre v2 (tour 2).
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : Usage : python mesure_halos.py [grain_halo]
+# Role     : Texture of the bright stars' halos (G < 9.5, no brighter star within 60 px): real versus v2 (round 2).
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : star-free backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : Usage: python mesure_halos.py [grain_halo]
 # ======================================================================
-"""Texture des halos des brillantes (G < 9,5, sans plus brillante à 60 px) : vraies contre v2 (tour 2).
-Par étoile, luminance fond retiré, 3 anneaux entre max(4 FWHM, 2 x rayon du plateau) et 60 px ; médiane par secteur de
-3° (aigrettes à +-6° et voisines du catalogue à moins de 3 FWHM écartées) ; on retire a + harmoniques 1 et 2 ; texture =
-écart-type du reste / niveau de l'anneau, moins la part du bruit. Sortie : mesure_halos.json.
-Usage : python mesure_halos.py [grain_halo]"""
+"""Texture of the bright stars' halos (G < 9.5, no brighter star within 60 px): real versus v2 (round 2).
+Per star, luminance with background removed, 3 rings between max(4 FWHM, 2 x plateau radius) and 60 px; median per 3°
+sector (spikes at +-6° and catalogue neighbours within 3 FWHM discarded); a + harmonics 1 and 2 are removed; texture =
+standard deviation of the remainder / ring level, minus the noise share. Output: mesure_halos.json.
+Usage: python mesure_halos.py [grain_halo]"""
 from __future__ import annotations
 
 import os as _os

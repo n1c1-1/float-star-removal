@@ -1,17 +1,17 @@
 # ======================================================================
 # etape_B.py
-# Rôle     : Etape B de la methode validee : les trois passes finales (restes d'etoiles, points sombres / restes de 3-8 px, defauts du juge) sur la sortie de l'etape A.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : Usage : python etape_B.py <nom>      (lit sorties/<nom>/A/cas.json ; ecrit sorties/<nom>/B/{t1,t2,t3}/)
+# Role     : Step B of the validated method: the three final passes (star remnants, dark points / 3-8 px remnants, judge's defects) on the output of step A.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : Usage: python etape_B.py <nom>      (reads sorties/<nom>/A/cas.json ; writes sorties/<nom>/B/{t1,t2,t3}/)
 # ======================================================================
-"""Etape B de la methode validee : les trois passes finales (restes d'etoiles, points sombres / restes de 3-8 px, defauts du juge)
-sur la sortie de l'etape A. Scripts de Passes/ : passe_finale_p.py, passe_finale_t2_p.py, passe_finale_t3_p.py (copies parametrees,
-fabriquees par Passes/fabriquer_copies_p.py a partir des copies exactes des originaux).
-Usage : python etape_B.py <nom>      (lit sorties/<nom>/A/cas.json ; ecrit sorties/<nom>/B/{t1,t2,t3}/)
-Seuils de la passe 1 SEULE : PF_HI=7, PF_LO=4, PF_ZK=3 (essai « 7 4 3 » du resultat valide) ; t2 et t3 gardent les valeurs par
-defaut du module (5 / 3 / 4), comme dans la session : ne pas generaliser ces variables aux trois passes."""
+"""Step B of the validated method: the three final passes (star remnants, dark points / 3-8 px remnants, judge's defects)
+on the output of step A. Scripts of Passes/: passe_finale_p.py, passe_finale_t2_p.py, passe_finale_t3_p.py (parametrised copies,
+made by Passes/fabriquer_copies_p.py from the exact copies of the originals).
+Usage: python etape_B.py <nom>      (reads sorties/<nom>/A/cas.json ; writes sorties/<nom>/B/{t1,t2,t3}/)
+Thresholds of pass 1 ONLY: PF_HI=7, PF_LO=4, PF_ZK=3 (test « 7 4 3 » of the validated result); t2 and t3 keep the
+module's default values (5 / 3 / 4), as in the session: do not generalise these variables to the three passes."""
 import os, sys, json, subprocess
 from pathlib import Path
 

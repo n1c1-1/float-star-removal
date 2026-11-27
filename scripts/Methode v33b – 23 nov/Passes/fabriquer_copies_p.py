@@ -1,15 +1,15 @@
 # ======================================================================
 # fabriquer_copies_p.py
-# Rôle     : Fabrique passe_finale_p.py, passe_finale_t2_p.py, passe_finale_t3_p.py a partir des copies exactes des originaux (passe_finale.py, passe_finale_t2.py, passe_finale_t3.py, jamais modifiees).
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python fabriquer_copies_p.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Builds passe_finale_p.py, passe_finale_t2_p.py, passe_finale_t3_p.py from exact copies of the originals (passe_finale.py, passe_finale_t2.py, passe_finale_t3.py, never modified).
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python fabriquer_copies_p.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Fabrique passe_finale_p.py, passe_finale_t2_p.py, passe_finale_t3_p.py a partir des copies exactes des originaux
-(passe_finale.py, passe_finale_t2.py, passe_finale_t3.py, jamais modifiees). Chaque remplacement doit se trouver exactement
-une fois (sinon erreur) : rien n'est devine. Les calculs sont inchanges ; seuls changent les chemins, le nom de la decoupe,
-les angles et les etoiles montrees (parametres de mv_cfg.py), et le fait que les corrections de t3 liees a des positions nommees de decoupe6 ne s'appliquent qu'a decoupe6."""
+"""Builds passe_finale_p.py, passe_finale_t2_p.py, passe_finale_t3_p.py from exact copies of the originals
+(passe_finale.py, passe_finale_t2.py, passe_finale_t3.py, never modified). Each replacement must be found exactly
+once (otherwise error): nothing is guessed. The computations are unchanged; only the paths, the crop's name,
+the angles and the stars shown change (parameters of mv_cfg.py), and the fact that the t3 corrections tied to named positions of decoupe6 only apply to decoupe6."""
 from pathlib import Path
 
 D = Path(__file__).resolve().parent

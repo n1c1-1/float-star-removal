@@ -1,35 +1,35 @@
 # ======================================================================
 # train_n9.py
-# Rôle     : N9 = copie de train_n8l.py (N7 + garde-fou mémoire et contrôle des cœurs dans le processus).
-# Étape    : 10. Essai écarté N9 (cœurs compacts, 26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33g
-# Sorties  : instantanés, tableau_n9.md
-# Exemple  : python train_n9.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : N9 = copy of train_n8l.py (N7 + memory guard and core check inside the process).
+# Stage    : 10. Discarded trial N9 (compact cores, 26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33g pairs
+# Outputs  : snapshots, tableau_n9.md
+# Example  : python train_n9.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""N9 = copie de train_n8l.py (N7 + garde-fou mémoire et contrôle des cœurs dans le processus). Changement de recette : 40 % des cœurs synthétiques compacts
-(paires_synthetiques_n7.PART_COMPACTS). Chargeurs 2 / prefetch 4 comme N7 ; contrôle des cœurs aux pas 5000 et 10000.
-COPIE de train_n8.py (N8b) : reprise du pas 5000 (last.pt : réseau, optimiseur, pas ; le pas d'apprentissage se déduit du pas, même formule) avec mémoire réduite
-(--preparateurs 1, prefetch 2, last.pt libéré après lecture) et garde-fou mémoire tous les 100 pas (arrêt propre sous 3,5 Go libres, code 4).
-COPIE de train_n7.py pour N8 (seuls changements : --coeurs 0,10 donné par la chaîne, --pas 10000, mesure des cœurs au pas 5000 avec règle d'arrêt).
-COPIE de train_n56.py pour N7 : recette N5/N6 exacte ; seul changement, --coeurs (0,25) : sur cette part des tuiles synthétiques,
-1 ou 2 cœurs étendus (paires_synthetiques_n7.paire_synthetique_coeurs) présents à l'identique dans l'entrée et la cible, poids 1 dessus.
+"""N9 = copy of train_n8l.py (N7 + memory guard and core check inside the process). Recipe change: 40 % compact synthetic cores
+(paires_synthetiques_n7.PART_COMPACTS). Loaders 2 / prefetch 4 as N7; core check at steps 5000 and 10000.
+COPY of train_n8.py (N8b): resume from step 5000 (last.pt: network, optimiser, step; the learning step follows from the step, same formula) with reduced memory
+(--preparateurs 1, prefetch 2, last.pt released after reading) and memory guard every 100 steps (clean stop under 3.5 GB free, code 4).
+COPY of train_n7.py for N8 (only changes: --coeurs 0,10 given by the chain, --pas 10000, core measurement at step 5000 with stop rule).
+COPY of train_n56.py for N7: exact N5/N6 recipe; only change, --coeurs (0.25): on this share of the synthetic tiles,
+1 or 2 extended cores (paires_synthetiques_n7.paire_synthetique_coeurs) present identically in the input and the target, weight 1 on them.
 
-Essais de nuit du 24 nov (N1, N2) : V33C (train_v33c.py, lui-même A) avec les paires v33d et les paires web APOD.
+Night trials of 24 Nov (N1, N2): V33C (train_v33c.py, itself A) with the v33d pairs and the APOD web pairs.
 
-Importe train_jeu1.py SANS le modifier (réseau chain_nafnet, perte L1 pondérée, valider). Départ E3 pas 20000, lots 8, lr 5e-4,
-montée 1000 pas puis cosinus sur les pas, 60 % de tuiles d'étoiles synthétiques. Aucun bruit artificiel ajouté.
+Imports train_jeu1.py WITHOUT modifying it (chain_nafnet network, weighted L1 loss, validation). Start E3 step 20000, batches 8, lr 5e-4,
+1000-step warm-up then cosine over the steps, 60 % synthetic-star tiles. No artificial noise added.
 
-N1 = V33C avec les nouvelles données, rien d'autre :
-  - paires réelles <DONNEES>\\Paires étoiles v33 – 23 nov\\*_v33d.npz (débruitées et brutes), mêmes 6 tuiles tenues que V33C ;
-  - paires web <DONNEES>\\Paires étoiles APOD – 24 nov\\*_v33d.npz (débruitées seulement) ;
-  - tirage : 50 % débruitées réelles, 25 % brutes, 25 % APOD (si aucune paire APOD : le refus est explicite, voir --sans-apod).
-N2 = N1 plus deux changements (--n2) :
-  (a) les poids entre 0 et 1 (0,5 : réparation jugée bonne) passent à 1 dans toutes les paires d'entraînement ; la validation
-      en route garde les poids d'origine (comparable à N1) ;
-  (b) sur --part-extra (0,5) des tuiles synthétiques, une ou deux étoiles très brillantes imposées (pic 300 à 3e5 bruits, avec
-      gros halo et aigrettes du générateur), posées sur un fond de NÉBULEUSE réel : endroit où la cible est au poids 1 sur un
-      disque de 40 px (90 %) et où son niveau lissé dépasse 1 bruit (sinon pas d'étoile imposée).
-Reprise : --reprendre relit last.pt (réseau, optimiseur, pas, durée écoulée).
+N1 = V33C with the new data, nothing else:
+  - real pairs <DONNEES>\\Paires étoiles v33 – 23 nov\\*_v33d.npz (denoised and raw), same 6 held-out tiles as V33C;
+  - web pairs <DONNEES>\\Paires étoiles APOD – 24 nov\\*_v33d.npz (denoised only);
+  - draw: 50 % real denoised, 25 % raw, 25 % APOD (if no APOD pair: the refusal is explicit, see --sans-apod).
+N2 = N1 plus two changes (--n2):
+  (a) the weights between 0 and 1 (0.5: repair judged good) become 1 in all training pairs; the validation
+      during the run keeps the original weights (comparable to N1);
+  (b) on --part-extra (0.5) of the synthetic tiles, one or two imposed very bright stars (peak 300 to 3e5 noises, with
+      the generator's large halo and spikes), placed on a real NEBULA background: a place where the target has weight 1 over a
+      40 px disk (90 %) and where its smoothed level exceeds 1 noise (otherwise no imposed star).
+Resume: --reprendre rereads last.pt (network, optimiser, step, elapsed time).
 """
 from __future__ import annotations
 

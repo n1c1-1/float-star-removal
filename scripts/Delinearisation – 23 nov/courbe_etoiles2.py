@@ -1,35 +1,35 @@
 # ======================================================================
 # courbe_etoiles2.py
-# Rôle     : Courbe de transfert estimée depuis les étoiles de l'image étirée, version 2 (amélioration 1).
-# Étape    : 3. Délinéarisation des images web (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image étirée
-# Sorties  : image rendue linéaire
-# Exemple  : python courbe_etoiles2.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Transfer curve estimated from the stars of the stretched image, version 2 (improvement 1).
+# Step     : 3. De-linearisation of web images (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : stretched image
+# Outputs  : image made linear
+# Example  : python courbe_etoiles2.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Courbe de transfert estimée depuis les étoiles de l'image étirée, version 2 (amélioration 1).
+"""Transfer curve estimated from the stars of the stretched image, version 2 (improvement 1).
 
-Différences avec la version 1 (courbe_etoiles.py, essai du 23 nov 15 h) : profil commun P NON paramétrique (une valeur
-par anneau, partagée par toutes les étoiles) au lieu d'une Moffat, dont l'écart aux vraies ailes faisait tordre la
-courbe en haut ; log g' paramétré directement aux nœuds (bornes larges) ; départ = la meilleure de plusieurs courbes MTF.
+Differences from version 1 (courbe_etoiles.py, trial of 23 Nov 3 pm): NON-parametric common profile P (one value
+per ring, shared by all stars) instead of a Moffat, whose departure from the true wings bent the
+curve at the top; log g' parameterised directly at the knots (wide bounds); start = the best of several MTF curves.
 
-Idée (étalonnage radiométrique par plusieurs « poses » d'une même scène : Debevec et Malik, SIGGRAPH 1997, « Recovering
-High Dynamic Range Radiance Maps from Photographs » ; Mitsunaga et Nayar, CVPR 1999, « Radiometric Self Calibration ») :
-dans une image linéaire, toutes les étoiles ont le même profil (la fonction d'étalement du point, ici une Moffat, Moffat
-1969, A&A 3, 455), à leur flux près, posé sur leur fond local. Les étoiles d'éclats différents jouent le rôle des poses.
-L'inverse g de l'étirement est donc la courbe monotone qui rend, pour chaque étoile i et chaque rayon r,
+Idea (radiometric calibration from several “exposures” of the same scene: Debevec and Malik, SIGGRAPH 1997, “Recovering
+High Dynamic Range Radiance Maps from Photographs”; Mitsunaga and Nayar, CVPR 1999, “Radiometric Self Calibration”):
+in a linear image, all stars share the same profile (the point spread function, here a Moffat, Moffat
+1969, A&A 3, 455), up to their flux, sitting on their local background. Stars of different brightness play the role of the exposures.
+The inverse g of the stretch is thus the monotonic curve that yields, for each star i and each radius r,
     g(y_i(r)) = B_i + F_i * P(r ; alpha, beta)
-avec un même P pour toutes. Le fond B_i (différent d'une étoile à l'autre, nébuleuse) lève l'ambiguïté de puissance
-connue de ce problème (Grossberg et Nayar, PAMI 2003, « What can be known about the radiometric response from images »),
-et les étoiles faibles, presque dans la partie linéaire de la courbe autour de leur fond, fixent la forme de P.
+with the same P for all of them. The background B_i (different from one star to the next, nebula) removes the known power
+ambiguity of this problem (Grossberg and Nayar, PAMI 2003, “What can be known about the radiometric response from images”),
+and the faint stars, almost in the linear part of the curve around their background, fix the shape of P.
 
-Profil de chaque étoile : médiane des pixels par anneau. Une médiane commute avec toute courbe monotone, donc la médiane
-d'un anneau de l'image étirée est exactement l'image par l'étirement de la médiane linéaire de l'anneau (au bruit près),
-et les aigrettes ou une voisine ne la déplacent pas.
+Profile of each star: median of the pixels per ring. A median commutes with any monotonic curve, so the median
+of a ring of the stretched image is exactly the image under the stretch of the linear median of the ring (up to noise),
+and neither spikes nor a neighbouring star move it.
 
-Courbe : g(t) = intégrale de exp(s(t)), s = log g' linéaire par morceaux sur des nœuds placés aux quantiles des
-données (constante au-delà) ; g est monotone par construction. B_i, F_i et P : moindres carrés alternés à chaque
-évaluation (projection des variables, Golub et Pereyra 1973) ; s : scipy least_squares (perte soft-L1), lissage par
-différences secondes."""
+Curve: g(t) = integral of exp(s(t)), s = log g' piecewise linear on knots placed at the quantiles of the
+data (constant beyond); g is monotonic by construction. B_i, F_i and P: alternating least squares at each
+evaluation (variable projection, Golub and Pereyra 1973); s: scipy least_squares (soft-L1 loss), smoothing by
+second differences."""
 from __future__ import annotations
 
 import numpy as np

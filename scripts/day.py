@@ -1,10 +1,10 @@
 # ======================================================================
 # day.py
-# Rôle     : Orchestration d'une journée d'entraînement sans surveillance (carte graphique seule) : fabrique les paires puis entraîne.
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python day.py [--hours 8.5]
+# Role     : Orchestrates an unattended training day (graphics card only): builds the pairs, then trains.
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python day.py [--hours 8.5]
 # ======================================================================
 """Step 2 of the gap study, unattended, on the RTX 4060 Ti only:
 

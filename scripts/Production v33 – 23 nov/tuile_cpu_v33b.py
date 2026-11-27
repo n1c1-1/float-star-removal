@@ -1,13 +1,13 @@
 # ======================================================================
 # tuile_cpu_v33b.py
-# Rôle     : Etapes processeur d'UNE tuile (apres la piste 1 faite sur la carte) : etape A, etape B, passes (methode_validee.py --reutiliser-piste1), juge v33 (Juge v33 – 23 nov/construire_paire.py), paire « debruitee », paire « brute » si l'e
-# Étape    : 2. Production des paires v33 (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : tuiles choisies, chaîne v33/v33b
-# Sorties  : paires _debruitee/_brute .npz
-# Exemple  : usage : tuile_cpu.py <image> <tx> <ty>      |      tuile_cpu.py --brute-seul <image> <tx> <ty>
+# Role     : CPU steps of ONE tile (after track 1 done on the card): step A, step B, passes (methode_validee.py --reutiliser-piste1), v33 judge (Juge v33 – 23 nov/construire_paire.py), "debruitee" pair, "brute" pair if the
+# Stage    : 2. Production of the v33 pairs (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : chosen tiles, v33/v33b chain
+# Outputs  : _debruitee/_brute .npz pairs
+# Example  : usage : tuile_cpu.py <image> <tx> <ty>      |      tuile_cpu.py --brute-seul <image> <tx> <ty>
 # ======================================================================
-"""Etapes processeur d'UNE tuile (apres la piste 1 faite sur la carte) : etape A, etape B, passes (methode_validee.py --reutiliser-piste1),
-juge v33 (Juge v33 – 23 nov/construire_paire.py), paire « debruitee », paire « brute » si l'entree brute existe, nettoyage des sorties de travail.
+"""CPU steps of ONE tile (after track 1 done on the card): step A, step B, passes (methode_validee.py --reutiliser-piste1),
+v33 judge (Juge v33 – 23 nov/construire_paire.py), "debruitee" pair, "brute" pair if the raw input exists, cleaning of the working outputs.
 usage : tuile_cpu.py <image> <tx> <ty>      |      tuile_cpu.py --brute-seul <image> <tx> <ty>"""
 import json, shutil, subprocess, sys, time
 from pathlib import Path

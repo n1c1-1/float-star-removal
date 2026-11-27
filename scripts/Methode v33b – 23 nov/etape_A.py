@@ -1,20 +1,20 @@
 # ======================================================================
 # etape_A.py
-# Rôle     : Etape A de la methode validee : piste 3 "hybride_c9" (soustraction des halos et aigrettes, remplissage des coeurs, tour 4, remplisseur par patchs) sur la base piste 1 d'une decoupe.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : Usage : python etape_A.py <nom> <tag_piste1> x0,y0,x1,y1
+# Role     : Step A of the validated method: track 3 "hybride_c9" (subtraction of halos and spikes, filling of the cores, round 4, patch filler) on the track 1 base of a crop.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : Usage: python etape_A.py <nom> <tag_piste1> x0,y0,x1,y1
 # ======================================================================
-"""Etape A de la methode validee : piste 3 "hybride_c9" (soustraction des halos et aigrettes, remplissage des coeurs, tour 4,
-remplisseur par patchs) sur la base piste 1 d'une decoupe. Les scripts de Piste3/ (etat gele de c9) ne sont pas modifies ;
-ce lanceur ne fait que choisir la decoupe, la base et le dossier de sortie.
-Usage : python etape_A.py <nom> <tag_piste1> x0,y0,x1,y1
-  nom         nom de la decoupe (sorties dans sorties/<nom>/A/)
-  tag_piste1  dossier de la piste 1 : Piste1/sorties/rosette/<tag_piste1>/
-  crop        decoupe 768 px dans l'image Rosette debruitee ; tuile jugee = 512 px centraux (128..640)
-Pour decoupe6 le cas est celui de c9 ("rosette_decoupe6", avec ses etoiles de reference nommees) ; sinon un cas "mv_<nom>"
-sans etoiles de reference. Commande equivalente de c9 : lancer.py hybride_c9 rosette_decoupe6 --tour4 --remplisseur=patch."""
+"""Step A of the validated method: track 3 "hybride_c9" (subtraction of halos and spikes, filling of the cores, round 4,
+patch filler) on the track 1 base of a crop. The scripts of Piste3/ (frozen state of c9) are not modified;
+this launcher only chooses the crop, the base and the output folder.
+Usage: python etape_A.py <nom> <tag_piste1> x0,y0,x1,y1
+  nom         name of the crop (outputs in sorties/<nom>/A/)
+  tag_piste1  track 1 folder: Piste1/sorties/rosette/<tag_piste1>/
+  crop        768 px crop in the denoised Rosette image; judged tile = 512 central px (128..640)
+For decoupe6 the case is that of c9 ("rosette_decoupe6", with its named reference stars); otherwise a case "mv_<nom>"
+without reference stars. Equivalent c9 command: lancer.py hybride_c9 rosette_decoupe6 --tour4 --remplisseur=patch."""
 import os, sys, json
 for k, v in dict(PYTHONDONTWRITEBYTECODE="1", CUDA_VISIBLE_DEVICES="-1", OMP_NUM_THREADS="4", MKL_NUM_THREADS="4",
                  NUMBA_NUM_THREADS="4", OPENBLAS_NUM_THREADS="4",

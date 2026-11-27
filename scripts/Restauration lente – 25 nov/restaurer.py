@@ -1,19 +1,19 @@
 # ======================================================================
 # restaurer.py
-# Rôle     : Restauration lente à l'inférence (sans entraînement), PROCESSEUR seulement.
-# Étape    : 10. Essai écarté : remise de la part lente (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : sorties de N5
-# Sorties  : tableau_rl.md
-# Exemple  : restaurer.py [--images nom ...] [--sigmas 40 80]
+# Role     : Slow restoration at inference (no training), CPU only.
+# Stage    : 10. Discarded trial: restoring the slow part (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : N5 outputs
+# Outputs  : tableau_rl.md
+# Example  : restaurer.py [--images nom ...] [--sigmas 40 80]
 # ======================================================================
-r"""Restauration lente à l'inférence (sans entraînement), PROCESSEUR seulement.
+r"""Slow restoration at inference (no training), CPU only.
 
     restaurer.py [--images nom ...] [--sigmas 40 80]
 
-Par image : N5 (meilleur pas 23000) en inférence deux échelles V2 (copie de Tours N5 N6\inferer_v2.py, sans GPU) -> R = entrée - sortie
--> L = lissage gaussien normalisé (sigma) de R hors disques de halo des Gaia G < 8, écrêtage itératif (4 tours, 2,5 écarts robustes,
-plancher = bruit hf : lissage_elague de preparer_g_h.py) -> sortie + L * (1 - poids V2).
-Écrit <DONNEES>\Restauration lente – 25 nov\starless_<N5|S40|S80>\<image>.npy (un fichier par image ; déjà présent = sauté).
+Per image: N5 (best step 23000) in two-scale V2 inference (copy of Tours N5 N6\inferer_v2.py, no GPU) -> R = input - output
+-> L = normalised Gaussian smoothing (sigma) of R outside the halo disks of Gaia G < 8, iterative clipping (4 rounds, 2.5 robust deviations,
+floor = hf noise: lissage_elague of preparer_g_h.py) -> output + L * (1 - V2 weight).
+Writes <DONNEES>\Restauration lente – 25 nov\starless_<N5|S40|S80>\<image>.npy (one file per image; already present = skipped).
 """
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = ""

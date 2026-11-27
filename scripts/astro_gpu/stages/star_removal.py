@@ -1,11 +1,11 @@
-"""Réseau de retrait d'étoiles (NAFNet) et son application par tuiles, extraits du module du même nom de FLOAT.
+"""Star-removal network (NAFNet) and its tiled application, extracted from the module of the same name in FLOAT.
 
-Rôle : donner à tous les scripts du dépôt (qui font « from astro_gpu.stages import star_removal ») le réseau, l'étirement
-asinh fixe et l'application par tuiles, SANS avoir besoin de l'application FLOAT complète.
-Entrées : une image (3, H, W) en unités de bruit (couleur moins son ciel, divisée par le bruit du ciel).
-Sorties : la même image sans ses étoiles, mêmes unités.
-Exemple : voir scripts/inferer_une_image.py. Poids du réseau : variable d'environnement MODELE_RESEAU (fichier .pt).
-Le code du réseau est celui de FLOAT, recopié sans changement ; seule la gestion de la mémoire de la carte (devices) est retirée.
+Role: give every script in the repository (which do "from astro_gpu.stages import star_removal") the network, the fixed
+asinh stretch and the tiled application, WITHOUT needing the full FLOAT application.
+Inputs: an image (3, H, W) in noise units (colour minus its sky, divided by the sky noise).
+Outputs: the same image without its stars, same units.
+Example: see scripts/inferer_une_image.py. Network weights: environment variable MODELE_RESEAU (.pt file).
+The network code is FLOAT's, copied unchanged; only the management of the card's memory (devices) is removed.
 """
 from __future__ import annotations
 

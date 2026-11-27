@@ -1,22 +1,22 @@
 # ======================================================================
 # diag_paires.py
-# Rôle     : Questions 3 et 4 du diagnostic des écarts (25 nov) : ce que les paires d'entraînement de N2 enseignent.
-# Étape    : diagnostic (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires et sorties de validation
-# Sorties  : tables de diagnostic
-# Exemple  : python diag_paires.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Questions 3 and 4 of the discrepancy diagnostic (25 Nov): what the N2 training pairs teach.
+# Step     : diagnostic (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : pairs and validation outputs
+# Outputs  : diagnostic tables
+# Example  : python diag_paires.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Questions 3 et 4 du diagnostic des écarts (25 nov) : ce que les paires d'entraînement de N2 enseignent.
+"""Questions 3 and 4 of the discrepancy diagnostic (25 Nov): what the N2 training pairs teach.
 
-Paires lues une par une (aucune modifiée) : <DONNEES>/Paires étoiles v33 – 23 nov/*_v33d.npz (débruitées et brutes, tenues
-comprises : on les signale) et <DONNEES>/Paires étoiles APOD – 24 nov/*_v33d.npz (web).
-(3) étoiles Gaia G 14-17 : MÊME critère que valider_reseau.py (ouverture 2 FWHM moins la médiane de la couronne 3-5 FWHM, sur la
-    moyenne des 3 couleurs ; étoile gardée si flux d'entrée > 10 bruits x racine(surface) ; bruit = MAD de L - médiane 5x5 sur un
-    pixel sur deux) ; flux CIBLE / flux ENTRÉE > 0,1 ; poids au centre et sur l'ouverture.
-(4) ciel loin des étoiles (même rayon que la validation, facteur 4 FWHM, étoiles G <= 19) au poids > 0 : cible - entrée
-    (décalage par couleur, en bruits de la tuile), rapport de grain (haute fréquence de la cible / de l'entrée), part des pixels
-    changés, taches (écart lissé 4 px > 0,5 bruit).
-Sortie : <DONNEES>/Diagnostic écarts – 25 nov/paires.jsonl et paires_resume.txt.
+Pairs read one by one (none modified): <DONNEES>/Paires étoiles v33 – 23 nov/*_v33d.npz (denoised and raw, held-out ones
+included: they are flagged) and <DONNEES>/Paires étoiles APOD – 24 nov/*_v33d.npz (web).
+(3) Gaia stars G 14-17: SAME criterion as valider_reseau.py (2 FWHM aperture minus the median of the 3-5 FWHM ring, on the
+    mean of the 3 colours; star kept if input flux > 10 noise units x sqrt(area); noise = MAD of L - 5x5 median on every
+    other pixel); TARGET flux / INPUT flux > 0.1; weight at the centre and on the aperture.
+(4) sky far from stars (same radius as the validation, factor 4 FWHM, stars G <= 19) with weight > 0: target - input
+    (offset per colour, in tile noise units), grain ratio (high frequency of the target / of the input), share of pixels
+    changed, blotches (4 px smoothed difference > 0.5 noise).
+Output: <DONNEES>/Diagnostic écarts – 25 nov/paires.jsonl and paires_resume.txt.
 """
 import os
 for k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "NUMBA_NUM_THREADS", "OPENBLAS_NUM_THREADS"):

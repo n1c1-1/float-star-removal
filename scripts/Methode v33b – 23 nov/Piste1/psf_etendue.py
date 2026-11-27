@@ -1,30 +1,30 @@
 # ======================================================================
 # psf_etendue.py
-# Rôle     : Méthode v12 (21 nov) : PSF ÉTENDUE des étoiles brillantes, bâtie sur l'IMAGE ENTIÈRE, une fois par image, gardée sur disque.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python psf_etendue.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Method v12 (21 Nov): EXTENDED PSF of the bright stars, built on the WHOLE IMAGE, once per image, kept on disk.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python psf_etendue.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Méthode v12 (21 nov) : PSF ÉTENDUE des étoiles brillantes, bâtie sur l'IMAGE ENTIÈRE, une fois par image, gardée sur disque.
+"""Method v12 (21 Nov): EXTENDED PSF of the bright stars, built on the WHOLE IMAGE, once per image, kept on disk.
 
-Pourquoi (JOURNAL, décision v11) : en v10 chaque étoile brillante est retirée avec son PROPRE profil radial (médiane par anneau
-de 16 secteurs, moins l'anneau au-delà) : sur la nébuleuse, ce profil prend la lumière de la nébuleuse autour de l'étoile, et
-ce disque est soustrait aussi sur une bande sombre voisine -> trous noirs (bord intérieur, étoile G 8,2 à aigrettes).
+Why (JOURNAL, decision v11): in v10 each bright star is removed with its OWN radial profile (median per ring
+of 16 sectors, minus the ring beyond): on the nebula, this profile takes the nebula's light around the star, and
+this disc is also subtracted over a neighbouring dark band -> black holes (inner edge, G 8.2 star with spikes).
 
-Méthode (Infante-Sainz, Trujillo & Román 2020, MNRAS 491, 5317 ; arXiv:1911.01430) :
-  (a) UNE forme par couleur pour toute l'image : profils radiaux des étoiles brillantes de l'image entière (G 6-10,5),
-      chacun = médiane, par anneau, des médianes de 16 secteurs (aigrettes, voisines, nœuds de nébuleuse écartés), moins le
-      fond lointain (anneau 165-200 px, même médiane de secteurs), divisé par l'amplitude de l'étoile ; voisines masquées
-      (disque selon leur éclat), pixels saturés écartés ; empilement = médiane sur les étoiles à chaque rayon (au moins
-      5 étoiles) ; raccord au modèle v7 (coeur, par unité de flux) entre 10 et 14 px ; décroissante et >= 0 au-delà de 10 px ;
-      fondu à zéro de 125 à 150 px (portée 150 px).
-  (b) amplitude d'une étoile = ajustement robuste (moindres carrés, écrêtage 3 sigma MAD, 5 tours) de amplitude x forme
-      + fond plat, sur les PIXELS d'un anneau intérieur où l'étoile domine : r de max(2, rs/FWHM + 2) à +4 largeurs
-      (rs = rayon saturé), voisines masquées ; le fond plat absorbe la lumière de la nébuleuse à cette échelle, elle n'entre
-      pas dans l'étoile. La même fonction sert ici (normer les profils empilés) et dans la piste 1 (chaque étoile).
-  Itérations : tour 0 avec le profil du modèle v7 (étoiles dont l'anneau tient dans 24 px), tours 1-2 avec la forme raccordée.
-Cache : Piste1/sorties/<image>/psf_etendue.npz (+ .json : réglages, étoiles, profils, amplitudes).
+Method (Infante-Sainz, Trujillo & Román 2020, MNRAS 491, 5317; arXiv:1911.01430):
+  (a) ONE shape per colour for the whole image: radial profiles of the bright stars of the whole image (G 6-10.5),
+      each = median, per ring, of the medians of 16 sectors (spikes, neighbours, nebula knots discarded), minus the
+      far background (ring 165-200 px, same sector median), divided by the star's amplitude; neighbours masked
+      (disc according to their brightness), saturated pixels discarded; stack = median over the stars at each radius (at least
+      5 stars); joined to the v7 model (core, per unit flux) between 10 and 14 px; decreasing and >= 0 beyond 10 px;
+      faded to zero from 125 to 150 px (reach 150 px).
+  (b) amplitude of a star = robust fit (least squares, 3 sigma MAD clipping, 5 rounds) of amplitude x shape
+      + flat background, on the PIXELS of an inner ring where the star dominates: r from max(2, rs/FWHM + 2) to +4 widths
+      (rs = saturated radius), neighbours masked; the flat background absorbs the nebula's light at this scale, it does not
+      enter the star. The same function serves here (normalising the stacked profiles) and in track 1 (each star).
+  Iterations: round 0 with the v7 model profile (stars whose ring fits in 24 px), rounds 1-2 with the joined shape.
+Cache: Piste1/sorties/<image>/psf_etendue.npz (+ .json: settings, stars, profiles, amplitudes).
 """
 from __future__ import annotations
 

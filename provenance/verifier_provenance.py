@@ -1,54 +1,54 @@
 #!/usr/bin/env python
 # -*- coding: ascii -*-
-"""verifier_provenance.py - refait la cible d'UNE paire d'entrainement avec la chaine publiee et la compare au fichier.
+"""verifier_provenance.py - rebuilds the target of ONE training pair with the published chain and compares it with the file.
 
 ROLE
-  Une paire d'entrainement est un fichier .npz (input, target, weight, classes). Sa cible (target) est fabriquee par la
-  chaine classique : soustraction guidee par le catalogue Gaia (modele d'etoile et de halo) + rebouchage + passes, puis
-  juge (poids). Aucun reseau de neurones, aucune sortie d'un logiciel tiers n'y entre. Ce script le montre sur UNE paire :
-  il rejoue la chaine sur la tuile d'entree et mesure l'ecart avec le fichier de paire.
+  A training pair is an .npz file (input, target, weight, classes). Its target is made by the classical chain:
+  subtraction guided by the Gaia catalogue (star and halo model) + refill + passes, then a judge (weights). No neural
+  network, no output of third-party software enters it. This script shows it on ONE pair: it replays the chain on the
+  input tile and measures the gap with the pair file.
 
 MODES (option --mode)
-  liens   (rapide, defaut) : empreinte sha256 de la paire comparee au manifeste ; relations entre les versions voisines
-          (v33 -> v33d : cible identique, poids seulement mis a 0 ; v33g : cible + lumiere diffuse L, lisse ; v33h : poids
-          seulement ; paire brute : cible = brute - (entree debruitee - cible debruitee), au bit pres).
-  g       : refait l'etape v33d -> v33g (preparer_g_h.py, processeur, rapide) et compare a la paire v33g.
-  rejeu   : refait la chaine complete de la tuile (piste 1, etape A, etape B, passes, juge) et compare a la paire de base
-          (v33). Dure de quelques minutes a plus d'une demi-heure selon la tuile. Pas pour les paires brutes (la brute se
-          deduit de la debruitee : mode liens).
+  liens   (fast, default): sha256 fingerprint of the pair compared with the manifest; relations between neighbouring
+          versions (v33 -> v33d: identical target, weights only set to 0; v33g: target + diffuse light L, smooth; v33h:
+          weights only; raw pair: target = raw - (denoised input - denoised target), bit for bit).
+  g       : rebuilds the step v33d -> v33g (preparer_g_h.py, processor, fast) and compares it with the v33g pair.
+  rejeu   : rebuilds the complete chain of the tile (track 1, step A, step B, passes, judge) and compares it with the base
+          pair (v33). Takes a few minutes to over half an hour depending on the tile. Not for raw pairs (the raw one is
+          deduced from the denoised one: mode liens).
   tout    : liens + g + rejeu.
 
-ENTREES
-  PAIRE             chemin d'un fichier de paire (ex. <image>_g<tx>_<ty>_debruitee_v33g.npz ou la version sans suffixe).
-  RACINE_SCRIPTS    (variable d'environnement ; defaut : le dossier scripts du depot, a cote de provenance/) scripts de la chaine.
-  RACINE_ORIGINE    (facultative ; defaut : RACINE_SCRIPTS) dossier qui contient les fichiers NON publies de la chaine : astrometrie
-                    et modele d'etoile de chaque image (Piste1/sorties/<image>), catalogue Gaia profond, liste des images du jeu 2,
-                    ancien dossier d'import (images.py, juger.py). Sans eux, le rejeu s'arrete en le disant.
-  DONNEES           (obligatoire pour rejeu) dossier des donnees (paires, entrees, entrees APOD).
-  ESSAIS, RACINE_FLOAT, CACHE_FLOAT (facultatives) : autres racines. Si les scripts publies portent des jetons de racine
-  (<SCRIPTS>, <DONNEES>, <ESSAIS>, <FLOAT>, <CACHE_FLOAT>), ils sont remplaces dans la copie de travail par ces valeurs.
-  Les scripts de la chaine sont COPIES dans un dossier de travail (--travail) : rien n'est ecrit dans RACINE_SCRIPTS.
-  REMPLACEMENTS_COPIE (facultative) : liste JSON [[ancien, nouveau], ...] de textes remplaces dans la copie de travail (adaptation locale,
-  par exemple un nom de module du moteur different de celui des scripts publies).
-  Ce qui exige FLOAT (moteur) : l'astrometrie hors ligne et les extraits Gaia (RACINE_FLOAT, CACHE_FLOAT).
+INPUTS
+  PAIRE             path of a pair file (e.g. <image>_g<tx>_<ty>_debruitee_v33g.npz or the version without suffix).
+  RACINE_SCRIPTS    (environment variable; default: the repository's scripts folder, next to provenance/) scripts of the chain.
+  RACINE_ORIGINE    (optional; default: RACINE_SCRIPTS) folder holding the UNPUBLISHED files of the chain: astrometry
+                    and star model of each image (Piste1/sorties/<image>), deep Gaia catalogue, list of the images of set 2,
+                    old import folder (images.py, juger.py). Without them, the replay stops and says so.
+  DONNEES           (required for rejeu) data folder (pairs, inputs, APOD inputs).
+  ESSAIS, RACINE_FLOAT, CACHE_FLOAT (optional): other roots. If the published scripts carry root tokens
+  (<SCRIPTS>, <DONNEES>, <ESSAIS>, <FLOAT>, <CACHE_FLOAT>), they are replaced in the working copy by these values.
+  The scripts of the chain are COPIED into a work folder (--travail): nothing is written in RACINE_SCRIPTS.
+  REMPLACEMENTS_COPIE (optional): JSON list [[old, new], ...] of texts replaced in the working copy (local adaptation,
+  e.g. an engine module name different from that of the published scripts).
+  What requires FLOAT (engine): offline astrometry and the Gaia extracts (RACINE_FLOAT, CACHE_FLOAT).
 
-SORTIES
-  Un rapport sur la sortie standard et, avec --rapport, un fichier JSON. Pour le rejeu : par canal, sur les pixels de poids
-  > 0 de la paire de base, l'ecart absolu maximal et moyen (en bruits du ciel, l'unite des images) et la part de pixels
-  identiques ; part identique des poids et des classes. Code de retour 0 si tout ce qui a ete demande est identique au
-  bit pres, 1 s'il y a un ecart (a lire dans le rapport), 2 en cas d'erreur.
+OUTPUTS
+  A report on the standard output and, with --rapport, a JSON file. For the replay: per channel, on the pixels of weight
+  > 0 of the base pair, the maximum and mean absolute gap (in sky noises, the images' unit) and the share of identical
+  pixels; share of identical weights and classes. Exit code 0 if everything asked for is bit-identical, 1 if there is a
+  gap (to be read in the report), 2 on error.
 
-LIMITES (dites sans detour)
-  - La production d'origine a fait la piste 1 sur la carte graphique (torch, 4060 Ti) ; son resultat n'est pas garanti bit a bit
-    d'une machine ou d'une bibliotheque a l'autre. Par defaut ce script la refait sur le processeur (--device cpu) ; sur les
-    tuiles essayees le resultat est identique au bit, mais un petit ecart reste possible ailleurs : il serait chiffre.
-  - Il faut les entrees conservees (image source, astrometrie et catalogue Gaia profond de l'image, extraits Gaia hors
-    ligne). Si l'une manque, le rejeu s'arrete en le disant ; les modes liens et g restent possibles.
+LIMITS (stated plainly)
+  - The original production ran track 1 on the graphics card (torch, 4060 Ti); its result is not guaranteed bit for bit
+    from one machine or library to another. By default this script redoes it on the processor (--device cpu); on the
+    tiles tried the result is bit-identical, but a small gap remains possible elsewhere: it would be quantified.
+  - The kept inputs are needed (source image, astrometry and deep Gaia catalogue of the image, offline Gaia extracts).
+    If one is missing, the replay stops and says so; the modes liens and g remain possible.
 
-EXEMPLES
+EXAMPLES
   python verifier_provenance.py PAIRE.npz
-  DONNEES=/chemin/donnees RACINE_ORIGINE=/chemin/origine python verifier_provenance.py PAIRE.npz --mode rejeu --device cpu --travail /tmp/rejeu
-  RACINE_SCRIPTS=/chemin/scripts python verifier_provenance.py PAIRE.npz --mode g
+  DONNEES=/path/data RACINE_ORIGINE=/path/origin python verifier_provenance.py PAIRE.npz --mode rejeu --device cpu --travail /tmp/rejeu
+  RACINE_SCRIPTS=/path/scripts python verifier_provenance.py PAIRE.npz --mode g
 """
 import argparse
 import csv

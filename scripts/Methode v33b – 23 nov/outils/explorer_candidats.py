@@ -1,13 +1,13 @@
 # ======================================================================
 # explorer_candidats.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python explorer_candidats.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Stage    : 2. Classical Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : starless image, class maps
+# Example  : python explorer_candidats.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-# Lecture seule : taille de l'image entière, catalogue profond, nombre d'étoiles candidates au modèle d'étoile selon
-# l'isolement, par tranche de G (pour choisir les règles du modèle v7).
+# Read-only: size of the whole image, deep catalogue, number of candidate stars for the star model according to
+# isolation, per G slice (to choose the rules of model v7).
 import os, sys, time
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 sys.dont_write_bytecode = True

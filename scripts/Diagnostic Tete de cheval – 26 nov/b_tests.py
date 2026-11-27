@@ -1,14 +1,14 @@
 # ======================================================================
 # b_tests.py
-# Rôle     : Diagnostic Tete de cheval : tests sur DECOUPES (1024 px autour de chaque etoile, mesure et planche sur le centre), un changement a la fois.
-# Étape    : 13. Contrôle des étoiles saturées à faible signal (Tête de Cheval, 26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : découpes de l'image réelle et des images de validation, réseaux .pt
-# Sorties  : tableau de flux restant par étoile
-# Exemple  : python b_tests.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Horsehead diagnostic: tests on CROPS (1024 px around each star, measurement and sheet on the centre), one change at a time.
+# Step     : 13. Check of saturated low-signal stars (Horsehead, 26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : crops of the real image and of the validation images, .pt networks
+# Outputs  : table of remaining flux per star
+# Example  : python b_tests.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Diagnostic Tete de cheval : tests sur DECOUPES (1024 px autour de chaque etoile, mesure et planche sur le centre), un changement a la fois.
-Tests : x1 (une passe) pour E3, N5, N7, melange N7/N5 0,75, FLOAT ; melange + V2 x2 (comme la chaine) ; melange + x4 ; melange avec gain x0,5, x4, x8 ;
-melange sur entree debruitee par le debruiteur de FLOAT (x1 et V2). Rien n'est ecrit hors de <DONNEES>\Diagnostic... ; aucun script existant modifie."""
+r"""Horsehead diagnostic: tests on CROPS (1024 px around each star, measurement and sheet on the centre), one change at a time.
+Tests: x1 (single pass) for E3, N5, N7, N7/N5 0.75 blend, FLOAT; blend + V2 x2 (as in the chain); blend + x4; blend with gain x0.5, x4, x8;
+blend on an input denoised by FLOAT's denoiser (x1 and V2). Nothing is written outside <DONNEES>\Diagnostic... ; no existing script modified."""
 import os, sys, time, json
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"; os.environ["ASTRO_GPU_OFFLINE"] = "1"
 sys.stdout.reconfigure(encoding="utf-8")

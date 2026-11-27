@@ -1,13 +1,13 @@
 # ======================================================================
 # planche_diag.py
-# Rôle     : Planche et tableau du diagnostic : par etoile, entree | melange (V2 x2, comme la chaine) | meilleur test | modele FLOAT, meme etirement (asinh(max(x,0)/2)/asinh(1000), x en unites de bruit).
-# Étape    : 13. Contrôle des étoiles saturées à faible signal (Tête de Cheval, 26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : découpes de l'image réelle et des images de validation, réseaux .pt
-# Sorties  : tableau de flux restant par étoile
-# Exemple  : python planche_diag.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Diagnostic sheet and table: per star, input | blend (V2 x2, as in the chain) | best test | FLOAT model, same stretch (asinh(max(x,0)/2)/asinh(1000), x in noise units). Writes planche_diagnostic.jpg and tableau.md in <DONNEES>
+# Step     : 13. Check of saturated low-signal stars (Horsehead, 26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : crops of the real image and of the validation images, .pt networks
+# Outputs  : table of remaining flux per star
+# Example  : python planche_diag.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Planche et tableau du diagnostic : par etoile, entree | melange (V2 x2, comme la chaine) | meilleur test | modele FLOAT, meme etirement
-(asinh(max(x,0)/2)/asinh(1000), x en unites de bruit). Ecrit planche_diagnostic.jpg et tableau.md dans <DONNEES>\Diagnostic..."""
+r"""Diagnostic sheet and table: per star, input | blend (V2 x2, as in the chain) | best test | FLOAT model, same stretch
+(asinh(max(x,0)/2)/asinh(1000), x in noise units). Writes planche_diagnostic.jpg and tableau.md in <DONNEES>\Diagnostic..."""
 import sys, json
 sys.stdout.reconfigure(encoding="utf-8")
 from pathlib import Path

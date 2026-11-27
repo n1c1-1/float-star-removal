@@ -1,21 +1,21 @@
 # ======================================================================
 # coeurs_mesure.py
-# Rôle     : Colonne « cœurs » : rapport moyen flux sortie / flux entrée dans 15 px autour de chaque cœur de galaxie des images de validation (idéal 1 ; RefExt ~ 1).
-# Étape    : 9. N7 : cœurs de galaxie synthétiques (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33g + cœurs synthétiques
-# Sorties  : instantanés N7, tableau_n7.md
-# Exemple  : coeurs_mesure.py detecter                                  -> candidats (DoG sur le starless de référence), à regarder
+# Role     : "Cores" column: mean output flux / input flux ratio within 15 px around each galaxy core of the validation images (ideal 1).
+# Stage    : 9. N7: synthetic galaxy cores (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33g pairs + synthetic cores
+# Outputs  : N7 snapshots, tableau_n7.md
+# Example  : coeurs_mesure.py detecter                                  -> candidates (DoG on the reference starless), to be looked at
 # ======================================================================
-r"""Colonne « cœurs » : rapport moyen flux sortie / flux entrée dans 15 px autour de chaque cœur de galaxie des images de validation
-(idéal 1 ; RefExt ~ 1). Même méthode que Cœur M31 – 25 nov\coeur_m31.py (fenêtre autour du cœur, SRm.apply tuile 1024 recouvrement 256).
+r""""Cores" column: mean output flux / input flux ratio within 15 px around each galaxy core of the validation images
+(ideal 1). Same method as Cœur M31 – 25 nov\coeur_m31.py (window around the core, SRm.apply tile 1024 overlap 256).
 
-    coeurs_mesure.py detecter                                  -> candidats (DoG sur le starless de référence), à regarder
+    coeurs_mesure.py detecter                                  -> candidates (DoG on the reference starless), to be looked at
     coeurs_mesure.py mesurer <tag> <checkpoint.pt|refext> [--device cpu|cuda:0]
-        -> <DONNEES>\Entrainement étoiles N7 – 25 nov\coeurs\coeurs_<tag>.json (par cœur et moyenne) + fen_<tag>.npy (800 px, M31 A7S)
-    coeurs_mesure.py planche                                   -> planche_coeur_m31.jpg (entrée | N5 | N6 | N7 | RefExt, si présents)
+        -> <DONNEES>\Entrainement étoiles N7 – 25 nov\coeurs\coeurs_<tag>.json (per core and mean) + fen_<tag>.npy (800 px, M31 A7S)
+    coeurs_mesure.py planche                                   -> planche_coeur_m31.jpg (input | N5 | N6 | N7 | RefExt, if present)
 
-Liste des cœurs : COEURS ci-dessous (M31 A7S : x=2802 y=2314 de Cœur M31 ; les autres repérés par « detecter » puis regardés).
-Le calcul de rapport suppose la sortie V2 = sortie simple au cœur (aucune étoile G < 6,5 à proximité : vérifié pour M31 A7S)."""
+List of cores: COEURS below (M31 A7S: x=2802 y=2314 of Cœur M31; the others spotted by "detecter" then inspected).
+The ratio computation assumes the V2 output = simple output at the core (no G < 6.5 star nearby: checked for M31 A7S)."""
 import os, sys, json, time
 os.environ.setdefault("ASTRO_GPU_OFFLINE", "1")
 sys.stdout.reconfigure(encoding="utf-8")

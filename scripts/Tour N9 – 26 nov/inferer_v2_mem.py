@@ -1,19 +1,19 @@
 # ======================================================================
 # inferer_v2_mem.py
-# Rôle     : Inférence deux échelles V2 pour N7 (copie de Tours N5 N6\inferer_v2.py, lui-même copie de Portée M27 – 25 nov\deux_echelles_v1v2.py, variante V2 seule ; l'original est inchangé).
-# Étape    : 10. Essai écarté N9 (cœurs compacts, 26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33g
-# Sorties  : instantanés, tableau_n9.md
-# Exemple  : inferer_v2.py <checkpoint.pt> <tag> [--sans-starless]
+# Role     : Two-scale V2 inference for N7 (copy of Tours N5 N6\inferer_v2.py, itself a copy of Portée M27 – 25 nov\deux_echelles_v1v2.py, V2 variant only; the original is unchanged).
+# Stage    : 10. Discarded trial N9 (compact cores, 26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33g pairs
+# Outputs  : snapshots, tableau_n9.md
+# Example  : inferer_v2.py <checkpoint.pt> <tag> [--sans-starless]
 # ======================================================================
-r"""Inférence deux échelles V2 pour N7 (copie de Tours N5 N6\inferer_v2.py, lui-même copie de Portée M27 – 25 nov\deux_echelles_v1v2.py, variante V2 seule ; l'original est inchangé).
+r"""Two-scale V2 inference for N7 (copy of Tours N5 N6\inferer_v2.py, itself a copy of Portée M27 – 25 nov\deux_echelles_v1v2.py, V2 variant only; the original is unchanged).
 
     inferer_v2.py <checkpoint.pt> <tag> [--sans-starless]
 
-V2 : G < 6,5, rayon = halo mesuré dans l'entrée (plafond 300 px), plein jusqu'à 70 % du rayon, cosinus jusqu'à 100 %, sortie du réseau sur
-l'image réduite x2 ré-agrandie dans la zone. Écrit <DONNEES>\Entrainement étoiles N5 N6 – 25 nov\starless_<tag>\<image>.npy (effacés après
-mesure) et, pour 4 images (M31 A7S, cœur de Leo, M42 Dobson, M27), un découpage 800 px de l'entrée, du résultat et de RefExt :
-crops\<tag>_<image>.npz (centre : maximum de l'image lissée pour M31 et Leo, étoile Gaia la plus brillante pour M42 Dobson et M27).
+V2: G < 6.5, radius = halo measured in the input (cap 300 px), full up to 70 % of the radius, cosine up to 100 %, network output on
+the x2 reduced image enlarged back inside the zone. Writes <DONNEES>\Entrainement étoiles N5 N6 – 25 nov\starless_<tag>\<image>.npy (erased after
+measurement) and, for 4 images (M31 A7S, Leo core, M42 Dobson, M27), an 800 px crop of the input, of the result and of RefExt:
+crops\<tag>_<image>.npz (centre: maximum of the smoothed image for M31 and Leo, brightest Gaia star for M42 Dobson and M27).
 """
 import os, sys, json, time
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"; os.environ["ASTRO_GPU_OFFLINE"] = "1"

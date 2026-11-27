@@ -1,10 +1,10 @@
 # ======================================================================
 # tableau_deux.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 12. Inférence à deux échelles V2 (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : réseau .pt + image de validation + extrait Gaia
-# Sorties  : images sans étoiles, tableaux
-# Exemple  : python tableau_deux.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Stage    : 12. Two-scale V2 inference (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : .pt network + validation image + Gaia extract
+# Outputs  : starless images, tables
+# Example  : python tableau_deux.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
 import sys, importlib.util
 from pathlib import Path

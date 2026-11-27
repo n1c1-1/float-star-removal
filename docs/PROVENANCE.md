@@ -1,89 +1,89 @@
-# Provenance : le réseau n'a jamais été entraîné sur la sortie d'un autre logiciel
+# Provenance: the network was never trained on the output of another piece of software
 
-**Ce que ce document permet d'affirmer, et de vérifier soi-même** : les modèles publiés (E3, N5, N7 et leur mélange N7/N5 0,75) ont été entraînés uniquement sur (1) des paires **générées** par du code et des graines, (2) des paires **réelles** dont la cible est fabriquée par notre propre chaîne de soustraction guidée par Gaia, (3) des étoiles et cœurs synthétiques posés sur des fonds qui sont eux-mêmes des cibles de (1) ou (2). Aucun fichier lu par l'entraînement n'est la sortie d'un autre logiciel de retrait d'étoiles.
+**What this document lets you state, and check for yourself**: the published models (E3, N5, N7 and their N7/N5 0.75 blend) were trained only on (1) pairs **generated** by code and seeds, (2) **real** pairs whose target is made by our own Gaia-guided subtraction chain, (3) synthetic stars and cores placed on backgrounds that are themselves targets from (1) or (2). No file read by the training is the output of another star-removal program.
 
-Le détail technique est dans `../provenance/` (manifestes, vérificateurs, analyse statique). Ce document l'explique en termes simples.
+The technical detail is in `../provenance/` (manifests, verifiers, static analysis). This document explains it in plain terms.
 
-## 1. Les quatre modèles et leurs données
+## 1. The four models and their data
 
-| modèle | point de départ | données lues par l'entraînement |
+| model | starting point | data read by the training |
 |---|---|---|
-| **E3** (8-9 nov) | E2, lui-même entraîné depuis des poids aléatoires | paires **générées** `pairs_v4` (500 paires, graine 1, jeux « clean » et « defects ») + étoiles tirées à la volée ; aucune image |
-| **N5** (25 nov) | E3, pas 20 000 | 182 fichiers de paires réelles (version v33g) listés dans `provenance/MANIFESTE_PAIRES.csv` + fonds et étoiles synthétiques |
-| **N7** (25 nov) | E3, pas 20 000 | **les mêmes** 182 fichiers + cœurs de galaxie synthétiques (25 % des tuiles synthétiques) |
-| **mélange N7/N5 0,75** (26 nov) | — | **aucune donnée** : 0,75 × N7 (pas 22 000) + 0,25 × N5 (pas 23 000), poids moyennés |
+| **E3** (8-9 Nov) | E2, itself trained from random weights | **generated** pairs `pairs_v4` (500 pairs, seed 1, "clean" and "defects" sets) + stars drawn on the fly; no image |
+| **N5** (25 Nov) | E3, step 20,000 | 182 files of real pairs (version v33g) listed in `provenance/MANIFESTE_PAIRES.csv` + synthetic backgrounds and stars |
+| **N7** (25 Nov) | E3, step 20,000 | **the same** 182 files + synthetic galaxy cores (25 % of the synthetic tiles) |
+| **blend N7/N5 0.75** (26 Nov) | — | **no data**: 0.75 × N7 (step 22,000) + 0.25 × N5 (step 23,000), weights averaged |
 
-E, E2 et E3 partent de **poids aléatoires** ; aucun poids de réseau préexistant n'est lu par l'entraînement.
+E, E2 and E3 start from **random weights**; no pre-existing network weights are read by the training.
 
-## 2. Comment chaque cible est fabriquée
+## 2. How each target is made
 
-| jeu de données | d'où viennent les entrées | comment la cible est fabriquée |
+| dataset | where the inputs come from | how the target is made |
 |---|---|---|
-| paires **générées** (E2, E3) | rien : fonds, défauts, étoiles et bruit tirés d'une graine | la cible **est** le fond sans les étoiles tirées : exacte par construction |
-| paires **réelles débruitées** (103 d'entraînement + 6 tenues) | image avec ses étoiles de Nicolas : pile moins son gradient, normalisée en unités de bruit, débruitée | **entrée moins un calque d'étoiles** : piste 1 (modèle d'étoile et de halo ajusté sur l'image, positions et éclats du catalogue Gaia), étape A (rebouchage par patchs pris dans l'image), étape B (passes), juge (poids). v33d : des poids mis à 0 seulement ; v33g : + lumière diffuse lissée |
-| paires **réelles brutes** (35) | la même tuile, non débruitée | brute − (entrée débruitée − cible débruitée) : on retire la même couche d'étoiles |
-| paires **web (APOD)** (38 tuiles de 13 images) | images publiées par APOD, **délinéarisées** (étirement inverse estimé sur les étoiles), non re-débruitées | **même chaîne** (variante v33b) et même juge que ci-dessus |
-| fonds et formes du générateur d'étoiles de N5/N7 | les fonds sont des **cibles ou entrées de paires réelles** (une fois sur deux chacune) ; les formes d'étoiles viennent de banques d'étoiles brillantes réelles mesurées dans des images **avec** leurs étoiles | n'entrent dans aucune cible de paire réelle ; servent à dessiner des étoiles ajoutées |
+| **generated** pairs (E2, E3) | nothing: backgrounds, defects, stars and noise drawn from a seed | the target **is** the background without the drawn stars: exact by construction |
+| **real denoised** pairs (103 training + 6 held out) | Nicolas's image with its stars: stack minus its gradient, normalised in noise units, denoised | **input minus a star layer**: track 1 (star-and-halo model fitted on the image, positions and brightnesses from the Gaia catalogue), stage A (refilling by patches taken from the image), stage B (passes), judge (weights). v33d: weights set to 0 only; v33g: + smoothed diffuse light |
+| **real raw** pairs (35) | the same tile, not denoised | raw − (denoised input − denoised target): the same star layer is removed |
+| **web (APOD)** pairs (38 tiles from 13 images) | images published by APOD, **delinearised** (inverse stretch estimated on the stars), not re-denoised | **same chain** (variant v33b) and same judge as above |
+| backgrounds and shapes of the N5/N7 star generator | the backgrounds are **targets or inputs of real pairs** (half and half); the star shapes come from banks of real bright stars measured in images **with** their stars | enter no target of a real pair; used to draw added stars |
 
-Les paires APOD : vérifié dans le code (`scripts/Production APOD – 24 nov/`) et les journaux. 65 tuiles ont été produites sur 22 images, 9 images ont été écartées à la revue à l'œil (27 tuiles), 7 images n'ont pas pu être produites (20 tuiles) ; il reste 38 tuiles de 13 images. L'entrée est préparée sans réseau et sans téléchargement (`preparer_apod.py`) ; la cible vient de la même chaîne que pour les images de Nicolas. **Doute à connaître** : les images web ont déjà été traitées par leurs auteurs avec un logiciel que nous ignorons (peut-être avec un outil de réduction d'étoiles) ; ce traitement est dans l'**entrée** ; la **cible** reste calculée par notre chaîne à partir de cette entrée.
+The APOD pairs: checked in the code (`scripts/Production APOD – 24 nov/`) and the logs. 65 tiles were produced from 22 images, 9 images were discarded at the by-eye review (27 tiles), 7 images could not be produced (20 tiles); 38 tiles from 13 images remain. The input is prepared with no network and no download (`preparer_apod.py`); the target comes from the same chain as for Nicolas's images. **A doubt to be aware of**: the web images were already processed by their authors with software we do not know (possibly with a star-reduction tool); that processing is in the **input**; the **target** is still computed by our chain from that input.
 
-## 2 bis. Le verdict pour les 182 paires lues par N5 et N7
+## 2 bis. The verdict for the 182 pairs read by N5 and N7
 
-**Établi pour les 182 lignes** de `provenance/MANIFESTE_PAIRES.csv` (colonnes `origine_cible`, `preuve_cible`, `verdict_cible`) : la cible de chaque paire vient de la **chaîne classique** (131 lignes : chaîne v33 ; 51 lignes : chaîne v33b, dont les 38 paires web), puis v33d (poids mis à 0 seulement) et v33g (lumière diffuse lissée) ; pour les 35 paires brutes, de la formule « brute − (entrée débruitée − cible débruitée) ». Aucune cible ne vient d'une sortie de réseau, d'une retouche à la main, ni d'un logiciel tiers. Aucune cible n'est « non établie ». (Les tuiles synthétiques de N5 et N7 sont tirées à la volée ; ce ne sont pas des fichiers de paires.)
+**Established for the 182 lines** of `provenance/MANIFESTE_PAIRES.csv` (columns `origine_cible`, `preuve_cible`, `verdict_cible`): the target of each pair comes from the **classical chain** (131 lines: chain v33; 51 lines: chain v33b, including the 38 web pairs), then v33d (weights set to 0 only) and v33g (smoothed diffuse light); for the 35 raw pairs, from the formula "raw − (denoised input − denoised target)". No target comes from a network output, from a hand retouch, or from third-party software. No target is "not established". (The synthetic tiles of N5 and N7 are drawn on the fly; they are not pair files.)
 
-Les trois preuves, en termes simples :
+The three proofs, in plain terms:
 
-1. **Les journaux de production.** Chaque tuile a son journal de piste 1 (réglages « sans remplissage », dossier de travail propre à la tuile) et son journal de fin, et figure dans la liste des paires produites (`paires.jsonl`). La chaîne ne lit que l'**image d'entrée** de chaque image source ; aucun script ne nomme les fichiers « sans étoiles » ou « cible » qui existent à côté de certaines images, et l'historique git des dossiers de la chaîne ne montre aucune lecture de tels fichiers. Une seule tuile n'a pas de journal séparé (`58_hoo_g3456_896`, essai initial) : elle est établie par le rejeu.
-2. **Un contrôle numérique.** Pour les 60 tuiles non web dont le dossier d'image contient un fichier « sans étoiles » ou « cible » (piles de télescopes en ligne, jeux de données…), on a comparé la cible de la paire à ce fichier voisin sur les pixels où il diffère de l'entrée de plus de 5 bruits : la cible ne lui est égale que sur **0,42 % des pixels au plus** (une cible dérivée de ce fichier en ferait 100 %). Les autres images n'ont aucun tel fichier : rien n'était à lire.
-3. **Le rejeu au bit près.** La chaîne publiée refait la cible à partir de l'entrée et la retrouve **identique au bit** sur 6 tuiles, dont 3 tuiles (5 lignes) parmi les 14 lignes dont le commit de production est « incertain ». Pour les 14 lignes incertaines, l'historique git montre aussi qu'aucune version commitée des scripts n'a jamais lu un fichier de référence.
+1. **The production logs.** Each tile has its track-1 log ("no filling" settings, working folder specific to the tile) and its end log, and appears in the list of produced pairs (`paires.jsonl`). The chain reads only the **input image** of each source image; no script names the "starless" or "target" files that exist next to some images, and the git history of the chain's folders shows no reading of such files. A single tile has no separate log (`58_hoo_g3456_896`, initial trial): it is established by the replay.
+2. **A numerical check.** For the 60 non-web tiles whose image folder contains a "starless" or "target" file (stacks from online telescopes, datasets…), the pair's target was compared to that neighbouring file on the pixels where it differs from the input by more than 5 noise units: the target equals it on **at most 0.42 % of the pixels** (a target derived from that file would give 100 %). The other images have no such file: there was nothing to read.
+3. **The bit-exact replay.** The published chain redoes the target from the input and finds it **bit-identical** on 6 tiles, including 3 tiles (5 lines) among the 14 lines whose production commit is "uncertain". For the 14 uncertain lines, the git history also shows that no committed version of the scripts ever read a reference file.
 
-Chaque ligne du CSV donne sa preuve (`preuve_cible`). Non rejouées (24 à 53 minutes de piste 1 par tuile) : `bubble_a7s_g1446_1310`, `heart_a7s` (3 tuiles), `ic443_40da` (4 tuiles) ; leurs dossiers n'ont aucun fichier « sans étoiles », ou le contrôle numérique s'applique.
+Each CSV line gives its proof (`preuve_cible`). Not replayed (24 to 53 minutes of track 1 per tile): `bubble_a7s_g1446_1310`, `heart_a7s` (3 tiles), `ic443_40da` (4 tiles); their folders have no "starless" file, or the numerical check applies.
 
-## 3. Les deux façons de vérifier
+## 3. The two ways to check
 
-### Images de Nicolas : les paires sont publiées (pièce jointe de version)
+### Nicolas's images: the pairs are published (release attachment)
 
-Les paires issues des images de Nicolas lues par N5 et N7 (54 fichiers, 298 Mo ; + 470 Mo de fichiers de rejeu) sont fournies en pièce jointe de la page Releases du dépôt (hors git : trop volumineuses). Leur liste, avec empreinte et taille, est dans `provenance/SHA256SUMS_PAIRES_NICOLAS.txt`. Un tiers peut :
-1. vérifier que les fichiers sont intacts (`sha256sum -c`) ;
-2. vérifier les **relations** entre fichiers (cible v33g = cible v33d + lumière diffuse lissée ; paire brute = brute − calque d'étoiles ; poids seulement mis à 0 entre versions) : `python provenance/verifier_provenance.py <paire>.npz --mode g` ;
-3. relancer la chaîne publiée et retrouver la cible **au bit près** : `python provenance/verifier_provenance.py <paire>.npz --mode rejeu` (voir `provenance/LISEZMOI_PROVENANCE.md`). **Pour le rejeu complet**, la chaîne part de l'image d'origine (découpe de 768 px autour de la tuile, astrométrie, modèle d'étoile, extrait Gaia profond). Ces fichiers d'entrée sont préparés pour les 54 paires, en pièce jointe de version distincte (`rejeu_entrees`, 469,6 Mo, 132 fichiers, empreintes dans `provenance/SHA256SUMS_REJEU_NICOLAS.txt`) : `RACINE_ORIGINE=<rejeu_entrees>/origine ENTREES_REJEU=<rejeu_entrees>/entrees python provenance/verifier_provenance.py <paire>.npz --mode rejeu` (voir `provenance/LISEZMOI_PROVENANCE.md`). Essayé avec ces seuls fichiers : `m101_a7s_g2085_883` (cible v33g refaite identique au bit). Sans cette pièce jointe, on vérifie les empreintes et les relations (modes `liens` et `g`).
+The pairs derived from Nicolas's images and read by N5 and N7 (54 files, 298 MB; + 470 MB of replay files) are provided as an attachment on the repository's Releases page (outside git: too large). Their list, with checksum and size, is in `provenance/SHA256SUMS_PAIRES_NICOLAS.txt`. A third party can:
+1. check that the files are intact (`sha256sum -c`);
+2. check the **relations** between files (target v33g = target v33d + smoothed diffuse light; raw pair = raw − star layer; weights only set to 0 between versions): `python provenance/verifier_provenance.py <pair>.npz --mode g`;
+3. rerun the published chain and find the target **bit for bit**: `python provenance/verifier_provenance.py <pair>.npz --mode rejeu` (see `provenance/README.md`). **For the full replay**, the chain starts from the original image (768 px crop around the tile, astrometry, star model, deep Gaia extract). These input files are prepared for the 54 pairs, in a separate release attachment (`rejeu_entrees`, 469.6 MB, 132 files, checksums in `provenance/SHA256SUMS_REJEU_NICOLAS.txt`): `RACINE_ORIGINE=<rejeu_entrees>/origine ENTREES_REJEU=<rejeu_entrees>/entrees python provenance/verifier_provenance.py <pair>.npz --mode rejeu` (see `provenance/README.md`). Tried with these files alone: `m101_a7s_g2085_883` (v33g target redone bit-identical). Without this attachment, one checks the checksums and the relations (modes `liens` and `g`).
 
-### Images web : seuls les moyens de les refaire sont publiés
+### Web images: only the means to redo them are published
 
-Les images web appartiennent à leurs auteurs : **leurs pixels, et les paires qui en dérivent, ne sont pas publiés**. À la place, pour chacune des 38 paires, `provenance/MANIFESTE_PAIRES.csv` donne : l'adresse de la page APOD et celle de l'image, l'empreinte sha256 du fichier image tel que téléchargé à l'époque, les paramètres exacts de délinéarisation, la découpe (position et taille de la tuile), l'empreinte du fichier de paire. Le script `provenance/refaire_paires_web.py` retélécharge l'image depuis son adresse (option `--telecharger`), vérifie son empreinte, refait la délinéarisation, l'entrée et la paire avec la chaîne publiée, et compare l'empreinte à celle du manifeste.
+The web images belong to their authors: **their pixels, and the pairs derived from them, are not published**. Instead, for each of the 38 pairs, `provenance/MANIFESTE_PAIRES.csv` gives: the address of the APOD page and of the image, the sha256 checksum of the image file as downloaded at the time, the exact delinearisation parameters, the crop (tile position and size), and the checksum of the pair file. The script `provenance/refaire_paires_web.py` downloads the image again from its address (option `--telecharger`), checks its checksum, redoes the delinearisation, the input and the pair with the published chain, and compares the checksum with the manifest's.
 
-## 4. Ce qui a été essayé pour de vrai (26 nov)
+## 4. What was really tried (26 Nov)
 
-Rejeu de la cible à partir de l'entrée, avec la chaîne **publiée** ou ses originaux, sur le processeur :
+Replay of the target from the input, with the **published** chain or its originals, on the CPU:
 
-| paire | résultat |
+| pair | result |
 |---|---|
-| `m1_g896_896_debruitee` (image de Nicolas, chaîne v33) | cible, poids, classes, entrée **identiques au bit** (écart maximal 0 sur 258 458 pixels de poids > 0) |
-| `m45_asi1600_g2650_1450` et sa brute (v33) | cibles débruitée et **brute** identiques au bit ; étape v33d → v33g refaite à l'identique |
-| `bubble_a7s_g2000_1367` et sa brute (v33b) | identiques au bit (piste 1 sur processeur : 803 s) |
-| `apod_070_g1536_1408` (web, v33b) | identique au bit ; avec `refaire_paires_web.py --local` : empreinte de l'image, délinéarisation, entrée et paire refaites à l'identique, et le **fichier** de paire refait a le même sha256 que le manifeste |
+| `m1_g896_896_debruitee` (Nicolas's image, chain v33) | target, weights, classes, input **bit-identical** (maximum difference 0 over 258,458 pixels of weight > 0) |
+| `m45_asi1600_g2650_1450` and its raw version (v33) | denoised and **raw** targets bit-identical; step v33d → v33g redone identically |
+| `bubble_a7s_g2000_1367` and its raw version (v33b) | bit-identical (track 1 on CPU: 803 s) |
+| `apod_070_g1536_1408` (web, v33b) | bit-identical; with `refaire_paires_web.py --local`: image checksum, delinearisation, input and pair redone identically, and the redone pair **file** has the same sha256 as the manifest |
 
-La production avait fait la piste 1 sur la carte graphique ; son rejeu sur processeur redonne pourtant les mêmes bits (l'ajustement tourne en `float64`). **Cela n'est établi que pour ces tuiles** : on ne promet pas la même chose pour les autres tuiles, ni avec une autre version de bibliothèque. Le retéléchargement depuis le réseau n'a pas été testé (aucun accès réseau pendant la préparation).
+The production ran track 1 on the graphics card; its replay on CPU nonetheless gives the same bits (the fit runs in `float64`). **This is established only for these tiles**: we do not promise the same for the other tiles, nor with another library version. Re-downloading from the network was not tested (no network access during preparation).
 
-## 5. Analyse statique : ce que lisent les scripts d'entraînement
+## 5. Static analysis: what the training scripts read
 
-Méthode (détail et numéros de ligne : `provenance/ANALYSE_STATIQUE.md`) : on calcule la **fermeture d'imports** de chaque script d'entraînement et de fabrication de cibles, et on cherche, dans toute cette fermeture, le nom de tout logiciel tiers de retrait d'étoiles, les mots `starless`, `Comparaison`, les dossiers de références, et toute lecture de poids de réseau. Dossiers réellement lus :
+Method (detail and line numbers: `provenance/STATIC_ANALYSIS.md`): we compute the **import closure** of each training and target-making script, and search, in that whole closure, for the name of any third-party star-removal software, the words `starless`, `Comparaison`, the reference folders, and any reading of network weights. Folders actually read:
 
-| script | dossiers lus | contenu |
+| script | folders read | content |
 |---|---|---|
-| `train_e.py` (+ `day_e3.py`) | `pairs_v4/` (+ jeu de validation tiré de ces paires), poids de E2 | paires générées ; poids entraînés par ce même script |
-| `train_n56.py` et `train_n7.py` | `Paires étoiles v33 – 23 nov/` (fichiers `*_v33g.npz`), `Paires étoiles APOD – 24 nov/` (`*_v33g.npz`), poids de E3 pas 20 000 | sorties de **notre** chaîne ; E3 généré seulement |
-| `paires_synthetiques_n2.py`, `_n7.py`, `etoiles2.py` | les tableaux des paires ci-dessus (fonds), les banques d'étoiles (formes) | cibles de notre chaîne ; étoiles réelles **avec** leurs étoiles (mesure de forme) |
-| `produire_*.py`, `tuile_cpu*.py`, `methode_validee.py`, `etape_A/B.py`, piste 1, piste 3, passes, juges, `preparer_g_h.py` | l'image d'entrée, son astrométrie, le catalogue Gaia, le `starless.npy` de **notre** piste 1 | aucune sortie d'un autre logiciel |
+| `train_e.py` (+ `day_e3.py`) | `pairs_v4/` (+ validation set drawn from these pairs), E2 weights | generated pairs; weights trained by this same script |
+| `train_n56.py` and `train_n7.py` | `Paires étoiles v33 – 23 nov/` (files `*_v33g.npz`), `Paires étoiles APOD – 24 nov/` (`*_v33g.npz`), E3 step 20,000 weights | outputs of **our** chain; E3 generated only |
+| `paires_synthetiques_n2.py`, `_n7.py`, `etoiles2.py` | the arrays of the pairs above (backgrounds), the star banks (shapes) | targets of our chain; real stars **with** their stars (shape measurement) |
+| `produire_*.py`, `tuile_cpu*.py`, `methode_validee.py`, `etape_A/B.py`, track 1, track 3, passes, judges, `preparer_g_h.py` | the input image, its astrometry, the Gaia catalogue, the `starless.npy` of **our** track 1 | no output of another piece of software |
 
-**Résultat de la recherche** : le nom d'un logiciel tiers de retrait d'étoiles n'apparaît dans aucune fermeture comme donnée lue. Le mot `starless` n'y désigne que la sortie de notre propre piste 1. Les 30 scripts qui lisent des sorties d'un autre logiciel ou de réseaux entraînés (mesure, planches, diagnostics) ne sont dans **aucune** des fermetures : ce sont des scripts de mesure, jamais appelés par l'entraînement ni par la fabrication des cibles. **Les dossiers de comparaison ne sont lus que par des scripts de mesure.**
+**Result of the search**: the name of third-party star-removal software appears in no closure as data read. The word `starless` there designates only the output of our own track 1. The 30 scripts that read outputs of other software or of trained networks (measurement, sheets, diagnostics) are in **none** of the closures: they are measurement scripts, never called by the training or by the making of targets. **The comparison folders are read only by measurement scripts.**
 
-## 6. Ce qui reste incertain (écrit, pas caché)
+## 6. What remains uncertain (written down, not hidden)
 
-1. **E3 n'a pas de commit** (le dépôt de scripts date du 21 nov) : sa provenance repose sur le manifeste d'empreintes des paires générées (`reads_no_image: true`, 4 000 empreintes, code identique à celui du manifeste) et sur les journaux. `train_e.py` a été modifié après la fin de E3 (9 nov, 15 h 24).
-2. **E3, fichiers « débruités »** : la régénération de contrôle (`make_dataset.py --verify`) redonne **à l'octet** les fichiers bruités, mais pas les débruités (écart maximal 216 sur l'entrée, 88 sur la cible). Cause probable : le code de débruitage de l'application a changé depuis le 9 nov ; non établie. Cela ne touche pas l'origine des paires.
-3. **Commits de production** : 14 lignes du manifeste sur 182 ont un commit « incertain » (le script de production a été commité après les premières paires) ; `preparer_g_h.py` a été modifié après l'écriture des paires v33g, mais le mode `g` du vérificateur les reproduit au bit près sur les 3 paires essayées.
-4. **Images web** : traitées par leurs auteurs avant publication (voir §2).
-5. **Propriété de certaines images non APOD** : plusieurs viennent de banques d'images, de jeux de données ou de piles de télescopes en ligne ; le code ne dit pas qui les a prises. Les paires de la pièce jointe de version se limitent à celles de l'arborescence personnelle de Nicolas ; les 90 autres fichiers (488 Mo) restent hors publication.
-6. **Rejeu complet** fait sur 6 tuiles ; les 182 empreintes et relations sont vérifiées, les autres rejeux n'ont pas été faits (§2 bis).
-7. **Dépendances de FLOAT** : l'astrométrie hors ligne et le réseau de débruitage de l'application ne sont pas fournis (`scripts/LISEZMOI.md`).
+1. **E3 has no commit** (the scripts repository dates from 21 Nov): its provenance rests on the checksum manifest of the generated pairs (`reads_no_image: true`, 4,000 checksums, code identical to that of the manifest) and on the logs. `train_e.py` was modified after E3 ended (9 Nov, 15:24).
+2. **E3, "denoised" files**: the check regeneration (`make_dataset.py --verify`) gives back the noisy files **byte for byte**, but not the denoised ones (maximum difference 216 on the input, 88 on the target). Probable cause: the application's denoising code has changed since 9 Nov; not established. This does not affect the origin of the pairs.
+3. **Production commits**: 14 manifest lines out of 182 have an "uncertain" commit (the production script was committed after the first pairs); `preparer_g_h.py` was modified after the v33g pairs were written, but the verifier's `g` mode reproduces them bit for bit on the 3 pairs tried.
+4. **Web images**: processed by their authors before publication (see §2).
+5. **Ownership of some non-APOD images**: several come from image banks, datasets or stacks from online telescopes; the code does not say who took them. The pairs in the release attachment are limited to those from Nicolas's personal tree; the other 90 files (488 MB) stay unpublished.
+6. **Full replay** done on 6 tiles; the 182 checksums and relations are verified, the other replays were not done (§2 bis).
+7. **Application dependencies**: the offline astrometry and the application's denoising network are not supplied (`scripts/README.md`).

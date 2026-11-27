@@ -1,12 +1,12 @@
 # ======================================================================
 # mosaiques.py
-# Rôle     : Mosaiques par groupe de 4 images -> <DONNEES>/Choix des tuiles v2 - 23 nov/mosaique_NN.jpg.
-# Étape    : 2. Choix des tuiles (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images, mosaïques
-# Sorties  : liste de tuiles
-# Exemple  : python mosaiques.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Mosaics by group of 4 images -> <DONNEES>/Choix des tuiles v2 - 23 nov/mosaique_NN.jpg.
+# Step     : 2. Tile selection (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : images, mosaics
+# Outputs  : list of tiles
+# Example  : python mosaiques.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Mosaiques par groupe de 4 images -> <DONNEES>/Choix des tuiles v2 - 23 nov/mosaique_NN.jpg. Une image a la fois, 2 fils, sans GPU."""
+"""Mosaics by group of 4 images -> <DONNEES>/Choix des tuiles v2 - 23 nov/mosaique_NN.jpg. One image at a time, 2 threads, no GPU."""
 import os, sys, csv
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 sys.dont_write_bytecode = True

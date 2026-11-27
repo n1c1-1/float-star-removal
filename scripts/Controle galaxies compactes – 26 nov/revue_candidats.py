@@ -1,13 +1,13 @@
 # ======================================================================
 # revue_candidats.py
-# Rôle     : Planches de revue des candidats (vignettes 64x64 agrandies x3, numerotees) pour choisir a l'oeil.
-# Étape    : 13. Jeu de contrôle des petites galaxies (26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images web et extraits Gaia (non publiés)
-# Sorties  : controle.json, mesures par réseau
-# Exemple  : python revue_candidats.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Review sheets of the candidates (64x64 thumbnails enlarged x3, numbered) to choose by eye.
+# Step     : 13. Control set of small galaxies (26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : web images and Gaia extracts (unpublished)
+# Outputs  : controle.json, per-network measurements
+# Example  : python revue_candidats.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Planches de revue des candidats (vignettes 64x64 agrandies x3, numerotees) pour choisir a l'oeil. Une planche par image, 40 candidats au plus
-(les plus larges, puis un tirage regulier). revue_candidats.py [image ...]"""
+r"""Review sheets of the candidates (64x64 thumbnails enlarged x3, numbered) to choose by eye. One sheet per image, 40 candidates at most
+(the widest ones, then a regular draw). revue_candidats.py [image ...]"""
 import os, sys, json, glob
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 from pathlib import Path

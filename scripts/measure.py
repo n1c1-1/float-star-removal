@@ -1,10 +1,10 @@
 # ======================================================================
 # measure.py
-# Rôle     : Statistiques des fonds, pour comparer les fonds générés aux vraies images.
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python measure.py real_input [--out <ESSAIS>/starRemoval/measures/real_input.json]
+# Role     : Statistics of the backgrounds, to compare the generated backgrounds with the real images.
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python measure.py real_input [--out <ESSAIS>/starRemoval/measures/real_input.json]
 # ======================================================================
 """Statistics of backgrounds, to compare the generated ones (backgrounds.py, defects.py) with our real images, measured
 with their stars masked.

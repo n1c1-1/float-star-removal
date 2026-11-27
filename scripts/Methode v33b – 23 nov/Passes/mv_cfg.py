@@ -1,25 +1,25 @@
 # ======================================================================
 # mv_cfg.py
-# Rôle     : Parametres d'une execution de l'etape B (passes finales), lus dans le fichier JSON donne par la variable MV_CFG.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python mv_cfg.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Parameters of a step B run (final passes), read from the JSON file given by the variable MV_CFG.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python mv_cfg.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Parametres d'une execution de l'etape B (passes finales), lus dans le fichier JSON donne par la variable MV_CFG.
-Aucun chemin ni nom de decoupe n'est ecrit en dur dans passe_finale_p.py / passe_finale_t2_p.py / passe_finale_t3_p.py.
+"""Parameters of a step B run (final passes), read from the JSON file given by the variable MV_CFG.
+No path or crop name is hard-coded in passe_finale_p.py / passe_finale_t2_p.py / passe_finale_t3_p.py.
 
-Cle du JSON :
-  case      nom du cas dans mesure.CASES (ex. "rosette_decoupe6", "mv_filaments")
-  crop      [x0, y0, x1, y1] decoupe dans l'image Rosette debruitee entiere
-  tile      [x0, y0, x1, y1] tuile jugee dans la decoupe
-  a_out     dossier de sortie de l'etape A (sans_etoiles_tuile.npy, carte_remplissage_tuile.npy, mesures.json)
-  base_csv  etoiles.csv de la base piste 1 (copie de fenetre de l'etape A)
-  b_root    dossier de sortie de l'etape B (t1/, t2/, t3/)
-  p1_dir    dossier "Piste1" gele (astrometrie.npz, images.py, juger.py)
-  six       liste [[x, y], ...] d'etoiles a montrer (vues seulement ; [] si aucune)
-  angles    angles des aigrettes de l'instrument, mesures par l'etape A (journal / mesures.json)
-  named_fixes  true seulement pour decoupe6 : les corrections de t3 liees a des positions nommees de cette decoupe
+JSON keys:
+  case      name of the case in mesure.CASES (e.g. "rosette_decoupe6", "mv_filaments")
+  crop      [x0, y0, x1, y1] crop in the whole denoised Rosette image
+  tile      [x0, y0, x1, y1] tile judged within the crop
+  a_out     output folder of step A (sans_etoiles_tuile.npy, carte_remplissage_tuile.npy, mesures.json)
+  base_csv  etoiles.csv of the track 1 base (window copy from step A)
+  b_root    output folder of step B (t1/, t2/, t3/)
+  p1_dir    frozen "Piste1" folder (astrometrie.npz, images.py, juger.py)
+  six       list [[x, y], ...] of stars to show (views only; [] if none)
+  angles    the instrument's spike angles, measured by step A (log / mesures.json)
+  named_fixes  true only for decoupe6: the t3 corrections tied to named positions of this crop
 """
 import json
 import os

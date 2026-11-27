@@ -1,25 +1,25 @@
 # ======================================================================
 # banque_formes.py
-# Rôle     : Banque de formes RÉELLES des étoiles brillantes (tour 3) : par image, empilement (médiane) des vraies brillantes.
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : python banque_formes.py [image ...]  -> banque\banque_<image>.npz, banque\banque.json ; planche Synth_13_banque.png
+# Role     : Bank of REAL shapes of the bright stars (round 3): per image, stack (median) of the real bright stars.
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : star-free backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : python banque_formes.py [image ...]  -> banque\banque_<image>.npz, banque\banque.json ; planche Synth_13_banque.png
 # ======================================================================
-"""Banque de formes RÉELLES des étoiles brillantes (tour 3) : par image, empilement (médiane) des vraies brillantes.
+"""Bank of REAL shapes of the bright stars (round 3): per image, stack (median) of the real bright stars.
 
-Par image : largeur (moment d'ordre 2 des G 12-14 isolées) et point zéro (ouverture 3 FWHM des G 11-14) mesurés ici, de
-la même façon pour toutes les images ; étoiles G 4,5-9,5 à plus de 310 px du bord, sans plus brillante à 150 px ni
-d'étoile de moins de 1,5 mag d'écart à 40 px ; vignette 601 px, fond = médiane de l'anneau 280-300 px par couleur,
-recentrée au sous-pixel, chaque couleur divisée par SON flux (flux du catalogue x part de la couleur lue sur l'aile
-3-8 FWHM) : la forme garde l'irisation et le plateau écrêté propre à l'image ; voisines du catalogue masquées (3 FWHM +
-10 px par magnitude au-dessus de G 12). Groupes d'éclat de >= 5 étoiles (au plus 4) ; médiane par pixel : les traits de
-l'instrument (aigrettes, rayons, halo non rond) restent, la nébuleuse et les voisines partent. Partie lointaine
-(r > 40 px) lissée (sigma 2 px) contre le bruit résiduel.
+Per image: width (2nd-order moment of the isolated G 12-14 stars) and zero point (3 FWHM aperture of the G 11-14 stars)
+measured here, in the same way for all images; stars G 4.5-9.5 more than 310 px from the edge, with no brighter star
+within 150 px nor a star less than 1.5 mag apart within 40 px; 601 px thumbnail, background = median of the 280-300 px
+ring per colour, recentred to the sub-pixel, each colour divided by ITS flux (catalogue flux x the colour's share read on
+the 3-8 FWHM wing): the shape keeps the iridescence and the clipped plateau specific to the image; catalogue neighbours
+masked (3 FWHM + 10 px per magnitude above G 12). Brightness groups of >= 5 stars (at most 4); per-pixel median: the
+instrument's features (spikes, rays, non-round halo) stay, the nebula and the neighbours go away. Far part
+(r > 40 px) smoothed (sigma 2 px) against residual noise.
 
-    construire(nom, exclure=[(x, y), ...]) -> dict(formes (g, 3, 601, 601) float32, G, niveau (plateau normalisé par
-        couleur), fwhm, zp, n, image)
-    python banque_formes.py [image ...]  -> banque\\banque_<image>.npz, banque\\banque.json ; planche Synth_13_banque.png
+    construire(nom, exclure=[(x, y), ...]) -> dict(formes (g, 3, 601, 601) float32, G, niveau (plateau normalised per
+        colour), fwhm, zp, n, image)
+    python banque_formes.py [image ...]  -> banque\\banque_<image>.npz, banque\\banque.json ; sheet Synth_13_banque.png
 """
 from __future__ import annotations
 

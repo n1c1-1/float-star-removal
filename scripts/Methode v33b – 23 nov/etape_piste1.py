@@ -1,17 +1,17 @@
 # ======================================================================
 # etape_piste1.py
-# Rôle     : Etape 1 de la methode validee : piste 1 (Gaia profond + soustraction de PSF, sans remplissage), reglages de c9.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : Usage : python etape_piste1.py <tag> x0,y0,x1,y1
+# Role     : Step 1 of the validated method: track 1 (deep Gaia + PSF subtraction, without filling), c9 settings.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : Usage: python etape_piste1.py <tag> x0,y0,x1,y1
 # ======================================================================
-"""Etape 1 de la methode validee : piste 1 (Gaia profond + soustraction de PSF, sans remplissage), reglages de c9.
-Usage : python etape_piste1.py <tag> x0,y0,x1,y1
-  <tag>  nom de la sortie (Piste1/sorties/rosette/<tag>/)
-  crop   decoupe dans l'image Rosette debruitee entiere (768 px pour decoupe6 : 1530,790,2298,1558)
-Meme appel que piste1_decoupe.py au lancement de c9 : RM.run("rosette", tag, {"no_fill": True, "crop": crop, "region_grid": 1}).
-Le code appele est Piste1/retrait_modele.py, copie gelee de l'etat de ce fichier au lancement de c9 (voir JOURNAL.md)."""
+"""Step 1 of the validated method: track 1 (deep Gaia + PSF subtraction, without filling), c9 settings.
+Usage: python etape_piste1.py <tag> x0,y0,x1,y1
+  <tag>  name of the output (Piste1/sorties/rosette/<tag>/)
+  crop   crop in the whole denoised Rosette image (768 px for decoupe6: 1530,790,2298,1558)
+Same call as piste1_decoupe.py at the launch of c9: RM.run("rosette", tag, {"no_fill": True, "crop": crop, "region_grid": 1}).
+The code called is Piste1/retrait_modele.py, frozen copy of the state of this file at the launch of c9 (see JOURNAL.md)."""
 import os, sys, json
 for k, v in dict(PYTHONDONTWRITEBYTECODE="1", CUDA_VISIBLE_DEVICES="-1", OMP_NUM_THREADS="4", MKL_NUM_THREADS="4",
                  NUMBA_NUM_THREADS="4", OPENBLAS_NUM_THREADS="4").items():

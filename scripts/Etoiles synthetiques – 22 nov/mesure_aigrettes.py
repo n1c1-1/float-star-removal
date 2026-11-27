@@ -1,21 +1,21 @@
 # ======================================================================
 # mesure_aigrettes.py
-# Rôle     : Étape 2.0 : les aigrettes réelles mesurées sur nos 4 images, étoiles croisées écartées (pour les plages du générateur v2).
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : python mesure_aigrettes.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Step 2.0: the real spikes measured on our 4 images, crossed stars discarded (for the v2 generator's ranges).
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : star-free backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : python mesure_aigrettes.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Étape 2.0 : les aigrettes réelles mesurées sur nos 4 images, étoiles croisées écartées (pour les plages du générateur v2).
+"""Step 2.0: the real spikes measured on our 4 images, crossed stars discarded (for the v2 generator's ranges).
 
-Pour les étoiles G < 9,5 de chaque image (assez loin du bord, sans plus brillante à 60 px), le long de chaque angle connu :
-excès = moyenne sur 3 px en travers moins la moyenne de deux parallèles à +-d px (d = max(3 FWHM, 8)) ; les points à
-moins de 3 FWHM d'une autre étoile du catalogue (de la ligne ou des parallèles) sont écartés. Par étoile et par couleur :
-ajustement linéaire de log10(excès / flux) = a + b log10(1 + (r / fw)^2) + c r^2 sur les points > 2 bruits :
-  s0 = 10^a (niveau près du cœur), pente p = -2b, longueur de coupure L = 1 / sqrt(-c ln 10) (si c < 0) ;
-r_fin = dernier r où l'excès dépasse 3 bruits ; largeur en travers (sigma gaussien) à r 15-40 px ; pointillés = MAD de
-(excès / ajustement - 1) et période dominante.
-Sortie : mesure_aigrettes.json.
+For the G < 9.5 stars of each image (far enough from the edge, with no brighter star within 60 px), along each known angle:
+excess = mean over 3 px across minus the mean of two parallels at +-d px (d = max(3 FWHM, 8)); points less than
+3 FWHM from another catalogue star (of the line or of the parallels) are discarded. Per star and per colour:
+linear fit of log10(excess / flux) = a + b log10(1 + (r / fw)^2) + c r^2 on the points > 2 noises:
+  s0 = 10^a (level near the core), slope p = -2b, cutoff length L = 1 / sqrt(-c ln 10) (if c < 0);
+r_fin = last r where the excess exceeds 3 noises; cross-width (gaussian sigma) at r 15-40 px; dotted pattern = MAD of
+(excess / fit - 1) and dominant period.
+Output: mesure_aigrettes.json.
 """
 from __future__ import annotations
 

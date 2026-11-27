@@ -1,13 +1,13 @@
 # ======================================================================
 # planches.py
-# Rôle     : Planche de contrôle par image : original | linéaire ré-étirée (arcsinh simple) | gros plans x4 (étoile brillante et faible, avant puis après).
-# Étape    : 3. Délinéarisation et astrométrie des images web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images web APOD téléchargées
-# Sorties  : images linéaires, astrométrie, tuiles
-# Exemple  : python planches.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Control sheet per image: original | linear re-stretched (plain arcsinh) | x4 close-ups (bright and faint star, before then after).
+# Step     : 3. De-linearisation and astrometry of the APOD web images (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : downloaded APOD web images
+# Outputs  : linear images, astrometry, tiles
+# Example  : python planches.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Planche de contrôle par image : original | linéaire ré-étirée (arcsinh simple) | gros plans x4 (étoile brillante et
-faible, avant puis après). Titre : mesures d'etoiles_auto. Usage : planches.py [numéros...]"""
+"""Control sheet per image: original | linear re-stretched (plain arcsinh) | x4 close-ups (bright and faint
+star, before then after). Title: etoiles_auto measurements. Usage: planches.py [numbers...]"""
 from __future__ import annotations
 
 import json

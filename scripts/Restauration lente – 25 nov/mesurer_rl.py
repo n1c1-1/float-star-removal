@@ -1,14 +1,14 @@
 # ======================================================================
 # mesurer_rl.py
-# Rôle     : Mesure : tableau N5 / S40 / S80 + références (tableau_n56.md : modèle FLOAT, RefExt) avec colonne cœurs, et planches.
-# Étape    : 10. Essai écarté : remise de la part lente (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : sorties de N5
-# Sorties  : tableau_rl.md
-# Exemple  : mesurer_rl.py valider      -> valider_rl.py sur chaque dossier starless_<tag> (processeur)
+# Role     : Measurement: table N5 / S40 / S80 + references (tableau_n56.md: FLOAT model, RefExt) with a cores column, and contact sheets.
+# Stage    : 10. Discarded trial: restoring the slow part (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : N5 outputs
+# Outputs  : tableau_rl.md
+# Example  : mesurer_rl.py valider      -> valider_rl.py on each starless_<tag> folder (CPU)
 # ======================================================================
-r"""Mesure : tableau N5 / S40 / S80 + références (tableau_n56.md : modèle FLOAT, RefExt) avec colonne cœurs, et planches.
+r"""Measurement: table N5 / S40 / S80 + references (tableau_n56.md: FLOAT model, RefExt) with a cores column, and contact sheets.
 
-    mesurer_rl.py valider      -> valider_rl.py sur chaque dossier starless_<tag> (processeur)
+    mesurer_rl.py valider      -> valider_rl.py on each starless_<tag> folder (CPU)
     mesurer_rl.py tableau      -> tableau_rl.md + planches\
 """
 import glob, json, os, sys, subprocess, importlib.util

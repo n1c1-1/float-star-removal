@@ -1,18 +1,18 @@
 # ======================================================================
 # aveugle.py
-# Rôle     : Test de réalisme à l'aveugle du générateur v2 : par image, jusqu'à 10 vraies étoiles par classe d'éclat (moyenne G 12-13,5 ; brillante G 9-11 non écrêtée ; saturée = plateau >= 9 px ; très brillante G < 6,5) et autant de fausses d
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : Usage : python aveugle.py [image ...]  -> aveugle\<image>_<classe>_<k>.png ; la clé va dans le dossier passé par --cle.
+# Role     : Blind realism test of the v2 generator: per image, up to 10 real stars per brightness class (medium G 12-13.5; bright G 9-11 unclipped; saturated = plateau >= 9 px; very bright G < 6.5) and as many fake ones of the same brightness, rendered by etoiles2 (measured image parameters, images_mesurees; colour from Gaia BP-RP and the image's colour law fitted on its G 11-14 stars) and ADDED onto the real image at a place with no catalogue star of that brightness (the neighbourhood stays real, as for the real ones).
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : star-free backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : Usage: python aveugle.py [image ...]  -> aveugle\<image>_<classe>_<k>.png ; the key goes into the folder given by --cle.
 # ======================================================================
-"""Test de réalisme à l'aveugle du générateur v2 : par image, jusqu'à 10 vraies étoiles par classe d'éclat (moyenne
-G 12-13,5 ; brillante G 9-11 non écrêtée ; saturée = plateau >= 9 px ; très brillante G < 6,5) et autant de fausses de
-même éclat, rendues par etoiles2 (paramètres d'image mesurés, images_mesurees ; couleur par BP-RP Gaia et la loi de
-couleur de l'image ajustée sur ses étoiles G 11-14) et AJOUTÉES sur l'image réelle à un endroit sans étoile du catalogue
-de cet éclat (le voisinage reste réel, comme pour les vraies).
-Vignettes x4, arcsinh 60 | étirement fort, numérotées, mélangées ; 10 par planche, une classe par planche.
-Usage : python aveugle.py [image ...]  -> aveugle\\<image>_<classe>_<k>.png ; la clé va dans le dossier passé par --cle.
+"""Blind realism test of the v2 generator: per image, up to 10 real stars per brightness class (medium G 12-13.5;
+bright G 9-11 unclipped; saturated = plateau >= 9 px; very bright G < 6.5) and as many fake ones of the same brightness,
+rendered by etoiles2 (measured image parameters, images_mesurees; colour from Gaia BP-RP and the image's colour law
+fitted on its G 11-14 stars) and ADDED onto the real image at a place with no catalogue star of that brightness
+(the neighbourhood stays real, as for the real ones).
+Thumbnails x4, arcsinh 60 | strong stretch, numbered, shuffled; 10 per sheet, one class per sheet.
+Usage: python aveugle.py [image ...]  -> aveugle\\<image>_<classe>_<k>.png ; the key goes into the folder given by --cle.
 """
 from __future__ import annotations
 

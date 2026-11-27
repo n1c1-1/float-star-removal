@@ -1,15 +1,15 @@
 # ======================================================================
 # deux_echelles_v1v2.py
-# Rôle     : Deux variantes de N2 deux echelles.
-# Étape    : 12. Inférence à deux échelles V2 (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : réseau .pt + image de validation + extrait Gaia
-# Sorties  : images sans étoiles, tableaux
-# Exemple  : python deux_echelles_v1v2.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Two variants of N2 two scales.
+# Stage    : 12. Two-scale V2 inference (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : .pt network + validation image + Gaia extract
+# Outputs  : starless images, tables
+# Example  : python deux_echelles_v1v2.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Deux variantes de N2 deux echelles. V1 : G < 5,5, rayon = 0,5 x formule. V2 : G < 6,5, rayon = halo mesure dans l'entree
-(profil radial median : premier rayon ou profil - fond local < 2 bruits ; fond = mediane de la couronne 400-500 px ; plafond 300 px).
-Formule : 300 px x 10^(-0,2 (G - 5,6)). Raccord : plein jusqu'a 70 % du rayon, cosinus jusqu'a 100 %.
-Ecrit starless_v1/, starless_v2/ (effaces apres mesure), planches M27 et M42, parts_v1v2.json."""
+r"""Two variants of N2 two scales. V1: G < 5.5, radius = 0.5 x formula. V2: G < 6.5, radius = halo measured in the input
+(median radial profile: first radius where profile - local background < 2 noises; background = median of the 400-500 px ring; cap 300 px).
+Formula: 300 px x 10^(-0.2 (G - 5.6)). Blend: full up to 70 % of the radius, cosine up to 100 %.
+Writes starless_v1/, starless_v2/ (erased after measurement), M27 and M42 contact sheets, parts_v1v2.json."""
 import os, sys, json, time
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"; os.environ["ASTRO_GPU_OFFLINE"] = "1"
 sys.stdout.reconfigure(encoding="utf-8")

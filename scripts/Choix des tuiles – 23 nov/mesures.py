@@ -1,12 +1,12 @@
 # ======================================================================
 # mesures.py
-# Rôle     : Mesures par tuile (grille de planches_choix) : une image a la fois, 2 fils, sans carte graphique.
-# Étape    : 2. Choix des tuiles (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images, mosaïques
-# Sorties  : liste de tuiles
-# Exemple  : python mesures.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Per-tile measurements (planches_choix grid): one image at a time, 2 threads, no graphics card. -> mesures/<image>.csv
+# Step     : 2. Tile selection (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : images, mosaics
+# Outputs  : list of tiles
+# Example  : python mesures.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Mesures par tuile (grille de planches_choix) : une image a la fois, 2 fils, sans carte graphique. -> mesures/<image>.csv"""
+"""Per-tile measurements (planches_choix grid): one image at a time, 2 threads, no graphics card. -> mesures/<image>.csv"""
 import os, sys, csv
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 for k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS", "NUMBA_NUM_THREADS"):

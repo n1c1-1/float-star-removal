@@ -1,8 +1,8 @@
-# lancer_borne.ps1 : lance une commande a priorite basse, coeurs 4-15, fils fixes.
-# Exemple : .\lancer_borne.ps1 -Fils 4 -Log chaine.out -Exe python -Args "-I script.py"
-# Lance un calcul borné : priorité basse, cœurs 4-15 seulement (0-3 restent libres pour Windows et l'accès à distance),
-# fils fixés. Les processus enfants héritent de la priorité et des cœurs. Écrit le PID dans le journal.
-# Exemple : powershell -File lancer_borne.ps1 -Fils 4 -Log <DONNEES>\x.log -Exe python -Args "-I script.py --opt 1"
+# lancer_borne.ps1: launches a command at low priority, cores 4-15, fixed threads.
+# Example: .\lancer_borne.ps1 -Fils 4 -Log chaine.out -Exe python -Args "-I script.py"
+# Launches a bounded computation: low priority, cores 4-15 only (0-3 stay free for Windows and remote access),
+# fixed threads. Child processes inherit the priority and the cores. Writes the PID in the log.
+# Example: powershell -File lancer_borne.ps1 -Fils 4 -Log <DONNEES>\x.log -Exe python -Args "-I script.py --opt 1"
 param(
   [Parameter(Mandatory=$true)][string]$Args,
   [string]$Exe = "python",

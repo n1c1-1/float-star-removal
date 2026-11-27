@@ -1,18 +1,18 @@
 # ======================================================================
 # enchainer_n7.py
-# Rôle     : Chaîne N7 (copie de enchainer_n56.py), un seul processus, reprenable.
-# Étape    : 9. N7 : cœurs de galaxie synthétiques (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33g + cœurs synthétiques
-# Sorties  : instantanés N7, tableau_n7.md
-# Exemple  : lancer_borne.ps1 -Fils 4 -Log ...\chaine.out -Exe python -Args "-I enchainer_n7.py"
+# Role     : N7 chain (copy of enchainer_n56.py), a single process, resumable.
+# Stage    : 9. N7: synthetic galaxy cores (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33g pairs + synthetic cores
+# Outputs  : N7 snapshots, tableau_n7.md
+# Example  : lancer_borne.ps1 -Fils 4 -Log ...\chaine.out -Exe python -Args "-I enchainer_n7.py"
 # ======================================================================
-r"""Chaîne N7 (copie de enchainer_n56.py), un seul processus, reprenable. Elle ATTEND d'abord la fin de la chaîne N5 N6 (PID 321448 : une vérification
-par minute), puis :
-  1. choisit les paires v33h si N6 a G 14-17 <= celui de N5 ET structure médiane <= celle de N5 + 0,001 (tableau_n56.md du dossier N5 N6), sinon v33g ;
-  2. colonne cœurs de N5, N6 et RefExt (mesurer_n7.py coeurs_ref) ;
-  3. N7 = recette exacte N2/N5 (départ E3 pas 20000, 34500 pas, mêmes proportions), seul changement : cœurs synthétiques sur 25 % des tuiles synthétiques ;
-  4. mesure de N7 (deux échelles V2, colonne cœurs, validation) et tableau N5 / N6 / N7 / modèle FLOAT / RefExt, planches.
-Repère <DONNEES>\Entrainement étoiles N7 – 25 nov\etapes\<étape>.fini ; relancer la même commande saute ce qui est fini.
+r"""N7 chain (copy of enchainer_n56.py), a single process, resumable. It first WAITS for the end of the N5 N6 chain (PID 321448: one check
+per minute), then:
+  1. chooses the v33h pairs if N6 has G 14-17 <= that of N5 AND median structure <= that of N5 + 0.001 (tableau_n56.md of the N5 N6 folder), otherwise v33g;
+  2. cores column of N5, N6 and RefExt (mesurer_n7.py coeurs_ref);
+  3. N7 = exact N2/N5 recipe (start E3 step 20000, 34500 steps, same proportions), only change: synthetic cores on 25 % of the synthetic tiles;
+  4. measurement of N7 (two-scale V2, cores column, validation) and table N5 / N6 / N7 / FLOAT model / RefExt, contact sheets.
+Marker <DONNEES>\Entrainement étoiles N7 – 25 nov\etapes\<étape>.fini; rerunning the same command skips what is finished.
 
     lancer_borne.ps1 -Fils 4 -Log ...\chaine.out -Exe python -Args "-I enchainer_n7.py"
 """

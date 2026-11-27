@@ -1,21 +1,21 @@
 # ======================================================================
 # ajouter_image_banque.py
-# Rôle     : Ajoute une image à la banque d'étoiles individuelles, à partir de ses SEULES mesures : l'image et son astrométrie (positions et G des étoiles de son champ, comme astrometrie.npz des méthodes) ; aucun catalogue profond, aucun téléc
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : python ajouter_image_banque.py <image .npy|.fits> <astrometrie .npz | -> <nom>
+# Role     : Adds an image to the bank of individual stars, from its ONLY measurements: the image and its astrometry (positions and G of the stars of its field, like the methods' astrometrie.npz); no deep catalogue, no download.
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : starless backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : python ajouter_image_banque.py <image .npy|.fits> <astrometry .npz | -> <name>
 # ======================================================================
-"""Ajoute une image à la banque d'étoiles individuelles, à partir de ses SEULES mesures : l'image et son astrométrie
-(positions et G des étoiles de son champ, comme astrometrie.npz des méthodes) ; aucun catalogue profond, aucun
-téléchargement. Largeur, point zéro, loi du halo et angles des aigrettes sont mesurés sur l'image elle-même
-(banque_individuelle.construire). Les unités de l'image n'importent pas : chaque forme est divisée par son flux.
+"""Adds an image to the bank of individual stars, from its ONLY measurements: the image and its astrometry
+(positions and G of the stars of its field, like the methods' astrometrie.npz); no deep catalogue, no
+download. Width, zero point, halo law and spike angles are measured on the image itself
+(banque_individuelle.construire). The image's units do not matter: each shape is divided by its flux.
 
-    python ajouter_image_banque.py <image .npy|.fits> <astrometrie .npz | -> <nom>
-      sans astrométrie (« - ») : les brillantes sont trouvées par détection (banque_detection.py).
-      image : (C, H, W) ou (H, W), fond quelconque (retiré autour de chaque étoile) ; astrométrie : clé « cat » = dict
-      avec x, y, g (ou les clés x, y, g à la racine).
-    -> banque\\banque2_<nom>.npz ; la banque est prise par etoiles2 au prochain chargement.
+    python ajouter_image_banque.py <image .npy|.fits> <astrometry .npz | -> <name>
+      without astrometry (“-”): the bright stars are found by detection (banque_detection.py).
+      image: (C, H, W) or (H, W), any background (removed around each star); astrometry: key “cat” = dict
+      with x, y, g (or the keys x, y, g at the root).
+    -> banque\\banque2_<name>.npz; the bank is picked up by etoiles2 at the next load.
 """
 from __future__ import annotations
 

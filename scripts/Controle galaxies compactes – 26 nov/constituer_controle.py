@@ -1,13 +1,13 @@
 # ======================================================================
 # constituer_controle.py
-# Rôle     : Constitue le jeu de controle : galaxies retenues A L'OEIL (revue\<image>.jpg, numero = rang dans revue\<image>.json), etoile Gaia de meme brillance pour chacune, controle.json et planche_controle.jpg (vignettes 64x64, etirement as
-# Étape    : 13. Jeu de contrôle des petites galaxies (26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images web et extraits Gaia (non publiés)
-# Sorties  : controle.json, mesures par réseau
-# Exemple  : python constituer_controle.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Builds the control set: galaxies kept BY EYE (revue\<image>.jpg, number = rank in revue\<image>.json), a Gaia star of the same brightness for each, controle.json and planche_controle.jpg (64x64 thumbnails, common asinh stretch, galaxy on the left, star on the right).
+# Step     : 13. Control set of small galaxies (26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : web images and Gaia extracts (unpublished)
+# Outputs  : controle.json, per-network measurements
+# Example  : python constituer_controle.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Constitue le jeu de controle : galaxies retenues A L'OEIL (revue\<image>.jpg, numero = rang dans revue\<image>.json), etoile Gaia de meme brillance
-pour chacune, controle.json et planche_controle.jpg (vignettes 64x64, etirement asinh commun, galaxie a gauche, etoile a droite).
+r"""Builds the control set: galaxies kept BY EYE (revue\<image>.jpg, number = rank in revue\<image>.json), a Gaia star of the same brightness
+for each, controle.json and planche_controle.jpg (64x64 thumbnails, common asinh stretch, galaxy on the left, star on the right).
 
     constituer_controle.py
 """

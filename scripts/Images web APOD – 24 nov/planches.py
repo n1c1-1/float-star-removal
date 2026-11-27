@@ -1,12 +1,12 @@
 # ======================================================================
 # planches.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 3. Collecte des images web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : archive APOD (API publique)
-# Sorties  : images téléchargées (non publiées), index
-# Exemple  : python planches.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Step     : 3. Collection of the APOD web images (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : APOD archive (public API)
+# Outputs  : downloaded images (not published), index
+# Example  : python planches.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-# Index CSV + planches de vignettes (12 par planche, numerotees, nom sous la vignette). 1 fil, lecture par python -I.
+# CSV index + thumbnail sheets (12 per sheet, numbered, name under the thumbnail). 1 thread, read through python -I.
 import os,json,csv,re,html
 os.environ["OMP_NUM_THREADS"]="1"
 from PIL import Image,ImageDraw,ImageFont

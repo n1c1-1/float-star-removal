@@ -1,21 +1,21 @@
 # ======================================================================
 # ajust_lot.py
-# Rôle     : Ajustement par lots (torch, CUDA ou CPU) des étoiles moyennes de la piste 1 (v5 GPU, 21 nov).
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python ajust_lot.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Batch fitting (torch, CUDA or CPU) of the medium stars of track 1 (v5 GPU, 21 Nov).
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python ajust_lot.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Ajustement par lots (torch, CUDA ou CPU) des étoiles moyennes de la piste 1 (v5 GPU, 21 nov).
+"""Batch fitting (torch, CUDA or CPU) of the medium stars of track 1 (v5 GPU, 21 Nov).
 
-Même calcul que ``fit_star`` + la fin de ``refit`` de retrait_modele.py (v5), mais pour un lot d'étoiles indépendantes
-(une « vague » : aucune ne lit ce qu'une autre du lot écrit), toutes résolues ensemble :
-- PSF : B-spline cubique (coefficients de scipy.ndimage.spline_filter, bord en miroir, hors grille = 0), identique à
-  map_coordinates(order=3, mode="constant") ;
-- moindres carrés pondérés (lignes masquées) par équations normales ; médianes exactes (moyenne des deux du milieu) ;
-- boucles à arrêt propre à chaque étoile (Gauss-Newton, largeur, ellipse, position par couleur) en pas communs avec
-  un masque des étoiles encore actives : chaque étoile suit exactement la suite de pas du code d'origine.
-Tout en float64 (comme numpy) sauf le modèle rendu et la garde « pas de trou », en float32 comme l'original.
+Same computation as ``fit_star`` + the end of ``refit`` of retrait_modele.py (v5), but for a batch of independent stars
+(a « wave »: none reads what another of the batch writes), all solved together:
+- PSF: cubic B-spline (coefficients of scipy.ndimage.spline_filter, mirror edge, off-grid = 0), identical to
+  map_coordinates(order=3, mode="constant");
+- weighted least squares (masked rows) by normal equations; exact medians (mean of the two middle ones);
+- loops with a clean stop for each star (Gauss-Newton, width, ellipse, position per colour) in common steps with
+  a mask of the stars still active: each star follows exactly the sequence of steps of the original code.
+All in float64 (like numpy) except the rendered model and the « no hole » guard, in float32 like the original.
 """
 from __future__ import annotations
 

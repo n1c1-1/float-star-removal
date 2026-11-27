@@ -1,22 +1,22 @@
 # ======================================================================
 # enchainer_n3.py
-# Rôle     : Chaine du 25 nov : N3a (3 h) puis sa mesure, N3b (3 h) puis sa mesure.
-# Étape    : 10. Essai écarté N3 (grands halos synthétiques, 25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33d/v33e
-# Sorties  : instantanés, tableau
-# Exemple  : lancer_borne.ps1 -Fils 4 -Log ...\chaine.out -Exe python -Args "-I enchainer_n3.py"
+# Role     : Chain of 25 Nov: N3a (3 h) then its measurement, N3b (3 h) then its measurement.
+# Step     : 10. Discarded trial N3 (large synthetic halos, 25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33d/v33e pairs
+# Outputs  : snapshots, table
+# Example  : lancer_borne.ps1 -Fils 4 -Log ...\chaine.out -Exe python -Args "-I enchainer_n3.py"
 # ======================================================================
-"""Chaine du 25 nov : N3a (3 h) puis sa mesure, N3b (3 h) puis sa mesure. Une seule commande, reprenable.
-(Le controle de duree N3L, 8 h depuis E3, a ete retire de la chaine le 25 nov sur decision de Nicolas.)
+"""Chain of 25 Nov: N3a (3 h) then its measurement, N3b (3 h) then its measurement. A single command, resumable.
+(The duration control N3L, 8 h from E3, was removed from the chain on 25 Nov by Nicolas's decision.)
 
-N3a : levier A seul (grands halos synthetiques ; paires v33d), depart snapshot N2 pas 26000.
-N3b : leviers A + B (grands halos ; paires v33e du juge v33e), depart N2 pas 26000.
-Les deux gardent la recette N2 (poids 0,5 -> 1, etoiles ttres brillantes sur nebuleuse) et ajoutent 15 % de lots de 2 tuiles 512 a grands halos
-(= 25 % des tuiles synthetiques par surface : 60 % x 25 % = 15 % des pixels). lr 1e-4 (le cosinus de N2 etait a 7,5e-5 au pas 26000), montee 500 pas,
-cosinus sur le temps (3 h) : la fin de run arrive a taux nul quelle que soit la vitesse.
+N3a: lever A alone (large synthetic halos; v33d pairs), start from N2 snapshot step 26000.
+N3b: levers A + B (large halos; v33e pairs from the v33e judge), start from N2 step 26000.
+Both keep the N2 recipe (weights 0.5 -> 1, very bright stars on nebula) and add 15 % of batches of 2 large-halo 512 tiles
+(= 25 % of the synthetic tiles by area: 60 % x 25 % = 15 % of the pixels). lr 1e-4 (the N2 cosine was at 7.5e-5 at step 26000), 500-step warm-up,
+cosine over time (3 h): the end of the run reaches zero rate whatever the speed.
 
-Chaque etape finie laisse un repere <DONNEES>\\Entrainement etoiles N3 - 25 nov\\etapes\\<etape>.fini ; relancer saute ce qui est fini.
-Une etape qui plante est refaite jusqu'a 3 fois (entrainement : repart de last.pt avec --reprendre). Un seul processus GPU a la fois.
+Each finished stage leaves a marker <DONNEES>\\Entrainement etoiles N3 - 25 nov\\etapes\\<stage>.fini; rerunning skips what is finished.
+A stage that crashes is redone up to 3 times (training: restarts from last.pt with --reprendre). Only one GPU process at a time.
 
     lancer_borne.ps1 -Fils 4 -Log ...\\chaine.out -Exe python -Args "-I enchainer_n3.py"
 """

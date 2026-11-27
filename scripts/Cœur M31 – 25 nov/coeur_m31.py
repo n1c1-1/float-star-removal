@@ -1,13 +1,13 @@
 # ======================================================================
 # coeur_m31.py
-# Rôle     : Coeur de M31 (m31_a7s_newton) : N2 (pas 26000) et N5 (pas 23000), simple echelle et V2, sur decoupe ; processeur seulement.
-# Étape    : diagnostic (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image de validation M31
-# Sorties  : flux au cœur par réseau
-# Exemple  : python coeur_m31.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Core of M31 (m31_a7s_newton): N2 (step 26000) and N5 (step 23000), single scale and V2, on a crop; CPU only.
+# Step     : diagnostic (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : M31 validation image
+# Outputs  : core flux per network
+# Example  : python coeur_m31.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Coeur de M31 (m31_a7s_newton) : N2 (pas 26000) et N5 (pas 23000), simple echelle et V2, sur decoupe ; processeur seulement.
-Reprend halo_mesure / poids de deux_echelles_v1v2.py (copie, rien modifie). Sorties : <DONNEES>\Cœur M31 – 25 nov."""
+r"""Core of M31 (m31_a7s_newton): N2 (step 26000) and N5 (step 23000), single scale and V2, on a crop; CPU only.
+Reuses halo_mesure / poids from deux_echelles_v1v2.py (copy, nothing modified). Outputs: <DONNEES>\Cœur M31 – 25 nov."""
 import os, sys, json, time
 os.environ["CUDA_VISIBLE_DEVICES"] = ""; os.environ["ASTRO_GPU_OFFLINE"] = "1"
 sys.stdout.reconfigure(encoding="utf-8")

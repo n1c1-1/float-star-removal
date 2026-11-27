@@ -1,13 +1,13 @@
 # ======================================================================
 # etirer.py
-# Rôle     : Étape 2 du banc : six traitements d'amateur courants et variés appliqués à chaque pile linéaire.
-# Étape    : 3. Délinéarisation des images web (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image étirée
-# Sorties  : image rendue linéaire
-# Exemple  : python etirer.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Step 2 of the bench: six common and varied amateur treatments applied to each linear stack.
+# Step     : 3. De-linearisation of web images (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : stretched image
+# Outputs  : image made linear
+# Example  : python etirer.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Étape 2 du banc : six traitements d'amateur courants et variés appliqués à chaque pile linéaire.
-Écrit banc/<pile>__<recette>.tif (16 bits) ou .jpg (8 bits) et banc/<pile>__<recette>.json (la recette)."""
+"""Step 2 of the bench: six common and varied amateur treatments applied to each linear stack.
+Writes banc/<stack>__<recipe>.tif (16 bits) or .jpg (8 bits) and banc/<stack>__<recipe>.json (the recipe)."""
 from __future__ import annotations
 
 import sys

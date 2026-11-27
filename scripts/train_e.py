@@ -1,35 +1,34 @@
 # ======================================================================
 # train_e.py
-# Rôle     : Entraînement de la recette de la chaîne (NAFNet, tuiles 256, perte L1 sur l'étirement fixe) sur les paires générées : produit E2/E3.
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python train_e.py --tag E --hours 8.5 --device cuda:0
+# Role     : Training of the chain's recipe (NAFNet, 256 tiles, L1 loss on the fixed stretch) on the generated pairs: produces E2/E3.
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python train_e.py --tag E --hours 8.5 --device cuda:0
 # ======================================================================
-"""Entraînement du réseau d'étoiles (NAFNet) sur les seules paires générées : recettes E, E2, E3.
+"""Training of the star network (NAFNet) on the generated pairs only: recipes E, E2, E3.
 
-Recette (tout est écrit ici ; aucun poids préexistant n'est lu) :
-- le réseau : NAFNet (arXiv:2204.04676), largeur 32, tuiles de 256 px à l'entraînement comme à l'utilisation, poids
-  aléatoires au départ (ou ceux d'une exécution précédente avec --init : E2 pour E3) ;
-- les exemples : nos paires générées (make_dataset.py), leur version débruitée : input_denoised -> target_denoised ;
-  60 % des tuiles reçoivent en plus des étoiles tirées à la volée (``synthetic_stars`` : un cœur de Moffat, une auréole
-  en r^-3, parfois quatre aigrettes, une loi de puissance des éclats, des couleurs d'étoiles de champ, un peu de bruit de
-  photons ; rien au-delà de la portée que le générateur laisse entière, stars.py), soit sur la cible (étoiles de
-  synthèse seules), soit sur l'entrée (ses propres étoiles et plus), une moitié chacune, chaque couleur écrêtée au
-  niveau de saturation propre à la paire pour cette couleur, multiplié par 0,5 à 1 ;
-- la largeur d'étoile de départ du dessin : la largeur de cœur de chaque paire (seeing et disque d'Airy de son
-  instrument, info.json) ;
-- la perte et l'optimisation : L1 sur l'étirement asinh fixe, AdamW 5e-4 (0,9 ; 0,9), décroissance de poids 1e-4, 1000
-  pas de montée puis un cosinus jusqu'à 0 sur les heures données, gradient écrêté à 0,1, lot de 8, bf16 ;
-- la validation, tous les 2000 pas : l'ensemble fixe de diagnose.py valset (ses tuiles débruitées, les 256 px du
-  centre) : l'erreur sous les étoiles ; best.pt est son minimum ; les poids de chaque validation sont gardés dans snap/
-  (probe.py les suit) ;
-- avec --real, une part des tuiles vient de nos images réelles et de leurs cibles corrigées (real_targets.py), hors des
-  zones écartées. Cette option n'a pas été utilisée pour E, E2 ni E3.
+Recipe (everything is written here; no pre-existing weights are read):
+- the network: NAFNet (arXiv:2204.04676), width 32, 256 px tiles in training as in use, random weights at the start
+  (or those of a previous run with --init: E2 for E3);
+- the examples: our generated pairs (make_dataset.py), their denoised version: input_denoised -> target_denoised;
+  60 % of the tiles also receive stars drawn on the fly (``synthetic_stars``: a Moffat core, an r^-3 aureole,
+  sometimes four spikes, a power law of the brightnesses, field-star colours, a little photon noise; nothing beyond
+  the reach that the generator leaves whole, stars.py), either on the target (synthetic stars alone) or on the input
+  (its own stars and more), half each, each colour clipped at the pair's own saturation level for that colour,
+  multiplied by 0.5 to 1;
+- the drawing's starting star width: the core width of each pair (seeing and Airy disc of its instrument, info.json);
+- the loss and the optimisation: L1 on the fixed asinh stretch, AdamW 5e-4 (0.9; 0.9), weight decay 1e-4, 1000
+  warm-up steps then a cosine down to 0 over the given hours, gradient clipped at 0.1, batch of 8, bf16;
+- the validation, every 2000 steps: the fixed set of diagnose.py valset (its denoised tiles, the 256 centre px): the
+  error under the stars; best.pt is its minimum; the weights of each validation are kept in snap/ (probe.py follows
+  them);
+- with --real, a share of the tiles comes from our real images and their corrected targets (real_targets.py), outside
+  the zones left out. This option was not used for E, E2 or E3.
 
     python train_e.py --tag E --hours 8.5 --device cuda:0
 
-Sorties <ESSAIS>/starRemoval/train/<tag>/ : best.pt, last.pt, snap/step_<n>.pt, history.json, log.txt.
+Outputs <ESSAIS>/starRemoval/train/<tag>/: best.pt, last.pt, snap/step_<n>.pt, history.json, log.txt.
 """
 from __future__ import annotations
 

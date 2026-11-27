@@ -1,12 +1,12 @@
 # ======================================================================
 # commun.py
-# Rôle     : Chemins et outils communs du banc de délinéarisation (23 nov).
-# Étape    : 3. Délinéarisation des images web (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image étirée
-# Sorties  : image rendue linéaire
-# Exemple  : python commun.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Common paths and tools of the de-linearisation bench (23 Nov).
+# Step     : 3. De-linearisation of web images (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : stretched image
+# Outputs  : image made linear
+# Example  : python commun.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Chemins et outils communs du banc de délinéarisation (23 nov)."""
+"""Common paths and tools of the de-linearisation bench (23 Nov)."""
 from __future__ import annotations
 
 import json

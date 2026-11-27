@@ -1,13 +1,13 @@
 # ======================================================================
 # astrometrie_image.py
-# Rôle     : Astrometrie d'une image de la liste de validation : solveur local (Piste1/astrometrie.solve, Gaia hors ligne), puis astrometrie.npz (cat, scale, wres, wcs) dans <DONNEES>/Validation étoiles – 22 nov/<nom>/.
-# Étape    : 13. Mesure de validation (voir scripts/LISEZMOI.md)
-# Entrées  : réseau .pt (ou dossier de sorties) + liste d'images de validation
-# Sorties  : json par image, planches, resume.md
-# Exemple  : usage : astrometrie_image.py <nom> [<nom> ...]
+# Role     : Astrometry of an image of the validation list: local solver (Piste1/astrometrie.solve, offline Gaia), then astrometrie.npz (cat, scale, wres, wcs) in <DONNEES>/Validation étoiles – 22 nov/<nom>/.
+# Stage    : 13. Validation measurement (see scripts/LISEZMOI.md)
+# Inputs   : .pt network (or folder of outputs) + list of validation images
+# Outputs  : json per image, contact sheets, resume.md
+# Example  : usage : astrometrie_image.py <nom> [<nom> ...]
 # ======================================================================
-"""Astrometrie d'une image de la liste de validation : solveur local (Piste1/astrometrie.solve, Gaia hors ligne), puis
-astrometrie.npz (cat, scale, wres, wcs) dans <DONNEES>/Validation étoiles – 22 nov/<nom>/. Repli : astrometrie_cone.py adapte.
+"""Astrometry of an image of the validation list: local solver (Piste1/astrometrie.solve, offline Gaia), then
+astrometrie.npz (cat, scale, wres, wcs) in <DONNEES>/Validation étoiles – 22 nov/<nom>/. Fallback: adapted astrometrie_cone.py.
 usage : astrometrie_image.py <nom> [<nom> ...]"""
 import os, sys, json, time
 for k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "NUMBA_NUM_THREADS", "OPENBLAS_NUM_THREADS"):

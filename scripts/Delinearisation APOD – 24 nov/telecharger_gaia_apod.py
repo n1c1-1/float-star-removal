@@ -1,17 +1,17 @@
 # ======================================================================
 # telecharger_gaia_apod.py
-# Rôle     : Extraits Gaia DR3 profonds (G < 21) des images web résolues, PRÉPARATION seulement.
-# Étape    : 3. Délinéarisation et astrométrie des images web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images web APOD téléchargées
-# Sorties  : images linéaires, astrométrie, tuiles
-# Exemple  : python telecharger_gaia_apod.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Deep Gaia DR3 extracts (G < 21) of the solved web images, PREPARATION only.
+# Step     : 3. De-linearisation and astrometry of the APOD web images (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : downloaded APOD web images
+# Outputs  : linear images, astrometry, tiles
+# Example  : python telecharger_gaia_apod.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Extraits Gaia DR3 profonds (G < 21) des images web résolues, PRÉPARATION seulement. Copie adaptée de
-Catalogue Gaia profond – 20 nov\telecharger_gaia_profond.py (même requête, mêmes colonnes, même format de sortie), qui lisait
-astrometrie.npz : ici le WCS vient de lineaire\NNN_astrometrie.npz et la taille de l'image de lineaire\NNN.npy.
-Service GAVO TAP (gaia.dr3lite), requêtes séquentielles (sync : l'async ne répondait plus le 24 nov), 3 s entre deux, User-Agent générique ; une erreur est
-retentée avec attente doublée, puis l'image est notée en échec (pas d'acharnement).
-Sortie : <DONNEES>\Catalogue Gaia profond APOD – 24 nov\gaia_dr3_profond_apod_NNN.npz. Usage : telecharger_gaia_apod.py [--compte] n..."""
+r"""Deep Gaia DR3 extracts (G < 21) of the solved web images, PREPARATION only. Adapted copy of
+Catalogue Gaia profond – 20 nov\telecharger_gaia_profond.py (same query, same columns, same output format), which read
+astrometrie.npz: here the WCS comes from lineaire\NNN_astrometrie.npz and the image size from lineaire\NNN.npy.
+GAVO TAP service (gaia.dr3lite), sequential queries (sync: async no longer answered on 24 Nov), 3 s between two, generic User-Agent; an error is
+retried with doubled wait, then the image is recorded as failed (no stubbornness).
+Output: <DONNEES>\Catalogue Gaia profond APOD – 24 nov\gaia_dr3_profond_apod_NNN.npz. Usage: telecharger_gaia_apod.py [--compte] n..."""
 from __future__ import annotations
 
 import json

@@ -1,27 +1,27 @@
 # ======================================================================
 # train_n56.py
-# Rôle     : Essais de nuit du 24 nov (N1, N2) : V33C (train_v33c.py, lui-même A) avec les paires v33d et les paires web APOD.
-# Étape    : 7-8. N5 (cibles v33g) et N6 (poids v33h) (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33d -> v33g -> v33h, départ E3 pas 20000
-# Sorties  : instantanés N5/N6, tableau_n56.md
-# Exemple  : python train_n56.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Night trials of 24 Nov (N1, N2): V33C (train_v33c.py, itself A) with the v33d pairs and the APOD web pairs.
+# Stage    : 7-8. N5 (v33g targets) and N6 (v33h weights) (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33d -> v33g -> v33h pairs, start E3 step 20000
+# Outputs  : N5/N6 snapshots, tableau_n56.md
+# Example  : python train_n56.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Essais de nuit du 24 nov (N1, N2) : V33C (train_v33c.py, lui-même A) avec les paires v33d et les paires web APOD.
+"""Night trials of 24 Nov (N1, N2): V33C (train_v33c.py, itself A) with the v33d pairs and the APOD web pairs.
 
-Importe train_jeu1.py SANS le modifier (réseau chain_nafnet, perte L1 pondérée, valider). Départ E3 pas 20000, lots 8, lr 5e-4,
-montée 1000 pas puis cosinus sur les pas, 60 % de tuiles d'étoiles synthétiques. Aucun bruit artificiel ajouté.
+Imports train_jeu1.py WITHOUT modifying it (chain_nafnet network, weighted L1 loss, validation). Start E3 step 20000, batches 8, lr 5e-4,
+1000-step warm-up then cosine over the steps, 60 % synthetic-star tiles. No artificial noise added.
 
-N1 = V33C avec les nouvelles données, rien d'autre :
-  - paires réelles <DONNEES>\\Paires étoiles v33 – 23 nov\\*_v33d.npz (débruitées et brutes), mêmes 6 tuiles tenues que V33C ;
-  - paires web <DONNEES>\\Paires étoiles APOD – 24 nov\\*_v33d.npz (débruitées seulement) ;
-  - tirage : 50 % débruitées réelles, 25 % brutes, 25 % APOD (si aucune paire APOD : le refus est explicite, voir --sans-apod).
-N2 = N1 plus deux changements (--n2) :
-  (a) les poids entre 0 et 1 (0,5 : réparation jugée bonne) passent à 1 dans toutes les paires d'entraînement ; la validation
-      en route garde les poids d'origine (comparable à N1) ;
-  (b) sur --part-extra (0,5) des tuiles synthétiques, une ou deux étoiles très brillantes imposées (pic 300 à 3e5 bruits, avec
-      gros halo et aigrettes du générateur), posées sur un fond de NÉBULEUSE réel : endroit où la cible est au poids 1 sur un
-      disque de 40 px (90 %) et où son niveau lissé dépasse 1 bruit (sinon pas d'étoile imposée).
-Reprise : --reprendre relit last.pt (réseau, optimiseur, pas, durée écoulée).
+N1 = V33C with the new data, nothing else:
+  - real pairs <DONNEES>\\Paires étoiles v33 – 23 nov\\*_v33d.npz (denoised and raw), same 6 held-out tiles as V33C;
+  - web pairs <DONNEES>\\Paires étoiles APOD – 24 nov\\*_v33d.npz (denoised only);
+  - draw: 50 % real denoised, 25 % raw, 25 % APOD (if no APOD pair: the refusal is explicit, see --sans-apod).
+N2 = N1 plus two changes (--n2):
+  (a) the weights between 0 and 1 (0.5: repair judged good) become 1 in all training pairs; the validation
+      during the run keeps the original weights (comparable to N1);
+  (b) on --part-extra (0.5) of the synthetic tiles, one or two imposed very bright stars (peak 300 to 3e5 noises, with
+      the generator's large halo and spikes), placed on a real NEBULA background: a place where the target has weight 1 over a
+      40 px disk (90 %) and where its smoothed level exceeds 1 noise (otherwise no imposed star).
+Resume: --reprendre rereads last.pt (network, optimiser, step, elapsed time).
 """
 from __future__ import annotations
 

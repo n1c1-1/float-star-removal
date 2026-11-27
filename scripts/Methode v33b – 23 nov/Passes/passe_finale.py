@@ -1,22 +1,22 @@
 # ======================================================================
 # passe_finale.py
-# Rôle     : Passe finale du 21 nov (hybride c9, découpe des 6 étoiles) : repasser sur les restes d'étoiles (clairs ou creux), comme un opérateur avec l'outil correcteur, une fois le gros du retrait fait.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python passe_finale.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Final pass of 21 Nov (hybrid c9, crop of the 6 stars): go over the star remnants (bright or hollow) again, like an operator with the healing tool, once the bulk of the removal is done.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python passe_finale.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Passe finale du 21 nov (hybride c9, découpe des 6 étoiles) : repasser sur les restes d'étoiles (clairs ou creux),
-comme un opérateur avec l'outil correcteur, une fois le gros du retrait fait. Un seul changement sur la base c9 :
-  1. résidu = résultat - fond local robuste (gaussienne normalisée, valeurs aberrantes rejetées), en bruits, par couleur et en luminance ;
-  2. restes = zones connexes où |résidu| dépasse un seuil (hystérésis), des deux signes, seulement près d'une étoile
-     (rayon croissant avec la brillance autour de chaque position Gaia / catalogue profond / source de la piste 1,
-     plus bandes le long des aigrettes des étoiles brillantes) ;
-  3. masque agrandi de 2 px, fondu 2 px ; rempli d'après le ciel déjà nettoyé alentour (remplir.complete = PatchMatch
-     + Poisson), niveau et couleur calés sur l'anneau ;
-  4. garde : zone grande ET sur nébuleuse structurée (structure 16-48 px élevée) = non remplie, marquée « à ignorer » ;
-  5. deux passes (la seconde sur la sortie de la première).
-Lecture seule sur la base c9 ; écrit uniquement dans sorties/passe_finale_c9. CPU seulement."""
+"""Final pass of 21 Nov (hybrid c9, crop of the 6 stars): go over the star remnants (bright or hollow) again,
+like an operator with the healing tool, once the bulk of the removal is done. A single change on the c9 base:
+  1. residual = result - robust local background (normalised gaussian, outliers rejected), in noises, per colour and in luminance;
+  2. remnants = connected zones where |residual| exceeds a threshold (hysteresis), of both signs, only near a star
+     (radius growing with brightness around each Gaia position / deep catalogue / track 1 source,
+     plus bands along the spikes of the bright stars);
+  3. mask enlarged by 2 px, feathered 2 px; filled from the sky already cleaned around (remplir.complete = PatchMatch
+     + Poisson), level and colour matched to the ring;
+  4. guard: zone both large AND on structured nebula (high 16-48 px structure) = not filled, marked « to ignore »;
+  5. two passes (the second on the output of the first).
+Read-only on the c9 base; writes only to sorties/passe_finale_c9. CPU only."""
 import os, sys, json, csv, time
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 os.environ["PYTHONDONTWRITEBYTECODE"] = "1"

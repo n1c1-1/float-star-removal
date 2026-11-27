@@ -1,13 +1,13 @@
 # ======================================================================
 # outils_apod.py
-# Rôle     : Outils communs : chemins, lecture des choix, mesures sur une image (étirée ou linéaire).
-# Étape    : 3. Délinéarisation et astrométrie des images web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images web APOD téléchargées
-# Sorties  : images linéaires, astrométrie, tuiles
-# Exemple  : python outils_apod.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Common tools: paths, reading of the choices, measurements on an image (stretched or linear).
+# Step     : 3. De-linearisation and astrometry of the APOD web images (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : downloaded APOD web images
+# Outputs  : linear images, astrometry, tiles
+# Example  : python outils_apod.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Outils communs : chemins, lecture des choix, mesures sur une image (étirée ou linéaire). Réutilise sans la modifier
-la méthode etoiles_auto de « Delinearisation – 23 nov » (commit 0dfc2c2)."""
+"""Common tools: paths, reading of the choices, measurements on an image (stretched or linear). Reuses, without modifying it,
+the etoiles_auto method of “Delinearisation – 23 nov” (commit 0dfc2c2)."""
 from __future__ import annotations
 
 import csv

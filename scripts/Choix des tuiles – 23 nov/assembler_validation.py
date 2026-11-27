@@ -1,13 +1,13 @@
 # ======================================================================
 # assembler_validation.py
-# Rôle     : Assemble tuiles_retenues.csv et validation.jpg (<DONNEES>/Choix des tuiles v2 - 23 nov/) a partir des mesures, du verdict a l'oeil (AR) et des propositions verifiees.
-# Étape    : 2. Choix des tuiles (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images, mosaïques
-# Sorties  : liste de tuiles
-# Exemple  : python assembler_validation.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Assembles tuiles_retenues.csv and validation.jpg (<DONNEES>/Choix des tuiles v2 - 23 nov/) from the measurements, the by-eye verdict (AR) and the checked proposals.
+# Step     : 2. Tile selection (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : images, mosaics
+# Outputs  : list of tiles
+# Example  : python assembler_validation.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Assemble tuiles_retenues.csv et validation.jpg (<DONNEES>/Choix des tuiles v2 - 23 nov/) a partir des mesures, du verdict a l'oeil (AR) et des propositions verifiees.
-Une seule passe, sans image entiere : lit les vignettes deja ecrites dans validation_v2/."""
+"""Assembles tuiles_retenues.csv and validation.jpg (<DONNEES>/Choix des tuiles v2 - 23 nov/) from the measurements, the by-eye verdict (AR) and the checked proposals.
+A single pass, without any whole image: reads the thumbnails already written in validation_v2/."""
 import sys, csv
 sys.dont_write_bytecode = True
 sys.stdout.reconfigure(encoding="utf-8")

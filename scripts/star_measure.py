@@ -1,10 +1,10 @@
 # ======================================================================
 # star_measure.py
-# Rôle     : Mesure les étoiles des vraies images pour fixer les plages du générateur.
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python star_measure.py [--out <ESSAIS>/starRemoval/measures/stars_real.json]
+# Role     : Measures the stars of the real images to set the generator's ranges.
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python star_measure.py [--out <ESSAIS>/starRemoval/measures/stars_real.json]
 # ======================================================================
 """The stars of our real images, measured: the ranges the synthetic stars are drawn in (stars.py).
 

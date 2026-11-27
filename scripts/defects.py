@@ -1,10 +1,10 @@
 # ======================================================================
 # defects.py
-# Rôle     : Fonds du jeu 2 : le jeu 1 plus les défauts des vrais empilements (marbrures, vignetage, gradient, donuts).
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python defects.py --n 48 [--seed 1] [--size 2048] [--out <ESSAIS>/starRemoval/backgrounds_defects]
+# Role     : Backgrounds of set 2: set 1 plus the defects of real stacks (blotches, vignetting, gradient, donuts).
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python defects.py --n 48 [--seed 1] [--size 2048] [--out <ESSAIS>/starRemoval/backgrounds_defects]
 # ======================================================================
 """The second set of backgrounds: the first one's (backgrounds.py) with the defects of real stacks on top.
 

@@ -1,22 +1,22 @@
 # ======================================================================
 # methode_validee.py
-# Rôle     : METHODE VALIDEE v1 : retrait d'etoiles classique, sur une decoupe de l'image Rosette debruitee.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python methode_validee.py <decoupe> [--sans-vues] [--reutiliser-piste1]
+# Role     : VALIDATED METHOD v1: classical star removal, on a crop of the denoised Rosette image.
+# Stage    : 2. Classical Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : starless image, class maps
+# Example  : python methode_validee.py <decoupe> [--sans-vues] [--reutiliser-piste1]
 # ======================================================================
-"""METHODE VALIDEE v1 : retrait d'etoiles classique, sur une decoupe de l'image Rosette debruitee.
+"""VALIDATED METHOD v1: classical star removal, on a crop of the denoised Rosette image.
     python methode_validee.py <decoupe> [--sans-vues] [--reutiliser-piste1]
-<decoupe> : decoupe6 (cas de reference, crop 1530,790,2298,1558), filaments, lisse, ou x0,y0,x1,y1 avec --nom <nom>.
+<decoupe> : decoupe6 (reference case, crop 1530,790,2298,1558), filaments, lisse, or x0,y0,x1,y1 with --nom <nom>.
 
-Chaine (chaque etape lit le code gele de son dossier, jamais le code courant des dossiers de travail) :
-  1. etape_piste1.py  Piste1/retrait_modele.py (etat de c9) : Gaia profond + soustraction de PSF, sans remplissage ;
-  2. etape_A.py       Piste3/ (etat de c9)  : "hybride_c9" = piste 3, tour 4, remplisseur par patchs ;
-  3. etape_B.py       Passes/               : trois passes finales (parametrees) ;
-  4. vues.py                                : 4 quarts entree | resultat x4 (Post), etirement fort, donnees.
-Sorties : sorties/<decoupe>/ (sans_etoiles_tuile.npy = resultat final de la tuile, vues, mesures.json) ;
-           sorties/<decoupe>/A/ et B/{t1,t2,t3}/ = etapes intermediaires. CPU seulement."""
+Chain (each step reads the frozen code of its own folder, never the current code of the working folders):
+  1. etape_piste1.py  Piste1/retrait_modele.py (c9 state) : deep Gaia + PSF subtraction, no filling;
+  2. etape_A.py       Piste3/ (c9 state)  : "hybride_c9" = track 3, round 4, patch-based filler;
+  3. etape_B.py       Passes/               : three final passes (parameterised);
+  4. vues.py                                : 4 quarters input | result x4 (Post), strong stretch, data.
+Outputs: sorties/<decoupe>/ (sans_etoiles_tuile.npy = final result of the tile, views, mesures.json) ;
+           sorties/<decoupe>/A/ and B/{t1,t2,t3}/ = intermediate steps. CPU only."""
 import sys, os, subprocess, time
 from pathlib import Path
 

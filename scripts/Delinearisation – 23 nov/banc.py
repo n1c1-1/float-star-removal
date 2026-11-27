@@ -1,13 +1,13 @@
 # ======================================================================
 # banc.py
-# Rôle     : Banc : délinéarise chaque image étirée par chaque méthode et la compare à sa pile linéaire.
-# Étape    : 3. Délinéarisation des images web (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image étirée
-# Sorties  : image rendue linéaire
-# Exemple  : Usage : banc.py <méthode>[,<méthode>...] [piles...]   -> resultats/mesures_<méthodes>.csv + résumé à l'écran.
+# Role     : Bench: de-linearises each stretched image with each method and compares it with its linear stack.
+# Step     : 3. De-linearisation of web images (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : stretched image
+# Outputs  : image made linear
+# Example  : Usage: banc.py <method>[,<method>...] [stacks...]   -> resultats/mesures_<methods>.csv + summary on screen.
 # ======================================================================
-"""Banc : délinéarise chaque image étirée par chaque méthode et la compare à sa pile linéaire.
-Usage : banc.py <méthode>[,<méthode>...] [piles...]   -> resultats/mesures_<méthodes>.csv + résumé à l'écran."""
+"""Bench: de-linearises each stretched image with each method and compares it with its linear stack.
+Usage: banc.py <method>[,<method>...] [stacks...]   -> resultats/mesures_<methods>.csv + summary on screen."""
 from __future__ import annotations
 
 import csv

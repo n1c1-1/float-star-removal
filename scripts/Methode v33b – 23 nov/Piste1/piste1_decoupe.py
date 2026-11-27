@@ -1,18 +1,18 @@
 # ======================================================================
 # piste1_decoupe.py
-# Rôle     : Piste 1 : boucle rapide sur une petite découpe de la Rosette autour des 6 étoiles entourées par le propriétaire.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python piste1_decoupe.py <tag> [réglages JSON]
+# Role     : Track 1: fast loop on a small crop of the Rosette around the 6 stars circled by the owner.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python piste1_decoupe.py <tag> [JSON settings]
 # ======================================================================
-"""Piste 1 : boucle rapide sur une petite découpe de la Rosette autour des 6 étoiles entourées par le propriétaire.
+"""Track 1: fast loop on a small crop of the Rosette around the 6 stars circled by the owner.
 
-    python piste1_decoupe.py <tag> [réglages JSON]
-Découpe de travail 768 px (x 1530-2298, y 790-1558 dans l'image entière), zone jugée 512 px au centre
-(x 1658-2170, y 918-1430), qui contient les 6 étoiles. Sorties : sorties/rosette/<tag>_decoupe6/ ; vues et mesures :
-sorties/essai_tuiles/<tag>_decoupe6/ : entrée | soustraction seule | sans étoiles | couche (étirements revue et Post),
-les 6 étoiles à 100 %, sources ponctuelles restées, creux avec témoin, grumeaux.
+    python piste1_decoupe.py <tag> [JSON settings]
+Working crop 768 px (x 1530-2298, y 790-1558 in the whole image), judged zone 512 px at the centre
+(x 1658-2170, y 918-1430), which contains the 6 stars. Outputs: sorties/rosette/<tag>_decoupe6/; views and measurements:
+sorties/essai_tuiles/<tag>_decoupe6/: input | subtraction only | star-free | layer (review and Post stretches),
+the 6 stars at 100 %, point sources left, hollows with control, lumps.
 """
 import json
 import sys

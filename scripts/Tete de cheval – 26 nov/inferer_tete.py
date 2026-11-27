@@ -1,15 +1,15 @@
 # ======================================================================
 # inferer_tete.py
-# Rôle     : Inference sur la Tete de cheval preparee (preparer.py).
-# Étape    : 13. Essai sur la Tête de Cheval (26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : pile linéaire de la Tête de Cheval (non publiée)
-# Sorties  : images sans étoiles (non publiées)
-# Exemple  : python inferer_tete.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Inference on the prepared Horsehead Nebula (preparer.py).
+# Stage    : 13. Trial on the Horsehead Nebula (26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : linear stack of the Horsehead Nebula (not published)
+# Outputs  : starless images (not published)
+# Example  : python inferer_tete.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Inference sur la Tete de cheval preparee (preparer.py). Usage : inferer_tete.py reseau <checkpoint.pt> <tag> | float <tag>
-reseau : deux echelles V2 (G<6,5, rayon = halo mesure, plafond 300 px, plein a 70 %, cosinus ensuite), comme inferer_v2_mem.py.
-float  : le modele FLOAT (starless_nafnet.pt), une passe simple (comme l'etage Etoiles).
-Alnitak (G ~ 1,7) est absente de l'extrait Gaia (trop brillante pour Gaia) : ajoutee a la main (SIMBAD, 05h40m45,5s -01d56m33s)."""
+r"""Inference on the prepared Horsehead Nebula (preparer.py). Usage: inferer_tete.py reseau <checkpoint.pt> <tag> | float <tag>
+reseau : two-scale V2 (G<6.5, radius = measured halo, cap 300 px, full at 70 %, cosine after), as in inferer_v2_mem.py.
+float  : the FLOAT model, a single simple pass (as in the Stars stage).
+Alnitak (G ~ 1.7) is absent from the Gaia extract (too bright for Gaia): added by hand (SIMBAD, 05h40m45.5s -01d56m33s)."""
 import os, sys, time
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"; os.environ["ASTRO_GPU_OFFLINE"] = "1"
 sys.stdout.reconfigure(encoding="utf-8")

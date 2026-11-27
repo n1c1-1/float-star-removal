@@ -1,22 +1,23 @@
+# Comparison with a model that is not part of this method; path to be supplied (placeholder "<other-model>.pt" below).
 # ======================================================================
 # diag_validation.py
-# Rôle     : Questions 1 et 2 du diagnostic des écarts (25 nov) : de quoi sont faits « fond médian » et « structure médiane » de N2.
-# Étape    : diagnostic (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires et sorties de validation
-# Sorties  : tables de diagnostic
-# Exemple  : python diag_validation.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Questions 1 and 2 of the discrepancy diagnostic (25 Nov): what the “median background” and “median structure” of N2 are made of.
+# Step     : diagnostic (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : pairs and validation outputs
+# Outputs  : diagnostic tables
+# Example  : python diag_validation.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Questions 1 et 2 du diagnostic des écarts (25 nov) : de quoi sont faits « fond médian » et « structure médiane » de N2.
+"""Questions 1 and 2 of the discrepancy diagnostic (25 Nov): what the “median background” and “median structure” of N2 are made of.
 
-Mesure de la validation (valider_reseau.py, non modifié, importé) : D = |sortie - entrée| moyenné sur les 3 couleurs, en unités
-de l'entrée (pas divisé par le bruit, malgré sa docstring) ; « fond » = médiane de D sur les pixels loin de toute étoile Gaia
-détectable ; « structure » = idem sur ceux-ci ET lissé(entrée, 6 px) > son 90e centile ; le tableau prend la médiane des 13 images.
+Validation measure (valider_reseau.py, unmodified, imported): D = |output - input| averaged over the 3 colours, in units
+of the input (not divided by the noise, despite its docstring); “background” = median of D over the pixels far from any detectable
+Gaia star; “structure” = same over those AND smoothed(input, 6 px) > its 90th percentile; the table takes the median over the 13 images.
 
-Ici, sur 2 coupes par image (1280 px, analyse sur les 1024 du centre ; coupe 1 = la plus riche en pixels « loin », coupe 2 = la plus
-riche en « loin ET structure »), sorties de N2 pas 26000 et du modèle FLOAT recalculées sur PROCESSEUR (4 fils, même appel
-star_removal.apply tuile 1024 / recouvrement 256), sortie de l'outil de référence lue dans son fichier :
-    --inferer N2|livre    écrit les sorties des coupes (<DONNEES>/Diagnostic écarts – 25 nov/coupes/<modèle>/)
-    --analyser            mesures (decalage, couleur, grain, taches, part du piédestal) -> validation.json, validation_resume.txt,
+Here, on 2 crops per image (1280 px, analysis on the central 1024; crop 1 = the richest in “far” pixels, crop 2 = the
+richest in “far AND structure”), outputs of N2 step 26000 and of the FLOAT model recomputed on CPU (4 threads, same call
+star_removal.apply tile 1024 / overlap 256):
+    --inferer N2|livre    writes the crop outputs (<DONNEES>/Diagnostic écarts – 25 nov/coupes/<model>/)
+    --analyser            measurements (offset, colour, grain, blotches, pedestal share) -> validation.json, validation_resume.txt,
                           planche.jpg
 """
 import os
@@ -39,7 +40,7 @@ for k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "NUMBA_NUM_THREADS", "OPENBLAS_N
 OUT = (Path(__import__("os").environ.get("DONNEES", "donnees")) / "Diagnostic écarts – 25 nov")
 REF = (Path(__import__("os").environ.get("DONNEES", "donnees")) / "Comparaison référence – 23 nov" / "sorties")
 MODELES = {"N2": (Path(__import__("os").environ.get("DONNEES", "donnees")) / "Entrainement étoiles nuit – 24 nov" / "N2" / "snap" / "pas_26000.pt"),
-           "livre": Path(r"<FLOAT>\astro_gpu\resources\stars\starless_nafnet.pt")}
+           "livre": Path(r"<FLOAT>\astro_gpu\resources\stars\<other-model>.pt")}
 S, M = 1024, 128
 
 

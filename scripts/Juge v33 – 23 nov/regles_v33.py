@@ -1,17 +1,17 @@
 # ======================================================================
 # regles_v33.py
-# Rôle     : Juge v33 (23 nov) : deux regles LOCALES ajoutees au juge du jeu 1 (construire_paire.py), rien d'autre ne change.
-# Étape    : 2. Juge des zones : poids 0 où la chaîne échoue (v33) (voir scripts/LISEZMOI.md)
-# Entrées  : entrée, cible de la chaîne, zones
-# Sorties  : carte de poids
-# Exemple  : python regles_v33.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Judge v33 (23 Nov): two LOCAL rules added to set 1's judge (construire_paire.py), nothing else changes.
+# Step     : 2. Zone judge: weight 0 where the chain fails (v33) (see scripts/LISEZMOI.md)
+# Inputs   : input, chain target, zones
+# Outputs  : weight map
+# Example  : python regles_v33.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Juge v33 (23 nov) : deux regles LOCALES ajoutees au juge du jeu 1 (construire_paire.py), rien d'autre ne change.
- (a) cible plus claire que l'entree : tache >= 25 px ou (cible - entree), luminance moyenne des 3 couleurs lissee 1,5 px,
-     depasse SEUIL_A bruits -> poids 0 sur la tache dilatee de 3 px ;
- (b) etoile restee dans la cible : a une position du catalogue (Gaia profond de l'image), pic compact de la cible au-dessus du
-     fond local de plus de SEUIL_B bruits -> poids 0 sur un disque de rayon max(3 x FWHM, rayon du reste mesure).
-Bruit = dispersion robuste de (L - L flou 4 px) de l'entree, comme analyse_v33.py. Les deux regles ne font que mettre a 0 (idempotent)."""
+"""Judge v33 (23 Nov): two LOCAL rules added to set 1's judge (construire_paire.py), nothing else changes.
+ (a) target brighter than the input: blob >= 25 px where (target - input), mean luminance of the 3 colours smoothed 1.5 px,
+     exceeds SEUIL_A noises -> weight 0 on the blob dilated by 3 px;
+ (b) star left in the target: at a catalogue position (the image's deep Gaia), compact peak of the target above the local
+     background by more than SEUIL_B noises -> weight 0 on a disc of radius max(3 x FWHM, measured remnant radius).
+Noise = robust spread of (L - L blurred 4 px) of the input, as in analyse_v33.py. The two rules only set to 0 (idempotent)."""
 import json
 from pathlib import Path
 

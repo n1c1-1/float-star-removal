@@ -1,10 +1,10 @@
 # ======================================================================
 # synth.py
-# Rôle     : Étoiles ajoutées à la volée aux tuiles d'entraînement (première version, essai).
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python synth.py build [--instruments 500 --places 3 --workers 2]     # -> <ESSAIS>/starRemoval/psf_bank.npz
+# Role     : Stars added on the fly to the training tiles (first version, trial).
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python synth.py build [--instruments 500 --places 3 --workers 2]     # -> <ESSAIS>/starRemoval/psf_bank.npz
 # ======================================================================
 """Stars added on the fly to the training tiles, on the GPU: every batch meets stars it never saw (domain
 randomisation: Tobin et al. 2017, arXiv:1703.06907), on our backgrounds or over the tile's own stars, whose truth (the

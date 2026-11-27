@@ -1,15 +1,15 @@
 # ======================================================================
 # resoudre.py
-# Rôle     : Astrométrie des images web gardées, avec le code de production non modifié (Methode v33b – 23 nov\Piste1\astrometrie.py : solveur local de FLOAT + affinage TAN-SIP sur l'extrait Gaia hors ligne).
-# Étape    : 3. Délinéarisation et astrométrie des images web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images web APOD téléchargées
-# Sorties  : images linéaires, astrométrie, tuiles
-# Exemple  : python resoudre.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Astrometry of the kept web images, with the unmodified production code (Methode v33b – 23 nov\Piste1\astrometrie.py: FLOAT's local solver + TAN-SIP refinement on the offline Gaia extract).
+# Step     : 3. De-linearisation and astrometry of the APOD web images (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : downloaded APOD web images
+# Outputs  : linear images, astrometry, tiles
+# Example  : python resoudre.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Astrométrie des images web gardées, avec le code de production non modifié (Methode v33b – 23 nov\Piste1\astrometrie.py :
-solveur local de FLOAT + affinage TAN-SIP sur l'extrait Gaia hors ligne). Le centre approché vient d'une table (objet du titre
-APOD) ; sans centre, résolution aveugle. Sortie : lineaire\NNN_astrometrie.npz (cat, scale, wres, wcs : format de la v33b)
-et controle\astrometrie.jsonl. Usage : resoudre.py [numéros...]"""
+r"""Astrometry of the kept web images, with the unmodified production code (Methode v33b – 23 nov\Piste1\astrometrie.py:
+FLOAT's local solver + TAN-SIP refinement on the offline Gaia extract). The approximate centre comes from a table (object in the APOD
+title); without a centre, blind solving. Output: lineaire\NNN_astrometrie.npz (cat, scale, wres, wcs: v33b format)
+and controle\astrometrie.jsonl. Usage: resoudre.py [numbers...]"""
 from __future__ import annotations
 
 import json

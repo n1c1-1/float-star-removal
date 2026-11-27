@@ -1,10 +1,10 @@
 # ======================================================================
 # a1_valid.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 13. Contrôle des étoiles saturées à faible signal (Tête de Cheval, 26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : découpes de l'image réelle et des images de validation, réseaux .pt
-# Sorties  : tableau de flux restant par étoile
-# Exemple  : python a1_valid.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Step     : 13. Check of saturated low-signal stars (Horsehead, 26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : crops of the real image and of the validation images, .pt networks
+# Outputs  : table of remaining flux per star
+# Example  : python a1_valid.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
 import sys, json; sys.stdout.reconfigure(encoding="utf-8")
 sys.path.insert(0, r"<SCRIPTS>\Validation – 22 nov")

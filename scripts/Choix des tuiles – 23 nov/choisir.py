@@ -1,12 +1,12 @@
 # ======================================================================
 # choisir.py
-# Rôle     : 8 tuiles candidates par image, d'apres mesures/<image>.csv -> candidats.csv (image;num;x;y;mesures), choix_vierge.csv, resume.csv
-# Étape    : 2. Choix des tuiles (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images, mosaïques
-# Sorties  : liste de tuiles
-# Exemple  : python choisir.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : 8 candidate tiles per image, from mesures/<image>.csv -> candidats.csv (image;num;x;y;mesures), choix_vierge.csv, resume.csv
+# Step     : 2. Tile selection (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : images, mosaics
+# Outputs  : list of tiles
+# Example  : python choisir.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""8 tuiles candidates par image, d'apres mesures/<image>.csv -> candidats.csv (image;num;x;y;mesures), choix_vierge.csv, resume.csv"""
+"""8 candidate tiles per image, from mesures/<image>.csv -> candidats.csv (image;num;x;y;mesures), choix_vierge.csv, resume.csv"""
 import csv, glob, sys, math
 from pathlib import Path
 sys.dont_write_bytecode = True

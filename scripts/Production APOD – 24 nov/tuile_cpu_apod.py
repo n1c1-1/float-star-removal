@@ -1,13 +1,13 @@
 # ======================================================================
 # tuile_cpu_apod.py
-# Rôle     : Etapes processeur d'UNE tuile (apres la piste 1 faite sur la carte) : etape A, etape B, passes (methode_validee.py --reutiliser-piste1), juge v33 (Juge v33 – 23 nov/construire_paire.py), paire « debruitee », paire « brute » si l'e
-# Étape    : 3. Production des paires web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images APOD délinéarisées
-# Sorties  : paires _debruitee .npz
-# Exemple  : usage : tuile_cpu.py <image> <tx> <ty>      |      tuile_cpu.py --brute-seul <image> <tx> <ty>
+# Role     : CPU steps of ONE tile (after track 1 done on the card): step A, step B, passes (methode_validee.py --reutiliser-piste1), v33 judge (Juge v33 – 23 nov/construire_paire.py), "debruitee" pair, "brute" pair if the
+# Stage    : 3. Production of the APOD web pairs (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : de-linearised APOD images
+# Outputs  : _debruitee .npz pairs
+# Example  : usage : tuile_cpu.py <image> <tx> <ty>      |      tuile_cpu.py --brute-seul <image> <tx> <ty>
 # ======================================================================
-"""Etapes processeur d'UNE tuile (apres la piste 1 faite sur la carte) : etape A, etape B, passes (methode_validee.py --reutiliser-piste1),
-juge v33 (Juge v33 – 23 nov/construire_paire.py), paire « debruitee », paire « brute » si l'entree brute existe, nettoyage des sorties de travail.
+"""CPU steps of ONE tile (after track 1 done on the card): step A, step B, passes (methode_validee.py --reutiliser-piste1),
+v33 judge (Juge v33 – 23 nov/construire_paire.py), "debruitee" pair, "brute" pair if the raw input exists, cleaning of the working outputs.
 usage : tuile_cpu.py <image> <tx> <ty>      |      tuile_cpu.py --brute-seul <image> <tx> <ty>"""
 import json, shutil, subprocess, sys, time
 from pathlib import Path

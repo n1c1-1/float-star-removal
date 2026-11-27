@@ -1,20 +1,20 @@
 # ======================================================================
 # chercher_galaxies.py
-# Rôle     : Cherche les petites galaxies compactes d'images JAMAIS vues a l'entrainement (jeu de controle, ne sert qu'a juger).
-# Étape    : 13. Jeu de contrôle des petites galaxies (26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images web et extraits Gaia (non publiés)
-# Sorties  : controle.json, mesures par réseau
-# Exemple  : chercher_galaxies.py [image ...]       (par defaut : les 7 images APOD sans aucune tuile d'entrainement)
+# Role     : Looks for small compact galaxies in images NEVER seen during training (control set, used only for judging).
+# Step     : 13. Control set of small galaxies (26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : web images and Gaia extracts (unpublished)
+# Outputs  : controle.json, per-network measurements
+# Example  : chercher_galaxies.py [image ...]       (default: the 7 APOD images with no training tile at all)
 # ======================================================================
-r"""Cherche les petites galaxies compactes d'images JAMAIS vues a l'entrainement (jeu de controle, ne sert qu'a juger).
+r"""Looks for small compact galaxies in images NEVER seen during training (control set, used only for judging).
 
-    chercher_galaxies.py [image ...]       (par defaut : les 7 images APOD sans aucune tuile d'entrainement)
+    chercher_galaxies.py [image ...]       (default: the 7 APOD images with no training tile at all)
 
-Entree : <DONNEES>\Paires étoiles APOD – 24 nov\entrees\<image>\input.npy (unites de bruit, fond 0) + extrait Gaia deja prepare
-(<DONNEES>\Catalogue Gaia profond APOD – 24 nov). Aucun telechargement.
-Critères : source detectee ABSENTE de Gaia (aucune source a moins de 1,2 FWHM d'etoile), FWHM >= 1,2 x FWHM des etoiles voisines, crete >= 20 bruits,
-loin des etoiles brillantes, pas dans une grande galaxie (couronne faible), pas de bord, pas de trainee.
-Sortie : <DONNEES>\Controle galaxies compactes – 26 nov\candidats\<image>.json
+Input: <DONNEES>\Paires étoiles APOD – 24 nov\entrees\<image>\input.npy (noise units, background 0) + already prepared Gaia extract
+(<DONNEES>\Catalogue Gaia profond APOD – 24 nov). No download.
+Criteria: detected source ABSENT from Gaia (no source within 1.2 FWHM of a star), FWHM >= 1.2 x the FWHM of neighbouring stars, peak >= 20 noise units,
+far from bright stars, not inside a large galaxy (faint outskirts), no edge, no trail.
+Output: <DONNEES>\Controle galaxies compactes – 26 nov\candidats\<image>.json
 """
 import os, sys, json, glob, time
 for k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "NUMBA_NUM_THREADS", "OPENBLAS_NUM_THREADS"):

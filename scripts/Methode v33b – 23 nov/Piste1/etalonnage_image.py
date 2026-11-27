@@ -1,36 +1,36 @@
 # ======================================================================
 # etalonnage_image.py
-# Rôle     : Méthode v17 (22 nov) : réglages de l'IMAGE ENTIÈRE, mesurés une fois et figés ; chaque découpe les relit et n'ajuste plus que l'éclat (et la position, comme avant) de chaque étoile.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python etalonnage_image.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Method v17 (22 Nov): settings of the WHOLE IMAGE, measured once and frozen; each crop re-reads them and only adjusts the brightness (and the position, as before) of each star.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python etalonnage_image.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Méthode v17 (22 nov) : réglages de l'IMAGE ENTIÈRE, mesurés une fois et figés ; chaque découpe les relit et n'ajuste
-plus que l'éclat (et la position, comme avant) de chaque étoile.
+"""Method v17 (22 Nov): settings of the WHOLE IMAGE, measured once and frozen; each crop re-reads them and only
+adjusts the brightness (and the position, as before) of each star.
 
-Pourquoi (Recul M8 – 22 nov\\RECUL.md, Q1 étape 1) : la piste 1 refaisait sur chaque découpe sa largeur, son point zéro
-(G -> flux), sa part par couleur, sa correction du coeur et sa saturation. Ses étoiles d'étalonnage étaient choisies par
-« pixel > 10 bruits », ce que la nébuleuse remplit seule : sur le coeur de M8 (tuile a) largeur 7,48 px au lieu de 4,37,
-point zéro 25,57 au lieu de 22,98 (11 fois trop de flux), parts S/H/O 0,12/0,37/0,52 = la couleur de la nébuleuse.
+Why (Recul M8 – 22 nov\\RECUL.md, Q1 step 1): track 1 redid on each crop its width, its zero point
+(G -> flux), its share per colour, its core correction and its saturation. Its calibration stars were chosen by
+« pixel > 10 noises », which the nebula fills on its own: on the core of M8 (tile a) width 7.48 px instead of 4.37,
+zero point 25.57 instead of 22.98 (11 times too much flux), S/H/O shares 0.12/0.37/0.52 = the colour of the nebula.
 
-Méthode (source) : photométrie forcée, Lang, Hogg & Schlegel 2016 (« The Tractor », arXiv:1410.7397) : la forme de
-l'étoile et l'étalonnage appartiennent à l'image ; sur une zone donnée seul l'éclat de chaque source est libre.
+Method (source): forced photometry, Lang, Hogg & Schlegel 2016 (« The Tractor », arXiv:1410.7397): the shape of
+the star and the calibration belong to the image; over a given zone only the brightness of each source is free.
 
-Ce qui est mesuré ici, une fois, sur l'image entière :
-  - largeur : celle du modèle d'étoile v7 de l'image (modele_psf_image.json), déjà mesurée sur l'image entière ;
-  - forme : le modèle v7 + la correction du coeur (même calcul que core_correction de la piste 1, deux tours, comme les
-    passes 2 et 3), empilée sur les étoiles d'étalonnage ci-dessous au lieu des étoiles de la découpe ;
-  - point zéro, dispersion, part par couleur (médiane F_c / F_total), et pour les images couleur la relation flux par
-    couleur / BP - RP : sur des étoiles choisies par des critères d'ÉTOILE (pas par « pixel > 10 bruits ») :
-      catalogue Gaia, G 10-17, dans l'image et loin du bord, non saturées (aucun pixel de plateau v14 à 3 px, pic sous
-      0,4 x la saturation de chaque couleur), isolées (aucune voisine plus brillante que G+1 à 24 px, que G+3 à 2,5
-      largeurs, que G+2 à 3 largeurs), position ajustée à moins de 1 px de la position Gaia, ponctuelles (pic / flux
-      ajusté entre 0,7 et 1,4 fois celui du modèle), fond calme (écart-type des médianes de 8 secteurs de l'anneau
-      29-35 px sous 3 bruits de ciel de L) ;
-  - saturation : la détection v14 par couleur (plateaux >= (1 - eps) x maximum de l'image entière) ; la règle « plateau
-    des 12 plus brillantes de la découpe » n'est plus utilisée.
-Cache : Piste1/sorties/<image>/etalonnage_image.npz (+ .json), à côté de modele_psf_image.npz.
+What is measured here, once, on the whole image:
+  - width: that of the image's v7 star model (modele_psf_image.json), already measured on the whole image;
+  - shape: the v7 model + the core correction (same computation as core_correction of track 1, two rounds, like
+    passes 2 and 3), stacked on the calibration stars below instead of the crop's stars;
+  - zero point, dispersion, share per colour (median F_c / F_total), and for colour images the flux per
+    colour / BP - RP relation: on stars chosen by STAR criteria (not by « pixel > 10 noises »):
+      Gaia catalogue, G 10-17, in the image and far from the edge, unsaturated (no v14 plateau pixel within 3 px, peak under
+      0.4 x the saturation of each colour), isolated (no neighbour brighter than G+1 within 24 px, than G+3 within 2.5
+      widths, than G+2 within 3 widths), position fitted to within 1 px of the Gaia position, point-like (peak / fitted
+      flux between 0.7 and 1.4 times that of the model), quiet background (standard deviation of the medians of 8 sectors of the ring
+      29-35 px under 3 sky noises of L);
+  - saturation: the v14 detection per colour (plateaus >= (1 - eps) x maximum of the whole image); the « plateau
+    of the 12 brightest of the crop » rule is no longer used.
+Cache: Piste1/sorties/<image>/etalonnage_image.npz (+ .json), next to modele_psf_image.npz.
 """
 from __future__ import annotations
 

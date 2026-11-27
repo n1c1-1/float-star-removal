@@ -1,21 +1,21 @@
 # ======================================================================
 # mesurer_controle.py
-# Rôle     : Mesure d'un reseau sur le jeu de controle de galaxies compactes (ne sert qu'a JUGER, jamais a regler ni a entrainer).
-# Étape    : 13. Jeu de contrôle des petites galaxies (26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images web et extraits Gaia (non publiés)
-# Sorties  : controle.json, mesures par réseau
-# Exemple  : mesurer_controle.py <checkpoint.pt | dossier de sorties sans etoiles> [--tag nom] [--device cpu]
+# Role     : Measures a network on the compact-galaxy control set (used only to JUDGE, never to tune or to train).
+# Step     : 13. Control set of small galaxies (26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : web images and Gaia extracts (unpublished)
+# Outputs  : controle.json, per-network measurements
+# Example  : mesurer_controle.py <checkpoint.pt | folder of starless outputs> [--tag name] [--device cpu]
 # ======================================================================
-r"""Mesure d'un reseau sur le jeu de controle de galaxies compactes (ne sert qu'a JUGER, jamais a regler ni a entrainer).
+r"""Measures a network on the compact-galaxy control set (used only to JUDGE, never to tune or to train).
 
-    mesurer_controle.py <checkpoint.pt | dossier de sorties sans etoiles> [--tag nom] [--device cpu]
+    mesurer_controle.py <checkpoint.pt | folder of starless outputs> [--tag name] [--device cpu]
 
-Pour chaque galaxie de controle.json : decoupe 384x384 de l'entree autour de la galaxie, applique le reseau (meme chargement que la chaine N7/N8L :
-chain_nafnet + state_dict["net"], astro_gpu.stages.star_removal.apply, tuiles de 256 px recouvertes ; processeur accepte) et ecrit le rapport
-flux sortie / flux entree dans 3 px et dans 8 px (fond = mediane de la couronne 24-40 px de chaque image, moyenne des 3 couleurs).
-Idéal pour une galaxie : 1 (elle doit rester). Garde-fou : memes rapports sur l'etoile Gaia de meme brillance de chaque galaxie (ideal : 0).
-Dossier de sorties : <image>.npy ou <image>/starless.npy, (3, H, W), memes unites que l'entree (APOD : entrees\<image>\input.npy).
-Sortie : <DONNEES>\Controle galaxies compactes – 26 nov\Resultats\<tag>.json
+For each galaxy in controle.json: takes a 384x384 crop of the input around the galaxy, applies the network (same loading as the N7/N8L chain:
+chain_nafnet + state_dict["net"], astro_gpu.stages.star_removal.apply, overlapping 256 px tiles; CPU accepted) and writes the
+output flux / input flux ratio within 3 px and within 8 px (background = median of the 24-40 px ring of each image, mean of the 3 colours).
+Ideal for a galaxy: 1 (it must stay). Safeguard: same ratios on the Gaia star of the same brightness for each galaxy (ideal: 0).
+Output folder: <image>.npy or <image>/starless.npy, (3, H, W), same units as the input (APOD: entrees\<image>\input.npy).
+Output: <DONNEES>\Controle galaxies compactes – 26 nov\Resultats\<tag>.json
 """
 import os, sys, json, time, glob
 for k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "NUMBA_NUM_THREADS", "OPENBLAS_NUM_THREADS"):

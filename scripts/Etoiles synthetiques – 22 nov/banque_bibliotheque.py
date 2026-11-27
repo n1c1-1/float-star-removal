@@ -1,19 +1,19 @@
 # ======================================================================
 # banque_bibliotheque.py
-# Rôle     : Tour 5 : la banque d'étoiles individuelles élargie à la BIBLIOTHÈQUE (« Bibliotheque images – 22 nov », inventaire.csv), LECTURE SEULE sur les images.
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : python banque_bibliotheque.py [id ...]   -> banque\banque2_<id>.npz ; banque\bibliotheque_notes.csv ;
+# Role     : Round 5: the individual-star bank extended to the LIBRARY (« Bibliotheque images – 22 nov », inventaire.csv), READ-ONLY on the images.
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : star-free backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : python banque_bibliotheque.py [id ...]   -> banque\banque2_<id>.npz ; banque\bibliotheque_notes.csv ;
 # ======================================================================
-"""Tour 5 : la banque d'étoiles individuelles élargie à la BIBLIOTHÈQUE (« Bibliotheque images – 22 nov »,
-inventaire.csv), LECTURE SEULE sur les images. Une pile linéaire prête par configuration d'instrument : d'abord le
-classement « à traiter en premier » du BILAN (section 5), puis la variété ; pas d'Euclid ; pas les piles des 4 images
-du test (Rosette E001/T005, M57 E050/S010, M8 E058, Tête de Cheval). Brillantes trouvées par détection
-(banque_detection.py), aucune astrométrie ni catalogue.
+"""Round 5: the individual-star bank extended to the LIBRARY (« Bibliotheque images – 22 nov »,
+inventaire.csv), READ-ONLY on the images. One ready linear stack per instrument configuration: first the
+"to process first" ranking of the BILAN (section 5), then variety; no Euclid; not the stacks of the 4 test images
+(Rosette E001/T005, M57 E050/S010, M8 E058, Horsehead). Bright stars found by detection
+(banque_detection.py), no astrometry or catalogue.
 
     python banque_bibliotheque.py [id ...]   -> banque\\banque2_<id>.npz ; banque\\bibliotheque_notes.csv ;
-                                               planche Synth_17_banque_bibliotheque.png
+                                                   sheet Synth_17_banque_bibliotheque.png
 """
 from __future__ import annotations
 

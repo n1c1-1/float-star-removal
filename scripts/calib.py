@@ -1,10 +1,10 @@
 # ======================================================================
 # calib.py
-# Rôle     : Mesure les étoiles synthétiques comme on mesure les vraies (ellipticité, largeur, densité).
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python calib.py [--draws 60] [--workers 6]
+# Role     : Measures the synthetic stars as the real ones are measured (ellipticity, width, density).
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python calib.py [--draws 60] [--workers 6]
 # ======================================================================
 """The stars the generator draws, measured as our real images are (star_measure.measure): their ellipticity, FWHM and
 densities against the real ranges (diagnose.py units), to calibrate instruments.py and stars.py on measures.

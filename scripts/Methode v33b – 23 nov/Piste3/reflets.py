@@ -1,15 +1,15 @@
 # ======================================================================
 # reflets.py
-# Rôle     : Recherche des reflets décalés (fantômes) des étoiles brillantes : pour chaque étoile brillante de la découpe, l'entrée lissée (4 px) moins son profil radial (médiane par anneau) est tournée pour que la direction du centre optique 
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python reflets.py
+# Role     : Search for the offset reflections (ghosts) of the bright stars: for each bright star of the crop, the smoothed (4 px) input minus its radial profile (median per ring) is rotated so that the direction of the optical centre (centre of the whole image) points towards +x, then normalised by the Gaia flux; the median of these thumbnails shows a common reflection (blob offset along this direction). Then, for G 5.60 of the Rosette tile, the thumbnail itself.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python reflets.py
 # ======================================================================
-"""Recherche des reflets décalés (fantômes) des étoiles brillantes : pour chaque étoile brillante de la découpe, l'entrée
-lissée (4 px) moins son profil radial (médiane par anneau) est tournée pour que la direction du centre optique (centre de
-l'image entière) soit vers +x, puis normalisée par le flux Gaia ; la médiane de ces vignettes montre un reflet commun
-(tache décalée le long de cette direction). Puis, pour G 5.60 de la tuile Rosette, la vignette elle-même.
+"""Search for the offset reflections (ghosts) of the bright stars: for each bright star of the crop, the smoothed (4 px)
+input minus its radial profile (median per ring) is rotated so that the direction of the optical centre (centre of
+the whole image) points towards +x, then normalised by the Gaia flux; the median of these thumbnails shows a common reflection
+(blob offset along this direction). Then, for G 5.60 of the Rosette tile, the thumbnail itself.
 
     python reflets.py
 """

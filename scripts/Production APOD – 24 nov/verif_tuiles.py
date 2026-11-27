@@ -1,10 +1,10 @@
 # ======================================================================
 # verif_tuiles.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 3. Production des paires web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images APOD délinéarisées
-# Sorties  : paires _debruitee .npz
-# Exemple  : python verif_tuiles.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Stage    : 3. Production of the APOD web pairs (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : de-linearised APOD images
+# Outputs  : _debruitee .npz pairs
+# Example  : python verif_tuiles.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
 import csv, sys, numpy as np, cv2
 from pathlib import Path

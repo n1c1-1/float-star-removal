@@ -1,27 +1,27 @@
 # ======================================================================
 # valider_copie.py
-# Rôle     : Validation d'un reseau d'etoiles (ou de starless d'un autre outil) sur les images jamais vues de la liste de validation.
-# Étape    : 12. Inférence à deux échelles V2 (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : réseau .pt + image de validation + extrait Gaia
-# Sorties  : images sans étoiles, tableaux
-# Exemple  : python valider_reseau.py <checkpoint.pt | dossier de starless> [--images nom ...] [--tag nom] [--device cuda:0|cpu]
+# Role     : Validation of a star network (or of starless images from another tool) on the never-seen images of the validation list.
+# Stage    : 12. Two-scale V2 inference (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : .pt network + validation image + Gaia extract
+# Outputs  : starless images, tables
+# Example  : python valider_reseau.py <checkpoint.pt | starless folder> [--images name ...] [--tag name] [--device cuda:0|cpu]
 # ======================================================================
-"""Validation d'un reseau d'etoiles (ou de starless d'un autre outil) sur les images jamais vues de la liste de validation.
+"""Validation of a star network (or of starless images from another tool) on the never-seen images of the validation list.
 
-    python valider_reseau.py <checkpoint.pt | dossier de starless> [--images nom ...] [--tag nom] [--device cuda:0|cpu]
+    python valider_reseau.py <checkpoint.pt | starless folder> [--images name ...] [--tag name] [--device cuda:0|cpu]
 
-Par image (entiere, inference par tuiles avec recouvrement, reseau = chain_nafnet de models.py, fwd/inv asinh 3/10 comme train_jeu1) :
- (a) etoiles restantes : flux restant / flux d'origine aux positions Gaia (ouverture 2 FWHM, fond = mediane de la couronne 3-5 FWHM
-     prise dans la meme image), mediane et 90e centile par bande de G (<8, 8-11, 11-14, 14-17, >17) ;
- (b) degats sur le fond : |sortie - entree| (moyenne des 3 couleurs, unites de bruit de l'entree) sur les pixels loin de toute
-     etoile Gaia detectable (rayon = max(4 FWHM, rayon propre a la magnitude)), mediane et 99e centile, puis idem sur la
-     « structure brillante » (lisse de l'entree au-dessus de son 90e centile) ;
- (c) erreur exacte sous des etoiles synthetiques : 20 tuiles 256 loin des etoiles brillantes, paire_synthetique(fond, graine)
-     (cible = fond), L1 sur l'etirement asinh sur l'emprise des etoiles, par classe d'etoile (crete de la composante) ;
- (d) planche : entree | sortie | difference (meme etirement), image entiere et deux agrandissements.
-Un dossier de starless deja faits (<nom>.npy ou <nom>/starless.npy, memes unites que l'entree) est note de la meme facon, sauf (c).
-Sorties : <DONNEES>/Validation étoiles – 22 nov/Resultats/<tag>/<nom>.json, <nom>_planche.jpg, resume.json, resume.md.
-Regles de la machine : 4 fils, un calcul a la fois ; le GPU (4060 Ti) seulement si aucun produire_jeu1 / train_jeu1 ne tourne.
+Per image (whole, tiled inference with overlap, network = chain_nafnet from models.py, asinh 3/10 forward/inverse as in train_jeu1):
+ (a) remaining stars: remaining flux / original flux at the Gaia positions (2 FWHM aperture, background = median of the 3-5 FWHM ring
+     taken in the same image), median and 90th percentile per G band (<8, 8-11, 11-14, 14-17, >17);
+ (b) damage to the background: |output - input| (mean of the 3 colours, input noise units) on the pixels far from any detectable
+     Gaia star (radius = max(4 FWHM, magnitude-specific radius)), median and 99th percentile, then the same on the
+     "bright structure" (input smoothed above its 90th percentile);
+ (c) exact error under synthetic stars: 20 tiles of 256 far from bright stars, paire_synthetique(background, seed)
+     (target = background), L1 on the asinh stretch over the footprint of the stars, per star class (component crest);
+ (d) contact sheet: input | output | difference (same stretch), whole image and two enlargements.
+A folder of already-made starless images (<nom>.npy or <nom>/starless.npy, same units as the input) is scored the same way, except (c).
+Outputs: <DONNEES>/Validation étoiles – 22 nov/Resultats/<tag>/<nom>.json, <nom>_planche.jpg, resume.json, resume.md.
+Machine rules: 4 threads, one computation at a time; the GPU (4060 Ti) only if no produire_jeu1 / train_jeu1 is running.
 """
 import os, sys, json, time, argparse, zlib, subprocess
 for k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "NUMBA_NUM_THREADS", "OPENBLAS_NUM_THREADS"):

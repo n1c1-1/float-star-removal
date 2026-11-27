@@ -1,10 +1,10 @@
 # ======================================================================
 # day_e2.py
-# Rôle     : E2 : paires régénérées avec les couleurs de saturation et les noyaux de galaxie, puis entraînement.
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python day_e2.py [--hours 6.5]
+# Role     : E2: pairs regenerated with the saturation colours and the galaxy nuclei, then training.
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python day_e2.py [--hours 6.5]
 # ======================================================================
 """The night of 7 to 8 November, second part: the pairs regenerated with the saturation's colours and the galaxies'
 nuclei corrected (pairs_v3), then run E taken on from its step 16000 on them (E2), then its evaluation against the

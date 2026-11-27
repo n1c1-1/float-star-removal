@@ -1,12 +1,12 @@
 # ======================================================================
 # portee_m27.py
-# Rôle     : N2 pas 26000 sur M27 : (a) comme la mesure, (b) grandes tuiles, (c) reduit x2, (d) reduit x3.
-# Étape    : 12. Inférence à deux échelles V2 (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : réseau .pt + image de validation + extrait Gaia
-# Sorties  : images sans étoiles, tableaux
-# Exemple  : python portee_m27.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : N2 step 26000 on M27: (a) as in the measurement, (b) large tiles, (c) reduced x2, (d) reduced x3.
+# Stage    : 12. Two-scale V2 inference (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : .pt network + validation image + Gaia extract
+# Outputs  : starless images, tables
+# Example  : python portee_m27.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""N2 pas 26000 sur M27 : (a) comme la mesure, (b) grandes tuiles, (c) reduit x2, (d) reduit x3. Sorties dans <DONNEES>\Portée M27 – 25 nov."""
+r"""N2 step 26000 on M27: (a) as in the measurement, (b) large tiles, (c) reduced x2, (d) reduced x3. Outputs in <DONNEES>\Portée M27 – 25 nov."""
 import os, sys, json, time
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"; os.environ["ASTRO_GPU_OFFLINE"] = "1"
 sys.stdout.reconfigure(encoding="utf-8")

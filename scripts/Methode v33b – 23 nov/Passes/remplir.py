@@ -1,25 +1,25 @@
 # ======================================================================
 # remplir.py
-# Rôle     : Remplissage par exemples (comme le remplissage « d'après le contenu » des éditeurs d'images).
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python remplir.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Example-based filling (like the « content-aware » fill of image editors).
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python remplir.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Remplissage par exemples (comme le remplissage « d'après le contenu » des éditeurs d'images).
+"""Example-based filling (like the « content-aware » fill of image editors).
 
-Complétion multi-échelle de Wexler, Shechtman & Irani 2007 (« Space-Time Completion of Video », PAMI 29(3)) avec la
-recherche approchée du plus proche voisin de patch PatchMatch (Barnes, Shechtman, Finkelstein & Goldman 2009, SIGGRAPH),
-la méthode du remplissage « d'après le contenu » de l'éditeur d'images de référence :
-- pyramide de l'image et du trou ; au niveau le plus grossier, le trou part d'une interpolation lisse ;
-- à chaque niveau, itérations E-M : PatchMatch (initialisation aléatoire ou montée du niveau d'avant, propagation,
-  recherche aléatoire à rayon décroissant) trouve pour chaque patch qui touche le trou le patch connu le plus proche,
-  puis chaque pixel du trou est le vote pondéré des patches qui le couvrent ;
-- au niveau final, dernière passe sans moyenne (chaque pixel copie le centre de son patch voisin) : le grain copié est
-  le vrai grain de l'image, pas une moyenne lissée.
-La correspondance est commune aux couleurs (distance sur les couleurs étirées en asinh, en unités de bruit), les valeurs
-copiées sont les valeurs linéaires de chaque couleur. Les sources : les pixels connus de la fenêtre autour du trou, hors
-de toute zone interdite (autres trous, étoiles non retirées).
+Multi-scale completion of Wexler, Shechtman & Irani 2007 (« Space-Time Completion of Video », PAMI 29(3)) with the
+approximate nearest-neighbour patch search PatchMatch (Barnes, Shechtman, Finkelstein & Goldman 2009, SIGGRAPH),
+the method of the « content-aware » fill of the reference image editor:
+- pyramid of the image and of the hole; at the coarsest level, the hole starts from a smooth interpolation;
+- at each level, E-M iterations: PatchMatch (random initialisation or upscaled from the previous level, propagation,
+  random search with decreasing radius) finds, for each patch touching the hole, the nearest known patch,
+  then each pixel of the hole is the weighted vote of the patches covering it;
+- at the final level, a last pass without averaging (each pixel copies the centre of its neighbouring patch): the copied grain is
+  the image's real grain, not a smoothed average.
+The matching is common to the colours (distance on the asinh-stretched colours, in units of noise), the copied values
+are the linear values of each colour. The sources: the known pixels of the window around the hole, outside
+any forbidden zone (other holes, stars not removed).
 """
 from __future__ import annotations
 

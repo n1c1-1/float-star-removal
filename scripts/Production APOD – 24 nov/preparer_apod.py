@@ -1,17 +1,17 @@
 # ======================================================================
 # preparer_apod.py
-# Rôle     : Prepare les entrees APOD pour la chaine v33b (aucun reseau, aucun telechargement) : - entree en unites de bruit, fond 0, comme les autres images (norm_params de la chaine : fond et bruit par couleur, unite = bruit moyen des 3 coul
-# Étape    : 3. Production des paires web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images APOD délinéarisées
-# Sorties  : paires _debruitee .npz
-# Exemple  : usage : preparer_apod.py
+# Role     : Prepares the APOD inputs for the v33b chain (no network, no download): - input in noise units, background 0, like the other images (norm_params of the chain: background and noise per colour, unit = mean noise of the 3 col
+# Stage    : 3. Production of the APOD web pairs (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : de-linearised APOD images
+# Outputs  : _debruitee .npz pairs
+# Example  : usage : preparer_apod.py
 # ======================================================================
-"""Prepare les entrees APOD pour la chaine v33b (aucun reseau, aucun telechargement) :
- - entree en unites de bruit, fond 0, comme les autres images (norm_params de la chaine : fond et bruit par couleur, unite = bruit moyen des 3 couleurs,
-   pas de balance : images deja equilibrees) -> <DONNEES>/Paires étoiles APOD – 24 nov/entrees/<image>/input.npy + meta.json ;
- - astrometrie NNN_astrometrie.npz -> Methode v33b/Piste1/sorties/<image>/astrometrie.npz ; Gaia profond -> Methode v33b/Catalogue Gaia profond – 20 nov ;
- - images.py de v33b : ajout des images apod_* (une fonction, rien d'autre) ;
- - tuiles.csv : choix de l'orchestrateur resolu en x, y (coin haut gauche), borne a [128, W-640] x [128, H-640] ; tout decalage est note.
+"""Prepares the APOD inputs for the v33b chain (no network, no download):
+ - input in noise units, background 0, like the other images (norm_params of the chain: background and noise per colour, unit = mean noise of the 3 colours,
+   no balance: images already balanced) -> <DONNEES>/Paires étoiles APOD – 24 nov/entrees/<image>/input.npy + meta.json ;
+ - astrometry NNN_astrometrie.npz -> Methode v33b/Piste1/sorties/<image>/astrometrie.npz ; deep Gaia -> Methode v33b/Catalogue Gaia profond – 20 nov ;
+ - images.py of v33b: adds the apod_* images (one function, nothing else);
+ - tuiles.csv: the orchestrator's choice resolved in x, y (top-left corner), clamped to [128, W-640] x [128, H-640]; any shift is noted.
 usage : preparer_apod.py"""
 import csv, json, re, shutil, sys
 from pathlib import Path

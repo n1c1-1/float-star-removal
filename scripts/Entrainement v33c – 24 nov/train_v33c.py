@@ -1,22 +1,22 @@
 # ======================================================================
 # train_v33c.py
-# Rôle     : Essai de 2 h sur les paires v33c (24 nov), mêmes conditions que l'essai A du 22 nov (A_E3).
-# Étape    : 6. Entraînement d'essai 2 h (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33c
-# Sorties  : instantanés, tableau de mesure
-# Exemple  : python train_v33c.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : 2 h trial on the v33c pairs (24 Nov), same conditions as the A trial of 22 Nov (A_E3).
+# Step     : 6. 2 h trial training (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33c pairs
+# Outputs  : snapshots, measurement table
+# Example  : python train_v33c.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Essai de 2 h sur les paires v33c (24 nov), mêmes conditions que l'essai A du 22 nov (A_E3).
+"""2 h trial on the v33c pairs (24 Nov), same conditions as the A trial of 22 Nov (A_E3).
 
-Importe train_jeu1.py SANS le modifier : même réseau (chain_nafnet), même perte L1 pondérée par les poids des paires, mêmes
-60 % de tuiles d'étoiles synthétiques v2 (sur fond propre ou entrée), mêmes lots de 8, lr 5e-4, montée 1000 pas puis cosinus,
-départ E3 pas 20000. Différences voulues, et seulement celles-ci :
-- les exemples : <DONNEES>\\Paires étoiles v33 – 23 nov\\*_v33c.npz, versions débruitée ET brute de la même tuile ;
-- le tirage : part de tuiles brutes fixée (--part-brute, 0,3) ; les brutes n'existent que pour 12 images ;
-- le calendrier du cosinus suit les pas (--pas 13400, vitesse de A : 13 439 pas en 120 min), pas l'horloge ;
-- aucun bruit artificiel ajouté (interdit) : les entrées sont celles des paires, et les étoiles synthétiques gardent le seul
-  bruit de photon de paires_synthetiques.py comme en A.
-Les tenues (validation en cours de route) sont des tuiles entières : débruitée ET brute écartées de l'entraînement.
+Imports train_jeu1.py WITHOUT modifying it: same network (chain_nafnet), same L1 loss weighted by the pairs' weights, same
+60 % of v2 synthetic star tiles (on clean background or input), same batches of 8, lr 5e-4, 1000-step warm-up then cosine,
+start E3 step 20000. Intended differences, and only these:
+- the examples: <DONNEES>\\Paires étoiles v33 – 23 nov\\*_v33c.npz, denoised AND raw versions of the same tile;
+- the draw: fixed share of raw tiles (--part-brute, 0.3); raw ones exist only for 12 images;
+- the cosine schedule follows the steps (--pas 13400, speed of A: 13 439 steps in 120 min), not the clock;
+- no artificial noise added (forbidden): the inputs are those of the pairs, and the synthetic stars keep only the
+  photon noise of paires_synthetiques.py as in A.
+The held-out ones (validation along the way) are whole tiles: denoised AND raw both excluded from training.
 """
 from __future__ import annotations
 

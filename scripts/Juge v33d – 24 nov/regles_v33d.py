@@ -1,16 +1,16 @@
 # ======================================================================
 # regles_v33d.py
-# Rôle     : Juge v33d (24 nov) : v33c INTACT + deux regles de plus, qui ne font que mettre des poids a 0 (idempotent).
-# Étape    : 2. Juge v33c/v33d : halos et étoiles faibles restées (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33
-# Sorties  : poids mis à 0 (fichiers _v33d)
-# Exemple  : python regles_v33d.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Judge v33d (24 Nov): v33c UNCHANGED + two more rules, which only set weights to 0 (idempotent).
+# Step     : 2. Judge v33c/v33d: halos and faint stars left (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33 pairs
+# Outputs  : weights set to 0 (_v33d files)
+# Example  : python regles_v33d.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Juge v33d (24 nov) : v33c INTACT + deux regles de plus, qui ne font que mettre des poids a 0 (idempotent).
- regle H (halo) : etoile du catalogue brillante : etendue du halo mesuree dans l'ENTREE ; si la cible garde de la lumiere sur ce disque,
-                  poids 0 jusqu'a cette etendue (sans le plafond de 4 FWHM de la regle b).
- regle F (faibles) : position du catalogue ou la cible garde un pic de plus de SEUIL_F bruits : petit disque a 0.
-Utilisation sur un autre dossier de paires : voir rejuger_v33d.py (--dossier)."""
+"""Judge v33d (24 Nov): v33c UNCHANGED + two more rules, which only set weights to 0 (idempotent).
+ rule H (halo): bright catalogue star: halo extent measured in the INPUT; if the target keeps light on this disc,
+                weight 0 up to that extent (without the 4 FWHM cap of rule b).
+ rule F (faint): catalogue position where the target keeps a peak of more than SEUIL_F noises: small disc at 0.
+Use on another folder of pairs: see rejuger_v33d.py (--dossier)."""
 import sys
 from pathlib import Path
 

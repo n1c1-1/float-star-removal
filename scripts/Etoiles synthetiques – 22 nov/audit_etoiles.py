@@ -1,26 +1,26 @@
 # ======================================================================
 # audit_etoiles.py
-# Rôle     : Étape 1 du générateur d'étoiles synthétiques (22 nov) : audit du premier générateur (6-9 nov) contre nos 4 images.
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : Usage : python audit_etoiles.py [image ...]     (CPU, 4 fils, ~1-2 min par image)
+# Role     : Step 1 of the synthetic star generator (22 Nov): audit of the first generator (6-9 Nov) against our 4 images.
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : starless backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : Usage: python audit_etoiles.py [image ...]     (CPU, 4 threads, ~1-2 min per image)
 # ======================================================================
-"""Étape 1 du générateur d'étoiles synthétiques (22 nov) : audit du premier générateur (6-9 nov) contre nos 4 images.
+"""Step 1 of the synthetic star generator (22 Nov): audit of the first generator (6-9 Nov) against our 4 images.
 
-Pour chaque image (rosette, m8_sho, m57, horsehead) :
-  - 6 vraies étoiles (faible, moyenne, brillante, saturée, à aigrettes, la plus brillante), choisies isolées et sur un fond
-    calme, positions et G du catalogue de l'image (astrometrie.npz de sa méthode) ; Alnitak ajoutée à la main (absente de Gaia) ;
-  - pour chacune, l'étoile du premier générateur (psf.py + stars.far_kernel, lus en place, non modifiés) de même éclat
-    (flux du catalogue par le point zéro de l'image) et de largeur la plus proche : un Newton tiré par draw_instrument à la
-    largeur de l'image, ses aigrettes aux angles mesurés de l'image ; auréole au tirage médian (part 1,2 %, pente 2,05) et
-    au tirage le plus fort (5 %, pente 1,5) ; écrêtage du premier générateur (un seul niveau par couleur et par image,
-    ici le maximum de l'image) ; bruit du ciel de l'image ;
-  - mesures : profils radiaux jusqu'à 330 px, profil le long de l'aigrette la plus forte, pointillés, plateau et son
-    niveau, allongement et décentrement du halo, rayons fins ; à l'échelle de l'image : décalage et largeur par couleur
-    sur ~300 étoiles G 11-14, niveaux de plateau des étoiles G < 8.
-Sorties : A_REGARDER – 21 nov soir\\Synth_0_audit_<image>.png, audit_mesures.json (ici).
-Usage : python audit_etoiles.py [image ...]     (CPU, 4 fils, ~1-2 min par image)
+For each image (rosette, m8_sho, m57, horsehead):
+  - 6 real stars (faint, medium, bright, saturated, with spikes, the brightest), chosen isolated and on a quiet
+    background, positions and G from the image's catalogue (astrometrie.npz of its method); Alnitak added by hand (absent from Gaia);
+  - for each, the star of the first generator (psf.py + stars.far_kernel, read in place, unmodified) of the same brightness
+    (catalogue flux times the image's zero point) and of the closest width: a Newton drawn by draw_instrument at the
+    image's width, its spikes at the angles measured on the image; halo at the median draw (share 1.2 %, slope 2.05) and
+    at the strongest draw (5 %, slope 1.5); clipping of the first generator (a single level per colour and per image,
+    here the maximum of the image); sky noise of the image;
+  - measurements: radial profiles up to 330 px, profile along the strongest spike, dotted lines, plateau and its
+    level, elongation and off-centring of the halo, fine rays; at the image scale: offset and width per colour
+    on ~300 stars G 11-14, plateau levels of the stars G < 8.
+Outputs: A_REGARDER – 21 nov soir\\Synth_0_audit_<image>.png, audit_mesures.json (here).
+Usage: python audit_etoiles.py [image ...]     (CPU, 4 threads, ~1-2 min per image)
 """
 from __future__ import annotations
 

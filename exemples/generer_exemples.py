@@ -1,24 +1,24 @@
 # ======================================================================
 # generer_exemples.py
-# Rôle     : Refait EXACTEMENT les images d'exemple du dépôt (docs/images) : des paires synthétiques « entrée | cible |
-#            différence », avec le générateur publié dans scripts/. Aucune image n'est lue : tout sort du code et des graines.
-# Entrées  : aucune image. Le code de scripts/ (fonds : backgrounds.py, defects.py ; étoiles : etoiles2.py,
-#            paires_synthetiques_n7.py, paires_synthetiques_n3.py ; catalogue.json des instruments).
-#            Les graines sont écrites ci-dessous (TUILES, GRAINE_CACHE).
-# Sorties  : <sortie>/exemple_01_champ_lisse.jpg ... exemple_06_fond_defauts.jpg, <sortie>/planche_synthetique.jpg,
-#            <empreintes> (sha256 des tableaux entrée et cible de chaque tuile, puis des images).
-# Exemple  : python generer_exemples.py --sortie ../docs/images --empreintes EMPREINTES.txt
-#            (options : --scripts <dossier des scripts>, --cache <fichier>)
-# Ce que fait chaque tuile : on tire un fond SYNTHÉTIQUE (le ciel, sans étoile, avec son bruit) ; on pose dessus des étoiles
-#            synthétiques ; la CIBLE est ce fond, copié tel quel (on le connaît avant d'y poser les étoiles) ; l'ENTRÉE est le
-#            fond plus les étoiles (et leur propre bruit de photons). Le bruit du fond est le même dans l'entrée et la cible.
-# Étirement : le même pour les trois panneaux et pour toutes les images : asinh(v / 3) / 10, v en unités de bruit du ciel
-#            (celui du réseau), multiplié par un gain d'affichage fixe (GAIN) et décalé d'un noir fixe (NOIR).
-# Modèle d'étoiles : chemin SANS banque de formes mesurées (il n'y en a aucune dans le dépôt) : le modèle paramétrique seul
-#            (instrument tiré du catalogue, optique de Fourier, auréole, aigrettes, plateau d'écrêtage, couleurs, bruit de photons).
-# Calcul   : processeur seulement, 4 fils.
+# Role     : Rebuilds EXACTLY the repository's example images (docs/images): synthetic pairs "input | target |
+#            difference", with the generator published in scripts/. No image is read: everything comes from the code and the seeds.
+# Inputs   : no image. The code of scripts/ (backgrounds: backgrounds.py, defects.py; stars: etoiles2.py,
+#            paires_synthetiques_n7.py, paires_synthetiques_n3.py; catalogue.json of the instruments).
+#            The seeds are written below (TUILES, GRAINE_CACHE).
+# Outputs  : <output>/exemple_01_champ_lisse.jpg ... exemple_06_fond_defauts.jpg, <output>/planche_synthetique.jpg,
+#            <fingerprints> (sha256 of the input and target arrays of each tile, then of the images).
+# Example  : python generer_exemples.py --sortie ../docs/images --empreintes EMPREINTES.txt
+#            (options: --scripts <scripts folder>, --cache <file>)
+# What each tile does: a SYNTHETIC background is drawn (the sky, without stars, with its noise); synthetic stars are put
+#            on it; the TARGET is this background, copied as is (it is known before the stars are put on it); the INPUT is the
+#            background plus the stars (and their own photon noise). The background's noise is the same in the input and the target.
+# Stretch  : the same for the three panels and for all the images: asinh(v / 3) / 10, v in units of the sky's noise
+#            (the network's), multiplied by a fixed display gain (GAIN) and shifted by a fixed black (NOIR).
+# Star model: path WITHOUT a bank of measured shapes (there is none in the repository): the parametric model alone
+#            (instrument drawn from the catalogue, Fourier optics, aureole, spikes, clipping plateau, colours, photon noise).
+# Compute  : processor only, 4 threads.
 # ======================================================================
-"""Refait les images d'exemple du dépôt. Voir l'en-tête ci-dessus et docs/images/LEGENDES.md."""
+"""Rebuilds the repository's example images. See the header above and docs/images/CAPTIONS.md."""
 from __future__ import annotations
 
 import os
@@ -50,18 +50,18 @@ N_STYLES = 16
 #:   extras : étoiles très brillantes imposées (x, y, pic en bruits) ; avec 3 colonnes de plus (A60, gamma, r1) : grand halo
 #:   coeurs : True : un ou deux cœurs de galaxie synthétiques (gardés dans l'entrée ET la cible)
 TUILES = [
-    dict(nom="exemple_01_champ_lisse", titre="1. Champ d'étoiles sur fond lisse", taille=256, graine_fond=1114,
+    dict(nom="exemple_01_champ_lisse", titre="1. Star field on a smooth background", taille=256, graine_fond=1114,
          defauts=False, graine_etoiles=1114, module="n7", extras=None, coeurs=False),
-    dict(nom="exemple_02_tres_brillantes", titre="2. Étoiles très brillantes sur nébuleuse", taille=384, graine_fond=1203,
+    dict(nom="exemple_02_tres_brillantes", titre="2. Very bright stars on a nebula", taille=384, graine_fond=1203,
          defauts=False, graine_etoiles=1203, module="n7", extras=[(110, 120, 30000.0), (290, 90, 9000.0)],
          coeurs=False),
-    dict(nom="exemple_03_halo_aigrettes", titre="3. Étoile avec grand halo et aigrettes", taille=384, graine_fond=1304,
+    dict(nom="exemple_03_halo_aigrettes", titre="3. Star with a large halo and spikes", taille=384, graine_fond=1304,
          defauts=False, graine_etoiles=1304, module="n3", extras=[(192, 192, 37000.0, 38.0, 2.33, 285.0)], coeurs=False),
-    dict(nom="exemple_04_coeur_galaxie", titre="4. Cœur de galaxie gardé", taille=384, graine_fond=1407,
+    dict(nom="exemple_04_coeur_galaxie", titre="4. Galaxy core kept", taille=384, graine_fond=1407,
          defauts=False, graine_etoiles=1407, module="n7", extras=None, coeurs=True),
-    dict(nom="exemple_05_champ_dense", titre="5. Champ dense, étoiles faibles", taille=256, graine_fond=1501,
+    dict(nom="exemple_05_champ_dense", titre="5. Dense field, faint stars", taille=256, graine_fond=1501,
          defauts=False, graine_etoiles=1501, module="n7", extras=None, coeurs=False),
-    dict(nom="exemple_06_fond_defauts", titre="6. Fond avec défauts d'empilement", taille=256, graine_fond=1611,
+    dict(nom="exemple_06_fond_defauts", titre="6. Background with stacking defects", taille=256, graine_fond=1611,
          defauts=True, graine_etoiles=1611, module="n7", extras=None, coeurs=False),
 ]
 
@@ -152,9 +152,9 @@ def etirer(v):
 
 
 def trois_panneaux(entree, cible, titre, cv2, np):
-    """Entrée | cible | différence (= les étoiles retirées), même étirement ; titres simples en français."""
+    """Entrée | cible | différence (= les étoiles retirées), même étirement ; plain English titles."""
     pan = [etirer(entree), etirer(cible), etirer(entree - cible)]
-    noms = ["Entrée (avec étoiles)", "Cible (sans étoiles)", "Différence = étoiles retirées"]
+    noms = ["Input (with stars)", "Target (without stars)", "Difference = stars removed"]
     bandes = []
     for p, nom in zip(pan, noms):
         bande = np.full((26, p.shape[1], 3), 24, np.uint8)
@@ -184,7 +184,7 @@ def planche(lignes, cv2, np, w=250):
         cv2.putText(bande, titre, (6, 16), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (235, 235, 235), 1, cv2.LINE_AA)
         rangs.append(np.concatenate([bande, ligne], 0))
     tete = np.zeros((24, rangs[0].shape[1], 3), np.uint8)
-    for i, nom in enumerate(("Entrée", "Cible", "Différence (étoiles retirées)")):
+    for i, nom in enumerate(("Input", "Target", "Difference (stars removed)")):
         cv2.putText(tete, nom, (i * (w + 3) + 6, 17), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1, cv2.LINE_AA)
     return np.concatenate([tete] + rangs, 0)
 

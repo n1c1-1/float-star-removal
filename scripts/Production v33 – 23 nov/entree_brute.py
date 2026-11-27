@@ -1,16 +1,16 @@
 # ======================================================================
 # entree_brute.py
-# Rôle     : Entree NON debruitee d'une image, meme geometrie, memes unites et meme gain que l'entree debruitee deja faite (meta.json gain) : brute = moyenne des demi-piles normalisees (gradient retire, fond et bruit de la demi-pile A) x gain,
-# Étape    : 2. Production des paires v33 (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : tuiles choisies, chaîne v33/v33b
-# Sorties  : paires _debruitee/_brute .npz
-# Exemple  : usage : entree_brute.py <nom> ; sortie <DONNEES>/Paires étoiles v33 – 23 nov/entrees_brutes/<nom>_brut.npy
+# Role     : NON-denoised input of an image, same geometry, same units and same gain as the denoised input already made (meta.json gain): raw = mean of the normalised half-stacks (gradient removed, background and noise of half-stack A) x gain,
+# Stage    : 2. Production of the v33 pairs (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : chosen tiles, v33/v33b chain
+# Outputs  : _debruitee/_brute .npz pairs
+# Example  : usage : entree_brute.py <nom> ; output <DONNEES>/Paires étoiles v33 – 23 nov/entrees_brutes/<nom>_brut.npy
 # ======================================================================
-"""Entree NON debruitee d'une image, meme geometrie, memes unites et meme gain que l'entree debruitee deja faite (meta.json gain) :
-brute = moyenne des demi-piles normalisees (gradient retire, fond et bruit de la demi-pile A) x gain, hors champ a 0. Pas de reseau.
-Sources : jeu 2 modes prep/fits (selection_jeu2.csv) ; jeu 1 ic5070, ngc7000_tiers1, ngc7000_gfx (meta.json source). Les autres images
-(entrees « prete » : jeux de donnees dont le brut n'est pas conserve) n'ont pas de version brute.
-usage : entree_brute.py <nom> ; sortie <DONNEES>/Paires étoiles v33 – 23 nov/entrees_brutes/<nom>_brut.npy"""
+"""NON-denoised input of an image, same geometry, same units and same gain as the denoised input already made (meta.json gain):
+raw = mean of the normalised half-stacks (gradient removed, background and noise of half-stack A) x gain, outside the field at 0. No network.
+Sources: set 2 modes prep/fits (selection_jeu2.csv); set 1 ic5070, ngc7000_tiers1, ngc7000_gfx (meta.json source). The other images
+("ready" inputs: data sets whose raw data is not kept) have no raw version.
+usage : entree_brute.py <nom> ; output <DONNEES>/Paires étoiles v33 – 23 nov/entrees_brutes/<nom>_brut.npy"""
 import os, sys, json, csv, time
 N = os.environ.get("BRUT_FILS", "3")
 for k in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "NUMBA_NUM_THREADS", "OPENBLAS_NUM_THREADS"):

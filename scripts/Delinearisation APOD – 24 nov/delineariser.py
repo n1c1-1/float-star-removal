@@ -1,14 +1,14 @@
 # ======================================================================
 # delineariser.py
-# Rôle     : Délinéarise les images web APOD choisies (retenues + douteuses) avec etoiles_auto (copie de rien : appelée telle quelle depuis le dossier de la délinéarisation du 23 nov).
-# Étape    : 3. Délinéarisation et astrométrie des images web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images web APOD téléchargées
-# Sorties  : images linéaires, astrométrie, tuiles
-# Exemple  : python delineariser.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : De-linearises the chosen APOD web images (kept + doubtful) with etoiles_auto (a copy of nothing: called as is from the folder of the 23 Nov de-linearisation).
+# Step     : 3. De-linearisation and astrometry of the APOD web images (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : downloaded APOD web images
+# Outputs  : linear images, astrometry, tiles
+# Example  : python delineariser.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Délinéarise les images web APOD choisies (retenues + douteuses) avec etoiles_auto (copie de rien : appelée telle quelle
-depuis le dossier de la délinéarisation du 23 nov). Une image à la fois, reprise possible. Sorties : lineaire/NNN.npy (float32, 3 x H x W),
-controle\mesures.jsonl.  Usage : delineariser.py [numéros...]"""
+"""De-linearises the chosen APOD web images (kept + doubtful) with etoiles_auto (a copy of nothing: called as is
+from the folder of the 23 Nov de-linearisation). One image at a time, resumable. Outputs: lineaire/NNN.npy (float32, 3 x H x W),
+controle\mesures.jsonl.  Usage: delineariser.py [numbers...]"""
 from __future__ import annotations
 
 import json

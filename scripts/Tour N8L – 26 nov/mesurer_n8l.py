@@ -1,15 +1,15 @@
 # ======================================================================
 # mesurer_n8l.py
-# Rôle     : Mesure N8L (tour long) au meilleur pas de validation ET au pas 24000, tableau_n8l.md, planche cœur M31 et planche Leo.
-# Étape    : 10. Essai écarté N8L (cœurs 10 %, 24 000 pas, 26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33g
-# Sorties  : instantanés, tableau
-# Exemple  : python mesurer_n8l.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : N8L measurement (long round) at the best validation step AND at step 24000, tableau_n8l.md, M31 core sheet and Leo sheet.
+# Stage    : 10. Discarded trial N8L (cores 10 %, 24,000 steps, 26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33g pairs
+# Outputs  : snapshots, table
+# Example  : python mesurer_n8l.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""Mesure N8L (tour long) au meilleur pas de validation ET au pas 24000, tableau_n8l.md, planche cœur M31 et planche Leo.
-Copie de mesurer_n8_10000.py. Ancien : Mesure N8 au pas 10000 (copie de mesurer_n8_5000.py ; N8 pas 5000 et N7 pas 5000 déjà mesurés, lus dans Resultats et coeurs). Ancien :
-Mesure N8 et N7 au pas 5000, UN seul processus, memoire surveillee (copie de mesurer_n8.py ; originaux inchanges).
-Lance seulement si > 8 Go libres ; avant chaque image (inferer_v2_mem.py) et chaque coeur : arret propre sous 4 Go.
+r"""N8L measurement (long round) at the best validation step AND at step 24000, tableau_n8l.md, M31 core sheet and Leo sheet.
+Copy of mesurer_n8_10000.py. Former: N8 measurement at step 10000 (copy of mesurer_n8_5000.py; N8 step 5000 and N7 step 5000 already measured, read from Resultats and coeurs). Former:
+N8 and N7 measurement at step 5000, ONE single process, memory monitored (copy of mesurer_n8.py; originals unchanged).
+Starts only if > 8 GB free; before each image (inferer_v2_mem.py) and each core: clean stop under 4 GB.
 """
 import sys, runpy, shutil, json, importlib.util, os
 import psutil

@@ -1,10 +1,10 @@
 # ======================================================================
 # lancer_orchestrateur_v33b.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 2. Production des paires v33 (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : tuiles choisies, chaîne v33/v33b
-# Sorties  : paires _debruitee/_brute .npz
-# Exemple  : python lancer_orchestrateur_v33b.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Stage    : 2. Production of the v33 pairs (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : chosen tiles, v33/v33b chain
+# Outputs  : _debruitee/_brute .npz pairs
+# Example  : python lancer_orchestrateur_v33b.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
 import subprocess
 d = r"<SCRIPTS>\Production v33 – 23 nov"

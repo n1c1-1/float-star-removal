@@ -1,12 +1,12 @@
 # ======================================================================
 # selectionne.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 3. Collecte des images web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : archive APOD (API publique)
-# Sorties  : images téléchargées (non publiées), index
-# Exemple  : python selectionne.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Step     : 3. Collection of the APOD web images (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : APOD archive (public API)
+# Outputs  : downloaded images (not published), index
+# Example  : python selectionne.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-# Preselection sur titres (diversite des objets, 2016+, repartition dans le temps). Le tri fin se fait a l'oeil sur les planches.
+# Pre-selection on titles (variety of objects, 2016+, spread over time). The fine sorting is done by eye on the sheets.
 import json,re,collections
 M=r"<DONNEES>\Images web APOD – 24 nov\meta"
 d=json.load(open(M+r"\candidats.json",encoding="utf8"))

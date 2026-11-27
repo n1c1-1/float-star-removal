@@ -1,14 +1,14 @@
 # ======================================================================
 # deux_echelles.py
-# Rôle     : N2 deux echelles : pleine resolution partout, sauf autour des etoiles Gaia G < 6.5 (sortie de N2 sur l'image reduite x2).
-# Étape    : 12. Inférence à deux échelles V2 (25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : réseau .pt + image de validation + extrait Gaia
-# Sorties  : images sans étoiles, tableaux
-# Exemple  : python deux_echelles.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : N2 two scales: full resolution everywhere, except around Gaia stars G < 6.5 (N2 output on the x2 reduced image).
+# Stage    : 12. Two-scale V2 inference (25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : .pt network + validation image + Gaia extract
+# Outputs  : starless images, tables
+# Example  : python deux_echelles.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-r"""N2 deux echelles : pleine resolution partout, sauf autour des etoiles Gaia G < 6.5 (sortie de N2 sur l'image reduite x2).
-Rayon = 300 px * 10^(-0.2 (G - 5.6)) (halo mesure sur M27, racine du flux), plein jusqu'a 70 % du rayon, raccord en cosinus jusqu'a 100 %.
-Ecrit les starless (<nom>.npy) dans <DONNEES>\Portée M27 – 25 nov\starless_deux_echelles et les decoupes de M27."""
+r"""N2 two scales: full resolution everywhere, except around Gaia stars G < 6.5 (N2 output on the x2 reduced image).
+Radius = 300 px * 10^(-0.2 (G - 5.6)) (halo measured on M27, square root of the flux), full up to 70 % of the radius, cosine blend up to 100 %.
+Writes the starless images (<nom>.npy) in <DONNEES>\Portée M27 – 25 nov\starless_deux_echelles and the M27 crops."""
 import os, sys, json, time
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"; os.environ["ASTRO_GPU_OFFLINE"] = "1"
 sys.stdout.reconfigure(encoding="utf-8")

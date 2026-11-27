@@ -1,19 +1,19 @@
 # ======================================================================
 # mesurer_n4.py
-# Rôle     : COPIE du 25 nov de mesurer_nuit.py : essais N3a, N3b (meme mesure, meme tableau, lignes N1/N2/N3 ajoutees).
-# Étape    : 10. Essai écarté N4 (juge par magnitude Gaia, 25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33f
-# Sorties  : instantanés, tableau
-# Exemple  : mesurer_nuit.py N1            meilleur pas (plus petite erreur « sous les étoiles » des tenues) -> valider_reseau.py
+# Role     : COPY of 25 Nov of mesurer_nuit.py: trials N3a, N3b (same measurement, same table, lines N1/N2/N3 added).
+# Step     : 10. Discarded trial N4 (judge by Gaia magnitude, 25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33f pairs
+# Outputs  : snapshots, table
+# Example  : mesurer_nuit.py N1            best step (smallest “under the stars” error of the held-out ones) -> valider_reseau.py
 # ======================================================================
-"""COPIE du 25 nov de mesurer_nuit.py : essais N3a, N3b (meme mesure, meme tableau, lignes N1/N2/N3 ajoutees).
-Mesure de fin d'essai (N1 ou N2) : même mesure de validation que V33C (mesurer_v33c.py), même tableau.
+"""COPY of 25 Nov of mesurer_nuit.py: trials N3a, N3b (same measurement, same table, lines N1/N2/N3 added).
+End-of-trial measurement (N1 or N2): same validation measurement as V33C (mesurer_v33c.py), same table.
 
-    mesurer_nuit.py N1            meilleur pas (plus petite erreur « sous les étoiles » des tenues) -> valider_reseau.py
-                                  (13 images + IC 1848, GPU 4060 Ti) -> tableau + planche de M27
-    options : --pas N, --tableau-seul
-Tableau : A pas 8000 / V33C pas 13000 / N1 / N2 / modèle FLOAT / outil de référence (lignes absentes ignorées).
-Sorties : <DONNEES>\\Entrainement étoiles nuit – 24 nov\\tableau_n4.md et planches\\M27_<essai>_pas_<n>.jpg (+ M27 des autres).
+    mesurer_nuit.py N1            best step (smallest “under the stars” error of the held-out ones) -> valider_reseau.py
+                                  (13 images + IC 1848, GPU 4060 Ti) -> table + M27 sheet
+    options: --pas N, --tableau-seul
+Table: A step 8000 / V33C step 13000 / N1 / N2 / FLOAT model (missing lines ignored).
+Outputs: <DONNEES>\\Entrainement étoiles nuit – 24 nov\\tableau_n4.md and planches\\M27_<essai>_pas_<n>.jpg (+ M27 of the others).
 """
 import argparse
 import glob

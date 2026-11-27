@@ -1,20 +1,20 @@
 # ======================================================================
 # train_jeu1.py
-# Rôle     : Court entraînement du réseau d'étoiles, depuis zéro, sur le jeu 1 (paires du retrait classique, 22 nov).
-# Étape    : 6. Entraînement sur paires réelles (recette de base, 22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires réelles .npz (input, target, weight), départ E3
-# Sorties  : instantanés .pt, history.json
-# Exemple  : python train_jeu1.py --tag J1 --hours 2 --device cuda:0 --tenues rosette_decoupe6,m57_a_m57
+# Role     : Short training of the star network, from scratch, on set 1 (pairs from the classical removal, 22 Nov).
+# Step     : 6. Training on real pairs (base recipe, 22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : real pairs .npz (input, target, weight), start E3
+# Outputs  : snapshots .pt, history.json
+# Example  : python train_jeu1.py --tag J1 --hours 2 --device cuda:0 --tenues rosette_decoupe6,m57_a_m57
 # ======================================================================
-"""Court entraînement du réseau d'étoiles, depuis zéro, sur le jeu 1 (paires du retrait classique, 22 nov).
+"""Short training of the star network, from scratch, on set 1 (pairs from the classical removal, 22 Nov).
 
-Recette de la chaîne (train_e.py, gardée telle quelle : NAFNet de la chaîne, tuiles 256, L1 sur l'étirement asinh fixe,
-AdamW 5e-4 (0,9 ; 0,9), décroissance 1e-4, 1000 pas de montée puis cosinus, gradient coupé à 0,1, lots de 8, bf16, 60 %
-des tuiles avec étoiles tirées à la volée), deux changements seulement :
-- les exemples : les paires du jeu 1 (<DONNEES>\\Paires étoiles jeu 1 – 22 nov\\*.npz : input, target, weight) ;
-- la perte : L1 pondérée par la carte de poids de la paire (0 = mal inventé, 0,5 = réparation bonne, 1 = vrais pixels et
-  inventions inévitables bonnes), divisée par la somme des poids.
-Validation : les paires passées à --tenues (jamais vues à l'entraînement), toutes les 1000 pas.
+Recipe of the chain (train_e.py, kept as is: the chain's NAFNet, 256 tiles, L1 on the fixed asinh stretch,
+AdamW 5e-4 (0.9; 0.9), decay 1e-4, 1000 warm-up steps then cosine, gradient clipped at 0.1, batches of 8, bf16, 60 %
+of the tiles with stars drawn on the fly), only two changes:
+- the examples: the pairs of set 1 (<DONNEES>\\Paires étoiles jeu 1 – 22 nov\\*.npz: input, target, weight);
+- the loss: L1 weighted by the pair's weight map (0 = badly invented, 0.5 = good repair, 1 = real pixels and
+  good unavoidable inventions), divided by the sum of the weights.
+Validation: the pairs passed to --tenues (never seen in training), every 1000 steps.
 
     python train_jeu1.py --tag J1 --hours 2 --device cuda:0 --tenues rosette_decoupe6,m57_a_m57
 """

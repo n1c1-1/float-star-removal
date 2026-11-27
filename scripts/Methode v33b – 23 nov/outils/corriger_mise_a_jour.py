@@ -1,13 +1,13 @@
 # ======================================================================
 # corriger_mise_a_jour.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python corriger_mise_a_jour.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Stage    : 2. Classical Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : starless image, class maps
+# Example  : python corriger_mise_a_jour.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-# Réécrit la mise à jour du modèle dans Piste1/modele_psf_image.py (poids plafonnés, tranches à parts égales dans le terme
-# régional, terme régional sans sa partie radiale) ; retire le bloc de débogage. Lancé une fois.
+# Rewrites the model update in Piste1/modele_psf_image.py (capped weights, equal-share slices in the regional
+# term, regional term without its radial part); removes the debug block. Run once.
 from pathlib import Path
 p = Path(__file__).resolve().parents[1] / "Piste1" / "modele_psf_image.py"
 L = p.read_text(encoding="utf-8-sig").split("\n")

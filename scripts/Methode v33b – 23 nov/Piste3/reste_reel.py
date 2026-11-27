@@ -1,24 +1,24 @@
 # ======================================================================
 # reste_reel.py
-# Rôle     : v18 (22 nov) : dans une zone recreee d'une etoile brillante (disque du coeur, bandes d'aigrettes), un pixel n'est recree que si la piste 1 y a laisse un vrai reste : |piste 1 - fond local| > K x bruit local dans au moins une coule
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python reste_reel.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : v18 (22 Nov): in a recreated zone of a bright star (core disc, spike bands), a pixel is recreated only if track 1 left a real remnant there: |track 1 - local background| > K x local noise in at least one colour.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python reste_reel.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""v18 (22 nov) : dans une zone recreee d'une etoile brillante (disque du coeur, bandes d'aigrettes), un pixel n'est recree
-que si la piste 1 y a laisse un vrai reste : |piste 1 - fond local| > K x bruit local dans au moins une couleur.
+"""v18 (22 Nov): in a recreated zone of a bright star (core disc, spike bands), a pixel is recreated
+only if track 1 left a real remnant there: |track 1 - local background| > K x local noise in at least one colour.
 
-  fond local  : mediane (robuste) par couleur dans un carre de rayon 3 x FWHM centre sur le pixel, pixels exclus (voir
-                exclusions) ; si moins de MIN_VALID du carre est utilisable, rayon double (jusqu'a 2 fois).
-  bruit local : par couleur et par morceau connexe de la zone, 1,4826 MAD du MEME detail (piste 1 - fond local a 3 FWHM)
-                dans l'anneau 4-12 px autour du morceau, hors exclusions ; plancher = bruit de la fenetre de cette couleur.
-                (Le bruit pixel seul ne convient pas : sur le coeur de M8 la structure de la nebuleuse a 3 FWHM est 10 a 30
-                fois au-dessus ; mesure dans diag_v18/proto_reste.py et proto_texture.py.)
-  exclusions  : les autres etoiles et les disques des coeurs ; PAS les bandes d'aigrettes (un reste d'aigrette est fin, la
-                mediane l'ignore ; exclure les bandes larges fait suivre au fond le bord de la bande, pas la nebuleuse :
-                27,8 % de faux restes sur un faux trou de ciel sans etoile contre 2,2 %).
-  masque      : reste reel dilate de DIL px, garde dans la zone.
+  local background : (robust) median per colour in a square of radius 3 x FWHM centred on the pixel, excluded pixels (see
+                exclusions); if less than MIN_VALID of the square is usable, radius doubled (up to 2 times).
+  local noise : per colour and per connected piece of the zone, 1.4826 MAD of the SAME detail (track 1 - local background at 3 FWHM)
+                in the 4-12 px ring around the piece, outside exclusions; floor = noise of this colour's window.
+                (Pixel noise alone does not do: on the core of M8 the nebula's structure at 3 FWHM is 10 to 30
+                times above; measured in diag_v18/proto_reste.py and proto_texture.py.)
+  exclusions  : the other stars and the core discs; NOT the spike bands (a spike remnant is thin, the
+                median ignores it; excluding the wide bands makes the background follow the band's edge, not the nebula:
+                27.8 % false remnants on a fake star-free sky hole against 2.2 %).
+  mask        : real remnant dilated by DIL px, kept within the zone.
 """
 from __future__ import annotations
 

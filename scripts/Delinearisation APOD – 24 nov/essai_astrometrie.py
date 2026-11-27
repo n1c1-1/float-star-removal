@@ -1,13 +1,13 @@
 # ======================================================================
 # essai_astrometrie.py
-# Rôle     : Essai : résolution astrométrique AVEUGLE (tout le ciel, échelle libre) d'images web, par le solveur local de FLOAT (asterion, Tycho-2), hors ligne.
-# Étape    : 3. Délinéarisation et astrométrie des images web APOD (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : images web APOD téléchargées
-# Sorties  : images linéaires, astrométrie, tuiles
-# Exemple  : python essai_astrometrie.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Trial: BLIND astrometric solving (whole sky, free scale) of web images, with FLOAT's local solver (asterion, Tycho-2), offline.
+# Step     : 3. De-linearisation and astrometry of the APOD web images (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : downloaded APOD web images
+# Outputs  : linear images, astrometry, tiles
+# Example  : python essai_astrometrie.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Essai : résolution astrométrique AVEUGLE (tout le ciel, échelle libre) d'images web, par le solveur local de FLOAT
-(asterion, Tycho-2), hors ligne. Usage : essai_astrometrie.py <numéros>"""
+"""Trial: BLIND astrometric solving (whole sky, free scale) of web images, with FLOAT's local solver
+(asterion, Tycho-2), offline. Usage: essai_astrometrie.py <numbers>"""
 from __future__ import annotations
 
 import sys

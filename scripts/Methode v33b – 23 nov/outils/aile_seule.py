@@ -1,14 +1,14 @@
 # ======================================================================
 # aile_seule.py
-# Rôle     : Module de la chaîne (voir sa docstring ci-dessous et scripts/LISEZMOI.md).
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python aile_seule.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Chain module (see its docstring below and scripts/LISEZMOI.md).
+# Stage    : 2. Classical Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : starless image, class maps
+# Example  : python aile_seule.py [arguments]  (see the docstring; paths via variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-# Le coeur (r 0-4 px) ne converge pas dans l'itération sur l'image entière (essais du 21 nov, JOURNAL) : le modèle de l'image
-# ne corrige plus que l'aile (r >= 5 px, plein à 7 px) ; le coeur est laissé à la correction du coeur de la piste 1 sur la
-# découpe (rayon 2,5 largeurs, existante). Une seule région (le terme régional servait au coeur). Lancé une fois.
+# The core (r 0-4 px) does not converge in the whole-image iteration (trials of 21 Nov, JOURNAL): the image model
+# now corrects only the wing (r >= 5 px, full at 7 px); the core is left to track 1's core correction on the
+# crop (radius 2.5 widths, existing). A single region (the regional term served the core). Run once.
 from pathlib import Path
 p = Path(__file__).resolve().parents[1] / "Piste1" / "modele_psf_image.py"
 t = p.read_text(encoding="utf-8-sig")

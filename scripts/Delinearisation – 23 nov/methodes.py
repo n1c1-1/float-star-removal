@@ -1,13 +1,13 @@
 # ======================================================================
 # methodes.py
-# Rôle     : Les méthodes de délinéarisation comparées sur le banc.
-# Étape    : 3. Délinéarisation des images web (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image étirée
-# Sorties  : image rendue linéaire
-# Exemple  : python methodes.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : The de-linearisation methods compared on the bench.
+# Step     : 3. De-linearisation of web images (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : stretched image
+# Outputs  : image made linear
+# Example  : python methodes.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Les méthodes de délinéarisation comparées sur le banc. Chacune : y (3, H, W) étiré 0-1 -> (linéaire, info).
-Une méthode qui refuse l'image (comme FLOAT le fait : « the stretch cannot be estimated ») rend (None, raison)."""
+"""The de-linearisation methods compared on the bench. Each one: y (3, H, W) stretched 0-1 -> (linear, info).
+A method that refuses the image (as FLOAT does: “the stretch cannot be estimated”) returns (None, reason)."""
 from __future__ import annotations
 
 import math

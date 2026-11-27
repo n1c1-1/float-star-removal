@@ -1,14 +1,14 @@
 # ======================================================================
 # enchainer_n8l.py
-# Rôle     : Chaîne N8L (tour long 24 000 pas) : entraînement train_n8l.py --reprendre jusqu'au pas 24000, puis mesure complète (mesurer_n8l.py) au meilleur pas de validation et au pas 24000.
-# Étape    : 10. Essai écarté N8L (cœurs 10 %, 24 000 pas, 26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33g
-# Sorties  : instantanés, tableau
-# Exemple  : lancer_borne.ps1 -Fils 4 -Log ...\chaine_b.out -Exe python -Args "-I enchainer_n8l.py"
+# Role     : N8L chain (long round, 24,000 steps): training train_n8l.py --reprendre up to step 24000, then full measurement (mesurer_n8l.py) at the best validation step and at step 24000.
+# Stage    : 10. Discarded trial N8L (cores 10 %, 24,000 steps, 26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33g pairs
+# Outputs  : snapshots, table
+# Example  : lancer_borne.ps1 -Fils 4 -Log ...\chaine_b.out -Exe python -Args "-I enchainer_n8l.py"
 # ======================================================================
-r"""Chaîne N8L (tour long 24 000 pas) : entraînement train_n8l.py --reprendre jusqu'au pas 24000, puis mesure complète (mesurer_n8l.py) au meilleur pas de validation et au pas 24000.
-Si le tour s'arrête sur « cœurs trop bas » (arret_coeurs.txt), la chaîne ne mesure rien.
-Après un « arrêt mémoire » (code 4) ou un refus de la mesure (code 2, moins de 8 Go libres), la chaîne attend 8 Go libres (test toutes les 60 s) et relance.
+r"""N8L chain (long round, 24,000 steps): training train_n8l.py --reprendre up to step 24000, then full measurement (mesurer_n8l.py) at the best validation step and at step 24000.
+If the round stops on "cores too low" (arret_coeurs.txt), the chain measures nothing.
+After a "memory stop" (code 4) or a refusal of the measurement (code 2, less than 8 GB free), the chain waits for 8 GB free (checked every 60 s) and restarts.
     lancer_borne.ps1 -Fils 4 -Log ...\chaine_b.out -Exe python -Args "-I enchainer_n8l.py"
 """
 import subprocess, sys, time

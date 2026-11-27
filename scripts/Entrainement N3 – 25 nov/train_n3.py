@@ -1,32 +1,32 @@
 # ======================================================================
 # train_n3.py
-# Rôle     : COPIE du 25 nov (essais N3a, N3b) de train_nuit.py (24 nov, inchange).
-# Étape    : 10. Essai écarté N3 (grands halos synthétiques, 25 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33d/v33e
-# Sorties  : instantanés, tableau
-# Exemple  : python train_n3.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : COPY of 25 Nov (trials N3a, N3b) of train_nuit.py (24 Nov, unchanged). Additions, nothing else:
+# Step     : 10. Discarded trial N3 (large synthetic halos, 25 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33d/v33e pairs
+# Outputs  : snapshots, table
+# Example  : python train_n3.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""COPIE du 25 nov (essais N3a, N3b) de train_nuit.py (24 nov, inchange). Ajouts, rien d'autre :
-  --suffixe v33d|v33e : paires lues (N3a v33d, N3b v33e) ; --part-grands : part des lots (2 tuiles de 512 px, meme surface que 8 x 256)
-  de tuiles synthetiques a GRANDS HALOS a l'echelle de M27 (etoiles imposees 3e4-3e5 bruits, halo 20-60 bruits a 60 px, 1 bruit a
-  150-300 px, fenetre 384 px, aigrettes ; fond = la cible propre d'une paire 512, position sur nebuleuse ou le poids est 1 sur
-  100 px) ; taux d'apprentissage en cosinus sur max(pas/--pas, temps/--hours) pour finir a l'heure (--hours = duree visee).
-Essais de nuit du 24 nov (N1, N2) : V33C (train_v33c.py, lui-même A) avec les paires v33d et les paires web APOD.
+"""COPY of 25 Nov (trials N3a, N3b) of train_nuit.py (24 Nov, unchanged). Additions, nothing else:
+  --suffixe v33d|v33e: pairs read (N3a v33d, N3b v33e); --part-grands: share of the batches (2 tiles of 512 px, same area as 8 x 256)
+  of synthetic tiles with LARGE HALOS at the scale of M27 (imposed stars 3e4-3e5 noise units, halo 20-60 noise units at 60 px, 1 noise unit at
+  150-300 px, 384 px window, spikes; background = the clean target of a 512 pair, position on nebula where the weight is 1 over
+  100 px); cosine learning rate over max(step/--pas, time/--hours) to finish on time (--hours = target duration).
+Night trials of 24 Nov (N1, N2): V33C (train_v33c.py, itself A) with the v33d pairs and the APOD web pairs.
 
-Importe train_jeu1.py SANS le modifier (réseau chain_nafnet, perte L1 pondérée, valider). Départ E3 pas 20000, lots 8, lr 5e-4,
-montée 1000 pas puis cosinus sur les pas, 60 % de tuiles d'étoiles synthétiques. Aucun bruit artificiel ajouté.
+Imports train_jeu1.py WITHOUT modifying it (chain_nafnet network, weighted L1 loss, validate). Start E3 step 20000, batches of 8, lr 5e-4,
+1000-step warm-up then cosine over the steps, 60 % synthetic star tiles. No artificial noise added.
 
-N1 = V33C avec les nouvelles données, rien d'autre :
-  - paires réelles <DONNEES>\\Paires étoiles v33 – 23 nov\\*_v33d.npz (débruitées et brutes), mêmes 6 tuiles tenues que V33C ;
-  - paires web <DONNEES>\\Paires étoiles APOD – 24 nov\\*_v33d.npz (débruitées seulement) ;
-  - tirage : 50 % débruitées réelles, 25 % brutes, 25 % APOD (si aucune paire APOD : le refus est explicite, voir --sans-apod).
-N2 = N1 plus deux changements (--n2) :
-  (a) les poids entre 0 et 1 (0,5 : réparation jugée bonne) passent à 1 dans toutes les paires d'entraînement ; la validation
-      en route garde les poids d'origine (comparable à N1) ;
-  (b) sur --part-extra (0,5) des tuiles synthétiques, une ou deux étoiles très brillantes imposées (pic 300 à 3e5 bruits, avec
-      gros halo et aigrettes du générateur), posées sur un fond de NÉBULEUSE réel : endroit où la cible est au poids 1 sur un
-      disque de 40 px (90 %) et où son niveau lissé dépasse 1 bruit (sinon pas d'étoile imposée).
-Reprise : --reprendre relit last.pt (réseau, optimiseur, pas, durée écoulée).
+N1 = V33C with the new data, nothing else:
+  - real pairs <DONNEES>\\Paires étoiles v33 – 23 nov\\*_v33d.npz (denoised and raw), same 6 held-out tiles as V33C;
+  - web pairs <DONNEES>\\Paires étoiles APOD – 24 nov\\*_v33d.npz (denoised only);
+  - draw: 50 % real denoised, 25 % raw, 25 % APOD (if no APOD pair: the refusal is explicit, see --sans-apod).
+N2 = N1 plus two changes (--n2):
+  (a) the weights between 0 and 1 (0.5: repair judged good) become 1 in all training pairs; the validation
+      along the way keeps the original weights (comparable to N1);
+  (b) on --part-extra (0.5) of the synthetic tiles, one or two imposed very bright stars (peak 300 to 3e5 noise units, with
+      the generator's big halo and spikes), placed on a real NEBULA background: a place where the target has weight 1 over a
+      40 px disc (90 %) and where its smoothed level exceeds 1 noise unit (otherwise no imposed star).
+Resume: --reprendre rereads last.pt (network, optimiser, step, elapsed time).
 """
 from __future__ import annotations
 

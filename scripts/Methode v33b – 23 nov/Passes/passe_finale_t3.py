@@ -1,18 +1,18 @@
 # ======================================================================
 # passe_finale_t3.py
-# Rôle     : Tour 3 de la passe finale (21 nov) : base = passe_finale_c9_t2\sans_etoiles_tuile.npy.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python passe_finale_t3.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Round 3 of the final pass (21 Nov): base = passe_finale_c9_t2\sans_etoiles_tuile.npy.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python passe_finale_t3.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Tour 3 de la passe finale (21 nov) : base = passe_finale_c9_t2\\sans_etoiles_tuile.npy. Défauts relevés par le juge :
- A. points sombres (5 bruits) et clairs près des étoiles, taches colorées, nœud (84, 96) : guéris (remplir.fill_mask) ;
- B. bords nets des grands polygones recréés : fondus sur ~6 px (lissage 1.5 -> 4 px dans la bande) ;
- C. chroma grossier des pixels recréés ramené au chroma de l'entrée (le grain devient cohérent avec la luminance) ;
- D. grain 2-4 px : texture prise dans le ciel sans étoile de l'entrée (patches 16 px tirés au hasard, jamais deux fois),
-    ajoutée SEULEMENT aux pixels changés, à l'amplitude du déficit local (par couleur).
-Écrit seulement dans sorties/passe_finale_c9_t3. CPU seulement."""
+"""Round 3 of the final pass (21 Nov): base = passe_finale_c9_t2\\sans_etoiles_tuile.npy. Defects noted by the judge:
+ A. dark points (5 noises) and bright ones near the stars, coloured blobs, knot (84, 96): healed (remplir.fill_mask);
+ B. sharp edges of the large recreated polygons: blended over ~6 px (smoothing 1.5 -> 4 px in the band);
+ C. coarse chroma of the recreated pixels brought back to the input's chroma (the grain becomes consistent with the luminance);
+ D. 2-4 px grain: texture taken from the star-free sky of the input (16 px patches drawn at random, never twice),
+    added ONLY to the changed pixels, at the amplitude of the local deficit (per colour).
+Writes only to sorties/passe_finale_c9_t3. CPU only."""
 import os, sys, json, time
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"; os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
 sys.dont_write_bytecode = True

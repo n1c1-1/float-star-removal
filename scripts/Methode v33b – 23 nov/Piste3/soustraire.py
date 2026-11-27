@@ -1,23 +1,23 @@
 # ======================================================================
 # soustraire.py
-# Rôle     : Piste 3, tour 4 : moins de pixels inventés.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python soustraire.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Track 3, round 4: fewer invented pixels.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python soustraire.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Piste 3, tour 4 : moins de pixels inventés.
-- halo d'une étoile brillante SOUSTRAIT : modèle radial mesuré sur l'étoile elle-même (médiane par anneau de la base,
-  voisins masqués, fond pris juste au-delà du halo), lissé, ramené à zéro au bord ; c'est le principe de la soustraction
-  des étoiles brillantes par profil radial étendu (Infante-Sainz, Trujillo & Román 2020, MNRAS 491, arXiv:1911.01430),
-  ici avec le profil de chaque étoile plutôt qu'un profil commun empilé ;
-- aigrettes SOUSTRAITES : gabarit empirique de chaque aigrette (profil le long, signé, et profil en travers moyen),
-  retranché ; ce qui reste au-delà du seuil seulement est recréé ;
-- étoiles moyennes laissées par la piste 1 avec un défaut : correction radiale (le défaut symétrique), puis le surcroît
-  de bruit de photons de l'étoile ramené au bruit du ciel ; rien n'est inventé ;
-- petits trous : réalisation gaussienne contrainte par l'anneau (Hoffman & Ribak 1991, ApJ 380 L5 ; Bucher & Louis 2012,
-  arXiv:1109.0286 ; Benoit-Lévy et al. 2013, arXiv:1301.4145), sur la couche de détail ;
-- variante : réseau E3 de FLOAT appliqué localement, sortie gardée seulement dans le trou, niveau et grain recalés.
+"""Track 3, round 4: fewer invented pixels.
+- halo of a bright star SUBTRACTED: radial model measured on the star itself (median per ring of the base,
+  neighbours masked, background taken just beyond the halo), smoothed, brought to zero at the edge; this is the principle of the subtraction
+  of bright stars by extended radial profile (Infante-Sainz, Trujillo & Román 2020, MNRAS 491, arXiv:1911.01430),
+  here with each star's profile rather than a common stacked profile;
+- spikes SUBTRACTED: empirical template of each spike (profile along, signed, and mean cross profile),
+  removed; only what remains beyond the threshold is recreated;
+- medium stars left by track 1 with a defect: radial correction (the symmetric defect), then the star's excess
+  photon noise brought down to the sky noise; nothing is invented;
+- small holes: gaussian realisation constrained by the ring (Hoffman & Ribak 1991, ApJ 380 L5; Bucher & Louis 2012,
+  arXiv:1109.0286; Benoit-Lévy et al. 2013, arXiv:1301.4145), on the detail layer;
+- variant: FLOAT's E3 network applied locally, output kept only inside the hole, level and grain readjusted.
 """
 from __future__ import annotations
 

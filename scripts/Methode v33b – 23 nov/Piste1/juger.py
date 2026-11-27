@@ -1,21 +1,21 @@
 # ======================================================================
 # juger.py
-# Rôle     : Contrôle d'une version : mesures par tuile de 512 px et planches à 100 % des tuiles suspectes.
-# Étape    : 2. Chaîne classique de soustraction guidée par Gaia (v33b) (voir scripts/LISEZMOI.md)
-# Entrées  : image empilée (unités de bruit), astrométrie, extrait Gaia profond hors ligne
-# Sorties  : image sans étoiles, cartes de classes
-# Exemple  : python juger.py <image> <tag> [--tuiles 8] [--xy x,y;x,y]
+# Role     : Check of a version: per-512 px-tile measurements and 100 % sheets of the suspect tiles.
+# Step     : 2. Classic Gaia-guided subtraction chain (v33b) (see scripts/LISEZMOI.md)
+# Inputs   : stacked image (noise units), astrometry, offline deep Gaia extract
+# Outputs  : star-free image, class maps
+# Example  : python juger.py <image> <tag> [--tuiles 8] [--xy x,y;x,y]
 # ======================================================================
-"""Contrôle d'une version : mesures par tuile de 512 px et planches à 100 % des tuiles suspectes.
+"""Check of a version: per-512 px-tile measurements and 100 % sheets of the suspect tiles.
 
     python juger.py <image> <tag> [--tuiles 8] [--xy x,y;x,y]
 
-Mesures (sur l'image sans étoiles, en linéaire) :
-- restes : aux positions Gaia, coeur (r <= 1 largeur) moins anneau (2-4 largeurs), en bruits ; > 3 = étoile restée ;
-- creux (méthode du 11 nov.) : médiane 0-4 px du centre contre l'anneau 8-15 px, en % du niveau de l'anneau, pour les
-  étoiles brillantes sur nébuleuse ; part des étoiles à plus de 3 % sous l'anneau, et les 10 % pires ;
-- changé loin des étoiles : |entrée - sans étoiles| moyen à plus de 3 rayons de PSF de toute étoile Gaia, en bruits.
-Planches : entrée | sans étoiles | couche d'étoiles, même étirement asinh, 512 px à 100 %.
+Measurements (on the star-free image, in linear):
+- remnants: at Gaia positions, core (r <= 1 width) minus ring (2-4 widths), in noises; > 3 = star left;
+- hollows (11 Nov method): median 0-4 px from the centre against the 8-15 px ring, in % of the ring level, for the
+  bright stars on nebula; share of the stars more than 3 % below the ring, and the worst 10 %;
+- changed far from the stars: mean |input - star-free| at more than 3 PSF radii from any Gaia star, in noises.
+Sheets: input | star-free | star layer, same asinh stretch, 512 px at 100 %.
 """
 from __future__ import annotations
 

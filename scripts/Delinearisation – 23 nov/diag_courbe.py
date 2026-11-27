@@ -1,13 +1,13 @@
 # ======================================================================
 # diag_courbe.py
-# Rôle     : Diagnostic : la vraie courbe inverse (médiane de la luminance linéaire par niveau de la luminance étirée) contre les courbes estimées.
-# Étape    : 3. Délinéarisation des images web (23 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : image étirée
-# Sorties  : image rendue linéaire
-# Exemple  : python diag_courbe.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Diagnostic: the true inverse curve (median of the linear luminance per level of the stretched luminance) against the estimated curves.
+# Step     : 3. De-linearisation of web images (23 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : stretched image
+# Outputs  : image made linear
+# Example  : python diag_courbe.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Diagnostic : la vraie courbe inverse (médiane de la luminance linéaire par niveau de la luminance étirée) contre les
-courbes estimées. Usage : diag_courbe.py <méthode>[,...] <pile>:<recette> ...  -> resultats/courbe_<pile>__<recette>.png"""
+"""Diagnostic: the true inverse curve (median of the linear luminance per level of the stretched luminance) against the
+estimated curves. Usage: diag_courbe.py <method>[,...] <stack>:<recipe> ...  -> resultats/courbe_<stack>__<recipe>.png"""
 from __future__ import annotations
 
 import sys

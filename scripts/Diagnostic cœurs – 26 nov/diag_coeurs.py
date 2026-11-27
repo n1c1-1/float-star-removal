@@ -1,13 +1,13 @@
 # ======================================================================
 # diag_coeurs.py
-# Rôle     : Diagnostic des cœurs : profils radiaux (entrée, N7, N8L 24000, RefExt) des 6 cœurs + comparaison aux cœurs synthétiques.
-# Étape    : diagnostic (26 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : sorties de validation
-# Sorties  : profils radiaux, planche
-# Exemple  : python diag_coeurs.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Core diagnostic: radial profiles (input, N7, N8L 24000, RefExt) of the 6 cores + comparison with synthetic cores.
+# Step     : diagnostic (26 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : validation outputs
+# Outputs  : radial profiles, sheet
+# Example  : python diag_coeurs.py [arguments]  (see the docstring; paths via the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Diagnostic des cœurs : profils radiaux (entrée, N7, N8L 24000, RefExt) des 6 cœurs + comparaison aux cœurs synthétiques.
-Lecture seule sur les données ; processeur seulement."""
+"""Core diagnostic: radial profiles (input, N7, N8L 24000, RefExt) of the 6 cores + comparison with synthetic cores.
+Read-only on the data; CPU only."""
 import os, sys, json
 os.environ["CUDA_VISIBLE_DEVICES"] = ""; os.environ["ASTRO_GPU_OFFLINE"] = "1"
 sys.stdout.reconfigure(encoding="utf-8")

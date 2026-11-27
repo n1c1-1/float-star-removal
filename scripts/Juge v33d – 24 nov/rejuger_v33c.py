@@ -1,13 +1,13 @@
 # ======================================================================
 # rejuger_v33c.py
-# Rôle     : Rejuge v33c : recalcule les poids des paires v33 existantes (rien d'autre).
-# Étape    : 2. Juge v33c/v33d : halos et étoiles faibles restées (24 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : paires v33
-# Sorties  : poids mis à 0 (fichiers _v33d)
-# Exemple  : python rejuger_v33c.py [arguments]  (voir la docstring ; chemins par variables RACINE_SCRIPTS, DONNEES, ESSAIS)
+# Role     : Re-judge v33c: recomputes the weights of the existing v33 pairs (nothing else).
+# Step     : 2. Judge v33c/v33d: halos and faint stars left (24 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : v33 pairs
+# Outputs  : weights set to 0 (_v33d files)
+# Example  : python rejuger_v33c.py [arguments]  (see the docstring; paths through the variables RACINE_SCRIPTS, DONNEES, ESSAIS)
 # ======================================================================
-"""Rejuge v33c : recalcule les poids des paires v33 existantes (rien d'autre). usage : rejuger_v33c.py [--ecrire] [--seuil 3] [noms...]
-Sans --ecrire : seulement le tableau. Les paires « lachee » de la revue ne sont pas traitees."""
+"""Re-judge v33c: recomputes the weights of the existing v33 pairs (nothing else). usage: rejuger_v33c.py [--ecrire] [--seuil 3] [noms...]
+Without --ecrire: only the table. The review's « lachee » pairs are not processed."""
 import csv, json, sys
 from pathlib import Path
 import numpy as np

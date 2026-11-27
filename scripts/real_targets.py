@@ -1,10 +1,10 @@
 # ======================================================================
 # real_targets.py
-# Rôle     : Cibles automatiques pour 23 images réelles à partir de la sortie de E3 (essai de la période E3, sans lien avec les paires v33).
-# Étape    : 1. Entraînement sur données synthétiques seules (E2 / E3, 7-9 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : générateur : graines + catalogue.json (fiches d'instruments publiques) ; aucune image
-# Sorties  : paires synthétiques (input/target/info.json + manifest.json), réseau E3
-# Exemple  : python real_targets.py [--names a,b] [--device cuda:0]
+# Role     : Automatic targets for 23 real images from E3's output (a trial of the E3 period, unrelated to the v33 pairs).
+# Step     : 1. Training on synthetic data only (E2 / E3, 7-9 Nov) (see scripts/README.md)
+# Inputs   : generator: seeds + catalogue.json (public instrument sheets); no image
+# Outputs  : synthetic pairs (input/target/info.json + manifest.json), network E3
+# Example  : python real_targets.py [--names a,b] [--device cuda:0]
 # ======================================================================
 """Targets for our 23 real training images: E3's output (its step 20000) corrected automatically, then checked by eye on the sheets written here.
 

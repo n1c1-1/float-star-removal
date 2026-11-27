@@ -1,15 +1,15 @@
 # ======================================================================
 # galerie.py
-# Rôle     : Galerie de 24 tirages libres du générateur v2 (aucun paramètre imposé), chacun sur une vraie tuile sans étoiles de 512 px (sorties de la dernière passe t3 des méthodes v21-v24, lues en place).
-# Étape    : 4. Étoiles synthétiques réalistes (22 nov) (voir scripts/LISEZMOI.md)
-# Entrées  : fonds sans étoiles (cibles de paires), banques de formes d'étoiles
-# Sorties  : paires (entrée, cible), planches, test à l'aveugle
-# Exemple  : Usage : python galerie.py [graine]
+# Role     : Gallery of 24 free draws of the v2 generator (no imposed parameter), each on a real star-free 512 px tile (outputs of the last t3 pass of methods v21-v24, read in place).
+# Step     : 4. Realistic synthetic stars (22 Nov) (see scripts/LISEZMOI.md)
+# Inputs   : star-free backgrounds (pair targets), star shape banks
+# Outputs  : pairs (input, target), sheets, blind test
+# Example  : Usage: python galerie.py [graine]
 # ======================================================================
-"""Galerie de 24 tirages libres du générateur v2 (aucun paramètre imposé), chacun sur une vraie tuile sans étoiles de
-512 px (sorties de la dernière passe t3 des méthodes v21-v24, lues en place).
-Sorties : A_REGARDER – 21 nov soir\\Synth_11_galerie_post.png (arcsinh 60) et Synth_11_galerie_fort.png ; galerie_fiches.json.
-Usage : python galerie.py [graine]"""
+"""Gallery of 24 free draws of the v2 generator (no imposed parameter), each on a real star-free 512 px tile
+(outputs of the last t3 pass of methods v21-v24, read in place).
+Outputs: A_REGARDER – 21 nov soir\\Synth_11_galerie_post.png (arcsinh 60) and Synth_11_galerie_fort.png ; galerie_fiches.json.
+Usage: python galerie.py [graine]"""
 from __future__ import annotations
 
 import os as _os
